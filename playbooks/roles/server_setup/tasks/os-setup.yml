@@ -4,11 +4,21 @@
     name: "@Server with GUI"
     state: present
 
+- name: Ensure Firewalld is active
+  ansible.builtin.systemd:
+    name: firewalld
+    state: started
+    enabled: true
+
 - name: Set GUI to autostart
   ansible.builtin.command:
     cmd: systemctl set-default graphical.target
   register: target
   changed_when: target.stderr != ""
+
+- name: Reboot
+  become: true
+  ansible.builtin.reboot:
 
 - name: Remove podman & buildah
   ansible.builtin.dnf:
