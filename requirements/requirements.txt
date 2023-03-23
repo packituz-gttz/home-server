@@ -1,1 +1,3 @@
 commitizen==2.42.01 # https://github.com/commitizen-tools/commitizen
+pre-commit==3.2.0  # https://github.com/pre-commit/pre-commit
+
