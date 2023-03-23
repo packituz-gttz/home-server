@@ -1,0 +1,13 @@
+---
+- name: Pull and run Navidrome
+  community.docker.docker_container:
+    name: navidrome
+    image: deluan/navidrome:latest
+    state: started
+    restart_policy: "unless-stopped"
+    ports:
+      - 4533:4533
+    volumes:
+      - /media/Navidrome/music:/music
+      - /media/Navidrome/data:/data
+...

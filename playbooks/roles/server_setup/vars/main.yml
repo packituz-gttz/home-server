@@ -1,0 +1,27 @@
+---
+packages_to_remove:
+  - podman
+  - buildah
+
+docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-compose-plugin
+
+jellyfin_media_dirs:
+  - /media/Jellyfin/Books
+  - /media/Jellyfin/Movies
+  - /media/Jellyfin/Shows
+
+kvm_dependencies:
+  - qemu-kvm
+  - qemu-img
+  - libvirt
+  - virt-install
+  - libvirt-client
+  - virt-manager
+
+
+
+...

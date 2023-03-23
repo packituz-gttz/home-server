@@ -1,0 +1,20 @@
+---
+- name: Create Kavita media directories
+  ansible.builtin.file:
+    path: /media/Kavita
+    state: directory
+    mode: '0755'
+
+- name: Pull and run Kavita Docker image
+  community.docker.docker_container:
+    name: kavita
+    image: "kizaing/kavita:latest"
+    state: started
+    restart_policy: "unless-stopped"
+    ports:
+      - 5000:5000
+    volumes:
+      - /kavita/data/directory:/kavita/config
+      - /media/Kavita:/manga
+
+...

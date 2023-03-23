@@ -1,0 +1,50 @@
+---
+- name: Install Cockpit
+  ansible.builtin.dnf:
+    name: cockpit
+    state: present
+
+- name: Enable cockpit service
+  ansible.builtin.systemd:
+    name: cockpit.socket
+    state: started
+    enabled: true
+
+- name: Install cockpit machine plugin
+  ansible.builtin.dnf:
+    name: cockpit-machines
+    state: present
+
+- name: Open cockpit port on firewall
+  ansible.posix.firewalld:
+    service: cockpit
+    permanent: true
+    zone: public
+    state: enabled
+    immediate: true
+
+- name: Install KVM
+  ansible.builtin.dnf:
+    name: '{{ item }}'
+    state: present
+  loop: '{{ kvm_dependencies }}'
+
+- name: Enable libvirt service
+  ansible.builtin.systemd:
+    name: libvirtd
+    state: started
+    enabled: true
+
+- name: Add admin user to libvirt group
+  ansible.builtin.user:
+    name: packituz
+    state: present
+    groups: libvirt
+    append: yes
+
+- name: Install vagrant
+  ansible.builtin.dnf:
+    name: yum-utils
+    state: present
+
+...

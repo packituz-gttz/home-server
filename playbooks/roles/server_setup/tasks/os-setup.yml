@@ -1,0 +1,44 @@
+---
+- name: Install the "Server with GUI" group
+  ansible.builtin.dnf:
+    name: "@Server with GUI"
+    state: present
+
+- name: Set GUI to autostart
+  ansible.builtin.command:
+    cmd: systemctl set-default graphical.target
+  register: target
+  changed_when: target.stderr != ""
+
+- name: Remove podman & buildah
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: absent
+  loop: '{{ packages_to_remove }}'
+
+- name: Add Docker repo
+  ansible.builtin.get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+
+- name: Install docker
+  ansible.builtin.dnf:
+    name: '{{ item }}'
+    state: present
+  loop: '{{ docker_packages }}'
+
+- name: Enable docker service
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Add admin user to docker group
+  ansible.builtin.user:
+    name: '{{ superuser_name }}'
+    state: present
+    shell: /bin/bash
+    groups: docker
+    append: yes
+
+...

@@ -1,0 +1,27 @@
+---
+- name: Create Jellyfin media directories
+  ansible.builtin.file:
+    path: '{{ item }}'
+    state: directory
+    mode: '0755'
+  loop: '{{ jellyfin_media_dirs }}'
+
+- name: Pull and run Jellyfin Docker image
+  community.docker.docker_container:
+    name: jellyfin
+    image: "jellyfin/jellyfin:latest"
+    state: started
+    restart_policy: "unless-stopped"
+    network_mode: host
+    volumes:
+      - /srv/jellyfin/config:/config
+      - /srv/jellyfin/cache:/cache
+      - /media/Jellyfin:/media
+
+- name: Open cockpit port on firewall
+  ansible.posix.firewalld:
+    port: 8096/tcp
+    permanent: true
+    state: enabled
+    immediate: true
+...

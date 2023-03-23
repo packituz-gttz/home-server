@@ -1,0 +1,35 @@
+---
+- name: Load Encrypted Variables
+  include_vars: secrets.yml
+  tags: ['always']
+
+- name: Configure OS
+  ansible.builtin.import_tasks: os-setup.yml
+  tags: ['os-setup']
+  become: true
+
+- name: Install Jellyfin
+  ansible.builtin.import_tasks: jellyfin-setup.yml
+  tags: ['jellyfin-setup']
+  become: true
+
+- name: Install Portainer
+  ansible.builtin.import_tasks: portainer-setup.yml
+  tags: ['portainer-setup']
+  become: true
+
+- name: Install Kavita
+  ansible.builtin.import_tasks: kavita-setup.yml
+  tags: ['kavita-setup']
+  become: true
+
+- name: Install Navidrome
+  ansible.builtin.import_tasks: navidrome-setup.yml
+  tags: ['navidrome-setup']
+  become: true
+
+- name: Install Cockpit
+  ansible.builtin.import_tasks: cockpit-setup.yml
+  tags: ['cockpit-setup']
+  become: true
+...
