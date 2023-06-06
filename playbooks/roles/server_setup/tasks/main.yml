@@ -32,4 +32,10 @@
   ansible.builtin.import_tasks: cockpit-setup.yml
   tags: ['cockpit-setup']
   become: true
+
+- name: Install ntfy Server
+  ansible.builtin.import_tasks: ntfy-setup.yml
+  tags: ['ntfy-setup']
+  become: true
+
 ...
