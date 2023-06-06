@@ -1,0 +1,29 @@
+---
+- name: Create ntfy directory
+  ansible.builtin.file:
+    path: /etc/ntfy
+    state: directory
+    owner: root
+    group: root
+
+- name: Copy ntfy Configurations
+  ansible.builtin.copy:
+    src: server.yml
+    dest: /etc/ntfy/server.yml
+
+- name: Pull and run ntfy server
+  community.docker.docker_container:
+    name: ntfy_server
+    image: "binwiederhier/ntfy:latest"
+    state: started
+    restart_policy: "unless-stopped"
+    volumes:
+      - /etc/ntfy:/etc/ntfy
+      - /var/lib/ntfy:/var/lib/ntfy
+    command: serve
+    ports:
+      - 8008:80
+
+
+
+...

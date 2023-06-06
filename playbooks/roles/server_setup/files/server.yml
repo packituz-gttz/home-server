@@ -1,0 +1,4 @@
+base-url: "https://ntfy.packituz.dev"
+attachment-cache-dir: "/var/cache/ntfy/attachments"
+auth-file: "/var/lib/user.db"
+auth-default-access: "deny-all"
