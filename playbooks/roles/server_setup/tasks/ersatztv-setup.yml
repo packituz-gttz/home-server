@@ -1,0 +1,21 @@
+---
+- name: Create ErsatzTv directories
+  ansible.builtin.file:
+    path: '{{ item }}'
+    state: directory
+    mode: '0755'
+  loop: '{{ ersatztv_media_dirs }}'
+
+- name: Pull and run Ersatz-Tv
+  community.docker.docker_container:
+    name: ersatztv
+    image: "jasongdove/ersatztv:latest"
+    state: started
+    ports:
+      - 8409:8409
+    volumes:
+      - /media/ErsatzTv/config:/root/.local/share/ersatztv
+    restart_policy: unless-stopped
+
+
+...
