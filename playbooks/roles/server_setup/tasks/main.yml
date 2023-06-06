@@ -38,4 +38,8 @@
   tags: ['ntfy-setup']
   become: true
 
+- name: Install ErsatzTv Server
+  ansible.builtin.import_tasks: ersatztv-setup.yml
+  tags: ['ersatztv-setup']
+  become: true
 ...
