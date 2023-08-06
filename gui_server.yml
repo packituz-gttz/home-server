@@ -1,0 +1,13 @@
+---
+- name: Configure GUI
+  hosts: all
+  become: true
+  tasks:
+
+    - name: Install the "Server with GUI" group
+      ansible.builtin.dnf:
+        name: "@Server with GUI"
+        state: present
+
+
+...
