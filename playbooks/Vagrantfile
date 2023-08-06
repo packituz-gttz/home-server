@@ -3,13 +3,25 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "almalinux/9"
+  config.vm.box = "packituz16/almalinux9-server"
+  if Vagrant.has_plugin?("vagrant-vbguest")
+        config.vbguest.installer_options = { running_kernel_modules: ["vboxguest"] }
+        config.vbguest.auto_update = true
+    end
 
   config.vm.network "private_network", ip: "192.168.56.2"
+  config.vm.synced_folder "sync", "/home/vagrant/sync"
 
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "almalinux-server"
+    vb.memory = 4096
+    vb.cpus = 4
+  end
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "configure_server.yml"
+    ansible.ask_vault_pass = true
+    ansible.tags="os-setup,jellyfin-setup"
   end
 
 end
