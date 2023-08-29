@@ -1,6 +1,9 @@
 ---
 - hosts: all
+  vars:
+    secrets_file: ./roles/server_setup/vars/secrets.yml
+  vars_files:
+    - "{{ secrets_file }}"
   roles:
     - server_setup
-
 ...
