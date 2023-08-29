@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "configure_server.yml"
     ansible.ask_vault_pass = true
-    ansible.tags="os-setup,jellyfin-setup"
+    ansible.raw_arguments = Shellwords.shellsplit(ENV['ANSIBLE_ARGS']) if ENV['ANSIBLE_ARGS']
   end
 
 end
