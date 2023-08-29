@@ -1,7 +1,0 @@
----
-- hosts: all
-  roles:
-    - setup_ubuntu
-  become: true
-
-...
