@@ -10,7 +10,6 @@ docker_packages:
   - docker-compose-plugin
 
 jellyfin_media_dirs:
-  - /media/Jellyfin/Books
   - /media/Jellyfin/Movies
   - /media/Jellyfin/Shows
 
