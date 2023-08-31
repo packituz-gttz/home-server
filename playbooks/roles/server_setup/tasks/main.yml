@@ -43,4 +43,9 @@
   ansible.builtin.import_tasks: kasm-setup.yml
   tags: ['kasm-setup']
   become: true
+
+- name: Install Cloudflare
+  ansible.builtin.import_tasks: cloudflare-setup.yml
+  tags: ['cloudflare-setup']
+  become: true
 ...
