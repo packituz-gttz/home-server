@@ -1,0 +1,11 @@
+---
+- name: Pull and run Cloudflare Docker image
+  community.docker.docker_container:
+    name: cloudflare_tunnels
+    image: cloudflare/cloudflared:latest
+    state: started
+    restart_policy: "unless-stopped"
+    network_mode: host
+    command: "tunnel --no-autoupdate run --token {{ cloudflare_token }}"
+
+...
