@@ -4,4 +4,5 @@
 # --tags flag must be passed in order to execute the desired steps.
 
 PARAMS="${1}"
-cd playbooks && ansible-playbook -i inventory.ini configure_server.yml --ask-vault-password "${PARAMS}"
+# shellcheck disable=SC2086
+cd playbooks && ansible-playbook -i inventory.ini configure_server.yml --ask-vault-password ${PARAMS}
