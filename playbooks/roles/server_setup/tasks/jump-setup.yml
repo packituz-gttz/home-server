@@ -1,0 +1,35 @@
+---
+- name: Create Jump directories
+  ansible.builtin.file:
+    path: '{{ item }}'
+    state: directory
+    mode: '0755'
+  loop: '{{ jump_media_dirs }}'
+
+- name: Copy icons and configurations
+  ansible.builtin.copy:
+    src: "{{ item.source }}"
+    dest: "{{ item.destination }}"
+  loop:
+    - { source: 'jump/icon.png', destination: '/media/Jump/favicon/' }
+    - { source: 'jump/sites.json', destination: '/media/Jump/sites/' }
+    - { source: 'jump/favicon/', destination: '/media/Jump/sites/icons/' }
+    - { source: 'jump/backgrounds', destination: '/media/Jump/' }
+
+- name: Pull and run Jump dashboard Docker image
+  community.docker.docker_container:
+    name: jump
+    image: "daledavies/jump:latest"
+    state: started
+    restart_policy: "unless-stopped"
+    recreate: true
+    volumes:
+      - /media/Jump/backgrounds:/backgrounds
+      - /media/Jump/favicon:/favicon
+      - /media/Jump/sites:/sites
+      - /media/Jump/search/search
+    env:
+      SITENAME: '{{ jump_site_name }}'
+    ports:
+      - 8123:8080
+...

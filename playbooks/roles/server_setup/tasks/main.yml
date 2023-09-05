@@ -48,4 +48,9 @@
   ansible.builtin.import_tasks: cloudflare-setup.yml
   tags: ['cloudflare-setup']
   become: true
+
+- name: Install Jump Dashboard
+  ansible.builtin.import_tasks: jump-setup.yml
+  tags: ['jump-setup']
+  become: true
 ...
