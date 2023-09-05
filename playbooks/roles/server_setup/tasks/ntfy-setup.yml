@@ -8,7 +8,7 @@
 
 - name: Copy ntfy Configurations
   ansible.builtin.copy:
-    src: server.yml
+    src: ntfy/server.yml
     dest: /etc/ntfy/server.yml
 
 - name: Pull and run ntfy server
@@ -23,7 +23,5 @@
     command: serve
     ports:
       - 8008:80
-
-
 
 ...
