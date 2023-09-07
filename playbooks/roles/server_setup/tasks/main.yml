@@ -53,4 +53,9 @@
   ansible.builtin.import_tasks: jump-setup.yml
   tags: ['jump-setup']
   become: true
+
+- name: Install monit Monitoring
+  ansible.builtin.import_tasks: monit-setup.yml
+  tags: ['monit-setup']
+  become: true
 ...

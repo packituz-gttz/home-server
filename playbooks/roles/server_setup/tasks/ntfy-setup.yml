@@ -24,4 +24,21 @@
     ports:
       - 8008:80
 
+- name: Add ntfy admin user and password vars
+  ansible.builtin.lineinfile:
+    path: '/etc/environment'
+    state: present
+    line: "{{ item }}"
+  loop: "{{ ntfy_env_variables }}"
+  no_log: true
+
+- name: Create ntfy admin user
+  ansible.builtin.expect:
+    command: 'docker exec -it ntfy_server ntfy user add --role=admin {{ ntfy_admin }}'
+    responses:
+      (password*|confirm*): '{{ ntfy_password }}'
+  register: admin_creation_status
+  changed_when: admin_creation_status.rc == 0
+  failed_when: admin_creation_status.rc != 1 and admin_creation_status.rc != 0
+
 ...
