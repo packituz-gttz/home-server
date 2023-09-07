@@ -1,0 +1,3 @@
+CHECK HOST router WITH ADDRESS 192.168.100.1
+    IF failed icmp type echo WITH timeout 20 seconds for 4 cycles
+    THEN exec "/bin/bash /etc/monit.d/scripts/shutdown_server.sh"

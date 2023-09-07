@@ -42,6 +42,27 @@
       ]
     },
     {
+      "name": "Kasm",
+      "url": "https://work.packituz.dev",
+      "description": "Kasm Docker Workspaces",
+      "newtab": true,
+      "icon": "kasm.png",
+      "tags": [
+        "home",
+        "work"
+      ]
+    },{
+      "name": "AlmaLinux",
+      "url": "https://machines.packituz.dev/",
+      "description": "AlmaLinux cockpit admin",
+      "newtab": true,
+      "icon": "almalinux.png",
+      "tags": [
+        "home",
+        "work"
+      ]
+    },
+    {
       "name": "TV",
       "url": "http://192.168.100.45:8096",
       "description": "Movies, Series & Learning.",
@@ -75,6 +96,25 @@
       "description": "Books, Comics, Novels & More.",
       "newtab": true,
       "icon": "kavita.png",
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "Kasm",
+      "url": "https://192.168.100.45/",
+      "description": "Kasm Docker Workspaces",
+      "newtab": true,
+      "icon": "kasm.png",
+      "tags": [
+        "local"
+      ]
+    },{
+      "name": "AlmaLinux",
+      "url": "https://192.168.100.45:9090/",
+      "description": "AlmaLinux cockpit admin",
+      "newtab": true,
+      "icon": "almalinux.png",
       "tags": [
         "local"
       ]

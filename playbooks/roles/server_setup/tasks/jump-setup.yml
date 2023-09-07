@@ -1,4 +1,9 @@
 ---
+- name: Delete backgrounds jump dir
+  ansible.builtin.file:
+    state: absent
+    path: '/media/Jump/backgrounds'
+
 - name: Create Jump directories
   ansible.builtin.file:
     path: '{{ item }}'
