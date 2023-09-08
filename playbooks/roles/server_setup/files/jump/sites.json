@@ -118,6 +118,16 @@
       "tags": [
         "local"
       ]
+    },
+    {
+      "name": "Monit",
+      "url": "http://192.168.100.45:2812/",
+      "description": "Monit, monitoring",
+      "newtab": true,
+      "icon": "monit.png",
+      "tags": [
+        "local"
+      ]
     }
   ]
 }
