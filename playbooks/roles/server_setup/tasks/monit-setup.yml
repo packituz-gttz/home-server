@@ -16,7 +16,12 @@
   loop:
     - { source: 'monit/monitrc', destination: '/etc/monitrc' }
     - { source: 'monit/monit_rc_files/', destination: '/etc/monit.d/' }
-    - { source: 'monit/scripts', destination: '/etc/monit.d/' }
+
+- name: Copy scripts
+  ansible.builtin.copy:
+    src: 'monit/scripts'
+    dest: '/etc/monit.d/'
+    mode: preserve
 
 - name: Configure monitrc
   ansible.builtin.blockinfile:
