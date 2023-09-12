@@ -128,6 +128,16 @@
       "tags": [
         "local"
       ]
+    },
+    {
+      "name": "Frigate",
+      "url": "http://192.168.100.45:5001/",
+      "description": "CCTV service",
+      "newtab": true,
+      "icon": "frigate.jpg",
+      "tags": [
+        "local"
+      ]
     }
   ]
 }

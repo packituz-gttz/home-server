@@ -1,0 +1,38 @@
+---
+- name: Create frigate config dir
+  ansible.builtin.file:
+    path: /media/Frigate/config/
+    state: directory
+    mode: '0755'
+
+- name: Copy camera configuration file
+  ansible.builtin.template:
+    src: "frigate/config.yml"
+    dest: "/media/Frigate/config/config.yml"
+
+- name: Pull and run Frigate
+  community.docker.docker_container:
+    name: frigate
+    image: "ghcr.io/blakeblackshear/frigate:stable"
+    state: started
+    restart_policy: "unless-stopped"
+    mounts:
+      - type: tmpfs
+        target: /tmp/cache
+        tmpfs_size: "1GB"
+    shm_size: "64M"
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+    volumes:
+      - /media/Frigate/storage:/media/frigate
+      - /media/Frigate/config/config.yml:/config/config.yml
+      - /etc/localtime:/etc/localtime:ro
+    recreate: true
+    env:
+      FRIGATE_RTSP_PASSWORD: '{{ frigate_rtsp_password }}'
+    ports:
+      - 5001:5000
+      - 8554:8554
+      - 8555:8555/tcp
+      - 8555:8555/udp
+...
