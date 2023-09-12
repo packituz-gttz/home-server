@@ -48,4 +48,19 @@
   ansible.builtin.import_tasks: cloudflare-setup.yml
   tags: ['cloudflare-setup']
   become: true
+
+- name: Install Jump Dashboard
+  ansible.builtin.import_tasks: jump-setup.yml
+  tags: ['jump-setup']
+  become: true
+
+- name: Install monit Monitoring
+  ansible.builtin.import_tasks: monit-setup.yml
+  tags: ['monit-setup']
+  become: true
+
+- name: Install Frigate
+  ansible.builtin.import_tasks: frigate-setup.yml
+  tags: ['frigate-setup']
+  become: true
 ...

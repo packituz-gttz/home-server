@@ -1,0 +1,143 @@
+{
+  "sites": [
+    {
+      "name": "TV",
+      "url": "https://jelly.packituz.dev",
+      "description": "Movies, Series & Learning.",
+      "newtab": true,
+      "icon": "jellyfin.png",
+      "tags": [
+        "home",
+        "entertainment"
+      ]
+    },
+    {
+      "name": "Music",
+      "url": "https://music.packituz.dev",
+      "description": "Music streaming.",
+      "newtab": true,
+      "icon": "navidrome.png",
+      "status": {
+        "allowed_status_codes": [
+          200,
+          302
+        ],
+        "url": "https://music.packituz.dev/app/#/login",
+        "request_method": "GET"
+      },
+      "tags": [
+        "home",
+        "entertainment"
+      ]
+    },
+    {
+      "name": "Books",
+      "url": "https://comics.packituz.dev",
+      "description": "Books, Comics, Novels & More.",
+      "newtab": true,
+      "icon": "kavita.png",
+      "tags": [
+        "home",
+        "entertainment"
+      ]
+    },
+    {
+      "name": "Kasm",
+      "url": "https://work.packituz.dev",
+      "description": "Kasm Docker Workspaces",
+      "newtab": true,
+      "icon": "kasm.png",
+      "tags": [
+        "home",
+        "work"
+      ]
+    },{
+      "name": "AlmaLinux",
+      "url": "https://machines.packituz.dev/",
+      "description": "AlmaLinux cockpit admin",
+      "newtab": true,
+      "icon": "almalinux.png",
+      "tags": [
+        "home",
+        "work"
+      ]
+    },
+    {
+      "name": "TV",
+      "url": "http://192.168.100.45:8096",
+      "description": "Movies, Series & Learning.",
+      "newtab": true,
+      "icon": "jellyfin.png",
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "Music",
+      "url": "http://192.168.100.45:4533",
+      "description": "Music streaming.",
+      "newtab": true,
+      "icon": "navidrome.png",
+      "status": {
+        "allowed_status_codes": [
+          200,
+          302
+        ],
+        "url": "http://192.168.100.45:4533/app/#/login",
+        "request_method": "GET"
+      },
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "Books",
+      "url": "http://192.168.100.45:5000",
+      "description": "Books, Comics, Novels & More.",
+      "newtab": true,
+      "icon": "kavita.png",
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "Kasm",
+      "url": "https://192.168.100.45/",
+      "description": "Kasm Docker Workspaces",
+      "newtab": true,
+      "icon": "kasm.png",
+      "tags": [
+        "local"
+      ]
+    },{
+      "name": "AlmaLinux",
+      "url": "https://192.168.100.45:9090/",
+      "description": "AlmaLinux cockpit admin",
+      "newtab": true,
+      "icon": "almalinux.png",
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "Monit",
+      "url": "http://192.168.100.45:2812/",
+      "description": "Monit, monitoring",
+      "newtab": true,
+      "icon": "monit.png",
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "Frigate",
+      "url": "http://192.168.100.45:5001/",
+      "description": "CCTV service",
+      "newtab": true,
+      "icon": "frigate.jpg",
+      "tags": [
+        "local"
+      ]
+    }
+  ]
+}
