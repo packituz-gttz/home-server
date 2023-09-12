@@ -58,4 +58,9 @@
   ansible.builtin.import_tasks: monit-setup.yml
   tags: ['monit-setup']
   become: true
+
+- name: Install Frigate
+  ansible.builtin.import_tasks: frigate-setup.yml
+  tags: ['frigate-setup']
+  become: true
 ...
