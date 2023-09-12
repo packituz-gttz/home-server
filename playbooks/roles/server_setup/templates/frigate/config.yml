@@ -1,0 +1,49 @@
+mqtt:
+  enabled: False
+
+detectors:
+  coral:
+    type: edgetpu
+    device: usb
+
+birdseye:
+  enabled: true
+  mode: continuous
+
+live:
+  quality: 2
+
+record:
+  enabled: true
+  retain:
+    days: 14
+    mode: motion
+  events:
+    retain:
+      mode: motion
+      default: 14
+    pre_capture: 20
+    post_capture: 15
+
+go2rtc:
+  streams:
+    depas:
+      - "rtsp://{{ frigate_depas_user }}:{{ frigate_depas_password }}@192.168.100.95:554/stream1" # <----- The stream you want to use for detection
+      - "ffmpeg:depas#audio=aac"
+
+cameras:
+  depas:
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/depas
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+            - record
+    snapshots:
+      enabled: true
+    detect:
+      enabled: true
+      fps: 7
+      width: 2048 # <---- update for your camera's resolution
+      height: 1080 # <---- update for your camera's resolution

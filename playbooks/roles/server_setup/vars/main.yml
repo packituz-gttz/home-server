@@ -24,6 +24,12 @@ kvm_dependencies:
   - libvirt-client
   - virt-manager
 
+jump_media_dirs:
+  - /media/Jump/backgrounds
+  - /media/Jump/favicon
+  - /media/Jump/sites/icons
+  - /media/Jump/search
 
+jump_site_name: "Packituz+"
 
 ...

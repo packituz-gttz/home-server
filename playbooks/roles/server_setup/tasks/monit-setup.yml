@@ -1,0 +1,51 @@
+---
+- name: Install epel key
+  ansible.builtin.rpm_key:
+    key: 'https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9'
+    state: present
+
+- name: Install monit
+  ansible.builtin.dnf:
+    name: 'https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/m/monit-5.32.0-1.el9.x86_64.rpm'
+    state: present
+
+- name: Upload monit configuration
+  ansible.builtin.copy:
+    src: '{{ item.source }}'
+    dest: '{{ item.destination }}'
+  loop:
+    - { source: 'monit/monitrc', destination: '/etc/monitrc' }
+    - { source: 'monit/monit_rc_files/', destination: '/etc/monit.d/' }
+
+- name: Copy scripts
+  ansible.builtin.copy:
+    src: 'monit/scripts'
+    dest: '/etc/monit.d/'
+    mode: preserve
+
+- name: Configure monitrc
+  ansible.builtin.blockinfile:
+    path: '/etc/monitrc'
+    block: |
+      set httpd port 2812 and
+        allow 0.0.0.0/0
+        allow {{ monit_admin }}:{{ monit_password }}
+    validate: monit -t %s
+
+- name: Reload monit
+  ansible.builtin.command:
+    cmd: monit reload
+
+- name: Open monit port on firewall
+  ansible.posix.firewalld:
+    port: 2812/tcp
+    permanent: true
+    state: enabled
+    immediate: true
+
+- name: Enable monit service
+  ansible.builtin.systemd:
+    name: monit
+    state: started
+    enabled: true
+...
