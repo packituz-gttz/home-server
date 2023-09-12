@@ -5,7 +5,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "packituz16/almalinux9-server"
   if Vagrant.has_plugin?("vagrant-vbguest")
-        config.vbguest.installer_options = { running_kernel_modules: ["vboxguest"] }
+        config.vbguest.installer = VagrantVbguest::Installers::RedHat
+        config.vbguest.installer_options = { running_kernel_modules: ["vboxguest"], allow_kernel_upgrade: true }
         config.vbguest.auto_update = true
   end
 
@@ -16,6 +17,8 @@ Vagrant.configure("2") do |config|
     vb.name = "almalinux-server"
     vb.memory = 4096
     vb.cpus = 4
+    vb.customize ["modifyvm", :id, "--usb", "on"]
+    vb.customize ["modifyvm", :id, "--accelerate3d", "on"]
   end
 
   config.vm.provision "ansible" do |ansible|
