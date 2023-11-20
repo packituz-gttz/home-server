@@ -1,7 +1,7 @@
 ---
 - name: Create Kavita media directories
   ansible.builtin.file:
-    path: /media/Kavita
+    path: /mnt/media/Kavita
     state: directory
     mode: '0755'
 
@@ -10,11 +10,12 @@
     name: kavita
     image: "kizaing/kavita:latest"
     state: started
+    recreate: true
     restart_policy: "unless-stopped"
     ports:
       - 5000:5000
     volumes:
       - /kavita/data/directory:/kavita/config
-      - /media/Kavita:/manga
+      - /mnt/media/Kavita:/manga
 
 ...
