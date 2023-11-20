@@ -9,7 +9,7 @@
     ports:
       - 3000:3000
     volumes:
-      - /media/Pingvin/data:/opt/app/backend/data
-      - /media/Pingvin/data/images:/opt/app/frontend/public/img
+      - /mnt/media/Pingvin/data:/opt/app/backend/data
+      - /mnt/media/Pingvin/data/images:/opt/app/frontend/public/img
 
 ...
