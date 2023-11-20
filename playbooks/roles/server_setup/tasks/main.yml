@@ -63,4 +63,14 @@
   ansible.builtin.import_tasks: frigate-setup.yml
   tags: ['frigate-setup']
   become: true
+
+- name: Install Pingvin
+  ansible.builtin.import_tasks: pingvin-setup.yml
+  tags: ['pingvin-setup']
+  become: true
+
+- name: Install Joplin
+  ansible.builtin.import_tasks: joplin-setup.yml
+  tags: ['joplin-setup']
+  become: true
 ...

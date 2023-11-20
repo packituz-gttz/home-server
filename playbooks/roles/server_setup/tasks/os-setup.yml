@@ -51,4 +51,15 @@
     groups: docker
     append: yes
 
+- name: Install pip
+  ansible.builtin.dnf:
+    name: pip
+    state: present
+
+- name: Install python docker
+  ansible.builtin.pip:
+    name: '{{ item }}'
+  loop:
+    - docker
+    - docker-compose
 ...
