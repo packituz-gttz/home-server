@@ -2,7 +2,7 @@
 - name: Delete backgrounds jump dir
   ansible.builtin.file:
     state: absent
-    path: '/media/Jump/backgrounds'
+    path: /mnt/media/Jump/backgrounds
 
 - name: Create Jump directories
   ansible.builtin.file:
@@ -16,10 +16,10 @@
     src: "{{ item.source }}"
     dest: "{{ item.destination }}"
   loop:
-    - { source: 'jump/icon.png', destination: '/media/Jump/favicon/' }
-    - { source: 'jump/sites.json', destination: '/media/Jump/sites/' }
-    - { source: 'jump/favicon/', destination: '/media/Jump/sites/icons/' }
-    - { source: 'jump/backgrounds', destination: '/media/Jump/' }
+    - { source: 'jump/icon.png', destination: '/mnt/media/Jump/favicon/' }
+    - { source: 'jump/sites.json', destination: '/mnt/media/Jump/sites/' }
+    - { source: 'jump/favicon/', destination: '/mnt/media/Jump/sites/icons/' }
+    - { source: 'jump/backgrounds', destination: '/mnt/media/Jump/' }
 
 - name: Pull and run Jump dashboard Docker image
   community.docker.docker_container:
@@ -29,10 +29,10 @@
     restart_policy: "unless-stopped"
     recreate: true
     volumes:
-      - /media/Jump/backgrounds:/backgrounds
-      - /media/Jump/favicon:/favicon
-      - /media/Jump/sites:/sites
-      - /media/Jump/search/search
+      - /mnt/media/Jump/backgrounds:/backgrounds
+      - /mnt/media/Jump/favicon:/favicon
+      - /mnt/media/Jump/sites:/sites
+      - /mnt/media/Jump/search/search
     env:
       SITENAME: '{{ jump_site_name }}'
     ports:
