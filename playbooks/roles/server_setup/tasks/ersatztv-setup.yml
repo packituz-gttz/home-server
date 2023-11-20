@@ -7,7 +7,7 @@
     ports:
       - 8409:8409
     volumes:
-      - /media/ErsatzTv/config:/root/.local/share/ersatztv
+      - /mnt/media/ErsatzTv/config:/root/.local/share/ersatztv
     restart_policy: unless-stopped
 
 
