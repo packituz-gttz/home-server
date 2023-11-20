@@ -6,6 +6,19 @@
     mode: '0755'
   loop: '{{ jellyfin_media_dirs }}'
 
+- name: Get render group
+  ansible.builtin.getent:
+    database: group
+    key: "{{ item }}"
+    split: ':'
+  register: getent_output
+  loop:
+    - render
+    - video
+
+- ansible.builtin.debug:
+    msg: "{{ getent_output.results[0].ansible_facts.getent_group.render[1] }}"
+
 - name: Pull and run Jellyfin Docker image
   community.docker.docker_container:
     name: jellyfin
@@ -13,12 +26,21 @@
     state: started
     restart_policy: "unless-stopped"
     network_mode: host
+    recreate: true
     volumes:
       - /srv/jellyfin/config:/config
       - /srv/jellyfin/cache:/cache
-      - /media/Jellyfin:/media
+      - /mnt/media/Jellyfin:/media
+    groups:
+      - "{{ getent_output.results[0].ansible_facts.getent_group.render[1] }}"
+      - "{{ getent_output.results[1].ansible_facts.getent_group.video[1] }}"
+    # Remove devices on Virtual Machine
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    env:
+      ROC_ENABLE_PRE_VEGA: "1"
 
-- name: Open cockpit port on firewall
+- name: Open jellyfin port on firewall
   ansible.posix.firewalld:
     port: 8096/tcp
     permanent: true

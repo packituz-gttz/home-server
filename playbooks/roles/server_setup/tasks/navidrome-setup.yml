@@ -4,10 +4,11 @@
     name: navidrome
     image: deluan/navidrome:latest
     state: started
+    recreate: true
     restart_policy: "unless-stopped"
     ports:
       - 4533:4533
     volumes:
-      - /media/Navidrome/music:/music
-      - /media/Navidrome/data:/data
+      - /mnt/media/Navidrome/music:/music
+      - /mnt/media/Navidrome/data:/data
 ...
