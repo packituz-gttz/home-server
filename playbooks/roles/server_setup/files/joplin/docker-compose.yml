@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:15
+    volumes:
+      - /media/Joplin/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    env_file:
+      - /media/Joplin/db.env
+#      - POSTGRES_PASSWORD=postgres
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_DB=joplin
+  app:
+    image: joplin/server:latest
+    depends_on:
+      - db
+    ports:
+      - "22300:22300"
+    restart: unless-stopped
+    env_file:
+      - /media/Joplin/app.env
+#    environment:
+#      - APP_PORT=22300
+#      - APP_BASE_URL=http://192.168.56.2:22300
+#      - DB_CLIENT=pg
+#      - POSTGRES_PASSWORD=postgres
+#      - POSTGRES_DATABASE=joplin
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PORT=5432
+#      - POSTGRES_HOST=db
+#      - MAILER_ENABLED=0

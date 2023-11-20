@@ -1,0 +1,15 @@
+---
+- name: Pull and run Pingvin-share
+  community.docker.docker_container:
+    name: pingvin
+    image: "stonith404/pingvin-share:latest"
+    state: started
+    restart_policy: "unless-stopped"
+    recreate: true
+    ports:
+      - 3000:3000
+    volumes:
+      - /media/Pingvin/data:/opt/app/backend/data
+      - /media/Pingvin/data/images:/opt/app/frontend/public/img
+
+...
