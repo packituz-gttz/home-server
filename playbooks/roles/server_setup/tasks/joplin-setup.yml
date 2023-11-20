@@ -1,0 +1,38 @@
+---
+- name: Create Joplin directories
+  ansible.builtin.file:
+    path: /media/Joplin
+    state: directory
+    mode: '0755'
+
+- name: Create db.env file
+  ansible.builtin.copy:
+    dest: /media/Joplin/db.env
+    content: |
+      POSTGRES_PASSWORD={{ joplin_postgres_password }}
+      POSTGRES_USER={{ joplin_postgres_user }}
+      POSTGRES_DB={{ joplin_postgres_db }}
+      
+- name: Create app.env file
+  ansible.builtin.copy:
+    dest: /media/Joplin/app.env
+    content: |
+      APP_PORT={{ joplin_app_port }}
+      APP_BASE_URL={{ joplin_app_base_url }}
+      DB_CLIENT=pg
+      POSTGRES_PASSWORD={{ joplin_postgres_password }}
+      POSTGRES_USER={{ joplin_postgres_user }}
+      POSTGRES_DB=pg
+      POSTGRES_PORT={{ joplin_postgres_port }}
+      POSTGRES_HOST=db
+      MAILER_ENABLED=0
+
+- name: Copy Docker-compose file
+  ansible.builtin.copy:
+    src: files/joplin/docker-compose.yml
+    dest: /media/Joplin
+
+- name: Run Joplin
+  community.docker.docker_compose:
+    project_src: /media/Joplin
+...

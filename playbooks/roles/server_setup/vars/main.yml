@@ -10,11 +10,11 @@ docker_packages:
   - docker-compose-plugin
 
 jellyfin_media_dirs:
-  - /media/Jellyfin/Movies
-  - /media/Jellyfin/Shows
+  - /mnt/media/Jellyfin/Movies
+  - /mnt/media/Jellyfin/Shows
 
 ersatztv_media_dirs:
-  - /media/ErsatzTv/config
+  - /mnt/media/ErsatzTv/config
 
 kvm_dependencies:
   - qemu-kvm
@@ -25,10 +25,10 @@ kvm_dependencies:
   - virt-manager
 
 jump_media_dirs:
-  - /media/Jump/backgrounds
-  - /media/Jump/favicon
-  - /media/Jump/sites/icons
-  - /media/Jump/search
+  - /mnt/media/Jump/backgrounds
+  - /mnt/media/Jump/favicon
+  - /mnt/media/Jump/sites/icons
+  - /mnt/media/Jump/search
 
 jump_site_name: "Packituz+"
 
