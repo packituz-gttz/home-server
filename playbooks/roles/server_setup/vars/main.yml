@@ -13,9 +13,6 @@ jellyfin_media_dirs:
   - /mnt/media/Jellyfin/Movies
   - /mnt/media/Jellyfin/Shows
 
-ersatztv_media_dirs:
-  - /mnt/media/ErsatzTv/config
-
 kvm_dependencies:
   - qemu-kvm
   - qemu-img
