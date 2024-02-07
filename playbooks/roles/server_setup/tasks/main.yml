@@ -9,11 +9,6 @@
   tags: ['jellyfin-setup']
   become: true
 
-- name: Install Portainer
-  ansible.builtin.import_tasks: portainer-setup.yml
-  tags: ['portainer-setup']
-  become: true
-
 - name: Install Kavita
   ansible.builtin.import_tasks: kavita-setup.yml
   tags: ['kavita-setup']
@@ -32,11 +27,6 @@
 - name: Install ntfy Server
   ansible.builtin.import_tasks: ntfy-setup.yml
   tags: ['ntfy-setup']
-  become: true
-
-- name: Install ErsatzTv Server
-  ansible.builtin.import_tasks: ersatztv-setup.yml
-  tags: ['ersatztv-setup']
   become: true
 
 - name: Install Kasm
