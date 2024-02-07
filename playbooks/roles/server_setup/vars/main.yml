@@ -13,14 +13,6 @@ jellyfin_media_dirs:
   - /mnt/media/Jellyfin/Movies
   - /mnt/media/Jellyfin/Shows
 
-kvm_dependencies:
-  - qemu-kvm
-  - qemu-img
-  - libvirt
-  - virt-install
-  - libvirt-client
-  - virt-manager
-
 jump_media_dirs:
   - /mnt/media/Jump/backgrounds
   - /mnt/media/Jump/favicon
