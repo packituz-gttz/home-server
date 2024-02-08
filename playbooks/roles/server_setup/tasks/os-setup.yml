@@ -51,10 +51,10 @@
     groups: docker
     append: yes
 
-- name: Install pip
-  ansible.builtin.dnf:
+- name: Upgrade pip
+  pip:
     name: pip
-    state: present
+    state: latest
 
 - name: Install python docker
   ansible.builtin.pip:
