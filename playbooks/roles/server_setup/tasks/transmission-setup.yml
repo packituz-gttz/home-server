@@ -1,0 +1,24 @@
+---
+- name: Pull and run Transmission
+  community.docker.docker_container:
+    name: transmission
+    image: "lscr.io/linuxserver/transmission:latest"
+    state: started
+    restart_policy: "unless-stopped"
+    recreate: true
+    env:
+      PGUID: "1000"
+      PGID: "1000"
+      TZ: "Etc/UTC"
+      USER: '{{ transmission_user }}'
+      PASS: '{{ transmission_password }}'
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    volumes:
+      - /mnt/media/Transmission/config:/config
+      - /mnt/media/Transmission/downloads:/downloads
+      - /mnt/media/Transmission/watch:/watch
+
+...

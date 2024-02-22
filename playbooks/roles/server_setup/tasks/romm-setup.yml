@@ -1,0 +1,25 @@
+---
+- name: Create Romm directories
+  ansible.builtin.file:
+    path: /mnt/media/Romm
+    state: directory
+    mode: '0755'
+
+- name: Create app.env file
+  ansible.builtin.copy:
+    dest: /mnt/media/Romm/app.env
+    content: |
+      IGDB_CLIENT_ID={{ romm_igdb_client_id }}
+      IGDB_CLIENT_SECRET={{ romm_igdb_client_secret }}
+      ENABLE_RESCAN_ON_FILESYSTEM_CHANGE=true
+
+- name: Copy Docker-compose file
+  ansible.builtin.copy:
+    src: files/romm/docker-compose.yml
+    dest: /mnt/media/Romm
+
+- name: Run Romm
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media/Romm
+
+...
