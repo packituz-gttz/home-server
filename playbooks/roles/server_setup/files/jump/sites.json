@@ -148,6 +148,36 @@
       "tags": [
         "local"
       ]
+    },
+    {
+      "name": "Romm",
+      "url": "http://192.168.100.45:8080/",
+      "description": "Game Rom Management",
+      "newtab": true,
+      "icon": "romm.png",
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "Transmission",
+      "url": "http://192.168.100.45:9091/",
+      "description": "Torrent Client",
+      "newtab": true,
+      "icon": "transmission.png",
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "Ghost",
+      "url": "http://192.168.100.45:2368/",
+      "description": "Ghost Blogging Platform",
+      "newtab": true,
+      "icon": "ghost.png",
+      "tags": [
+        "local"
+      ]
     }
   ]
 }

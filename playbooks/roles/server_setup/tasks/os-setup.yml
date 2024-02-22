@@ -37,6 +37,11 @@
     state: present
   loop: '{{ docker_packages }}'
 
+- name: Install pip
+  ansible.builtin.dnf:
+    name: python3-pip
+    state: present
+
 - name: Enable docker service
   ansible.builtin.systemd:
     name: docker
@@ -56,10 +61,10 @@
     name: pip
     state: latest
 
-- name: Install python docker
-  ansible.builtin.pip:
-    name: '{{ item }}'
-  loop:
-    - docker
-    - docker-compose
+#- name: Install python docker
+#  ansible.builtin.pip:
+#    name: '{{ item }}'
+#  loop:
+#    - docker
+#    - docker-compose
 ...

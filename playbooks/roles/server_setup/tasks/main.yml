@@ -63,4 +63,19 @@
   ansible.builtin.import_tasks: joplin-setup.yml
   tags: ['joplin-setup']
   become: true
+
+- name: Install Romm
+  ansible.builtin.import_tasks: romm-setup.yml
+  tags: ['romm-setup']
+  become: true
+
+- name: Install Transmission
+  ansible.builtin.import_tasks: transmission-setup.yml
+  tags: ['transmission-setup']
+  become: true
+
+- name: Install Ghost Blog
+  ansible.builtin.import_tasks: ghost-setup.yml
+  tags: ['ghost-setup']
+  become: true
 ...

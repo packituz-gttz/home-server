@@ -1,0 +1,12 @@
+version: "3"
+services:
+  romm:
+    image: zurdi15/romm:latest
+    container_name: romm
+    volumes:
+      - /mnt/media/Romm/library:/romm/library
+    ports:
+      - "8080:8080"
+    restart: "unless-stopped"
+    env_file:
+      - /mnt/media/Romm/app.env
