@@ -20,7 +20,7 @@
       - type: tmpfs
         target: /tmp/cache
         tmpfs_size: "1GB"
-    shm_size: "64M"
+    shm_size: "128M"
     devices:
       - /dev/bus/usb:/dev/bus/usb
     volumes:

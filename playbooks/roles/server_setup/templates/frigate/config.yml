@@ -28,7 +28,10 @@ record:
 go2rtc:
   streams:
     depas:
-      - "rtsp://{{ frigate_depas_user }}:{{ frigate_depas_password }}@192.168.100.95:554/stream1" # <----- The stream you want to use for detection
+      - "rtsp://{{ frigate_depas_user }}:{{ frigate_depas_password }}@192.168.100.67:554/stream1" # <----- The stream you want to use for detection
+      - "ffmpeg:depas#audio=aac"
+    depas_roof_garden:
+      - "rtsp://{{ frigate_depas_user }}:{{ frigate_depas_password }}@192.168.100.70:554/stream1" # <----- The stream you want to use for detection
       - "ffmpeg:depas#audio=aac"
 
 cameras:
@@ -45,5 +48,21 @@ cameras:
     detect:
       enabled: true
       fps: 7
-      width: 2048 # <---- update for your camera's resolution
-      height: 1080 # <---- update for your camera's resolution
+      width: 1280 # <---- update for your camera's resolution
+      height: 720 # <---- update for your camera's resolution
+
+  depas_roof_garden:
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/depas_roof_garden
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+            - record
+    snapshots:
+      enabled: true
+    detect:
+      enabled: true
+      fps: 7
+      width: 1280 # <---- update for your camera's resolution
+      height: 720 # <---- update for your camera's resolution
