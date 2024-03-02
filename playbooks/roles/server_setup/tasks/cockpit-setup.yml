@@ -4,6 +4,11 @@
     name: cockpit
     state: present
 
+- name: Install cockpit navigator plugin
+  ansible.builtin.dnf:
+    name: https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/c/cockpit-navigator-0.5.9-2.el9.noarch.rpm
+    state: present
+
 - name: Enable cockpit service
   ansible.builtin.systemd:
     name: cockpit.socket
