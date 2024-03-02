@@ -4,6 +4,7 @@
 Vagrant.configure("2") do |config|
 
   config.vm.box = "packituz16/almalinux9-server"
+  config.vm.box_version = "20240222.0.1"
   config.vm.disk :disk, size: "10GB", name: "das_1"
   config.vm.disk :disk, size: "10GB", name: "das_2"
 
