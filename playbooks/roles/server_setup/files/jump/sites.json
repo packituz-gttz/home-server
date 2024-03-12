@@ -61,6 +61,15 @@
         "home",
         "work"
       ]
+    },{
+      "name": "Frigate",
+      "url": "https://depas.packituz.dev/",
+      "description": "CCTV service",
+      "newtab": true,
+      "icon": "frigate.jpg",
+      "tags": [
+        "home"
+      ]
     },
     {
       "name": "TV",
