@@ -35,4 +35,51 @@
       - 8554:8554
       - 8555:8555/tcp
       - 8555:8555/udp
+
+- name: Install MegaCMD
+  ansible.builtin.dnf:
+    name: https://mega.nz/linux/repo/CentOS_8/x86_64/megacmd-CentOS_8.x86_64.rpm
+    state: present
+    disable_gpg_check: true
+
+- name: Login into mega account
+  ansible.builtin.command:
+    argv:
+      - mega-login
+      - "{{ mega_email }}"
+      - "{{ mega_password }}"
+  register: result
+  failed_when:
+    - result.rc != 54 and result.rc != 0
+  changed_when:
+    - '"Already logged in" not in result.stdout'
+
+- name: Create remote directories for synchronization
+  ansible.builtin.command:
+    argv:
+      - mega-mkdir
+      - '{{ item }}'
+  loop:
+    - "{{ mega_remote_frigate_clips_directory }}"
+    - "{{ mega_remote_frigate_recordings_directory }}"
+  register: result
+  failed_when:
+    - result.rc != 54 and result.rc != 0
+  changed_when:
+    - '"Folder already exists:" not in result.stdout'
+
+- name: Enable synchronization
+  ansible.builtin.command:
+    argv:
+      - mega-sync
+      - '{{ item.source }}'
+      - '{{ item.destination }}'
+  loop:
+    - { source: /media/Frigate/storage/clips , destination: "{{ mega_remote_frigate_clips_directory }}" }
+    - { source: /media/Frigate/storage/recordings , destination: "{{ mega_remote_frigate_recordings_directory }}" }
+  register: result
+  failed_when:
+    - result.rc != 12 and result.rc != 0
+  changed_when:
+    - '"Failed to sync folder: Already exists. Active sync same path" not in result.stdout'
 ...
