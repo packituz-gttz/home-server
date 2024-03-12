@@ -5,6 +5,18 @@
     state: directory
     mode: '0755'
 
+- name: Upload Kavita cron script
+  ansible.builtin.copy:
+    src: kavita/new_file_uploaded.sh
+    dest: /mnt/media/Kavita/
+
+- name: Create cronjob that every 5 minutes creates dirs for newly added pdf books
+  ansible.builtin.cron:
+    name: "Check for pdf & epub files"
+    state: present
+    minute: "*/5"
+    job: "/bin/bash /mnt/media/Kavita/new_file_uploaded.sh"
+
 - name: Pull and run Kavita Docker image
   community.docker.docker_container:
     name: kavita
