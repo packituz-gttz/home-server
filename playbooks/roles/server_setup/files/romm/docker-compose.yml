@@ -1,12 +1,38 @@
 version: "3"
 services:
+#  romm:
+#    image: zurdi15/romm:latest
+#    container_name: romm
+#    volumes:
+#      - /mnt/media/Romm/library:/romm/library
+#    ports:
+#      - "8080:8080"
+#    restart: "unless-stopped"
+#    env_file:
+#      - /mnt/media/Romm/app.env
   romm:
     image: zurdi15/romm:latest
     container_name: romm
     volumes:
+      - /mnt/media/Romm/resources:/romm/resources
+      - /mnt/media/Romm/redis-data:/redis-data
       - /mnt/media/Romm/library:/romm/library
+      - /mnt/media/Romm/assets:/romm/assets
+      - /mnt/media/Romm/config:/romm/config
+      - /mnt/media/Romm/logs:/romm/logs
+    depends_on:
+      - romm-db
     ports:
-      - "8080:8080"
+      - "80:8080"
     restart: "unless-stopped"
     env_file:
       - /mnt/media/Romm/app.env
+
+  romm-db:
+    image: mariadb:latest
+    container_name: romm-db
+    restart: "unless-stopped"
+    env_file:
+      - /mnt/media/Romm/db.env
+    volumes:
+      - /mnt/media/Romm/db:/var/lib/mysql
