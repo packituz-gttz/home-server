@@ -70,6 +70,23 @@
       "tags": [
         "home"
       ]
+    },{
+      "name": "Joplin",
+      "url": "https://notes.packituz.dev/",
+      "description": "Notes service",
+      "newtab": true,
+      "status": {
+        "allowed_status_codes": [
+          200,
+          302
+        ],
+        "url": "https://notes.packituz.dev/login",
+        "request_method": "GET"
+      },
+      "icon": "joplin.jpeg",
+      "tags": [
+        "home"
+      ]
     },
     {
       "name": "TV",
@@ -105,16 +122,6 @@
       "description": "Books, Comics, Novels & More.",
       "newtab": true,
       "icon": "kavita.png",
-      "tags": [
-        "local"
-      ]
-    },
-    {
-      "name": "Kasm",
-      "url": "https://192.168.100.45/",
-      "description": "Kasm Docker Workspaces",
-      "newtab": true,
-      "icon": "kasm.png",
       "tags": [
         "local"
       ]
@@ -160,7 +167,7 @@
     },
     {
       "name": "Romm",
-      "url": "http://192.168.100.45:8080/",
+      "url": "http://192.168.100.45:80/",
       "description": "Game Rom Management",
       "newtab": true,
       "icon": "romm.png",
