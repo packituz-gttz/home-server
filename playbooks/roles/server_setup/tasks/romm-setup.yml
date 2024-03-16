@@ -9,9 +9,24 @@
   ansible.builtin.copy:
     dest: /mnt/media/Romm/app.env
     content: |
+      DB_HOST=romm-db
+      DB_NAME=romm
+      DB_USER=romm-user
+      DB_PASSWD={{ romm_db_password }}
       IGDB_CLIENT_ID={{ romm_igdb_client_id }}
       IGDB_CLIENT_SECRET={{ romm_igdb_client_secret }}
-      ENABLE_RESCAN_ON_FILESYSTEM_CHANGE=true
+      ROMM_AUTH_SECRET_KEY={{ romm_auth_secret_key }}
+      ROMM_AUTH_USERNAME={{ romm_auth_username }}
+      ROMM_AUTH_PASSWORD={{ romm_auth_password }}
+
+- name: Create db.env fiel
+  ansible.builtin.copy:
+    dest: /mnt/media/Romm/db.env
+    content: |
+      MYSQL_ROOT_PASSWORD={{ romm_db_root_password }}
+      MYSQL_DATABASE=romm
+      MYSQL_USER=romm-user
+      MYSQL_PASSWORD={{ romm_db_password }}
 
 - name: Copy Docker-compose file
   ansible.builtin.copy:
