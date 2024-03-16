@@ -40,17 +40,6 @@
         "home",
         "entertainment"
       ]
-    },
-    {
-      "name": "Kasm",
-      "url": "https://work.packituz.dev",
-      "description": "Kasm Docker Workspaces",
-      "newtab": true,
-      "icon": "kasm.png",
-      "tags": [
-        "home",
-        "work"
-      ]
     },{
       "name": "AlmaLinux",
       "url": "https://machines.packituz.dev/",
