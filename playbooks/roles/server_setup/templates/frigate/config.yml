@@ -28,10 +28,10 @@ record:
 go2rtc:
   streams:
     depas:
-      - "rtsp://depasme:MxKwPd95@192.168.100.85:554/stream1" # <----- The stream you want to use for detection
+      - "rtsp://{{ frigate_depas_user }}:{{ frigate_depas_password }}@192.168.100.89:554/stream1" # <----- The stream you want to use for detection
       - "ffmpeg:depas#audio=aac"
     depas_roof_garden:
-      - "rtsp://depasme:MxKwPd95@192.168.100.86:554/stream1" # <----- The stream you want to use for detection
+      - "rtsp://{{ frigate_depas_user }}:{{ frigate_depas_password }}@192.168.100.92:554/stream1" # <----- The stream you want to use for detection
       - "ffmpeg:depas#audio=aac"
 
 cameras:
