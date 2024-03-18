@@ -13,7 +13,7 @@
 - name: Pull and run Frigate
   community.docker.docker_container:
     name: frigate
-    image: "ghcr.io/blakeblackshear/frigate:stable"
+    image: "ghcr.io/blakeblackshear/frigate:0.13.2"
     state: started
     restart_policy: "unless-stopped"
     mounts:
@@ -24,9 +24,9 @@
     devices:
       - /dev/bus/usb:/dev/bus/usb
     volumes:
-      - /media/Frigate/storage:/media/frigate
-      - /media/Frigate/config/config.yml:/config/config.yml
       - /etc/localtime:/etc/localtime:ro
+      - /media/Frigate/config:/config
+      - /media/Frigate/storage:/media/frigate
     recreate: true
     env:
       FRIGATE_RTSP_PASSWORD: '{{ frigate_rtsp_password }}'
@@ -50,7 +50,7 @@
       - "{{ mega_password }}"
   register: result
   failed_when:
-    - result.rc != 54 and result.rc != 0
+    - result.rc != 54 and result.rc != 0 and result.rc != 57
   changed_when:
     - '"Already logged in" not in result.stdout'
 
@@ -64,7 +64,7 @@
     - "{{ mega_remote_frigate_recordings_directory }}"
   register: result
   failed_when:
-    - result.rc != 54 and result.rc != 0
+    - result.rc != 54 and result.rc != 0  and result.rc != 57
   changed_when:
     - '"Folder already exists:" not in result.stdout'
 
