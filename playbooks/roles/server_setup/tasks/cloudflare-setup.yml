@@ -4,6 +4,9 @@
     name: cloudflare_tunnels
     image: cloudflare/cloudflared:1506-110b2b4c807f
     state: started
+    cpus: 1.5
+    memory: "100M"
+    recreate: true
     restart_policy: "unless-stopped"
     network_mode: host
     command: "tunnel --no-autoupdate run --token {{ cloudflare_token }}"

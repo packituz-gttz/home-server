@@ -21,6 +21,8 @@
         target: /tmp/cache
         tmpfs_size: "1GB"
     shm_size: "128M"
+    memory: "3G"
+    cpus: 2.5
     devices:
       - /dev/bus/usb:/dev/bus/usb
     volumes:

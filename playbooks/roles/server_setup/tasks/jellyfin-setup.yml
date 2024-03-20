@@ -21,6 +21,9 @@
   - ansible.builtin.debug:
       msg: "{{ getent_output.results[0].ansible_facts.getent_group.render[1] }}"
 
+  - ansible.builtin.debug:
+      msg: "{{ getent_output.results[1].ansible_facts.getent_group.video[1] }}"
+
   - name: Pull and run Jellyfin Docker image
     community.docker.docker_container:
       name: jellyfin
@@ -29,6 +32,9 @@
       restart_policy: "unless-stopped"
       network_mode: host
       recreate: true
+      user: 0:0
+      memory: "5G"
+      cpus: 4
       volumes:
         - /srv/jellyfin/config:/config
         - /srv/jellyfin/cache:/cache
@@ -38,6 +44,7 @@
         - "{{ getent_output.results[1].ansible_facts.getent_group.video[1] }}"
       devices:
         - /dev/dri/renderD128:/dev/dri/renderD128
+        - /dev/kfd:/dev/kfd
       env:
         ROC_ENABLE_PRE_VEGA: "1"
 
