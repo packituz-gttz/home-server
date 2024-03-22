@@ -27,7 +27,7 @@
     ports:
       - 5000:5000
     volumes:
-      - /kavita/data/directory:/kavita/config
-      - /mnt/media/Kavita:/manga
+      - /mnt/media/Kavita/config:/kavita/config
+      - /mnt/media/Kavita/manga:/manga
 
 ...
