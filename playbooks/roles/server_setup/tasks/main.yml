@@ -1,76 +1,76 @@
 ---
 - name: Configure OS
   ansible.builtin.import_tasks: os-setup.yml
-  tags: ['os-setup']
+  tags: [ 'os-setup' ]
   become: true
 
 - name: Install Jellyfin
   ansible.builtin.import_tasks: jellyfin-setup.yml
-  tags: ['jellyfin-setup']
+  tags: [ 'jellyfin-setup' ]
   become: true
 
 - name: Install Kavita
   ansible.builtin.import_tasks: kavita-setup.yml
-  tags: ['kavita-setup']
+  tags: [ 'kavita-setup' ]
   become: true
 
 - name: Install Navidrome
   ansible.builtin.import_tasks: navidrome-setup.yml
-  tags: ['navidrome-setup']
+  tags: [ 'navidrome-setup' ]
   become: true
 
 - name: Install Cockpit
   ansible.builtin.import_tasks: cockpit-setup.yml
-  tags: ['cockpit-setup']
+  tags: [ 'cockpit-setup' ]
   become: true
 
 - name: Install ntfy Server
   ansible.builtin.import_tasks: ntfy-setup.yml
-  tags: ['ntfy-setup']
+  tags: [ 'ntfy-setup' ]
   become: true
 
 - name: Install Cloudflare
   ansible.builtin.import_tasks: cloudflare-setup.yml
-  tags: ['cloudflare-setup']
+  tags: [ 'cloudflare-setup' ]
   become: true
 
 - name: Install Jump Dashboard
   ansible.builtin.import_tasks: jump-setup.yml
-  tags: ['jump-setup']
+  tags: [ 'jump-setup' ]
   become: true
 
 - name: Install monit Monitoring
   ansible.builtin.import_tasks: monit-setup.yml
-  tags: ['monit-setup']
+  tags: [ 'monit-setup' ]
   become: true
 
 - name: Install Frigate
   ansible.builtin.import_tasks: frigate-setup.yml
-  tags: ['frigate-setup']
+  tags: [ 'frigate-setup' ]
   become: true
 
 - name: Install Pingvin
   ansible.builtin.import_tasks: pingvin-setup.yml
-  tags: ['pingvin-setup']
+  tags: [ 'pingvin-setup' ]
   become: true
 
 - name: Install Joplin
   ansible.builtin.import_tasks: joplin-setup.yml
-  tags: ['joplin-setup']
+  tags: [ 'joplin-setup' ]
   become: true
 
 - name: Install Romm
   ansible.builtin.import_tasks: romm-setup.yml
-  tags: ['romm-setup']
+  tags: [ 'romm-setup' ]
   become: true
 
 - name: Install Transmission
   ansible.builtin.import_tasks: transmission-setup.yml
-  tags: ['transmission-setup']
+  tags: [ 'transmission-setup' ]
   become: true
 
 - name: Install Ghost Blog
   ansible.builtin.import_tasks: ghost-setup.yml
-  tags: ['ghost-setup']
+  tags: [ 'ghost-setup' ]
   become: true
 ...
