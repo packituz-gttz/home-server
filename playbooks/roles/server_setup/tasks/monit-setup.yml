@@ -6,7 +6,7 @@
 
 - name: Install monit
   ansible.builtin.dnf:
-    name: 'https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/m/monit-5.32.0-1.el9.x86_64.rpm'
+    name: 'https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/m/monit-5.33.0-1.el9.x86_64.rpm'
     state: present
 
 - name: Upload monit configuration

@@ -1,0 +1,3 @@
+CHECK HOST pingvin WITH ADDRESS localhost
+    RESTART PROGRAM = "/usr/bin/docker restart pingvin"
+    IF FAILED PORT 3000 PROTOCOL http FOR 5 CYCLES THEN RESTART
