@@ -1,0 +1,3 @@
+CHECK HOST jellyfin WITH ADDRESS localhost
+    RESTART PROGRAM = "/usr/bin/docker restart jellyfin"
+    IF FAILED PORT 8096 PROTOCOL http FOR 5 CYCLES THEN RESTART

@@ -1,0 +1,3 @@
+CHECK HOST romm WITH ADDRESS localhost
+    RESTART PROGRAM = "/usr/bin/docker restart romm"
+    IF FAILED PORT 80 PROTOCOL http FOR 5 CYCLES THEN RESTART
