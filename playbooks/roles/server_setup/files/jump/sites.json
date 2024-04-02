@@ -42,7 +42,7 @@
       ]
     },{
       "name": "AlmaLinux",
-      "url": "https://machines.packituz.dev/",
+      "url": "https://admin.packituz.dev/",
       "description": "AlmaLinux cockpit admin",
       "newtab": true,
       "icon": "almalinux.png",
