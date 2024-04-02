@@ -1,3 +1,6 @@
 CHECK HOST pingvin WITH ADDRESS localhost
     RESTART PROGRAM = "/usr/bin/docker restart pingvin"
+    STOP PROGRAM = "/usr/bin/docker stop pingvin"
     IF FAILED PORT 3000 PROTOCOL http FOR 5 CYCLES THEN RESTART
+    IF 3 RESTARTS WITHIN 4 CYCLES THEN exec "/bin/bash /etc/monit.d/scripts/notify.sh Pingvin failing"
+    IF 5 RESTARTS WITHIN 6 CYCLES THEN STOP
