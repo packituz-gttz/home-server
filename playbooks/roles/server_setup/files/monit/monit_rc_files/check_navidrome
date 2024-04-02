@@ -1,3 +1,6 @@
 CHECK HOST navidrome WITH ADDRESS localhost
     RESTART PROGRAM = "/usr/bin/docker restart navidrome"
+    STOP PROGRAM = "/usr/bin/docker stop navidrome"
     IF FAILED PORT 4533 PROTOCOL http FOR 5 CYCLES THEN RESTART
+    IF 3 RESTARTS WITHIN 4 CYCLES THEN exec "/bin/bash /etc/monit.d/scripts/notify.sh Navidrome failing"
+    IF 5 RESTARTS WITHIN 6 CYCLES THEN STOP

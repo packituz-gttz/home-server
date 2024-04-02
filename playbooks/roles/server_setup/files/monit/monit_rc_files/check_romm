@@ -1,3 +1,6 @@
 CHECK HOST romm WITH ADDRESS localhost
     RESTART PROGRAM = "/usr/bin/docker restart romm"
+    STOP PROGRAM = "/usr/bin/docker stop romm"
     IF FAILED PORT 80 PROTOCOL http FOR 5 CYCLES THEN RESTART
+    IF 3 RESTARTS WITHIN 4 CYCLES THEN exec "/bin/bash /etc/monit.d/scripts/notify.sh Romm failing"
+    IF 5 RESTARTS WITHIN 6 CYCLES THEN STOP
