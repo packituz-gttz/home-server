@@ -3,12 +3,11 @@
   "packages": [
     "terraform@1.7.5",
     "vagrant@2.3.7",
-    "python@3.11.8"
+    "python@3.11.8",
+    "pipenv"
   ],
   "shell": {
-    "init_hook": [
-      "echo 'Welcome to devbox!' > /dev/null"
-    ],
+    "init_hook": "pipenv shell",
     "scripts": {
       "test": [
         "echo \"Error: no test specified\" && exit 1"
