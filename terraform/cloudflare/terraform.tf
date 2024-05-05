@@ -1,4 +1,13 @@
 terraform {
+
+  backend "remote" {
+    organization = "packituz-Inc"
+
+    workspaces {
+      name = "home-server-default"
+    }
+  }
+
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
