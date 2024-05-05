@@ -53,17 +53,17 @@ resource "cloudflare_tunnel_config" "tunnel_config" {
 }
 
 resource "cloudflare_notification_policy" "tunnel_notification" {
-  account_id = var.cloudflare_account_id
-  alert_type = "tunnel_health_event"
-  enabled    = true
-  name       = "${cloudflare_tunnel.packituz_dev_tunnel.name} Tunnel Alert"
+  account_id  = var.cloudflare_account_id
+  alert_type  = "tunnel_health_event"
+  enabled     = true
+  name        = "${cloudflare_tunnel.packituz_dev_tunnel.name} Tunnel Alert"
   description = "Alert for ${cloudflare_tunnel.packituz_dev_tunnel.name} tunnel health"
   email_integration {
     id = var.cloudflare_notification_email
   }
 
   filters {
-    tunnel_id = [cloudflare_tunnel.packituz_dev_tunnel.id]
-    new_status    = ["TUNNEL_STATUS_TYPE_DOWN"]
+    tunnel_id  = [cloudflare_tunnel.packituz_dev_tunnel.id]
+    new_status = ["TUNNEL_STATUS_TYPE_DOWN"]
   }
 }

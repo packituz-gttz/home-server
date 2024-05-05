@@ -10,7 +10,7 @@ resource "cloudflare_tunnel" "packituz_dev_tunnel" {
 }
 
 resource "cloudflare_bot_management" "bot_management" {
-  zone_id = var.cloudflare_zone_id
-  enable_js = true
+  zone_id    = var.cloudflare_zone_id
+  enable_js  = true
   fight_mode = true
 }
