@@ -1,6 +1,9 @@
 mqtt:
   enabled: False
 
+ffmpeg:
+  hwaccel_args: preset-vaapi
+
 detectors:
   coral:
     type: edgetpu
@@ -11,7 +14,7 @@ birdseye:
   mode: continuous
 
 live:
-  quality: 2
+  quality: 5
 
 record:
   enabled: true
