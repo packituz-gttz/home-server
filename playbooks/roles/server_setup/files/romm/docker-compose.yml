@@ -1,7 +1,7 @@
 version: "3"
 services:
   romm:
-    image: zurdi15/romm:3.0.1
+    image: zurdi15/romm:3.1.0
     container_name: romm
     volumes:
       - /mnt/media/Romm/resources:/romm/resources
