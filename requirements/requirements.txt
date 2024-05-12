@@ -1,5 +1,5 @@
 commitizen==2.42.01  # https://github.com/commitizen-tools/commitizen
-pre-commit==3.2.0  # https://github.com/pre-commit/pre-commit
+pre-commit==3.7.1  # https://github.com/pre-commit/pre-commit
 molecule==4.0.4  # https://github.com/ansible-community/molecule
 molecule-plugins[vagrant]==23.0.0  # https://github.com/ansible-community/molecule-plugins/releases/tag/v23.0.0
 python-vagrant==1.0.0  # https://github.com/pycontribs/python-vagrant
