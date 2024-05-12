@@ -24,7 +24,7 @@
 - name: Pull and run Jump dashboard Docker image
   community.docker.docker_container:
     name: jump
-    image: "daledavies/jump:v1.3.2"
+    image: "daledavies/jump:v1.4.1"
     state: started
     restart_policy: "unless-stopped"
     recreate: true
