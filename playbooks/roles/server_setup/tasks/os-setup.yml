@@ -61,6 +61,16 @@
     name: pip
     state: latest
 
+- name: Install epel key
+  ansible.builtin.rpm_key:
+    key: 'https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9'
+    state: present
+
+- name: Install borg
+  ansible.builtin.dnf:
+    name: borgbackup
+    state: present
+
 #- name: Install python docker
 #  ansible.builtin.pip:
 #    name: '{{ item }}'
