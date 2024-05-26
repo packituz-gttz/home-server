@@ -1,8 +1,13 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "pipenv": {
+      "resolved": "github:NixOS/nixpkgs/75a52265bda7fd25e06e3a67dee3f0354e73243c#pipenv",
+      "source": "nixpkg"
+    },
     "python@3.11.8": {
       "last_modified": "2024-03-22T11:26:23Z",
+      "plugin_version": "0.0.3",
       "resolved": "github:NixOS/nixpkgs/a3ed7406349a9335cb4c2a71369b697cecd9d351#python3",
       "source": "devbox-search",
       "version": "3.11.8",
@@ -102,6 +107,54 @@
             }
           ],
           "store_path": "/nix/store/923hq9ypk39z9m4rvpnxjnzk2fhyjigj-terraform-1.7.5"
+        }
+      }
+    },
+    "trivy@0.50.4": {
+      "last_modified": "2024-04-28T10:22:29-04:00",
+      "resolved": "github:NixOS/nixpkgs/cf8cc1201be8bc71b7cbbbdaf349b22f4f99c7ae#trivy",
+      "source": "devbox-search",
+      "version": "0.50.4",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lda1wqmpgdpjbh2k61fj6fnm5paaabdq-trivy-0.50.4",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/lda1wqmpgdpjbh2k61fj6fnm5paaabdq-trivy-0.50.4"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/f2svr9gfm0c8sax1jwkfzicgsmbgkv11-trivy-0.50.4",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/f2svr9gfm0c8sax1jwkfzicgsmbgkv11-trivy-0.50.4"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1nbi1qz8cgzs835cdbr8gnm25v9pmc0y-trivy-0.50.4",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/1nbi1qz8cgzs835cdbr8gnm25v9pmc0y-trivy-0.50.4"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/156ckqhj19d5hlhg5r32i5wjbjz1lljy-trivy-0.50.4",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/156ckqhj19d5hlhg5r32i5wjbjz1lljy-trivy-0.50.4"
         }
       }
     },
