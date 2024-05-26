@@ -4,7 +4,10 @@
     "terraform@1.7.5",
     "vagrant@2.3.7",
     "python@3.11.8",
-    "pipenv"
+    "pipenv",
+    "tflint@0.51.1",
+    "pre-commit@3.7.1",
+    "terraform-docs@0.17.0"
   ],
   "shell": {
     "init_hook": "pipenv shell",
