@@ -64,6 +64,6 @@ resource "cloudflare_notification_policy" "tunnel_notification" {
 
   filters {
     tunnel_id  = [cloudflare_tunnel.packituz_dev_tunnel.id]
-    new_status = ["TUNNEL_STATUS_TYPE_DOWN", "TUNNEL_STATUS_TYPE_HEALTHY"]
+    new_status = ["TUNNEL_STATUS_TYPE_DOWN", "TUNNEL_STATUS_TYPE_HEALTHY" ]
   }
 }
