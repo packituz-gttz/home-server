@@ -3,6 +3,7 @@
   "major": {
     "dependencyDashboardApproval": true
   },
+  "ignoreTests": true,
   "extends": [
     "config:recommended", ":automergeStableNonMajor", ":prHourlyLimitNone"
   ]
