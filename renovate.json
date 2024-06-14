@@ -4,6 +4,6 @@
     "dependencyDashboardApproval": true
   },
   "extends": [
-    "config:recommended", ":dependencyDashboardApproval", ":automergeStableNonMajor", ":prHourlyLimitNone"
+    "config:recommended", ":automergeStableNonMajor", ":prHourlyLimitNone"
   ]
 }
