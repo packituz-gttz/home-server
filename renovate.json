@@ -5,6 +5,8 @@
   },
   "ignoreTests": true,
   "extends": [
-    "config:recommended", ":automergeStableNonMajor", ":prHourlyLimitNone"
+    "config:recommended",
+    ":automergeStableNonMajor",
+    ":prHourlyLimitNone"
   ]
 }
