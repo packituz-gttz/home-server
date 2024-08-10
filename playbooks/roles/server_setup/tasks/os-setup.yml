@@ -71,10 +71,27 @@
     name: borgbackup
     state: present
 
-#- name: Install python docker
-#  ansible.builtin.pip:
-#    name: '{{ item }}'
-#  loop:
-#    - docker
-#    - docker-compose
+- name: Install rpmfusion free el key
+  ansible.builtin.rpm_key:
+    key: '{{ item }}'
+    state: present
+  loop:
+    - 'https://download1.rpmfusion.org/nonfree/el/RPM-GPG-KEY-rpmfusion-nonfree-el-9'
+    - 'https://download1.rpmfusion.org/free/el/RPM-GPG-KEY-rpmfusion-free-el-9'
+
+- name: Add rpm for ffmpeg
+  ansible.builtin.dnf:
+    name:
+      - https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm
+      - https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-9.noarch.rpm
+    state: present
+
+- name: Install ffmpeg
+  ansible.builtin.dnf:
+    name:
+      - ffmpeg
+      - ffmpeg-devel
+    state: present
+    enablerepo: crb
+
 ...
