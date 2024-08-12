@@ -21,5 +21,5 @@ deploy:  ## Runs ansible-playbook against production server. Example make deploy
 help:  ## Displays help.
 > @grep -E '^[a-zA-Z_-]+[0-9]*:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-staging:  ## Runs ansible-playbook against local vagrant machine. Example make deploy PARAMS='--tags os-setup'
+staging:  ## Runs ansible-playbook against local vagrant machine. Example make staging PARAMS='--tags os-setup'
 > @/bin/bash scripts/make/run_staging.sh '$(PARAMS)'
