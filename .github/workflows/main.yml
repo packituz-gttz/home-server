@@ -18,3 +18,6 @@ jobs:
 
       - name: Install requirements.txt
         run: pip install -r requirements/requirements.txt
+
+      - name: Install ansible requirements.yml
+        run: ansible-galaxy install -r playbooks/requirements.yml
