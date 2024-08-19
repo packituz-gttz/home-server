@@ -26,7 +26,7 @@ jobs:
         run: echo ${{ secrets.ANSIBLE_VAULT_PASSWORD }} > .vault_pass.txt
 
       - name: Create deployment inventory file
-        run: echo ${{ secrets.SERVER_SSH_ADDRESS }} > playbooks/inventor.ini
+        run: echo ${{ secrets.SERVER_SSH_ADDRESS }} > playbooks/inventory.ini
 
       - name: Download cloudflared
         run: wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
