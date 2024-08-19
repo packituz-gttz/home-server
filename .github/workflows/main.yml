@@ -36,6 +36,10 @@ jobs:
           mkdir -p ~/.ssh/
           echo "Host ${{ secrets.SERVER_SSH_ADDRESS }}" > ~/.ssh/config
           echo 'ProxyCommand ~/cloudflared access ssh --hostname %h' >> ~/.ssh/config
+          
+      - name: Debug
+        run: |
+          tree .
 
       - name: Run playbooks
         run: /bin/bash home-server/home-server/scripts/make/run_staging.sh '--tags jellyfin-setup'
