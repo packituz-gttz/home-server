@@ -40,10 +40,17 @@ jobs:
           echo 'IdentityFile ~/.ssh/staging.key' >> ~/.ssh/config
           echo 'StrictHostKeyChecking no' >> ~/.ssh/config
 
+      - name: Debug
+        run:
+          cat ~/.ssh/config
+
       - name: Create ssh key
         run: |
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/staging.key
           chmod 600 ~/.ssh/staging.key
+
+      - name: Debug ssh
+        run: ssh -q  -o BatchMode=yes -v ${{ secrets.SERVER_SSH_USER }}@${{ secrets.SERVER_SSH_ADDRESS }} 'exit 0'
 
       - name: Run playbooks
         run: /bin/bash scripts/make/run_deployment.sh '--tags jellyfin-setup'
