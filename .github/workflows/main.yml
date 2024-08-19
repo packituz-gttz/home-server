@@ -41,8 +41,9 @@ jobs:
           echo 'StrictHostKeyChecking no' >> ~/.ssh/config
 
       - name: Debug
-        run:
-          cat ~/.ssh/config
+        run: |
+          pwd
+          tree
 
       - name: Create ssh key
         run: |
