@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - master
+    paths:
+      - playbooks/**
+      - requirements/**
 
 jobs:
   deploy-playbooks:
@@ -43,18 +46,10 @@ jobs:
           echo 'IdentityFile ~/.ssh/staging.key' >> ~/.ssh/config
           echo 'StrictHostKeyChecking no' >> ~/.ssh/config
 
-      - name: Debug
-        run: |
-          pwd
-          tree
-
       - name: Create ssh key
         run: |
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/staging.key
           chmod 600 ~/.ssh/staging.key
 
-      - name: Debug ssh
-        run: ssh -q  -o BatchMode=yes -v ${{ secrets.SERVER_SSH_USER }}@${{ secrets.SERVER_SSH_ADDRESS }} 'exit 0'
-
       - name: Run playbooks
-        run: /bin/bash scripts/make/run_deployment.sh '--tags jellyfin-setup'
+        run: /bin/bash scripts/make/run_deployment.sh '--skip-tags os-setup,cockpit-setup,monit-setup'
