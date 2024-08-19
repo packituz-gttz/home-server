@@ -5,4 +5,4 @@
 
 PARAMS="${1}"
 # shellcheck disable=SC2086
-cd playbooks && ansible-playbook -i inventory.ini configure_server.yml --ask-vault-password ${PARAMS}
+cd playbooks && ansible-playbook -i inventory.ini configure_server.yml --vault-password-file ../.vault_pass.txt ${PARAMS}
