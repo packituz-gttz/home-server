@@ -52,4 +52,4 @@ jobs:
           chmod 600 ~/.ssh/staging.key
 
       - name: Run playbooks
-        run: /bin/bash scripts/make/run_deployment.sh '--skip-tags os-setup,cockpit-setup,monit-setup'
+        run: /bin/bash scripts/make/run_deployment.sh '--skip-tags os-setup,cockpit-setup,monit-setup,cloudflare-setup,ntfy-setup,frigate-setup'
