@@ -33,6 +33,7 @@ jobs:
 
       - name: Create ssh configuration
         run: |
+          mkdir -p ~/.ssh/
           echo "Host ${{ secrets.SERVER_SSH_ADDRESS }}" > ~/.ssh/config
           echo 'ProxyCommand ~/cloudflared access ssh --hostname %h' >> ~/.ssh/config
           
