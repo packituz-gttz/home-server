@@ -28,15 +28,18 @@ jobs:
       - name: Create deployment inventory file
         run: echo ${{ secrets.SERVER_SSH_ADDRESS }} > playbooks/inventory.ini
 
-      - name: Download cloudflared
+      - name: Install cloudflared
         run: |
-          wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o ~/cloudflared && chmod +x ~/cloudflared 
+          curl -L https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-archive-keyring.gpg >/dev/null
+          echo "deb [signed-by=/usr/share/keyrings/cloudflare-archive-keyring.gpg] https://pkg.cloudflare.com/cloudflared $(lsb_release -cs) main" | sudo tee  /etc/apt/sources.list.d/cloudflared.list
+          sudo apt update -y
+          sudo apt install cloudflared -y
 
       - name: Create ssh configuration
         run: |
           mkdir -p ~/.ssh/
           echo "Host ${{ secrets.SERVER_SSH_ADDRESS }}" > ~/.ssh/config
-          echo 'ProxyCommand ~/cloudflared access ssh --hostname %h' >> ~/.ssh/config
+          echo 'ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h' >> ~/.ssh/config
           echo 'IdentityFile ~/.ssh/staging.key' >> ~/.ssh/config
           echo 'StrictHostKeyChecking no' >> ~/.ssh/config
 
