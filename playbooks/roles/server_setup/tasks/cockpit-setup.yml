@@ -15,6 +15,11 @@
     state: started
     enabled: true
 
+- name: Configure cockpit port
+  ansible.builtin.copy:
+    src: files/cockpit/listen.conf
+    dest: /etc/systemd/system/cockpit.socket.d/
+
 - name: Open cockpit port on firewall
   ansible.posix.firewalld:
     service: cockpit
