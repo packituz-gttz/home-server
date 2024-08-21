@@ -47,6 +47,16 @@ resource "cloudflare_tunnel_config" "tunnel_config" {
     }
 
     ingress_rule {
+      hostname = cloudflare_record.ssh.hostname
+      service  = "http://192.168.100.45:22"
+    }
+
+    ingress_rule {
+      hostname = cloudflare_record.grafana.hostname
+      service  = "http://192.168.100.45:3000"
+    }
+
+    ingress_rule {
       service = "http_status:404"
     }
   }
