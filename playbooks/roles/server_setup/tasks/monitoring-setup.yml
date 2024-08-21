@@ -110,4 +110,29 @@
     name: node_exporter
     state: restarted
     enabled: true
+
+# Setup Grafana
+
+- name: Install Grafana
+  ansible.builtin.dnf:
+    name:
+      - grafana
+    state: present
+
+- name: Reload systemctl daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: grafana-server
+    state: restarted
+    enabled: true
+
+- name: Open grafana port on firewall
+  ansible.posix.firewalld:
+    port: 3000/tcp
+    permanent: true
+    state: enabled
+    immediate: true
+
+
+
 ...
