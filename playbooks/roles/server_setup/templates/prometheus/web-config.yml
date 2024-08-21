@@ -1,2 +1,0 @@
-basic_auth_users:
-  "{{ prometheus_admin_user }}": "{{ prometheus_admin_password }}"
