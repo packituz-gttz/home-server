@@ -4,7 +4,7 @@ resource "cloudflare_tunnel_config" "tunnel_config" {
   config {
     ingress_rule {
       hostname = cloudflare_record.admin.hostname
-      service  = "https://192.168.100.45:9090"
+      service  = "https://192.168.100.45:9098"
       origin_request {
         no_tls_verify = true
       }
