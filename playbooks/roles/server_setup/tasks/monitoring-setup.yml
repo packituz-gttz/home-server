@@ -133,6 +133,18 @@
     state: enabled
     immediate: true
 
+- name: Copy selinux policy
+  ansible.builtin.copy:
+    src: files/grafana/mygrafanapolicy.te
+    dest: /tmp/
 
+- name: Compile custom SELinux policy
+  command: "checkmodule -M -m -o /tmp/mygrafanapolicy.mod /tmp/mygrafanapolicy.te"
+
+- name: Package custom SELinux policy
+  command: "semodule_package -o /tmp/mygrafanapolicy.pp -m /tmp/mygrafanapolicy.mod"
+
+- name: Load custom SELinux policy
+  command: "semodule -i /tmp/mygrafanapolicy.pp"
 
 ...
