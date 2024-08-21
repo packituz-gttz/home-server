@@ -5,6 +5,8 @@
       "resolved": "github:NixOS/nixpkgs/75a52265bda7fd25e06e3a67dee3f0354e73243c#pipenv",
       "source": "nixpkg"
     },
+<<<<<<< HEAD
+=======
     "pre-commit@3.7.1": {
       "last_modified": "2024-05-20T07:36:42Z",
       "resolved": "github:NixOS/nixpkgs/5a5ac83292c7842072318f57d68a48474f8bd34d#pre-commit",
@@ -69,6 +71,7 @@
         }
       }
     },
+>>>>>>> dev
     "python@3.11.8": {
       "last_modified": "2024-03-22T11:26:23Z",
       "plugin_version": "0.0.3",

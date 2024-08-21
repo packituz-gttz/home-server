@@ -1,9 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "major": {
-    "dependencyDashboardApproval": true
-  },
+  "ignoreTests": true,
   "extends": [
-    "config:recommended", ":automergeStableNonMajor", ":prHourlyLimitNone"
+    "config:recommended",
+    ":automergeMinor",
+    ":prHourlyLimitNone"
   ]
 }
