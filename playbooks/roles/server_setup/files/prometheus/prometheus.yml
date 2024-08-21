@@ -1,0 +1,21 @@
+global:
+  scrape_interval: 10s
+
+rule_files:
+  - "rules.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+      - targets:
+          - localhost:9093
+
+scrape_configs:
+  - job_name: 'prometheus_master'
+    scrape_interval: 5s
+    honor_labels: true
+    static_configs:
+      - targets: ['192.168.56.3:9090', '192.168.56.3:9091']
+    basic_auth:
+      username: 'admin'
+      password: 'admin_password'
