@@ -1,6 +1,6 @@
 terraform {
 
-  required_version = "= 1.3.9"
+  required_version = "1.9.4"
 
   backend "remote" {
     organization = "packituz-Inc"
@@ -17,7 +17,7 @@ terraform {
     }
     random = {
       source  = "hashicorp/random"
-      version = "3.6.0"
+      version = "3.6.2"
     }
   }
 }

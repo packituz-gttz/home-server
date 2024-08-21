@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - master
+    paths:
+      - playbooks/**
+      - requirements/**
 
 jobs:
   deploy-playbooks:
@@ -26,16 +29,27 @@ jobs:
         run: echo ${{ secrets.ANSIBLE_VAULT_PASSWORD }} > .vault_pass.txt
 
       - name: Create deployment inventory file
-        run: echo ${{ secrets.SERVER_SSH_ADDRESS }} > inventor.ini
+        run: echo ${{ secrets.SERVER_SSH_ADDRESS }} > playbooks/inventory.ini
 
-      - name: Download cloudflared
-        run: wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
+      - name: Install cloudflared
+        run: |
+          curl -L https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-archive-keyring.gpg >/dev/null
+          echo "deb [signed-by=/usr/share/keyrings/cloudflare-archive-keyring.gpg] https://pkg.cloudflare.com/cloudflared $(lsb_release -cs) main" | sudo tee  /etc/apt/sources.list.d/cloudflared.list
+          sudo apt update -y
+          sudo apt install cloudflared -y
 
       - name: Create ssh configuration
         run: |
           mkdir -p ~/.ssh/
           echo "Host ${{ secrets.SERVER_SSH_ADDRESS }}" > ~/.ssh/config
-          echo 'ProxyCommand ~/cloudflared access ssh --hostname %h' >> ~/.ssh/config
+          echo 'ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h' >> ~/.ssh/config
+          echo 'IdentityFile ~/.ssh/staging.key' >> ~/.ssh/config
+          echo 'StrictHostKeyChecking no' >> ~/.ssh/config
+
+      - name: Create ssh key
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
 
       - name: Run playbooks
-        run: /bin/bash home-server/home-server/scripts/make/run_staging.sh '--tags jellyfin-setup'
+        run: /bin/bash scripts/make/run_deployment.sh '--skip-tags os-setup,cockpit-setup,monit-setup,cloudflare-setup,ntfy-setup,frigate-setup'
