@@ -1,0 +1,113 @@
+---
+- name: Download prometheus
+  ansible.builtin.unarchive:
+    src: 'https://github.com/prometheus/prometheus/releases/download/{{ prometheus_version }}/{{ prometheus_package_name }}.tar.gz'
+    dest: /tmp/
+    remote_src: true
+
+- name: Add prometheus user
+  ansible.builtin.user:
+    name: '{{ prometheus_user }}'
+    shell: /bin/false
+    state: present
+    create_home: false
+
+- name: Create prometheus directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: '{{ prometheus_user }}'
+    group: '{{ prometheus_user }}'
+  loop:
+    - /etc/prometheus
+    - /var/lib/prometheus
+
+- name: Copy prometheus and promtool executables
+  ansible.builtin.copy:
+    src: '{{ item }}'
+    dest: /usr/local/bin/
+    group: '{{ prometheus_user }}'
+    owner: '{{ prometheus_user }}'
+    remote_src: true
+    mode: preserve
+  loop:
+    - "/tmp/{{ prometheus_package_name }}/prometheus"
+    - "/tmp/{{ prometheus_package_name }}/promtool"
+
+- name: Copy prometheus console
+  ansible.builtin.copy:
+    src: '{{ item }}'
+    dest: /etc/prometheus/
+    remote_src: true
+    group: '{{ prometheus_user }}'
+    owner: '{{ prometheus_user }}'
+    mode: preserve
+  loop:
+    - "/tmp/{{ prometheus_package_name }}/consoles"
+    - "/tmp/{{ prometheus_package_name }}/console_libraries"
+
+- name: Copy Prometheus main and web configuration file
+  ansible.builtin.template:
+    src: '{{ item }}'
+    dest: /etc/prometheus/
+    group: '{{ prometheus_user }}'
+    owner: '{{ prometheus_user }}'
+  loop:
+    - "templates/prometheus/web-config.yml"
+    - "templates/prometheus/prometheus.yml"
+
+- name: Copy Prometheus service file
+  ansible.builtin.copy:
+    src: files/prometheus/prometheus.service
+    dest: /etc/systemd/system/
+
+- name: Reload systemctl daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: prometheus
+    state: restarted
+    enabled: true
+
+- name: Open prometheus port on firewall
+  ansible.posix.firewalld:
+    port: 9090/tcp
+    permanent: true
+    state: enabled
+    immediate: true
+
+#    Setup Node Exporter
+
+- name: Add node_exporter user
+  ansible.builtin.user:
+    name: '{{ node_exporter_user }}'
+    shell: /bin/false
+    state: present
+    create_home: false
+
+- name: Download node exporter
+  ansible.builtin.unarchive:
+    src: 'https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz'
+    dest: /tmp/
+    remote_src: true
+
+- name: Copy node exporter executable
+  ansible.builtin.copy:
+    src: /tmp/node_exporter-1.8.2.linux-amd64/node_exporter
+    dest: /usr/local/bin/
+    group: '{{ node_exporter_user }}'
+    owner: '{{ node_exporter_user }}'
+    remote_src: true
+    mode: preserve
+
+- name: Copy Node Exporter service file
+  ansible.builtin.copy:
+    src: files/node_exporter/node_exporter.service
+    dest: /etc/systemd/system/
+
+- name: Reload systemctl daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: node_exporter
+    state: restarted
+    enabled: true
+...
