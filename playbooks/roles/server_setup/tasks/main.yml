@@ -44,6 +44,11 @@
   tags: [ 'monit-setup' ]
   become: true
 
+- name: Install Prometheus/Grafana Monitoring
+  ansible.builtin.import_tasks: monitoring-setup.yml
+  tags: [ 'monitoring-setup' ]
+  become: true
+
 - name: Install Frigate
   ansible.builtin.import_tasks: frigate-setup.yml
   tags: [ 'frigate-setup' ]
