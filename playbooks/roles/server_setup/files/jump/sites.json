@@ -51,6 +51,16 @@
         "work"
       ]
     },{
+      "name": "Grafana",
+      "url": "https://grafana.packituz.dev/",
+      "description": "Grafana Monitoring Dashboards",
+      "newtab": true,
+      "icon": "grafana.png",
+      "tags": [
+        "home",
+        "work"
+      ]
+    },{
       "name": "Frigate",
       "url": "https://depas.packituz.dev/",
       "description": "CCTV service",
@@ -116,10 +126,19 @@
       ]
     },{
       "name": "AlmaLinux",
-      "url": "https://192.168.100.45:9090/",
+      "url": "https://192.168.100.45:9098/",
       "description": "AlmaLinux cockpit admin",
       "newtab": true,
       "icon": "almalinux.png",
+      "tags": [
+        "local"
+      ]
+    },{
+      "name": "Grafana",
+      "url": "https://192.168.100.45:3000/",
+      "description": "Grafana Monitoring Dashboards",
+      "newtab": true,
+      "icon": "grafana.png",
       "tags": [
         "local"
       ]
