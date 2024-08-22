@@ -135,7 +135,7 @@
       ]
     },{
       "name": "Grafana",
-      "url": "https://192.168.100.45:3000/",
+      "url": "http://192.168.100.45:3000/",
       "description": "Grafana Monitoring Dashboards",
       "newtab": true,
       "icon": "grafana.png",
