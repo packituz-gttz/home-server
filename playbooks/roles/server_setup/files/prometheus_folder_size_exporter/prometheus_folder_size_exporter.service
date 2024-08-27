@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Folder size Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=node-exporter
+Group=node-exporter
+Type=simple
+ExecStart=/usr/local/bin/prometheus_folder_size_exporter -i /opt/prometheus_folder_size_exporter/prometheus_folder_size_exporter.json -p 9974
+
+[Install]
+WantedBy=multi-user.target

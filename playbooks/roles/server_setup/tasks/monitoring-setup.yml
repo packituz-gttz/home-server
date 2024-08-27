@@ -110,6 +110,93 @@
     state: restarted
     enabled: true
 
+# Setup cAdvisor
+
+- name: Setup cAdvisor
+  community.docker.docker_container:
+    name: cadvisor
+    image: "gcr.io/cadvisor/cadvisor:v0.49.1"
+    state: started
+    restart_policy: "unless-stopped"
+    recreate: true
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+
+# Setup prometheus-dirsize-exporter
+
+- name: Install prometheus-dirsize-exporter
+  ansible.builtin.pip:
+    name: prometheus-dirsize-exporter
+    state: latest
+
+- name: Copy Dirsize Exporter service file
+  ansible.builtin.copy:
+    src: files/dirsize_exporter/dirsize_exporter.service
+    dest: /etc/systemd/system/
+
+- name: Reload systemctl daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: dirsize_exporter
+    state: restarted
+    enabled: true
+
+# Setup prometheus_folder_size_exporter
+
+- name: Install cargo
+  ansible.builtin.dnf:
+    name: cargo
+    state: present
+
+- name: Install prometheus_folder_size_exporter
+  community.general.cargo:
+    name: prometheus_folder_size_exporter
+    state: present
+    path: /usr/local/
+
+- name: Create directory for prometheus_folder_size_exporter configurations
+  ansible.builtin.file:
+    path: /opt/prometheus_folder_size_exporter
+    state: directory
+    mode: '0755'
+
+- name: Set permissions for prometheus_folder_size_exporter executable
+  ansible.builtin.file:
+    path: /usr/local/bin/prometheus_folder_size_exporter
+    group: '{{ node_exporter_user }}'
+    owner: '{{ node_exporter_user }}'
+
+- name: Set SELinux context for prometheus_folder_size_exporter binary
+  ansible.builtin.sefcontext:
+    target: /usr/local/bin/prometheus_folder_size_exporter
+    setype: bin_t
+    state: present
+
+- name: Apply new SELinux file context to filesystem
+  ansible.builtin.command: restorecon -irv /usr/local/bin/prometheus_folder_size_exporter
+
+
+- name: Copy prometheus_folder_size_exporter configurations
+  ansible.builtin.copy:
+    src: "{{ item.source }}"
+    dest: "{{ item.destination }}"
+  loop:
+    - { source: 'prometheus_folder_size_exporter/prometheus_folder_size_exporter.service', destination: '/etc/systemd/system/' }
+    - { source: 'prometheus_folder_size_exporter/prometheus_folder_size_exporter.json', destination: '/opt/prometheus_folder_size_exporter/' }
+
+- name: Reload systemctl daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: prometheus_folder_size_exporter
+    state: restarted
+    enabled: true
+
 # Setup Grafana
 
 - name: Install Grafana
