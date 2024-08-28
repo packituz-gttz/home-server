@@ -66,6 +66,12 @@
     key: 'https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9'
     state: present
 
+- name: Install epel
+  ansible.builtin.dnf:
+    name: epel-release
+    state: present
+    enablerepo: crb
+
 - name: Install borg
   ansible.builtin.dnf:
     name: borgbackup
