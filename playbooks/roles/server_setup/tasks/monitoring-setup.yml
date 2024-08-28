@@ -128,25 +128,6 @@
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
 
-# Setup prometheus-dirsize-exporter
-
-- name: Install prometheus-dirsize-exporter
-  ansible.builtin.pip:
-    name: prometheus-dirsize-exporter
-    state: latest
-
-- name: Copy Dirsize Exporter service file
-  ansible.builtin.copy:
-    src: files/dirsize_exporter/dirsize_exporter.service
-    dest: /etc/systemd/system/
-
-- name: Reload systemctl daemon
-  ansible.builtin.systemd:
-    daemon_reload: true
-    name: dirsize_exporter
-    state: restarted
-    enabled: true
-
 # Setup prometheus_folder_size_exporter
 
 - name: Install cargo

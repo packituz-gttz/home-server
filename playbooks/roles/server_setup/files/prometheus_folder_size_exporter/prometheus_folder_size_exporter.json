@@ -3,5 +3,30 @@
     "path": "/mnt/media/Jellyfin",
     "explode_depth": 0,
     "sum_remaining_subfolders": true
+  },
+  {
+    "path": "/mnt/media/Kavita",
+    "explode_depth": 0,
+    "sum_remaining_subfolders": true
+  },
+  {
+    "path": "/mnt/media/Navidrome",
+    "explode_depth": 0,
+    "sum_remaining_subfolders": true
+  },
+  {
+    "path": "/mnt/media/Pingvin",
+    "explode_depth": 0,
+    "sum_remaining_subfolders": true
+  },
+  {
+    "path": "/mnt/media/Romm",
+    "explode_depth": 0,
+    "sum_remaining_subfolders": true
+  },
+  {
+    "path": "/mnt/media/Pingvin",
+    "explode_depth": 0,
+    "sum_remaining_subfolders": true
   }
 ]
