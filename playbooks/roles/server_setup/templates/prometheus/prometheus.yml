@@ -18,16 +18,13 @@ scrape_configs:
   - job_name: 'prometheus'
     static_configs:
       - targets: ['localhost:9090']
-    basic_auth:
-      username: '{{ prometheus_admin_user }}'
-      password: '{{ prometheus_admin_password_plain }}'
 
   - job_name: 'docker'
     static_configs:
-      - targets: ['127.0.0.1:8080']
+      - targets: ['localhost:8080']
 
-  - job_name: 'dirsize'
+  - job_name: 'folder_size'
     static_configs:
-      - targets: ['127.0.0.1:8000']
+      - targets: ['localhost:9974']
 
 
