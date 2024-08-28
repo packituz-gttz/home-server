@@ -165,7 +165,7 @@
     },
     {
       "name": "Pingvin",
-      "url": "http://192.168.100.45:3000/",
+      "url": "http://192.168.100.45:3001/",
       "description": "File Sharing system",
       "newtab": true,
       "icon": "pingvin.png",
