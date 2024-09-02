@@ -99,7 +99,7 @@ jobs:
           chmod 600 ~/.ssh/staging.key
 
       - name: Run playbooks
-        run: /bin/bash scripts/make/run_deployment.sh '--tags utils-setup'
+        run: /bin/bash scripts/make/run_deployment.sh '--tags utils-group'
 
 
   deploy-monitoring:
