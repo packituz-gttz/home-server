@@ -5,5 +5,10 @@
     "config:recommended",
     ":automergeMinor",
     ":prHourlyLimitNone"
-  ]
+  ],
+  "schedule": [
+    "before 8am",
+    "after 6am"
+  ],
+  "timezone": "America/Mexico_City"
 }
