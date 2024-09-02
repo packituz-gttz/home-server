@@ -9,7 +9,7 @@ on:
       - .github/**
 
 jobs:
-  deploy-playbooks:
+  deploy-media:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -53,11 +53,60 @@ jobs:
           chmod 600 ~/.ssh/staging.key
 
       - name: Run playbooks
-        run: /bin/bash scripts/make/run_deployment.sh '--skip-tags os-setup,cockpit-setup,monit-setup,cloudflare-setup,ntfy-setup,frigate-setup,monitoring-setup'
+        run: /bin/bash scripts/make/run_deployment.sh '--tags media-group'
+
+  deploy-utils:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11.9'
+
+      - name: Install requirements.txt
+        run: pip install -r requirements/requirements.txt
+
+      - name: Install ansible requirements.yml
+        run: ansible-galaxy install -r playbooks/requirements.yml
+
+      - name: Create vault pass file
+        run: echo ${{ secrets.ANSIBLE_VAULT_PASSWORD }} > .vault_pass.txt
+
+      - name: Create deployment inventory file
+        run: echo ${{ secrets.SERVER_SSH_ADDRESS }} > playbooks/inventory.ini
+
+      - name: Install cloudflared
+        run: |
+          curl -L https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-archive-keyring.gpg >/dev/null
+          echo "deb [signed-by=/usr/share/keyrings/cloudflare-archive-keyring.gpg] https://pkg.cloudflare.com/cloudflared $(lsb_release -cs) main" | sudo tee  /etc/apt/sources.list.d/cloudflared.list
+          sudo apt update -y
+          sudo apt install cloudflared -y
+
+      - name: Create ssh configuration
+        run: |
+          mkdir -p ~/.ssh/
+          echo "Host ${{ secrets.SERVER_SSH_ADDRESS }}" > ~/.ssh/config
+          echo 'ProxyCommand /usr/local/bin/cloudflared access ssh --hostname %h' >> ~/.ssh/config
+          echo 'IdentityFile ~/.ssh/staging.key' >> ~/.ssh/config
+          echo 'StrictHostKeyChecking no' >> ~/.ssh/config
+
+      - name: Create ssh key
+        run: |
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
+
+      - name: Run playbooks
+        run: /bin/bash scripts/make/run_deployment.sh '--tags utils-setup'
+
 
   deploy-monitoring:
     runs-on: ubuntu-22.04
-    needs: deploy-playbooks
+    needs:
+      - deploy-media
+      - deploy-utils
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -6,22 +6,22 @@
 
 - name: Install Jellyfin
   ansible.builtin.import_tasks: jellyfin-setup.yml
-  tags: [ 'jellyfin-setup' ]
+  tags: [ 'jellyfin-setup', 'media-group' ]
   become: true
 
 - name: Install Kavita
   ansible.builtin.import_tasks: kavita-setup.yml
-  tags: [ 'kavita-setup' ]
+  tags: [ 'kavita-setup', 'media-group' ]
   become: true
 
 - name: Install Navidrome
   ansible.builtin.import_tasks: navidrome-setup.yml
-  tags: [ 'navidrome-setup' ]
+  tags: [ 'navidrome-setup', 'media-group' ]
   become: true
 
 - name: Install Cockpit
   ansible.builtin.import_tasks: cockpit-setup.yml
-  tags: [ 'cockpit-setup' ]
+  tags: [ 'cockpit-setup', 'utils-group' ]
   become: true
 
 - name: Install ntfy Server
@@ -36,7 +36,7 @@
 
 - name: Install Jump Dashboard
   ansible.builtin.import_tasks: jump-setup.yml
-  tags: [ 'jump-setup' ]
+  tags: [ 'jump-setup', 'utils-group' ]
   become: true
 
 - name: Install monit Monitoring
@@ -51,31 +51,31 @@
 
 - name: Install Frigate
   ansible.builtin.import_tasks: frigate-setup.yml
-  tags: [ 'frigate-setup' ]
+  tags: [ 'frigate-setup', 'utils-group' ]
   become: true
 
 - name: Install Pingvin
   ansible.builtin.import_tasks: pingvin-setup.yml
-  tags: [ 'pingvin-setup' ]
+  tags: [ 'pingvin-setup', 'utils-group' ]
   become: true
 
 - name: Install Joplin
   ansible.builtin.import_tasks: joplin-setup.yml
-  tags: [ 'joplin-setup' ]
+  tags: [ 'joplin-setup', 'utils-group' ]
   become: true
 
 - name: Install Romm
   ansible.builtin.import_tasks: romm-setup.yml
-  tags: [ 'romm-setup' ]
+  tags: [ 'romm-setup', 'utils-group' ]
   become: true
 
 - name: Install Transmission
   ansible.builtin.import_tasks: transmission-setup.yml
-  tags: [ 'transmission-setup' ]
+  tags: [ 'transmission-setup', 'utils-group' ]
   become: true
 
 - name: Install Ghost Blog
   ansible.builtin.import_tasks: ghost-setup.yml
-  tags: [ 'ghost-setup' ]
+  tags: [ 'ghost-setup', 'utils-group' ]
   become: true
 ...
