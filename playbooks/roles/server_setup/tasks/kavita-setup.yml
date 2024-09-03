@@ -4,9 +4,12 @@
     path: /mnt/media/Kavita
     state: directory
     mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
 
 - name: Upload Kavita cron script
-  ansible.builtin.copy:
+  become: false
+  ansible.posix.synchronize:
     src: kavita/new_file_uploaded.sh
     dest: /mnt/media/Kavita/
 
