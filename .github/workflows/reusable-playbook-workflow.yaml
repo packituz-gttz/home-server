@@ -5,6 +5,13 @@ on:
       playbook_params:
         required: true
         type: string
+    secrets:
+      ANSIBLE_VAULT_PASSWORD:
+        required: true
+      SERVER_SSH_ADDRESS:
+        required: true
+      SSH_KEY:
+        required: true
 
 
 jobs:
