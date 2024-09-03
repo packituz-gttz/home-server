@@ -4,6 +4,8 @@
     path: /mnt/media/Romm
     state: directory
     mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
 
 - name: Create app.env file
   ansible.builtin.copy:
@@ -29,7 +31,8 @@
       MYSQL_PASSWORD={{ romm_db_password }}
 
 - name: Copy Docker-compose file
-  ansible.builtin.copy:
+  become: false
+  ansible.posix.synchronize:
     src: files/romm/docker-compose.yml
     dest: /mnt/media/Romm
 

@@ -4,6 +4,8 @@
     path: /media/Joplin
     state: directory
     mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
 
 - name: Create db.env file
   ansible.builtin.copy:
@@ -28,7 +30,8 @@
       MAILER_ENABLED=0
 
 - name: Copy Docker-compose file
-  ansible.builtin.copy:
+  become: false
+  ansible.posix.synchronize:
     src: files/joplin/docker-compose.yml
     dest: /media/Joplin
 
