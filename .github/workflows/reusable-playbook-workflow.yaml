@@ -56,6 +56,7 @@ jobs:
       - name: Create ssh key
         run: |
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
 
       - name: Run playbooks
         run: /bin/bash scripts/make/run_deployment.sh '${{ inputs.playbook_params }}'
