@@ -6,3 +6,5 @@
 *.tfvars
 *.tfstate*
 .*
+
+!.github/workflows/**
