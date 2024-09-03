@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy-media:
-    uses: ./.github/workflows/reusable-playbook-workflow.yaml@main
+    uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags utils-group'
 
