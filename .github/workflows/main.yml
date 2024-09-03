@@ -13,6 +13,10 @@ jobs:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags utils-group'
+    secrets:
+      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
 
   deploy-utils:
     runs-on: ubuntu-22.04
