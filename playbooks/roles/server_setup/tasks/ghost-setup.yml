@@ -4,6 +4,8 @@
     path: /mnt/media/Ghost
     state: directory
     mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
 
 - name: Create db.env file
   ansible.builtin.copy:
@@ -23,7 +25,8 @@
       database__connection__database={{ ghost_database_connection_database }}
 
 - name: Copy Docker-compose file
-  ansible.builtin.copy:
+  become: false
+  ansible.posix.synchronize:
     src: files/ghost/docker-compose.yml
     dest: /mnt/media/Ghost
 

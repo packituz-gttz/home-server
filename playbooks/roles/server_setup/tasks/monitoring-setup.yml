@@ -201,7 +201,8 @@
     immediate: true
 
 - name: Copy selinux policy
-  ansible.builtin.copy:
+  become: false
+  ansible.posix.synchronize:
     src: files/grafana/mygrafanapolicy.te
     dest: /tmp/
 
