@@ -41,16 +41,6 @@
         "entertainment"
       ]
     },{
-      "name": "AlmaLinux",
-      "url": "https://admin.packituz.dev/",
-      "description": "AlmaLinux cockpit admin",
-      "newtab": true,
-      "icon": "almalinux.png",
-      "tags": [
-        "home",
-        "work"
-      ]
-    },{
       "name": "Grafana",
       "url": "https://grafana.packituz.dev/",
       "description": "Grafana Monitoring Dashboards",
@@ -121,15 +111,6 @@
       "description": "Books, Comics, Novels & More.",
       "newtab": true,
       "icon": "kavita.png",
-      "tags": [
-        "local"
-      ]
-    },{
-      "name": "AlmaLinux",
-      "url": "https://192.168.100.45:9098/",
-      "description": "AlmaLinux cockpit admin",
-      "newtab": true,
-      "icon": "almalinux.png",
       "tags": [
         "local"
       ]
