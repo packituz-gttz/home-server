@@ -22,3 +22,8 @@ variable "cloudflare_notification_email" {
   type        = string
   description = "Email that will receive notifications"
 }
+
+variable "server_local_ip" {
+  type        = string
+  description = "Server ip on local network"
+}
