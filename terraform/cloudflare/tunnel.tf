@@ -11,6 +11,10 @@ resource "cloudflare_tunnel_config" "tunnel_config" {
 
     }
 
+    warp_routing {
+      enabled = false
+    }
+
     ingress_rule {
       hostname = cloudflare_record.comics.hostname
       service  = "http://${var.server_local_ip}:5000"
