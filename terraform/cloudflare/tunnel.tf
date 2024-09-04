@@ -4,7 +4,7 @@ resource "cloudflare_tunnel_config" "tunnel_config" {
   config {
     ingress_rule {
       hostname = cloudflare_record.admin.hostname
-      service  = "https://192.168.100.45:9098"
+      service  = "https://${var.server_local_ip}:9098"
       origin_request {
         no_tls_verify = true
       }
@@ -13,47 +13,47 @@ resource "cloudflare_tunnel_config" "tunnel_config" {
 
     ingress_rule {
       hostname = cloudflare_record.comics.hostname
-      service  = "http://192.168.100.45:5000"
+      service  = "http://${var.server_local_ip}:5000"
     }
 
     ingress_rule {
       hostname = cloudflare_record.depas.hostname
-      service  = "http://192.168.100.45:5001"
+      service  = "http://${var.server_local_ip}:5001"
     }
 
     ingress_rule {
       hostname = cloudflare_record.home.hostname
-      service  = "http://192.168.100.45:8123"
+      service  = "http://${var.server_local_ip}:8123"
     }
 
     ingress_rule {
       hostname = cloudflare_record.jelly.hostname
-      service  = "http://192.168.100.45:8096"
+      service  = "http://${var.server_local_ip}:8096"
     }
 
     ingress_rule {
       hostname = cloudflare_record.music.hostname
-      service  = "http://192.168.100.45:4533"
+      service  = "http://${var.server_local_ip}:4533"
     }
 
     ingress_rule {
       hostname = cloudflare_record.notes.hostname
-      service  = "http://192.168.100.45:22300"
+      service  = "http://${var.server_local_ip}:22300"
     }
 
     ingress_rule {
       hostname = cloudflare_record.ntfy.hostname
-      service  = "http://192.168.100.45:8008"
+      service  = "http://${var.server_local_ip}:8008"
     }
 
     ingress_rule {
       hostname = cloudflare_record.ssh.hostname
-      service  = "ssh://192.168.100.45:22"
+      service  = "ssh://${var.server_local_ip}:22"
     }
 
     ingress_rule {
       hostname = cloudflare_record.grafana.hostname
-      service  = "http://192.168.100.45:3000"
+      service  = "http://${var.server_local_ip}:3000"
     }
 
     ingress_rule {
