@@ -2,15 +2,6 @@ resource "cloudflare_tunnel_config" "tunnel_config" {
   tunnel_id  = cloudflare_tunnel.packituz_dev_tunnel.id
   account_id = var.cloudflare_account_id
   config {
-    ingress_rule {
-      hostname = cloudflare_record.admin.hostname
-      service  = "https://${var.server_local_ip}:9098"
-      origin_request {
-        no_tls_verify = true
-      }
-
-    }
-
     warp_routing {
       enabled = false
     }
