@@ -1,7 +1,7 @@
 version: "3"
 services:
   romm:
-    image: rommapp/romm:3.5.0
+    image: rommapp/romm:3.5.1
     container_name: romm
     volumes:
       - /mnt/media/Romm/resources:/romm/resources
