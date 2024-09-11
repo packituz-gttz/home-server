@@ -9,7 +9,7 @@
 
 - name: Copy icons and configurations
   become: false
-  ansible.posix.synchronize:
+  ansible.builtin.copy:
     src: "{{ item.source }}"
     dest: "{{ item.destination }}"
   loop:

@@ -5,4 +5,8 @@ collections:
 
   - name: ansible.posix
     version: 1.5.4
+
+roles:
+  - name: borgbase.ansible_role_borgbackup
+    version: v1.0.1
 ...
