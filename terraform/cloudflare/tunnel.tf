@@ -3,7 +3,7 @@ resource "cloudflare_tunnel_config" "tunnel_config" {
   account_id = var.cloudflare_account_id
   config {
     warp_routing {
-      enabled = false
+      enabled = true
     }
 
     ingress_rule {
