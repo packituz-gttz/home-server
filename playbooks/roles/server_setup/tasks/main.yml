@@ -78,4 +78,10 @@
   ansible.builtin.import_tasks: ghost-setup.yml
   tags: [ 'ghost-setup', 'utils-group' ]
   become: true
+
+- name: Setup Borg Backup
+  ansible.builtin.import_tasks: borg-setup.yml
+  tags: [ 'borg-setup' ]
+  become: true
+
 ...

@@ -32,7 +32,7 @@
 
 - name: Copy Docker-compose file
   become: false
-  ansible.posix.synchronize:
+  ansible.builtin.copy:
     src: files/romm/docker-compose.yml
     dest: /mnt/media/Romm
 

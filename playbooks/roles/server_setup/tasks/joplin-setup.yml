@@ -31,7 +31,7 @@
 
 - name: Copy Docker-compose file
   become: false
-  ansible.posix.synchronize:
+  ansible.builtin.copy:
     src: files/joplin/docker-compose.yml
     dest: /media/Joplin
 

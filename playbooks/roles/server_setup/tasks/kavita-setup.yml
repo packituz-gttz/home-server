@@ -9,7 +9,7 @@
 
 - name: Upload Kavita cron script
   become: false
-  ansible.posix.synchronize:
+  ansible.builtin.copy:
     src: kavita/new_file_uploaded.sh
     dest: /mnt/media/Kavita/
 
