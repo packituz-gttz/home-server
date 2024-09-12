@@ -7,47 +7,47 @@ resource "cloudflare_tunnel_config" "tunnel_config" {
     }
 
     ingress_rule {
-      hostname = cloudflare_record.comics.hostname
+      hostname = module.records.records_info["comics"].hostname
       service  = "http://${var.server_local_ip}:5000"
     }
 
     ingress_rule {
-      hostname = cloudflare_record.depas.hostname
+      hostname = module.records.records_info["depas"].hostname
       service  = "http://${var.server_local_ip}:5001"
     }
 
     ingress_rule {
-      hostname = cloudflare_record.home.hostname
+      hostname = module.records.records_info["home"].hostname
       service  = "http://${var.server_local_ip}:8123"
     }
 
     ingress_rule {
-      hostname = cloudflare_record.jelly.hostname
+      hostname = module.records.records_info["jelly"].hostname
       service  = "http://${var.server_local_ip}:8096"
     }
 
     ingress_rule {
-      hostname = cloudflare_record.music.hostname
+      hostname = module.records.records_info["music"].hostname
       service  = "http://${var.server_local_ip}:4533"
     }
 
     ingress_rule {
-      hostname = cloudflare_record.notes.hostname
+      hostname = module.records.records_info["notes"].hostname
       service  = "http://${var.server_local_ip}:22300"
     }
 
     ingress_rule {
-      hostname = cloudflare_record.ntfy.hostname
+      hostname = module.records.records_info["ntfy"].hostname
       service  = "http://${var.server_local_ip}:8008"
     }
 
     ingress_rule {
-      hostname = cloudflare_record.ssh.hostname
+      hostname = module.records.records_info["ssh"].hostname
       service  = "ssh://${var.server_local_ip}:22"
     }
 
     ingress_rule {
-      hostname = cloudflare_record.grafana.hostname
+      hostname = module.records.records_info["grafana"].hostname
       service  = "http://${var.server_local_ip}:3000"
     }
 
