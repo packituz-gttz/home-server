@@ -19,11 +19,6 @@
   tags: [ 'navidrome-setup', 'media-group' ]
   become: true
 
-- name: Install Cockpit
-  ansible.builtin.import_tasks: cockpit-setup.yml
-  tags: [ 'cockpit-setup', 'utils-group' ]
-  become: true
-
 - name: Install ntfy Server
   ansible.builtin.import_tasks: ntfy-setup.yml
   tags: [ 'ntfy-setup' ]
@@ -77,11 +72,6 @@
 - name: Install Ghost Blog
   ansible.builtin.import_tasks: ghost-setup.yml
   tags: [ 'ghost-setup', 'utils-group' ]
-  become: true
-
-- name: Setup Borg Backup
-  ansible.builtin.import_tasks: borg-setup.yml
-  tags: [ 'borg-setup' ]
   become: true
 
 ...
