@@ -1,6 +1,6 @@
 module "records" {
   source       = "../modules/cloudflare/records"
-  tunnel_cname = cloudflare_tunnel.packituz_dev_tunnel.cname
+  tunnel_cname = cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.cname
   records = [
     {
       name = "comics"
