@@ -2,7 +2,7 @@ resource "random_password" "tunnel_secret" {
   length = 64
 }
 
-resource "cloudflare_tunnel" "packituz_dev_tunnel" {
+resource "cloudflare_zero_trust_tunnel_cloudflared" "packituz_dev_tunnel" {
   account_id = var.cloudflare_account_id
   name       = "packituz-dev-tunnel"
   secret     = base64sha256(random_password.tunnel_secret.result)
