@@ -39,10 +39,6 @@ resource "cloudflare_zero_trust_access_application" "depas_app" {
   domain           = module.records.records_info["depas"].hostname
   session_duration = "15m"
   type             = "self_hosted"
-
-  policies = [
-    cloudflare_zero_trust_access_policy.depas_policy.id
-  ]
 }
 
 resource "cloudflare_zero_trust_access_policy" "depas_policy" {
