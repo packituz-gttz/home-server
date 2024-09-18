@@ -2,9 +2,6 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
   tunnel_id  = cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.id
   account_id = var.cloudflare_account_id
   config {
-    warp_routing {
-      enabled = true
-    }
 
     ingress_rule {
       hostname = module.records.records_info["comics"].hostname
