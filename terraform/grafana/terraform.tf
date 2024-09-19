@@ -1,13 +1,14 @@
 terraform {
-  required_version = "1.9.5"
 
-  #     backend "remote" {
-  #     organization = "packituz-Inc"
-  #
-  #     workspaces {
-  #       name = "home-server-default"
-  #     }
-  #   }
+  required_version = "~> 1.9.0"
+
+  cloud {
+    organization = "packituz-Inc"
+
+    workspaces {
+      name = "home-server-grafana"
+    }
+  }
 
   required_providers {
     grafana = {
