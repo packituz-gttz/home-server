@@ -21,7 +21,7 @@ variable "main_organization_name" {
 
 variable "host_url" {
   type        = string
-  description = "Host URL"
+  description = "Grafana Host URL"
 }
 
 variable "prometheus_data_source_url" {
