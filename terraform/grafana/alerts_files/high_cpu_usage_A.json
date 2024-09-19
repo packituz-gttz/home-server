@@ -1,0 +1,10 @@
+{
+  "editorMode": "code",
+  "expr": "avg(node_load5)",
+  "hide": false,
+  "intervalMs": 1000,
+  "legendFormat": "__auto",
+  "maxDataPoints": 43200,
+  "range": true,
+  "refId": "A"
+}
