@@ -20,5 +20,5 @@ terraform {
 
 provider "grafana" {
   url  = var.host_url
-  auth = var.admin_token
+  auth = "${var.admin_email}:${var.admin_password}"
 }
