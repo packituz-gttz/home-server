@@ -178,3 +178,152 @@ resource "grafana_rule_group" "docker_alerts" {
 
 
 }
+
+resource "grafana_rule_group" "system_alerts" {
+  folder_uid         = grafana_folder.system_alerts_folder.uid
+  name               = "System Alerts"
+  org_id             = grafana_organization.main_org.id
+  disable_provenance = true
+  interval_seconds   = 60
+
+  rule {
+    name           = "Memory High Usage"
+    for            = "5m"
+    condition      = "B"
+    no_data_state  = "NoData"
+    exec_err_state = "Error"
+    annotations = {
+      "summary" : "Memory usage"
+      "description" : "High memory usage"
+    }
+    is_paused = false
+    data {
+      ref_id     = "A"
+      query_type = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      datasource_uid = grafana_data_source.prometheus.uid
+      model          = file("${path.module}/alerts_files/high_memory_usage_A.json")
+    }
+
+    data {
+      ref_id         = "B"
+      datasource_uid = "-100"
+      query_type     = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      model = file("${path.module}/alerts_files/system_alerts_B.json")
+    }
+
+  }
+
+  rule {
+    name           = "CPU High Usage"
+    for            = "5m"
+    condition      = "B"
+    no_data_state  = "NoData"
+    exec_err_state = "Error"
+    annotations = {
+      "summary" : "CPU usage"
+      "description" : "High CPU usage"
+    }
+    is_paused = false
+    data {
+      ref_id     = "A"
+      query_type = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      datasource_uid = grafana_data_source.prometheus.uid
+      model          = file("${path.module}/alerts_files/high_cpu_usage_A.json")
+    }
+
+    data {
+      ref_id         = "B"
+      datasource_uid = "-100"
+      query_type     = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      model = file("${path.module}/alerts_files/system_alerts_B.json")
+    }
+
+  }
+
+  rule {
+    name           = "Temperature Status"
+    for            = "5m"
+    condition      = "B"
+    no_data_state  = "NoData"
+    exec_err_state = "Error"
+    annotations = {
+      "summary" : "Temperature Status"
+      "description" : "Temperature Status"
+    }
+    is_paused = false
+    data {
+      ref_id     = "A"
+      query_type = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      datasource_uid = grafana_data_source.prometheus.uid
+      model          = file("${path.module}/alerts_files/high_cpu_usage_A.json")
+    }
+
+    data {
+      ref_id         = "B"
+      datasource_uid = "-100"
+      query_type     = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      model = file("${path.module}/alerts_files/system_alerts_B.json")
+    }
+
+  }
+
+  rule {
+    name           = "Media Disk Usage"
+    for            = "5m"
+    condition      = "B"
+    no_data_state  = "NoData"
+    exec_err_state = "Error"
+    annotations = {
+      "summary" : "Media Disk Usage Percentage"
+      "description" : "Media Disk Usage Percentage"
+    }
+    is_paused = false
+    data {
+      ref_id     = "A"
+      query_type = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      datasource_uid = grafana_data_source.prometheus.uid
+      model          = file("${path.module}/alerts_files/high_media_disk_usage.json")
+    }
+
+    data {
+      ref_id         = "B"
+      datasource_uid = "-100"
+      query_type     = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      model = file("${path.module}/alerts_files/system_alerts_B.json")
+    }
+
+  }
+
+}
