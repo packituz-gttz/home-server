@@ -7,7 +7,6 @@ resource "grafana_data_source" "prometheus" {
     httpMethod = "POST"
   })
 
-  #   uid = "hCsE-CCSk"
   uid = var.prometheus_data_source_uid
 
 }
