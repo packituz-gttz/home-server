@@ -3,6 +3,10 @@ variable "admin_user" {
   description = "Grafana admin user name"
 }
 
+variable "admin_token" {
+  type = string
+}
+
 variable "admin_email" {
   type        = string
   description = "Grafana admin user email"
