@@ -25,5 +25,5 @@ variable "cloudflare_notification_email" {
 
 variable "server_local_ip" {
   type        = string
-  description = "Server IP on local network"
+  description = "Server ip on local network"
 }
