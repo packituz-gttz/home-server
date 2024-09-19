@@ -9,12 +9,6 @@ resource "cloudflare_zero_trust_tunnel_cloudflared" "packituz_dev_tunnel" {
   config_src = "cloudflare"
 }
 
-resource "cloudflare_bot_management" "bot_management" {
-  zone_id    = var.cloudflare_zone_id
-  enable_js  = true
-  fight_mode = true
-}
-
 resource "cloudflare_page_rule" "packituz_dev_cache_rule" {
   zone_id = var.cloudflare_zone_id
 
