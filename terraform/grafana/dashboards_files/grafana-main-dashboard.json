@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 4,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -49,7 +49,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"https://wallpapers-clan.com/wp-content/uploads/2023/12/2b-nier-automata-extravagant-wallpaper-scaled.jpg\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "transparent": true,
       "type": "text"
     },
@@ -91,6 +91,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -98,9 +99,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -133,11 +136,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "blue",
                 "value": null
               },
               {
-                "color": "#EAB839",
+                "color": "purple",
                 "value": 65
               },
               {
@@ -161,6 +164,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -168,9 +172,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -208,7 +214,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"https://wallpapers-clan.com/wp-content/uploads/2023/11/2b-nier-automata-head-radiant-wallpaper-scaled.jpg\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "transparent": true,
       "type": "text"
     },
@@ -248,6 +254,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -255,9 +262,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -290,11 +299,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "blue",
                 "value": null
               },
               {
-                "color": "#EAB839",
+                "color": "purple",
                 "value": 50
               },
               {
@@ -319,6 +328,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -326,9 +336,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -354,7 +366,7 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "continuous-BlPu"
           },
           "mappings": [],
           "thresholds": {
@@ -363,10 +375,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 1
               }
             ]
           }
@@ -382,8 +390,10 @@
       "id": 111,
       "options": {
         "displayMode": "gradient",
+        "maxVizHeight": 300,
         "minVizHeight": 10,
         "minVizWidth": 0,
+        "namePlacement": "auto",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -392,9 +402,11 @@
           "fields": "",
           "values": false
         },
-        "showUnfilled": true
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -411,7 +423,6 @@
         }
       ],
       "title": "Usage Per CPU",
-      "transformations": [],
       "type": "bargauge"
     },
     {
@@ -430,11 +441,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "blue",
                 "value": null
               },
               {
-                "color": "#EAB839",
+                "color": "purple",
                 "value": 6
               },
               {
@@ -458,6 +469,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -465,9 +477,11 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -497,7 +511,11 @@
           },
           "custom": {
             "align": "center",
-            "displayMode": "lcd-gauge",
+            "cellOptions": {
+              "mode": "gradient",
+              "type": "gauge",
+              "valueDisplayMode": "text"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -506,11 +524,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "blue",
                 "value": null
               },
               {
-                "color": "#EAB839",
+                "color": "purple",
                 "value": 70
               },
               {
@@ -531,7 +549,9 @@
       },
       "id": 109,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -542,7 +562,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -612,7 +632,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "color-text",
+            "cellOptions": {
+              "type": "color-text"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -705,7 +727,9 @@
       },
       "id": 141,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -720,7 +744,7 @@
           }
         ]
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -773,7 +797,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "color-text",
+            "cellOptions": {
+              "type": "color-text"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -818,7 +844,9 @@
       },
       "id": 146,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -833,7 +861,7 @@
           }
         ]
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -904,7 +932,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "color-text",
+            "cellOptions": {
+              "type": "color-text"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -961,7 +991,9 @@
       },
       "id": 147,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "enablePagination": false,
           "fields": "",
           "reducer": [
@@ -973,7 +1005,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "targets": [
         {
           "datasource": {
@@ -1068,7 +1100,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/1e4e4a12-b3af-4c82-a316-b57daa24cbfd\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "transparent": true,
       "type": "text"
     },
@@ -1093,14 +1125,13 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/c069f55b-9f3a-455f-816e-daa1d871615e\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.2.0",
       "transparent": true,
       "type": "text"
     }
   ],
   "refresh": "5s",
-  "schemaVersion": 37,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": [
@@ -1181,6 +1212,6 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 26,
+  "version": 1,
   "weekStart": ""
 }
