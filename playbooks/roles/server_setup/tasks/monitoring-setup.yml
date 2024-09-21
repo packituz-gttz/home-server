@@ -47,13 +47,12 @@
     - "/tmp/{{ prometheus_package_name }}/console_libraries"
 
 - name: Copy Prometheus main and web configuration file
-  ansible.builtin.template:
-    src: '{{ item }}'
+  ansible.builtin.copy:
+    src: files/prometheus/prometheus.yml
     dest: /etc/prometheus/
     group: '{{ prometheus_user }}'
     owner: '{{ prometheus_user }}'
-  loop:
-    - "templates/prometheus/prometheus.yml"
+
 
 - name: Copy Prometheus service file
   ansible.builtin.copy:
@@ -175,6 +174,54 @@
   ansible.builtin.systemd:
     daemon_reload: true
     name: prometheus_folder_size_exporter
+    state: restarted
+    enabled: true
+
+## Setup Blackbox exporter
+
+- name: Add blackbox_exporter user
+  ansible.builtin.user:
+    name: '{{ blackbox_exporter_user }}'
+    shell: /bin/false
+    state: present
+    create_home: false
+
+- name: Create blackbox directories
+  ansible.builtin.file:
+    path: /etc/blackbox
+    state: directory
+    owner: '{{ blackbox_exporter_user }}'
+    group: '{{ blackbox_exporter_user }}'
+
+- name: Download Blackbox exporter
+  ansible.builtin.unarchive:
+    src: 'https://github.com/prometheus/blackbox_exporter/releases/download/v0.25.0/blackbox_exporter-0.25.0.linux-amd64.tar.gz'
+    dest: /tmp/
+    remote_src: true
+
+- name: Copy Blackbox exporter executable
+  ansible.builtin.copy:
+    src: /tmp/blackbox_exporter-0.25.0.linux-amd64/blackbox_exporter
+    dest: /usr/local/bin/
+    group: '{{ blackbox_exporter_user }}'
+    owner: '{{ blackbox_exporter_user }}'
+    remote_src: true
+    mode: preserve
+
+- name: Copy Blackbox Exporter service file
+  ansible.builtin.copy:
+    src: files/blackbox_exporter/blackbox_exporter.service
+    dest: /etc/systemd/system/
+
+- name: Copy Blackbox configuration file
+  ansible.builtin.copy:
+    src: files/blackbox_exporter/blackbox.yml
+    dest: /etc/blackbox/
+
+- name: Reload systemctl daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: blackbox_exporter
     state: restarted
     enabled: true
 

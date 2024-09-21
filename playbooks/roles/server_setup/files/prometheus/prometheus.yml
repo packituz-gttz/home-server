@@ -1,0 +1,49 @@
+global:
+  scrape_interval: 10s
+
+rule_files:
+#  - "rules.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+      - targets:
+#          - localhost:9093
+
+scrape_configs:
+  - job_name: 'node'
+    static_configs:
+      - targets: [ "localhost:9100" ]
+
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['localhost:8080']
+
+  - job_name: 'folder_size'
+    static_configs:
+      - targets: ['localhost:9974']
+
+  - job_name: 'blackbox'
+    metrics_path: /probe
+    params:
+      module: [ http_2xx ]  # Look for a HTTP 200 response.
+    static_configs:
+      - targets:
+          - https://jelly.packituz.dev
+          - https://home.packituz.dev
+          - https://grafana.packituz.dev
+          - https://music.packituz.dev
+          - https://comics.packituz.dev
+          - https://notes.packituz.dev
+    relabel_configs:
+      - source_labels: [ __address__ ]
+        target_label: __param_target
+      - source_labels: [ __param_target ]
+        target_label: instance
+      - target_label: __address__
+        replacement: 127.0.0.1:9115  # The blackbox exporter's real hostname:port.
+
