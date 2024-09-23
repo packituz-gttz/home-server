@@ -1,0 +1,34 @@
+{
+  "conditions": [
+    {
+      "evaluator": {
+        "params": [
+          1
+        ],
+        "type": "lt"
+      },
+      "operator": {
+        "type": "and"
+      },
+      "query": {
+        "params": [
+          "C"
+        ]
+      },
+      "reducer": {
+        "params": [],
+        "type": "last"
+      },
+      "type": "query"
+    }
+  ],
+  "datasource": {
+    "type": "__expr__",
+    "uid": "__expr__"
+  },
+  "expression": "A",
+  "intervalMs": 1000,
+  "maxDataPoints": 43200,
+  "refId": "C",
+  "type": "threshold"
+}
