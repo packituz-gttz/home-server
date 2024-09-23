@@ -1,0 +1,10 @@
+{
+  "editorMode": "code",
+  "expr": "probe_success",
+  "instant": true,
+  "intervalMs": 1000,
+  "legendFormat": "__auto",
+  "maxDataPoints": 43200,
+  "range": false,
+  "refId": "A"
+}

@@ -327,3 +327,48 @@ resource "grafana_rule_group" "system_alerts" {
   }
 
 }
+
+
+resource "grafana_rule_group" "network_alerts" {
+  folder_uid         = grafana_folder.network_alerts_folder.uid
+  name               = "Network Alerts"
+  org_id             = grafana_organization.main_org.id
+  disable_provenance = true
+  interval_seconds   = 60
+
+  rule {
+    name           = "Webpages Status"
+    for            = "5m"
+    condition      = "B"
+    no_data_state  = "NoData"
+    exec_err_state = "Error"
+    annotations = {
+      "summary" : "Webpage Status"
+      "description" : "Webpage Status"
+    }
+    is_paused = false
+    data {
+      ref_id     = "A"
+      query_type = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      datasource_uid = grafana_data_source.prometheus.uid
+      model          = file("${path.module}/alerts_files/network_status_A.json")
+    }
+
+    data {
+      ref_id         = "C"
+      datasource_uid = "-100"
+      query_type     = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      model = file("${path.module}/alerts_files/network_alerts_C.json")
+    }
+
+  }
+
+}
