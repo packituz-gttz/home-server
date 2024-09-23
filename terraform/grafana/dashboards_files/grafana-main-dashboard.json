@@ -1380,6 +1380,7 @@
         "type": "prometheus",
         "uid": "hCsE-CCSk"
       },
+      "description": "Checks if webpages are online",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1392,7 +1393,6 @@
               "tooltip": false,
               "viz": false
             },
-            "insertNulls": null,
             "lineWidth": 0,
             "spanNulls": false
           },
@@ -1407,7 +1407,7 @@
                 "1": {
                   "color": "blue",
                   "index": 0,
-                  "text": "up"
+                  "text": "Up"
                 }
               },
               "type": "value"
@@ -1463,7 +1463,7 @@
           "refId": "A"
         }
       ],
-      "title": "Status",
+      "title": "Webpages status",
       "type": "state-timeline"
     }
   ],
@@ -1549,6 +1549,6 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 4,
+  "version": 5,
   "weekStart": ""
 }
