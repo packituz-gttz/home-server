@@ -34,7 +34,7 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 18,
+        "h": 14,
         "w": 4,
         "x": 0,
         "y": 0
@@ -46,458 +46,12 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://wallpapers-clan.com/wp-content/uploads/2023/12/2b-nier-automata-extravagant-wallpaper-scaled.jpg\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/be0d03ba-e86a-4a37-9fd7-f783fe297734\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
       "pluginVersion": "11.2.0",
       "transparent": true,
       "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "Number of days server has been online",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "decimals": 0,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "d"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 4,
-        "y": 0
-      },
-      "id": 16,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "scalar((((node_time_seconds - node_boot_time_seconds) / 60) / 60)  / 24)",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Uptime",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "CPU temperature",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              },
-              {
-                "color": "purple",
-                "value": 65
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "celsius"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 10,
-        "x": 10,
-        "y": 0
-      },
-      "id": 12,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "node_hwmon_temp_celsius{sensor='temp2'}",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Temperature",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "gridPos": {
-        "h": 18,
-        "w": 4,
-        "x": 20,
-        "y": 0
-      },
-      "id": 117,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://wallpapers-clan.com/wp-content/uploads/2023/11/2b-nier-automata-head-radiant-wallpaper-scaled.jpg\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.2.0",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "CPU usage per core",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "continuous-BlPu"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 4,
-        "y": 4
-      },
-      "id": 111,
-      "options": {
-        "displayMode": "gradient",
-        "maxVizHeight": 300,
-        "minVizHeight": 10,
-        "minVizWidth": 0,
-        "namePlacement": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "11.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "rate(node_cpu_seconds_total{mode=\"system\"}[$__rate_interval])",
-          "format": "time_series",
-          "interval": "",
-          "legendFormat": "CPU-{{cpu}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Usage Per CPU",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "Percentage of memory used",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              },
-              {
-                "color": "purple",
-                "value": 50
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 10,
-        "x": 10,
-        "y": 4
-      },
-      "id": 2,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "100 - (node_memory_MemAvailable_bytes * 100) / node_memory_MemTotal_bytes",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Memory Usage",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "Total amount of named running containers",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 4,
-        "y": 8
-      },
-      "id": 64,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "count(time() - max(container_last_seen{name=~\".+\"}) by (name) <= 60)",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Running Containers",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "Average CPU load",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              },
-              {
-                "color": "purple",
-                "value": 6
-              },
-              {
-                "color": "red",
-                "value": 8
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 10,
-        "x": 10,
-        "y": 8
-      },
-      "id": 4,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "avg(node_load5)",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "CPU Usage",
-      "type": "stat"
     },
     {
       "datasource": {
@@ -546,7 +100,7 @@
         "h": 5,
         "w": 16,
         "x": 4,
-        "y": 12
+        "y": 0
       },
       "id": 109,
       "options": {
@@ -620,6 +174,502 @@
         }
       ],
       "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 117,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/47208afb-5450-45d4-9c77-a2107458b395\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.0",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "Number of days server has been online",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "d"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 4,
+        "y": 5
+      },
+      "id": 16,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "scalar((((node_time_seconds - node_boot_time_seconds) / 60) / 60)  / 24)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Uptime",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "Percentage of memory used",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "purple",
+                "value": 50
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 10,
+        "x": 10,
+        "y": 5
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "100 - (node_memory_MemAvailable_bytes * 100) / node_memory_MemTotal_bytes",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Memory Usage",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "Total amount of named running containers",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 4,
+        "y": 9
+      },
+      "id": 64,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "count(time() - max(container_last_seen{name=~\".+\"}) by (name) <= 60)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Running Containers",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "CPU temperature",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "purple",
+                "value": 65
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 10,
+        "x": 10,
+        "y": 9
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "node_hwmon_temp_celsius{sensor='temp2'}",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Temperature",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "CPU usage per core",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlPu"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 4,
+        "y": 13
+      },
+      "id": 111,
+      "options": {
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "rate(node_cpu_seconds_total{mode=\"system\"}[$__rate_interval])",
+          "format": "time_series",
+          "interval": "",
+          "legendFormat": "CPU-{{cpu}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Usage Per CPU",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "Average CPU load",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "purple",
+                "value": 6
+              },
+              {
+                "color": "red",
+                "value": 8
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 10,
+        "x": 10,
+        "y": 13
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "avg(node_load5)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "CPU Usage",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 4,
+        "x": 0,
+        "y": 14
+      },
+      "id": 142,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/ffb5b81f-c21f-4639-a89e-a0b11eb87009\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.0",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 4,
+        "x": 20,
+        "y": 14
+      },
+      "id": 143,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/bae66555-7612-4466-96b5-c4209b65b0b7\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.0",
+      "transparent": true,
+      "type": "text"
     },
     {
       "datasource": {
@@ -1086,60 +1136,10 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 15,
-        "w": 4,
-        "x": 0,
-        "y": 18
-      },
-      "id": 142,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/1e4e4a12-b3af-4c82-a316-b57daa24cbfd\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.2.0",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "gridPos": {
-        "h": 15,
-        "w": 4,
-        "x": 20,
-        "y": 18
-      },
-      "id": 143,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/c069f55b-9f3a-455f-816e-daa1d871615e\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.2.0",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "gridPos": {
         "h": 14,
         "w": 4,
         "x": 0,
-        "y": 33
+        "y": 28
       },
       "id": 150,
       "options": {
@@ -1148,7 +1148,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/60d61138-9c01-404f-a4fc-0431a419f298\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/273a0789-8e8a-4cb2-9cd1-bf803f918de0\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
       "pluginVersion": "11.2.0",
@@ -1164,7 +1164,7 @@
         "h": 14,
         "w": 4,
         "x": 20,
-        "y": 33
+        "y": 28
       },
       "id": 151,
       "options": {
@@ -1173,7 +1173,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/e58a35ab-4f42-4875-9da8-aeed054b29ff\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/501e03ef-2958-411e-b37c-4a3de5661eda\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
       "pluginVersion": "11.2.0",
@@ -1393,6 +1393,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineWidth": 0,
             "spanNulls": false
           },
@@ -1549,6 +1550,6 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 5,
+  "version": 6,
   "weekStart": ""
 }
