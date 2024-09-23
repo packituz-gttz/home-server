@@ -359,14 +359,14 @@ resource "grafana_rule_group" "network_alerts" {
     }
 
     data {
-      ref_id         = "C"
+      ref_id         = "B"
       datasource_uid = "-100"
       query_type     = ""
       relative_time_range {
         from = 600
         to   = 0
       }
-      model = file("${path.module}/alerts_files/network_alerts_C.json")
+      model = file("${path.module}/alerts_files/network_alerts_B.json")
     }
 
   }
