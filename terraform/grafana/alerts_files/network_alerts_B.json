@@ -3,7 +3,8 @@
     {
       "evaluator": {
         "params": [
-          1
+          1,
+          0
         ],
         "type": "lt"
       },
@@ -11,24 +12,24 @@
         "type": "and"
       },
       "query": {
-        "params": [
-          "C"
-        ]
+        "params": []
       },
       "reducer": {
         "params": [],
-        "type": "last"
+        "type": "avg"
       },
       "type": "query"
     }
   ],
   "datasource": {
+    "name": "Expression",
     "type": "__expr__",
     "uid": "__expr__"
   },
   "expression": "A",
+  "hide": false,
   "intervalMs": 1000,
   "maxDataPoints": 43200,
-  "refId": "C",
+  "refId": "B",
   "type": "threshold"
 }
