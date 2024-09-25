@@ -34,7 +34,7 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 15,
+        "h": 17,
         "w": 5,
         "x": 0,
         "y": 0
@@ -46,7 +46,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/795b79b4-ae94-465b-9210-63d290393df3\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/a6c1727a-f684-4e96-af48-93787f31231f\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
       "pluginVersion": "11.2.0",
@@ -335,7 +335,7 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 15,
+        "h": 17,
         "w": 5,
         "x": 19,
         "y": 0
@@ -347,7 +347,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/c3bf1940-e08d-4ae8-9b37-f5865952a2a5\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/98849baf-da9e-4e5d-ae2d-a26430ae1b14\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
       "pluginVersion": "11.2.0",
@@ -360,10 +360,10 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 14,
+        "h": 17,
         "w": 5,
         "x": 0,
-        "y": 15
+        "y": 17
       },
       "id": 140,
       "options": {
@@ -372,7 +372,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/99e63250-2f8c-4d98-a428-57a3bcf877f2\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/517dca24-483a-4f80-afd4-ccafeabff9c2\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
       "pluginVersion": "11.2.0",
@@ -385,10 +385,10 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 14,
+        "h": 17,
         "w": 5,
         "x": 19,
-        "y": 15
+        "y": 17
       },
       "id": 141,
       "options": {
@@ -397,7 +397,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/483821c9-8852-4c9d-bc7f-fb0dbf9f3624\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/03352060-a463-44f8-a227-a0dda8c703c7\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
       "pluginVersion": "11.2.0",
@@ -732,6 +732,6 @@
   "timezone": "",
   "title": "Server Docker Detail",
   "uid": "cuUieq3Iz",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
