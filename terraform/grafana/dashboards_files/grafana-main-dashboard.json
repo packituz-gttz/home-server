@@ -1173,7 +1173,7 @@
           "showLineNumbers": false,
           "showMiniMap": false
         },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/501e03ef-2958-411e-b37c-4a3de5661eda\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/8ada054e-d771-447e-9143-b1b658cb5d28\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
       "pluginVersion": "11.2.0",
@@ -1376,6 +1376,31 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 4,
+        "x": 0,
+        "y": 42
+      },
+      "id": 153,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/1b8699ce-b01e-4c41-88a5-8e977e4b7d16\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.0",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
         "default": true,
         "type": "prometheus",
         "uid": "hCsE-CCSk"
@@ -1466,6 +1491,31 @@
       ],
       "title": "Webpages status",
       "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 4,
+        "x": 20,
+        "y": 42
+      },
+      "id": 154,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"https://images-ng.pixai.art/images/orig/5f6cc5fc-44f9-47d6-aff9-6fc93bdbf2b5\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.0",
+      "transparent": true,
+      "type": "text"
     }
   ],
   "refresh": "5s",
@@ -1550,6 +1600,6 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 6,
+  "version": 7,
   "weekStart": ""
 }
