@@ -1,0 +1,10 @@
+{
+  "editorMode": "code",
+  "expr": "rate(node_disk_read_time_seconds_total{device=~\"sda|sdb\"}[1m]) / rate(node_disk_reads_completed_total{device=~\"sda|sdb\"}[1m])",
+  "instant": true,
+  "intervalMs": 1000,
+  "legendFormat": "__auto",
+  "maxDataPoints": 43200,
+  "range": false,
+  "refId": "A"
+}
