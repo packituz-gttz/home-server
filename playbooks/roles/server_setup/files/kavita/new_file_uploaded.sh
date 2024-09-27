@@ -2,8 +2,8 @@
 
 echo "Starting Kavita Directory Creation for new files"
 
-PROGRAMING_BOOKS_PATH=/mnt/media/Kavita/Books/Programming
-NOVELS_BOOKS_PATH=/mnt/media/Kavita/Books/Novels
+PROGRAMING_BOOKS_PATH=/mnt/media/Kavita/manga/Books/Programming
+NOVELS_BOOKS_PATH=/mnt/media/Kavita/manga/Books/Novels
 
 cd "${PROGRAMING_BOOKS_PATH}" || exit 1
 
