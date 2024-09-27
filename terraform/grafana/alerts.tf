@@ -326,6 +326,40 @@ resource "grafana_rule_group" "system_alerts" {
 
   }
 
+  rule {
+    name           = "Disk Read Latency"
+    for            = "5m"
+    condition      = "B"
+    no_data_state  = "NoData"
+    exec_err_state = "Error"
+    annotations = {
+      "summary" : "Disk Read Latency Issue",
+      "description" : "Disk Read Latency Issue"
+    }
+    is_paused = false
+    data {
+      ref_id     = "A"
+      query_type = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      datasource_uid = grafana_data_source.prometheus.uid
+      model          = file("${path.module}/alerts_files/disk_read_latency_A.json")
+    }
+
+    data {
+      ref_id         = "B"
+      datasource_uid = "-100"
+      query_type     = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      model = file("${path.module}/alerts_files/system_alerts_B.json")
+    }
+  }
+
 }
 
 
