@@ -58,153 +58,6 @@
         "type": "prometheus",
         "uid": "hCsE-CCSk"
       },
-      "description": "Used FS space",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "center",
-            "cellOptions": {
-              "mode": "gradient",
-              "type": "gauge",
-              "valueDisplayMode": "text"
-            },
-            "filterable": false,
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              },
-              {
-                "color": "purple",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 16,
-        "x": 4,
-        "y": 0
-      },
-      "id": 109,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "frameIndex": 0,
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "11.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "100 - (node_filesystem_avail_bytes{mountpoint=\"/\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/\"}",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "100 - (node_filesystem_avail_bytes{mountpoint=\"/mnt/media\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/mnt/media\"}",
-          "hide": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "FS % Use Space",
-      "transformations": [
-        {
-          "id": "joinByLabels",
-          "options": {
-            "join": [
-              "instance"
-            ],
-            "value": "mountpoint"
-          }
-        },
-        {
-          "id": "limit",
-          "options": {
-            "limitField": 1
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "instance": true
-            },
-            "indexByName": {},
-            "renameByName": {
-              "1:2": "/mnt/media"
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "gridPos": {
-        "h": 14,
-        "w": 4,
-        "x": 20,
-        "y": 0
-      },
-      "id": 117,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a2107458b395.png\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.2.0",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
       "description": "Number of days server has been online",
       "fieldConfig": {
         "defaults": {
@@ -230,7 +83,7 @@
         "h": 4,
         "w": 6,
         "x": 4,
-        "y": 5
+        "y": 0
       },
       "id": 16,
       "options": {
@@ -304,7 +157,7 @@
         "h": 4,
         "w": 10,
         "x": 10,
-        "y": 5
+        "y": 0
       },
       "id": 2,
       "options": {
@@ -346,6 +199,31 @@
         "type": "prometheus",
         "uid": "hCsE-CCSk"
       },
+      "gridPos": {
+        "h": 14,
+        "w": 4,
+        "x": 20,
+        "y": 0
+      },
+      "id": 117,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a2107458b395.png\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.0",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
       "description": "Total amount of named running containers",
       "fieldConfig": {
         "defaults": {
@@ -369,7 +247,7 @@
         "h": 4,
         "w": 6,
         "x": 4,
-        "y": 9
+        "y": 4
       },
       "id": 64,
       "options": {
@@ -443,7 +321,7 @@
         "h": 4,
         "w": 10,
         "x": 10,
-        "y": 9
+        "y": 4
       },
       "id": 12,
       "options": {
@@ -508,7 +386,7 @@
         "h": 4,
         "w": 6,
         "x": 4,
-        "y": 13
+        "y": 8
       },
       "id": 111,
       "options": {
@@ -584,7 +462,7 @@
         "h": 4,
         "w": 10,
         "x": 10,
-        "y": 13
+        "y": 8
       },
       "id": 4,
       "options": {
@@ -620,6 +498,128 @@
       ],
       "title": "CPU Usage",
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "Used FS space",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "mode": "gradient",
+              "type": "gauge",
+              "valueDisplayMode": "text"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "purple",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 16,
+        "x": 4,
+        "y": 12
+      },
+      "id": 109,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "11.2.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "100 - (node_filesystem_avail_bytes{mountpoint=\"/\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/\"}",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "100 - (node_filesystem_avail_bytes{mountpoint=\"/mnt/media\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/mnt/media\"}",
+          "hide": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "FS % Use Space",
+      "transformations": [
+        {
+          "id": "joinByLabels",
+          "options": {
+            "join": [
+              "instance"
+            ],
+            "value": "mountpoint"
+          }
+        },
+        {
+          "id": "limit",
+          "options": {
+            "limitField": 1
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "instance": true
+            },
+            "indexByName": {},
+            "renameByName": {
+              "1:2": "/mnt/media"
+            }
+          }
+        }
+      ],
+      "type": "table"
     },
     {
       "datasource": {
@@ -1600,6 +1600,6 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 7,
+  "version": 10,
   "weekStart": ""
 }
