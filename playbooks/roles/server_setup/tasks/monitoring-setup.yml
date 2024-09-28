@@ -225,6 +225,28 @@
     state: restarted
     enabled: true
 
+# Setup PixAI exporter
+
+- name: Download Grafana dashboard images
+  ansible.builtin.get_url:
+    url: https://github.com/packituz-gttz/pixai-exporter/releases/download/v0.1.0-alpha/pixai_exporter
+    dest: /usr/local/bin/
+    owner: '{{ node_exporter_user }}'
+    group: '{{ node_exporter_user }}'
+    mode: '0775'
+
+- name: Copy PixAI Exporter service file
+  ansible.builtin.template:
+    src: pixai_exporter/pixai_exporter.service
+    dest: /etc/systemd/system/pixai_exporter.service
+
+- name: Reload systemctl daemon
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: pixai_exporter
+    state: restarted
+    enabled: true
+
 ## Setup Grafana
 
 - name: Create Grafana directories
