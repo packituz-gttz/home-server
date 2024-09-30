@@ -587,8 +587,100 @@
           "refId": "A"
         }
       ],
-      "title": "PixAI Available Tokens",
+      "title": "PixAI Available Credit Tokens",
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "Expiration days for tokens",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "red",
+                  "index": 0
+                },
+                "to": 3
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 4,
+                "result": {
+                  "color": "purple",
+                  "index": 1
+                },
+                "to": 15
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "d"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 10,
+        "y": 12
+      },
+      "id": 161,
+      "options": {
+        "displayMode": "basic",
+        "maxVizHeight": 41,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.2.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "pixai_token_days_until_expiration",
+          "instant": false,
+          "legendFormat": "{{token}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "PixAI API Tokens Expiration",
+      "type": "bargauge"
     },
     {
       "datasource": {
@@ -635,8 +727,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 10,
-        "x": 10,
+        "w": 5,
+        "x": 15,
         "y": 12
       },
       "id": 109,
@@ -1840,6 +1932,6 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 12,
+  "version": 13,
   "weekStart": ""
 }

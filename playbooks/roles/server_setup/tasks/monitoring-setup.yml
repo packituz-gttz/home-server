@@ -229,7 +229,7 @@
 
 - name: Download Grafana dashboard images
   ansible.builtin.get_url:
-    url: https://github.com/packituz-gttz/pixai-exporter/releases/download/v0.1.0-alpha/pixai_exporter
+    url: https://github.com/packituz-gttz/pixai-exporter/releases/download/v0.1.1-alpha/pixai_exporter
     dest: /usr/local/bin/
     owner: '{{ node_exporter_user }}'
     group: '{{ node_exporter_user }}'
