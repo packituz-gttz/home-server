@@ -501,189 +501,6 @@
     },
     {
       "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "from": 0,
-                "result": {
-                  "color": "red",
-                  "index": 0
-                },
-                "to": 10000
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 10001,
-                "result": {
-                  "color": "purple",
-                  "index": 1
-                },
-                "to": 20000
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "Tokens"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 4,
-        "y": 12
-      },
-      "id": 158,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.2.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "pixai_available_tokens_total",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "{{__name__}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "PixAI Available Credit Tokens",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "Expiration days for tokens",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "from": 0,
-                "result": {
-                  "color": "red",
-                  "index": 0
-                },
-                "to": 3
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 4,
-                "result": {
-                  "color": "purple",
-                  "index": 1
-                },
-                "to": 15
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "d"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 5,
-        "x": 10,
-        "y": 12
-      },
-      "id": 161,
-      "options": {
-        "displayMode": "basic",
-        "maxVizHeight": 41,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "11.2.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "pixai_token_days_until_expiration",
-          "instant": false,
-          "legendFormat": "{{token}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "PixAI API Tokens Expiration",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
         "type": "prometheus",
         "uid": "hCsE-CCSk"
       },
@@ -726,9 +543,9 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 5,
-        "x": 15,
+        "h": 5,
+        "w": 16,
+        "x": 4,
         "y": 12
       },
       "id": 109,
@@ -856,6 +673,279 @@
     },
     {
       "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "red",
+                  "index": 0
+                },
+                "to": 10000
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 10001,
+                "result": {
+                  "color": "purple",
+                  "index": 1
+                },
+                "to": 20000
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "Tokens"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 4,
+        "y": 17
+      },
+      "id": 158,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "pixai_available_tokens_total",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{__name__}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "PixAI Available Credit Tokens",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "Expiration days for tokens",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "red",
+                  "index": 0
+                },
+                "to": 3
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 4,
+                "result": {
+                  "color": "purple",
+                  "index": 1
+                },
+                "to": 15
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "d"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 10,
+        "y": 17
+      },
+      "id": 161,
+      "options": {
+        "displayMode": "basic",
+        "maxVizHeight": 41,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.2.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "pixai_token_days_until_expiration",
+          "instant": false,
+          "legendFormat": "{{token}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "PixAI API Tokens Expiration",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "red",
+                  "index": 0
+                },
+                "to": 2
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 3,
+                "result": {
+                  "color": "purple",
+                  "index": 1
+                },
+                "to": 10
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "day"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 15,
+        "y": 17
+      },
+      "id": 162,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "pixai_days_until_subscription_expiration",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Subscription Days Left",
+      "type": "stat"
+    },
+    {
+      "datasource": {
         "type": "prometheus",
         "uid": "hCsE-CCSk"
       },
@@ -957,7 +1047,7 @@
         "h": 19,
         "w": 6,
         "x": 4,
-        "y": 18
+        "y": 23
       },
       "id": 141,
       "options": {
@@ -1074,7 +1164,7 @@
         "h": 19,
         "w": 5,
         "x": 10,
-        "y": 18
+        "y": 23
       },
       "id": 146,
       "options": {
@@ -1221,7 +1311,7 @@
         "h": 19,
         "w": 5,
         "x": 15,
-        "y": 18
+        "y": 23
       },
       "id": 147,
       "options": {
@@ -1365,6 +1455,31 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 4,
+        "x": 0,
+        "y": 42
+      },
+      "id": 153,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/8e977e4b7d16.png\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.1",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
         "default": true,
         "type": "prometheus",
         "uid": "hCsE-CCSk"
@@ -1453,7 +1568,7 @@
         "h": 6,
         "w": 8,
         "x": 4,
-        "y": 37
+        "y": 42
       },
       "id": 148,
       "options": {
@@ -1550,7 +1665,7 @@
         "h": 6,
         "w": 8,
         "x": 12,
-        "y": 37
+        "y": 42
       },
       "id": 149,
       "options": {
@@ -1581,31 +1696,6 @@
       ],
       "title": "Disk Write Latency",
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "gridPos": {
-        "h": 14,
-        "w": 4,
-        "x": 0,
-        "y": 42
-      },
-      "id": 153,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/8e977e4b7d16.png\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.2.1",
-      "transparent": true,
-      "type": "text"
     },
     {
       "datasource": {
@@ -1688,7 +1778,7 @@
         "h": 7,
         "w": 16,
         "x": 4,
-        "y": 43
+        "y": 48
       },
       "id": 152,
       "options": {
@@ -1734,7 +1824,7 @@
         "h": 12,
         "w": 8,
         "x": 4,
-        "y": 50
+        "y": 55
       },
       "id": 155,
       "options": {
@@ -1771,7 +1861,7 @@
         "h": 12,
         "w": 8,
         "x": 12,
-        "y": 50
+        "y": 55
       },
       "id": 157,
       "options": {
@@ -1810,6 +1900,56 @@
         "x": 0,
         "y": 56
       },
+      "id": 163,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/93787f31231f.png\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.1",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 4,
+        "x": 20,
+        "y": 56
+      },
+      "id": 164,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/ccafeabff9c2.png\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.1",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 4,
+        "x": 0,
+        "y": 70
+      },
       "id": 159,
       "options": {
         "code": {
@@ -1833,7 +1973,7 @@
         "h": 14,
         "w": 4,
         "x": 20,
-        "y": 56
+        "y": 70
       },
       "id": 160,
       "options": {
@@ -1932,6 +2072,6 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 13,
+  "version": 14,
   "weekStart": ""
 }
