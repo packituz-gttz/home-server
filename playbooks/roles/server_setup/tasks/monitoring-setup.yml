@@ -277,7 +277,7 @@
 - name: Pull and run Grafana
   community.docker.docker_container:
     name: grafana
-    image: "grafana/grafana:11.2.1"
+    image: "grafana/grafana:11.2.2"
     state: started
     restart_policy: "unless-stopped"
     user: "{{ getent_output.ansible_facts.getent_passwd[superuser_name][1] }}"
