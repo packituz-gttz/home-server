@@ -34,8 +34,8 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 14,
-        "w": 4,
+        "h": 17,
+        "w": 5,
         "x": 0,
         "y": 0
       },
@@ -49,7 +49,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/f783fe297734.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "transparent": true,
       "type": "text"
     },
@@ -81,8 +81,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 6,
-        "x": 4,
+        "w": 3,
+        "x": 5,
         "y": 0
       },
       "id": 16,
@@ -103,7 +103,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -118,6 +118,71 @@
         }
       ],
       "title": "Uptime",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "Total amount of named running containers",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 8,
+        "y": 0
+      },
+      "id": 64,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "count(time() - max(container_last_seen{name=~\".+\"}) by (name) <= 60)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Running Containers",
       "type": "stat"
     },
     {
@@ -155,8 +220,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 10,
-        "x": 10,
+        "w": 8,
+        "x": 11,
         "y": 0
       },
       "id": 2,
@@ -177,7 +242,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -200,9 +265,9 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 14,
-        "w": 4,
-        "x": 20,
+        "h": 17,
+        "w": 5,
+        "x": 19,
         "y": 0
       },
       "id": 117,
@@ -215,7 +280,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a2107458b395.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "transparent": true,
       "type": "text"
     },
@@ -224,18 +289,18 @@
         "type": "prometheus",
         "uid": "hCsE-CCSk"
       },
-      "description": "Total amount of named running containers",
+      "description": "CPU usage per core",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "thresholds"
+            "mode": "continuous-BlPu"
           },
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
+                "color": "green",
                 "value": null
               }
             ]
@@ -246,16 +311,17 @@
       "gridPos": {
         "h": 4,
         "w": 6,
-        "x": 4,
+        "x": 5,
         "y": 4
       },
-      "id": 64,
+      "id": 111,
       "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "namePlacement": "auto",
         "orientation": "auto",
-        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -263,11 +329,11 @@
           "fields": "",
           "values": false
         },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -275,14 +341,16 @@
             "uid": "hCsE-CCSk"
           },
           "editorMode": "code",
-          "expr": "count(time() - max(container_last_seen{name=~\".+\"}) by (name) <= 60)",
-          "legendFormat": "__auto",
+          "expr": "rate(node_cpu_seconds_total{mode=\"system\"}[$__rate_interval])",
+          "format": "time_series",
+          "interval": "",
+          "legendFormat": "CPU-{{cpu}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Running Containers",
-      "type": "stat"
+      "title": "Usage Per CPU",
+      "type": "bargauge"
     },
     {
       "datasource": {
@@ -319,8 +387,8 @@
       },
       "gridPos": {
         "h": 4,
-        "w": 10,
-        "x": 10,
+        "w": 8,
+        "x": 11,
         "y": 4
       },
       "id": 12,
@@ -341,7 +409,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -356,147 +424,6 @@
         }
       ],
       "title": "Temperature",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "CPU usage per core",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "continuous-BlPu"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 6,
-        "x": 4,
-        "y": 8
-      },
-      "id": 111,
-      "options": {
-        "displayMode": "gradient",
-        "maxVizHeight": 300,
-        "minVizHeight": 10,
-        "minVizWidth": 0,
-        "namePlacement": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "11.2.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "rate(node_cpu_seconds_total{mode=\"system\"}[$__rate_interval])",
-          "format": "time_series",
-          "interval": "",
-          "legendFormat": "CPU-{{cpu}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Usage Per CPU",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "Average CPU load",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              },
-              {
-                "color": "purple",
-                "value": 6
-              },
-              {
-                "color": "red",
-                "value": 8
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 10,
-        "x": 10,
-        "y": 8
-      },
-      "id": 4,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.2.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "avg(node_load5)",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "CPU Usage",
       "type": "stat"
     },
     {
@@ -543,10 +470,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 5,
-        "w": 16,
-        "x": 4,
-        "y": 12
+        "h": 4,
+        "w": 6,
+        "x": 5,
+        "y": 8
       },
       "id": 109,
       "options": {
@@ -563,7 +490,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -626,11 +553,177 @@
         "type": "prometheus",
         "uid": "hCsE-CCSk"
       },
+      "description": "Average CPU load",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "purple",
+                "value": 6
+              },
+              {
+                "color": "red",
+                "value": 8
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 14,
-        "w": 4,
+        "h": 4,
+        "w": 8,
+        "x": 11,
+        "y": 8
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "avg(node_load5)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "CPU Usage",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "Checks if webpages are online",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "fillOpacity": 63,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineWidth": 0,
+            "spanNulls": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "Down"
+                },
+                "1": {
+                  "color": "blue",
+                  "index": 0,
+                  "text": "Up"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "transparent",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 14,
+        "x": 5,
+        "y": 12
+      },
+      "id": 152,
+      "options": {
+        "alignValue": "left",
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "mergeValues": true,
+        "rowHeight": 0.3,
+        "showValue": "never",
+        "tooltip": {
+          "mode": "none",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "probe_success",
+          "format": "time_series",
+          "instant": false,
+          "legendFormat": "{{instance}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Webpages status",
+      "type": "state-timeline"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 5,
         "x": 0,
-        "y": 14
+        "y": 17
       },
       "id": 142,
       "options": {
@@ -642,7 +735,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a0b11eb87009.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "transparent": true,
       "type": "text"
     },
@@ -652,10 +745,10 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 14,
-        "w": 4,
-        "x": 20,
-        "y": 14
+        "h": 17,
+        "w": 5,
+        "x": 19,
+        "y": 17
       },
       "id": 143,
       "options": {
@@ -667,282 +760,9 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/c4209b65b0b7.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "transparent": true,
       "type": "text"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "from": 0,
-                "result": {
-                  "color": "red",
-                  "index": 0
-                },
-                "to": 10000
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 10001,
-                "result": {
-                  "color": "purple",
-                  "index": 1
-                },
-                "to": 20000
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "Tokens"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 4,
-        "y": 17
-      },
-      "id": 158,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.2.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "pixai_available_tokens_total",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "{{__name__}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "PixAI Available Credit Tokens",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "Expiration days for tokens",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "from": 0,
-                "result": {
-                  "color": "red",
-                  "index": 0
-                },
-                "to": 3
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 4,
-                "result": {
-                  "color": "purple",
-                  "index": 1
-                },
-                "to": 15
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "d"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 5,
-        "x": 10,
-        "y": 17
-      },
-      "id": 161,
-      "options": {
-        "displayMode": "basic",
-        "maxVizHeight": 41,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "11.2.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "pixai_token_days_until_expiration",
-          "instant": false,
-          "legendFormat": "{{token}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "PixAI API Tokens Expiration",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "from": 0,
-                "result": {
-                  "color": "red",
-                  "index": 0
-                },
-                "to": 2
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 3,
-                "result": {
-                  "color": "purple",
-                  "index": 1
-                },
-                "to": 10
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "day"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 5,
-        "x": 15,
-        "y": 17
-      },
-      "id": 162,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.2.1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "pixai_days_until_subscription_expiration",
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Subscription Days Left",
-      "type": "stat"
     },
     {
       "datasource": {
@@ -1045,9 +865,9 @@
       },
       "gridPos": {
         "h": 19,
-        "w": 6,
-        "x": 4,
-        "y": 23
+        "w": 7,
+        "x": 5,
+        "y": 19
       },
       "id": 141,
       "options": {
@@ -1068,7 +888,7 @@
           }
         ]
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -1108,6 +928,329 @@
         }
       ],
       "type": "table"
+    },
+    {
+      "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "red",
+                  "index": 0
+                },
+                "to": 10000
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 10001,
+                "result": {
+                  "color": "purple",
+                  "index": 1
+                },
+                "to": 20000
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "Tokens"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 7,
+        "x": 12,
+        "y": 19
+      },
+      "id": 158,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "pixai_available_tokens_total",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{__name__}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "PixAI Available Credit Tokens",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "Expiration days for tokens",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "red",
+                  "index": 0
+                },
+                "to": 3
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 4,
+                "result": {
+                  "color": "purple",
+                  "index": 1
+                },
+                "to": 15
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "d"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 12,
+        "y": 26
+      },
+      "id": 161,
+      "options": {
+        "displayMode": "basic",
+        "maxVizHeight": 41,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.2.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "pixai_token_days_until_expiration",
+          "instant": false,
+          "legendFormat": "{{token}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "PixAI API Tokens Expiration",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "red",
+                  "index": 0
+                },
+                "to": 2
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 3,
+                "result": {
+                  "color": "purple",
+                  "index": 1
+                },
+                "to": 10
+              },
+              "type": "range"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "day"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 12,
+        "y": 32
+      },
+      "id": 162,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.2.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "pixai_days_until_subscription_expiration",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Subscription Days Left",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 5,
+        "x": 0,
+        "y": 34
+      },
+      "id": 150,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/bf803f918de0.png\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 5,
+        "x": 19,
+        "y": 34
+      },
+      "id": 151,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/b1b658cb5d28.png\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.2",
+      "transparent": true,
+      "type": "text"
     },
     {
       "datasource": {
@@ -1162,9 +1305,9 @@
       },
       "gridPos": {
         "h": 19,
-        "w": 5,
-        "x": 10,
-        "y": 23
+        "w": 7,
+        "x": 5,
+        "y": 38
       },
       "id": 146,
       "options": {
@@ -1185,7 +1328,7 @@
           }
         ]
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -1309,9 +1452,9 @@
       },
       "gridPos": {
         "h": 19,
-        "w": 5,
-        "x": 15,
-        "y": 23
+        "w": 7,
+        "x": 12,
+        "y": 38
       },
       "id": 147,
       "options": {
@@ -1329,7 +1472,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "targets": [
         {
           "datasource": {
@@ -1409,60 +1552,10 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 14,
-        "w": 4,
+        "h": 17,
+        "w": 5,
         "x": 0,
-        "y": 28
-      },
-      "id": 150,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/bf803f918de0.png\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.2.1",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "gridPos": {
-        "h": 14,
-        "w": 4,
-        "x": 20,
-        "y": 28
-      },
-      "id": 151,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/b1b658cb5d28.png\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.2.1",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "gridPos": {
-        "h": 14,
-        "w": 4,
-        "x": 0,
-        "y": 42
+        "y": 51
       },
       "id": 153,
       "options": {
@@ -1474,7 +1567,32 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/8e977e4b7d16.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 5,
+        "x": 19,
+        "y": 51
+      },
+      "id": 154,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/6fc93bdbf2b5.png\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.2.2",
       "transparent": true,
       "type": "text"
     },
@@ -1566,9 +1684,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 8,
-        "x": 4,
-        "y": 42
+        "w": 7,
+        "x": 5,
+        "y": 57
       },
       "id": 148,
       "options": {
@@ -1663,9 +1781,9 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 8,
+        "w": 7,
         "x": 12,
-        "y": 42
+        "y": 57
       },
       "id": 149,
       "options": {
@@ -1703,128 +1821,10 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 14,
-        "w": 4,
-        "x": 20,
-        "y": 42
-      },
-      "id": 154,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/6fc93bdbf2b5.png\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.2.1",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "Checks if webpages are online",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "fillOpacity": 63,
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineWidth": 0,
-            "spanNulls": false
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "color": "red",
-                  "index": 1,
-                  "text": "Down"
-                },
-                "1": {
-                  "color": "blue",
-                  "index": 0,
-                  "text": "Up"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "transparent",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 16,
-        "x": 4,
-        "y": 48
-      },
-      "id": 152,
-      "options": {
-        "alignValue": "left",
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "mergeValues": true,
-        "rowHeight": 0.3,
-        "showValue": "never",
-        "tooltip": {
-          "mode": "none",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "probe_success",
-          "format": "time_series",
-          "instant": false,
-          "legendFormat": "{{instance}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Webpages status",
-      "type": "state-timeline"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 8,
-        "x": 4,
-        "y": 55
+        "h": 13,
+        "w": 7,
+        "x": 5,
+        "y": 63
       },
       "id": 155,
       "options": {
@@ -1858,10 +1858,10 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 12,
-        "w": 8,
+        "h": 13,
+        "w": 7,
         "x": 12,
-        "y": 55
+        "y": 63
       },
       "id": 157,
       "options": {
@@ -1895,10 +1895,10 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 14,
-        "w": 4,
+        "h": 17,
+        "w": 5,
         "x": 0,
-        "y": 56
+        "y": 68
       },
       "id": 163,
       "options": {
@@ -1910,7 +1910,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/93787f31231f.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "transparent": true,
       "type": "text"
     },
@@ -1920,10 +1920,10 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 14,
-        "w": 4,
-        "x": 20,
-        "y": 56
+        "h": 17,
+        "w": 5,
+        "x": 19,
+        "y": 68
       },
       "id": 164,
       "options": {
@@ -1935,7 +1935,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/ccafeabff9c2.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "transparent": true,
       "type": "text"
     },
@@ -1945,10 +1945,10 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 14,
-        "w": 4,
+        "h": 17,
+        "w": 5,
         "x": 0,
-        "y": 70
+        "y": 85
       },
       "id": 159,
       "options": {
@@ -1960,7 +1960,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/7067054e4abb.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "transparent": true,
       "type": "text"
     },
@@ -1970,10 +1970,10 @@
         "uid": "hCsE-CCSk"
       },
       "gridPos": {
-        "h": 14,
-        "w": 4,
-        "x": 20,
-        "y": 70
+        "h": 17,
+        "w": 5,
+        "x": 19,
+        "y": 85
       },
       "id": 160,
       "options": {
@@ -1985,7 +1985,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/1efa523996fc.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.1",
+      "pluginVersion": "11.2.2",
       "transparent": true,
       "type": "text"
     }
@@ -2072,6 +2072,6 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 14,
+  "version": 15,
   "weekStart": ""
 }
