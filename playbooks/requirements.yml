@@ -4,6 +4,6 @@ collections:
     version: 3.13.1
 
   - name: ansible.posix
-    version: 1.6.1
+    version: 1.6.2
 
 ...
