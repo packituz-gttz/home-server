@@ -26,12 +26,11 @@
   "graphTooltip": 0,
   "id": 4,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -49,7 +48,8 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/f783fe297734.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -103,7 +103,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
       "targets": [
         {
           "datasource": {
@@ -168,7 +168,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
       "targets": [
         {
           "datasource": {
@@ -242,7 +242,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
       "targets": [
         {
           "datasource": {
@@ -260,9 +260,9 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -280,7 +280,8 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a2107458b395.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -317,6 +318,12 @@
       "id": 111,
       "options": {
         "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
         "maxVizHeight": 300,
         "minVizHeight": 10,
         "minVizWidth": 0,
@@ -333,7 +340,7 @@
         "sizing": "auto",
         "valueMode": "color"
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
       "targets": [
         {
           "datasource": {
@@ -409,7 +416,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
       "targets": [
         {
           "datasource": {
@@ -490,7 +497,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
       "targets": [
         {
           "datasource": {
@@ -528,9 +535,14 @@
           }
         },
         {
-          "id": "limit",
+          "id": "reduce",
           "options": {
-            "limitField": 1
+            "includeTimeField": false,
+            "labelsToFields": false,
+            "mode": "reduceFields",
+            "reducers": [
+              "lastNotNull"
+            ]
           }
         },
         {
@@ -604,7 +616,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
       "targets": [
         {
           "datasource": {
@@ -695,6 +707,7 @@
           "sort": "none"
         }
       },
+      "pluginVersion": "11.3.2",
       "targets": [
         {
           "datasource": {
@@ -715,9 +728,9 @@
       "type": "state-timeline"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -735,14 +748,15 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a0b11eb87009.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -760,7 +774,8 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/c4209b65b0b7.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -888,7 +903,7 @@
           }
         ]
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
       "targets": [
         {
           "datasource": {
@@ -1001,7 +1016,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.3.2",
       "targets": [
         {
           "datasource": {
@@ -1060,8 +1075,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
@@ -1151,8 +1165,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
@@ -1203,9 +1216,9 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -1224,13 +1237,14 @@
         "mode": "html"
       },
       "pluginVersion": "11.2.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -1249,6 +1263,7 @@
         "mode": "html"
       },
       "pluginVersion": "11.2.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -1275,8 +1290,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
@@ -1410,8 +1424,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
@@ -1547,9 +1560,9 @@
       "type": "table"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -1568,13 +1581,14 @@
         "mode": "html"
       },
       "pluginVersion": "11.2.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -1593,6 +1607,7 @@
         "mode": "html"
       },
       "pluginVersion": "11.2.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -1649,8 +1664,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1771,8 +1785,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1816,9 +1829,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 13,
@@ -1853,9 +1866,9 @@
       "type": "alertlist"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 13,
@@ -1890,9 +1903,9 @@
       "type": "alertlist"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -1911,13 +1924,14 @@
         "mode": "html"
       },
       "pluginVersion": "11.2.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -1936,13 +1950,14 @@
         "mode": "html"
       },
       "pluginVersion": "11.2.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -1961,13 +1976,14 @@
         "mode": "html"
       },
       "pluginVersion": "11.2.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -1986,36 +2002,31 @@
         "mode": "html"
       },
       "pluginVersion": "11.2.2",
+      "title": "",
       "transparent": true,
       "type": "text"
     }
   ],
+  "preload": false,
   "refresh": "5s",
-  "schemaVersion": 39,
+  "schemaVersion": 40,
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": true,
           "text": [
-            "All"
+            "$__all"
           ],
           "value": [
             "$__all"
           ]
         },
-        "hide": 0,
         "includeAll": true,
         "label": "Docker Service",
         "multi": true,
         "name": "docker_service",
         "options": [
-          {
-            "selected": true,
-            "text": "All",
-            "value": "$__all"
-          },
           {
             "selected": false,
             "text": "navidrome",
@@ -2058,8 +2069,6 @@
           }
         ],
         "query": "navidrome,jellyfin,frigate, pingvin,kavita,cloudflare_tunnels,romm,ntfy_server",
-        "queryValue": "",
-        "skipUrlSync": false,
         "type": "custom"
       }
     ]
@@ -2072,6 +2081,6 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 15,
+  "version": 16,
   "weekStart": ""
 }
