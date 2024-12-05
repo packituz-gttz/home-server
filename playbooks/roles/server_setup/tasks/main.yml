@@ -74,4 +74,9 @@
   tags: [ 'ghost-setup', 'utils-group' ]
   become: true
 
+- name: Install JDownloader2
+  ansible.builtin.import_tasks: jdownloader2-setup.yml
+  tags: [ 'jdownloader2-setup', 'utils-group' ]
+  become: true
+
 ...

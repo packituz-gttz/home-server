@@ -1,0 +1,28 @@
+---
+- name: Create JDownloader2 media directories
+  ansible.builtin.file:
+    path: /mnt/media/JDownloader2
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Run JDownloader2 container
+  community.docker.docker_container:
+    name: jdownloader2
+    image: jlesage/jdownloader-2:v24.11.1
+    state: started
+    recreate: true
+    restart_policy: "unless-stopped"
+    published_ports:
+      - "5800:5800"
+    env:
+      WEB_AUTHENTICATION: "1"
+      SECURE_CONNECTION: "1"
+      WEB_AUTHENTICATION_USERNAME: '{{ jdownloader2_username }}'
+      WEB_AUTHENTICATION_PASSWORD: '{{ jdownloader2_password }}'
+    volumes:
+      - /mnt/media/JDownloader2/config:/config
+      - /mnt/media/JDownloader2/output:/output
+
+...
