@@ -198,7 +198,7 @@ resource "grafana_rule_group" "system_alerts" {
     }
 
     notification_settings {
-      contact_point = grafana_contact_point.telegram.id
+      contact_point = grafana_contact_point.telegram.name
     }
 
     is_paused = false
