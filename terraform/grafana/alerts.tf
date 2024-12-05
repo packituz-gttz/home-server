@@ -16,6 +16,11 @@ resource "grafana_rule_group" "docker_alerts" {
       "summary" : "Jellyfin down",
       "description" : "Jellyfin docker service is down"
     }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
     is_paused = false
     data {
       ref_id     = "A"
@@ -25,7 +30,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/jellyfin_status_A.json")
+      model = file("${path.module}/alerts_files/jellyfin_status_A.json")
     }
 
     data {
@@ -50,6 +55,11 @@ resource "grafana_rule_group" "docker_alerts" {
       "summary" : "Jump down",
       "description" : "Jump docker service is down"
     }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
     is_paused = false
     data {
       ref_id     = "A"
@@ -59,7 +69,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/jump_status_A.json")
+      model = file("${path.module}/alerts_files/jump_status_A.json")
     }
 
     data {
@@ -84,6 +94,11 @@ resource "grafana_rule_group" "docker_alerts" {
       "summary" : "Cloudflare Tunnels down",
       "description" : "Cloudflare Tunnels docker service is down"
     }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
     is_paused = false
     data {
       ref_id     = "A"
@@ -93,7 +108,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/cloudflare_tunnels_status_A.json")
+      model = file("${path.module}/alerts_files/cloudflare_tunnels_status_A.json")
     }
 
     data {
@@ -118,6 +133,11 @@ resource "grafana_rule_group" "docker_alerts" {
       "summary" : "Navidrome down",
       "description" : "Navidrome docker service is down"
     }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
     is_paused = false
     data {
       ref_id     = "A"
@@ -127,7 +147,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/navidrome_status_A.json")
+      model = file("${path.module}/alerts_files/navidrome_status_A.json")
     }
 
     data {
@@ -152,6 +172,11 @@ resource "grafana_rule_group" "docker_alerts" {
       "summary" : "Kavita down",
       "description" : "Kavita docker service is down"
     }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
     is_paused = false
     data {
       ref_id     = "A"
@@ -161,7 +186,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/kavita_status_A.json")
+      model = file("${path.module}/alerts_files/kavita_status_A.json")
     }
 
     data {
@@ -210,7 +235,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/high_memory_usage_A.json")
+      model = file("${path.module}/alerts_files/high_memory_usage_A.json")
     }
 
     data {
@@ -236,6 +261,11 @@ resource "grafana_rule_group" "system_alerts" {
       "summary" : "CPU usage"
       "description" : "High CPU usage"
     }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
     is_paused = false
     data {
       ref_id     = "A"
@@ -245,7 +275,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/high_cpu_usage_A.json")
+      model = file("${path.module}/alerts_files/high_cpu_usage_A.json")
     }
 
     data {
@@ -271,6 +301,11 @@ resource "grafana_rule_group" "system_alerts" {
       "summary" : "Temperature Status"
       "description" : "Temperature Status"
     }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
     is_paused = false
     data {
       ref_id     = "A"
@@ -280,7 +315,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/high_cpu_usage_A.json")
+      model = file("${path.module}/alerts_files/high_cpu_usage_A.json")
     }
 
     data {
@@ -306,6 +341,11 @@ resource "grafana_rule_group" "system_alerts" {
       "summary" : "Media Disk Usage Percentage"
       "description" : "Media Disk Usage Percentage"
     }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
     is_paused = false
     data {
       ref_id     = "A"
@@ -315,7 +355,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/high_media_disk_usage.json")
+      model = file("${path.module}/alerts_files/high_media_disk_usage.json")
     }
 
     data {
@@ -341,6 +381,11 @@ resource "grafana_rule_group" "system_alerts" {
       "summary" : "Disk Read Latency Issue",
       "description" : "Disk Read Latency Issue"
     }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
     is_paused = false
     data {
       ref_id     = "A"
@@ -350,7 +395,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/disk_read_latency_A.json")
+      model = file("${path.module}/alerts_files/disk_read_latency_A.json")
     }
 
     data {
@@ -385,6 +430,11 @@ resource "grafana_rule_group" "network_alerts" {
       "summary" : "Webpage Status"
       "description" : "Webpage Status"
     }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
     is_paused = false
     data {
       ref_id     = "A"
@@ -394,7 +444,7 @@ resource "grafana_rule_group" "network_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/network_status_A.json")
+      model = file("${path.module}/alerts_files/network_status_A.json")
     }
 
     data {
