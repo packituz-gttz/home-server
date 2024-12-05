@@ -196,6 +196,11 @@ resource "grafana_rule_group" "system_alerts" {
       "summary" : "Memory usage"
       "description" : "High memory usage"
     }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.id
+    }
+
     is_paused = false
     data {
       ref_id     = "A"
