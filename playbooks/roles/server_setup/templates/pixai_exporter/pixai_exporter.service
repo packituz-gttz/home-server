@@ -7,6 +7,8 @@ After=network-online.target
 User=node-exporter
 Group=node-exporter
 Type=simple
+Restart=always
+RestartSec=10
 ExecStart=/usr/local/bin/pixai_exporter start --api-token={{pixai_token}} --interval=1800
 
 [Install]
