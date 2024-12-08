@@ -30,7 +30,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model = file("${path.module}/alerts_files/jellyfin_status_A.json")
+      model          = file("${path.module}/alerts_files/jellyfin_status_A.json")
     }
 
     data {
@@ -69,7 +69,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model = file("${path.module}/alerts_files/jump_status_A.json")
+      model          = file("${path.module}/alerts_files/jump_status_A.json")
     }
 
     data {
@@ -108,7 +108,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model = file("${path.module}/alerts_files/cloudflare_tunnels_status_A.json")
+      model          = file("${path.module}/alerts_files/cloudflare_tunnels_status_A.json")
     }
 
     data {
@@ -147,7 +147,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model = file("${path.module}/alerts_files/navidrome_status_A.json")
+      model          = file("${path.module}/alerts_files/navidrome_status_A.json")
     }
 
     data {
@@ -186,7 +186,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model = file("${path.module}/alerts_files/kavita_status_A.json")
+      model          = file("${path.module}/alerts_files/kavita_status_A.json")
     }
 
     data {
@@ -235,7 +235,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model = file("${path.module}/alerts_files/high_memory_usage_A.json")
+      model          = file("${path.module}/alerts_files/high_memory_usage_A.json")
     }
 
     data {
@@ -275,7 +275,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model = file("${path.module}/alerts_files/high_cpu_usage_A.json")
+      model          = file("${path.module}/alerts_files/high_cpu_usage_A.json")
     }
 
     data {
@@ -286,7 +286,7 @@ resource "grafana_rule_group" "system_alerts" {
         from = 600
         to   = 0
       }
-      model = file("${path.module}/alerts_files/system_alerts_B.json")
+      model = file("${path.module}/alerts_files/system_alerts_cpu_B.json")
     }
 
   }
@@ -315,7 +315,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model = file("${path.module}/alerts_files/high_cpu_usage_A.json")
+      model          = file("${path.module}/alerts_files/high_cpu_usage_A.json")
     }
 
     data {
@@ -355,7 +355,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model = file("${path.module}/alerts_files/high_media_disk_usage.json")
+      model          = file("${path.module}/alerts_files/high_media_disk_usage.json")
     }
 
     data {
@@ -395,7 +395,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model = file("${path.module}/alerts_files/disk_read_latency_A.json")
+      model          = file("${path.module}/alerts_files/disk_read_latency_A.json")
     }
 
     data {
@@ -444,7 +444,7 @@ resource "grafana_rule_group" "network_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model = file("${path.module}/alerts_files/network_status_A.json")
+      model          = file("${path.module}/alerts_files/network_status_A.json")
     }
 
     data {
