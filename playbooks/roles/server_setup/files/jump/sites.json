@@ -51,15 +51,6 @@
         "work"
       ]
     },{
-      "name": "Frigate",
-      "url": "https://depas.packituz.dev/",
-      "description": "CCTV service",
-      "newtab": true,
-      "icon": "frigate.jpg",
-      "tags": [
-        "home"
-      ]
-    },{
       "name": "Joplin",
       "url": "https://notes.packituz.dev/",
       "description": "Notes service",
@@ -135,16 +126,6 @@
       ]
     },
     {
-      "name": "Frigate",
-      "url": "http://192.168.100.45:5001/",
-      "description": "CCTV service",
-      "newtab": true,
-      "icon": "frigate.jpg",
-      "tags": [
-        "local"
-      ]
-    },
-    {
       "name": "Pingvin",
       "url": "http://192.168.100.45:3001/",
       "description": "File Sharing system",
@@ -180,6 +161,24 @@
       "description": "Ghost Blogging Platform",
       "newtab": true,
       "icon": "ghost.png",
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "JDownloader2",
+      "url": "https://192.168.100.45:5800/",
+      "description": "Download Management Tool",
+      "newtab": true,
+      "icon": "jdownloader2.png",
+      "status": {
+        "allowed_status_codes": [
+          200,
+          302
+        ],
+        "url": "https://192.168.100.45:5800/login",
+        "request_method": "GET"
+      },
       "tags": [
         "local"
       ]

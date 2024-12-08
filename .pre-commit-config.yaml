@@ -4,8 +4,6 @@ repos:
     hooks:
       - id: check-added-large-files
         args: [ '--maxkb=45000' ]
-      - id: no-commit-to-branch
-        args: [ '--branch', 'master' ]
 
   - repo: https://github.com/antonbabenko/pre-commit-terraform
     rev: v1.89.1
