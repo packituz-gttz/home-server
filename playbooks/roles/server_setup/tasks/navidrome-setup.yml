@@ -9,6 +9,6 @@
     ports:
       - 4533:4533
     volumes:
-      - /mnt/media/Navidrome/music:/music
-      - /mnt/media/Navidrome/data:/data
+      - /mnt/media-nvm/Navidrome/music:/music
+      - /mnt/media-nvm/Navidrome/data:/data
 ...
