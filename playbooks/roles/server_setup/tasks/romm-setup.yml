@@ -1,7 +1,7 @@
 ---
 - name: Create Romm directories
   ansible.builtin.file:
-    path: /mnt/media/Romm
+    path: /mnt/media-nvm/Romm
     state: directory
     mode: '0755'
     owner: '{{ superuser_name }}'
@@ -9,7 +9,7 @@
 
 - name: Create app.env file
   ansible.builtin.copy:
-    dest: /mnt/media/Romm/app.env
+    dest: /mnt/media-nvm/Romm/app.env
     content: |
       DB_HOST=romm-db
       DB_NAME=romm
@@ -23,7 +23,7 @@
 
 - name: Create db.env fiel
   ansible.builtin.copy:
-    dest: /mnt/media/Romm/db.env
+    dest: /mnt/media-nvm/Romm/db.env
     content: |
       MYSQL_ROOT_PASSWORD={{ romm_db_root_password }}
       MYSQL_DATABASE=romm
@@ -34,10 +34,10 @@
   become: false
   ansible.builtin.copy:
     src: files/romm/docker-compose.yml
-    dest: /mnt/media/Romm
+    dest: /mnt/media-nvm/Romm
 
 - name: Run Romm
   community.docker.docker_compose_v2:
-    project_src: /mnt/media/Romm
+    project_src: /mnt/media-nvm/Romm
 
 ...

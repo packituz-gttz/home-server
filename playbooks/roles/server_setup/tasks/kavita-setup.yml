@@ -1,7 +1,7 @@
 ---
 - name: Create Kavita media directories
   ansible.builtin.file:
-    path: /mnt/media/Kavita
+    path: /mnt/media-nvm/Kavita
     state: directory
     mode: '0755'
     owner: '{{ superuser_name }}'
@@ -11,14 +11,14 @@
   become: false
   ansible.builtin.copy:
     src: kavita/new_file_uploaded.sh
-    dest: /mnt/media/Kavita/
+    dest: /mnt/media-nvm/Kavita/
 
 - name: Create cronjob that every 5 minutes creates dirs for newly added pdf books
   ansible.builtin.cron:
     name: "Check for pdf & epub files"
     state: present
     minute: "*/5"
-    job: "/bin/bash /mnt/media/Kavita/new_file_uploaded.sh"
+    job: "/bin/bash /mnt/media-nvm/Kavita/new_file_uploaded.sh"
 
 - name: Pull and run Kavita Docker image
   community.docker.docker_container:
@@ -30,7 +30,7 @@
     ports:
       - 5000:5000
     volumes:
-      - /mnt/media/Kavita/config:/kavita/config
-      - /mnt/media/Kavita/manga:/manga
+      - /mnt/media-nvm/Kavita/config:/kavita/config
+      - /mnt/media-nvm/Kavita/manga:/manga
 
 ...

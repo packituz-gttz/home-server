@@ -4,25 +4,25 @@ services:
     image: rommapp/romm:3.6.0
     container_name: romm
     volumes:
-      - /mnt/media/Romm/resources:/romm/resources
-      - /mnt/media/Romm/redis-data:/redis-data
-      - /mnt/media/Romm/library:/romm/library
-      - /mnt/media/Romm/assets:/romm/assets
-      - /mnt/media/Romm/config:/romm/config
-      - /mnt/media/Romm/logs:/romm/logs
+      - /mnt/media-nvm/Romm/resources:/romm/resources
+      - /mnt/media-nvm/Romm/redis-data:/redis-data
+      - /mnt/media-nvm/Romm/library:/romm/library
+      - /mnt/media-nvm/Romm/assets:/romm/assets
+      - /mnt/media-nvm/Romm/config:/romm/config
+      - /mnt/media-nvm/Romm/logs:/romm/logs
     depends_on:
       - romm-db
     ports:
       - "80:8080"
     restart: "unless-stopped"
     env_file:
-      - /mnt/media/Romm/app.env
+      - /mnt/media-nvm/Romm/app.env
 
   romm-db:
     image: mariadb:lts-jammy
     container_name: romm-db
     restart: "unless-stopped"
     env_file:
-      - /mnt/media/Romm/db.env
+      - /mnt/media-nvm/Romm/db.env
     volumes:
-      - /mnt/media/Romm/db:/var/lib/mysql
+      - /mnt/media-nvm/Romm/db:/var/lib/mysql
