@@ -100,4 +100,19 @@
     state: present
     enablerepo: crb
 
+- name: Install nmcli for network configuration
+  ansible.builtin.dnf:
+    name:
+      - NetworkManager
+    state: present
+
+- name: Setup static ip for Ethernet connection
+  community.general.nmcli:
+    conn_name: eno1
+    ifname: eno1
+    type: ethernet
+    ip4: 192.168.100.45/24
+    gw4: 192.168.100.1
+    state: present
+    autoconnect: true
 ...
