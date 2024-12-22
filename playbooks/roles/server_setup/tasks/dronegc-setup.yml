@@ -9,7 +9,7 @@
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     env:
-      GC_DEBUG: true
-      GC_CACHE: 5gb
+      GC_DEBUG: "true"
+      GC_CACHE: 1gb
       GC_INTERVAL: 5m
 ...

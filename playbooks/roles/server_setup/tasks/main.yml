@@ -44,11 +44,6 @@
   tags: [ 'monitoring-setup' ]
   become: true
 
-- name: Install Frigate
-  ansible.builtin.import_tasks: frigate-setup.yml
-  tags: [ 'frigate-setup', 'utils-group' ]
-  become: true
-
 - name: Install Pingvin
   ansible.builtin.import_tasks: pingvin-setup.yml
   tags: [ 'pingvin-setup', 'utils-group' ]
@@ -77,6 +72,11 @@
 - name: Install JDownloader2
   ansible.builtin.import_tasks: jdownloader2-setup.yml
   tags: [ 'jdownloader2-setup', 'utils-group' ]
+  become: true
+
+- name: Install Drone GC
+  ansible.builtin.import_tasks: dronegc-setup.yml
+  tags: [ 'dronegc-setup', 'utils-group' ]
   become: true
 
 ...
