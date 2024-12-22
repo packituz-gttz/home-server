@@ -1,0 +1,15 @@
+---
+- name: Pull and run Drone-GC image
+  community.docker.docker_container:
+    name: dronegc
+    image: "drone/gc:1.0.0"
+    state: started
+    recreate: true
+    restart_policy: "unless-stopped"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    env:
+      GC_DEBUG: true
+      GC_CACHE: 5gb
+      GC_INTERVAL: 5m
+...
