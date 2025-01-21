@@ -1,4 +1,4 @@
-pre-commit==4.0.1  # https://github.com/pre-commit/pre-commit
+pre-commit==4.1.0  # https://github.com/pre-commit/pre-commit
 commitizen==4.1.0  # https://github.com/commitizen-tools/commitizen
 ansible==10.7.0  # https://pypi.org/project/ansible/
 molecule==24.12.0  # https://github.com/ansible-community/molecule
