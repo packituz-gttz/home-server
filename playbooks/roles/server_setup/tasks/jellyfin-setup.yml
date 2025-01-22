@@ -27,7 +27,7 @@
   - name: Pull and run Jellyfin Docker image
     community.docker.docker_container:
       name: jellyfin
-      image: "jellyfin/jellyfin:10.10.3"
+      image: "jellyfin/jellyfin:10.10.4"
       state: started
       restart_policy: "unless-stopped"
       network_mode: host
@@ -87,7 +87,7 @@
   - name: Pull and run Jellyfin Docker image
     community.docker.docker_container:
       name: jellyfin
-      image: "jellyfin/jellyfin:10.10.3"
+      image: "jellyfin/jellyfin:10.10.4"
       state: started
       restart_policy: "unless-stopped"
       network_mode: host
