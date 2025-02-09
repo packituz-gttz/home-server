@@ -1,5 +1,5 @@
 pre-commit==4.1.0  # https://github.com/pre-commit/pre-commit
-commitizen==4.1.1  # https://github.com/commitizen-tools/commitizen
+commitizen==4.2.1  # https://github.com/commitizen-tools/commitizen
 ansible==10.7.0  # https://pypi.org/project/ansible/
 molecule==24.12.0  # https://github.com/ansible-community/molecule
 molecule-plugins[vagrant]==23.7.0  # https://github.com/ansible-community/molecule-plugins/releases/tag/v23.0.0
