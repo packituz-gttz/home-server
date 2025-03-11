@@ -49,6 +49,11 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
     }
 
     ingress_rule {
+      hostname = module.records.records_info["share"].hostname
+      service  = "http://${var.server_local_ip}:3001"
+    }
+
+    ingress_rule {
       service = "http_status:404"
     }
   }
