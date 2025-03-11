@@ -28,6 +28,9 @@ module "records" {
     },
     {
       name = "ssh"
+    },
+    {
+      name = "share"
     }
   ]
   zone_id = var.cloudflare_zone_id
