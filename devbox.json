@@ -3,7 +3,7 @@
   "packages": [
     "terraform@1.10.5",
     "vagrant@2.3.7",
-    "python@3.13.1",
+    "python@3.13.2",
     "pipenv",
     "tflint@0.51.1",
     "pre-commit@3.7.1",
