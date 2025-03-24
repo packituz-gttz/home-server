@@ -114,7 +114,7 @@
 - name: Setup cAdvisor
   community.docker.docker_container:
     name: cadvisor
-    image: "gcr.io/cadvisor/cadvisor:v0.51.0"
+    image: "gcr.io/cadvisor/cadvisor:v0.52.1"
     state: started
     restart_policy: "unless-stopped"
     recreate: true
