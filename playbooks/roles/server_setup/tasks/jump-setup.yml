@@ -29,7 +29,6 @@
       - /mnt/media/Jump/backgrounds:/backgrounds
       - /mnt/media/Jump/favicon:/favicon
       - /mnt/media/Jump/sites:/sites
-      - /mnt/media/Jump/search/search
     env:
       SITENAME: '{{ jump_site_name }}'
     ports:
