@@ -79,4 +79,9 @@
   tags: [ 'dronegc-setup', 'utils-group' ]
   become: true
 
+- name: Install Lychee
+  ansible.builtin.import_tasks: lychee-setup.yml
+  tags: [ 'lychee-setup', 'media-group' ]
+  become: true
+
 ...

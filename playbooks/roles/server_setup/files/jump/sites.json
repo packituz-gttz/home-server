@@ -182,6 +182,16 @@
       "tags": [
         "local"
       ]
+    },
+    {
+      "name": "Lychee",
+      "url": "http://192.168.100.45:8001/",
+      "description": "Photo & Video Management Tool",
+      "newtab": true,
+      "icon": "lychee.jpg",
+      "tags": [
+        "local"
+      ]
     }
   ]
 }
