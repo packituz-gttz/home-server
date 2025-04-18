@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.10.3/.schema/devbox.schema.json",
   "packages": [
-    "terraform@1.11.3",
+    "terraform@1.11.4",
     "vagrant@2.4.3",
     "python@3.13.2",
     "pipenv",
