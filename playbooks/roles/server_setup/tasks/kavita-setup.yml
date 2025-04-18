@@ -23,7 +23,7 @@
 - name: Pull and run Kavita Docker image
   community.docker.docker_container:
     name: kavita
-    image: "jvmilazz0/kavita:0.8.5"
+    image: "jvmilazz0/kavita:0.8.6"
     state: started
     recreate: true
     restart_policy: "unless-stopped"
