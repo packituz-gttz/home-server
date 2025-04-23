@@ -18,6 +18,9 @@ endif
 deploy:  ## Runs ansible-playbook against production server. Example make deploy PARAMS='--tags os-setup'
 > @/bin/bash scripts/make/run_deployment.sh '$(PARAMS)'
 
+tags:  ## Lists available ansible tags for deploying only certain components to server
+> @grep -oP '(?<=tags: ).*' ./playbooks/roles/server_setup/tasks/main.yml | tr -d "'" | tr -d ' ' | tr -d '[' | tr -d ']' | tr , ' ' | cut -f1 -d' ' | sort
+
 help:  ## Displays help.
 > @grep -E '^[a-zA-Z_-]+[0-9]*:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
