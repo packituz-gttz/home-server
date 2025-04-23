@@ -3,12 +3,11 @@
   "packages": [
     "terraform@1.11.4",
     "vagrant@2.4.3",
-    "python@3.13.2",
-    "pipenv",
     "tflint@0.55.1",
     "pre-commit@3.7.1",
     "terraform-docs@0.19.0",
-    "ggshield@1.37.0"
+    "ggshield@1.37.0",
+    "commitizen@4.5.0"
   ],
   "shell": {
     "init_hook": "pipenv shell",
