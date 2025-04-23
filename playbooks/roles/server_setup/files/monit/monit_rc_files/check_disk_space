@@ -1,4 +1,0 @@
-check filesystem home_disk with path /dev/mapper/almalinux-home
-      every 1440 cycles
-      if space usage > 90% then
-      exec "/bin/bash /etc/monit.d/scripts/notify.sh Disk space usage above 90%"
