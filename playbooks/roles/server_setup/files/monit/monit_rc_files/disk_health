@@ -1,6 +1,0 @@
-check program disk_health with path "/usr/sbin/nvme smart-log /dev/nvme0n1 --o json | jq '.critical_warning'"
-     every 260 cycles
-     if content != "0" then
-     exec "/bin/bash /etc/monit.d/scripts/notify.sh Disk health alert"
-     if status != 0 then
-     exec "/bin/bash /etc/monit.d/scripts/notify.sh Disk monitoring failing"

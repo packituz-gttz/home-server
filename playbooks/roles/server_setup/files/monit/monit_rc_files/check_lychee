@@ -1,0 +1,6 @@
+CHECK HOST lychee WITH ADDRESS localhost
+    RESTART PROGRAM = "/usr/bin/docker restart lychee"
+    STOP PROGRAM = "/usr/bin/docker stop lychee"
+    IF FAILED PORT 3000 PROTOCOL http FOR 5 CYCLES THEN RESTART
+    IF 3 RESTARTS WITHIN 4 CYCLES THEN exec "/bin/bash /etc/monit.d/scripts/notify.sh Lychee failing"
+    IF 5 RESTARTS WITHIN 6 CYCLES THEN STOP

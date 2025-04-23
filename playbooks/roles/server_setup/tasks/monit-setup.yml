@@ -9,6 +9,11 @@
     name: 'https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/m/monit-5.33.0-1.el9.x86_64.rpm'
     state: present
 
+- name: Delete previous monit rc files
+  ansible.builtin.file:
+    state: absent
+    path: '/etc/monit.d/'
+
 - name: Upload monit configuration
   ansible.builtin.copy:
     src: '{{ item.source }}'
