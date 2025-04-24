@@ -47,39 +47,6 @@
       env:
         ROC_ENABLE_PRE_VEGA: "1"
 
-  - name: Install OS utils for ROCm OpenCL runtime on container
-    community.docker.docker_container_exec:
-      container: jellyfin
-      user: root
-      command: '{{ item }}'
-    loop:
-      - apt update -y
-      - apt install -y curl gpg
-
-  - name: Copy rocm sources file to container
-    community.docker.docker_container_copy_into:
-      container: jellyfin
-      container_path: /etc/apt/sources.list.d/rocm.sources
-      mode: 755
-      content: |
-        Types: deb
-        URIs: https://repo.radeon.com/rocm/apt/latest
-        Suites: ubuntu
-        Components: main
-        Architectures: amd64
-        Signed-By: /etc/apt/keyrings/rocm.gpg
-
-  - name: Install ROCm OpenCL runtime on container
-    community.docker.docker_container_exec:
-      container: jellyfin
-      user: root
-      command: '{{ item }}'
-    loop:
-      - mkdir -p /etc/apt/keyrings
-      - /bin/bash -c "curl -fsSL https://repo.radeon.com/rocm/rocm.gpg.key | gpg --dearmor -o /etc/apt/keyrings/rocm.gpg"
-      - apt update -y
-      - apt install -y rocm-opencl-runtime
-
   when: inventory_hostname != "default"
 
 - name: Config Jellyfin on Staging
