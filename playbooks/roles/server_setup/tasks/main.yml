@@ -36,12 +36,12 @@
 
 - name: Install monit Monitoring
   ansible.builtin.import_tasks: monit-setup.yml
-  tags: [ 'monit-setup' ]
+  tags: [ 'monit-setup', 'monitoring-group' ]
   become: true
 
 - name: Install Prometheus/Grafana Monitoring
   ansible.builtin.import_tasks: monitoring-setup.yml
-  tags: [ 'monitoring-setup' ]
+  tags: [ 'monitoring-setup', 'monitoring-group' ]
   become: true
 
 - name: Install Pingvin
@@ -56,22 +56,22 @@
 
 - name: Install Romm
   ansible.builtin.import_tasks: romm-setup.yml
-  tags: [ 'romm-setup', 'utils-group' ]
+  tags: [ 'romm-setup', 'gaming-group' ]
   become: true
 
 - name: Install Transmission
   ansible.builtin.import_tasks: transmission-setup.yml
-  tags: [ 'transmission-setup', 'utils-group' ]
+  tags: [ 'transmission-setup', 'downloaders-group' ]
   become: true
 
 - name: Install Ghost Blog
   ansible.builtin.import_tasks: ghost-setup.yml
-  tags: [ 'ghost-setup', 'utils-group' ]
+  tags: [ 'ghost-setup' ]
   become: true
 
 - name: Install JDownloader2
   ansible.builtin.import_tasks: jdownloader2-setup.yml
-  tags: [ 'jdownloader2-setup', 'utils-group' ]
+  tags: [ 'jdownloader2-setup', 'downloaders-group' ]
   become: true
 
 - name: Install Drone GC
