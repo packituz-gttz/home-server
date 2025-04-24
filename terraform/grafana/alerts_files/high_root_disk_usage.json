@@ -1,0 +1,10 @@
+{
+  "editorMode": "code",
+  "expr": "100 - (node_filesystem_avail_bytes{mountpoint=\"/\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/\"}",
+  "hide": false,
+  "intervalMs": 1000,
+  "legendFormat": "__auto",
+  "maxDataPoints": 43200,
+  "range": true,
+  "refId": "A"
+}

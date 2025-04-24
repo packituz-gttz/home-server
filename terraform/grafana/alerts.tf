@@ -409,6 +409,46 @@ resource "grafana_rule_group" "system_alerts" {
 
   }
 
+    rule {
+    name           = "Root Disk Usage"
+    for            = "5m"
+    condition      = "B"
+    no_data_state  = "NoData"
+    exec_err_state = "Error"
+    annotations = {
+      "summary" : "Root Disk Usage Percentage"
+      "description" : "Root Disk Usage Percentage"
+    }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
+    is_paused = false
+    data {
+      ref_id     = "A"
+      query_type = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      datasource_uid = grafana_data_source.prometheus.uid
+      model = file("${path.module}/alerts_files/high_root_disk_usage.json")
+    }
+
+    data {
+      ref_id         = "B"
+      datasource_uid = "-100"
+      query_type     = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      model = file("${path.module}/alerts_files/system_alerts_B.json")
+    }
+
+  }
+
   rule {
     name           = "Media Disk Usage"
     for            = "5m"
