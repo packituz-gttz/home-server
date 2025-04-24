@@ -1,0 +1,10 @@
+{
+  "editorMode": "code",
+  "expr": "time() - max(container_last_seen{name=\"lychee\"}) by (name)",
+  "hide": false,
+  "intervalMs": 1000,
+  "legendFormat": "__auto",
+  "maxDataPoints": 43200,
+  "range": true,
+  "refId": "A"
+}

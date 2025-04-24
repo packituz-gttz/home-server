@@ -30,7 +30,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/jellyfin_status_A.json")
+      model = file("${path.module}/alerts_files/jellyfin_status_A.json")
     }
 
     data {
@@ -69,7 +69,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/jump_status_A.json")
+      model = file("${path.module}/alerts_files/jump_status_A.json")
     }
 
     data {
@@ -108,7 +108,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/cloudflare_tunnels_status_A.json")
+      model = file("${path.module}/alerts_files/cloudflare_tunnels_status_A.json")
     }
 
     data {
@@ -147,7 +147,7 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/navidrome_status_A.json")
+      model = file("${path.module}/alerts_files/navidrome_status_A.json")
     }
 
     data {
@@ -186,7 +186,85 @@ resource "grafana_rule_group" "docker_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/kavita_status_A.json")
+      model = file("${path.module}/alerts_files/kavita_status_A.json")
+    }
+
+    data {
+      ref_id         = "B"
+      datasource_uid = "-100"
+      query_type     = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      model = file("${path.module}/alerts_files/docker_service_status_B.json")
+    }
+  }
+
+  rule {
+    name           = "Lychee Status"
+    for            = "5m"
+    condition      = "B"
+    no_data_state  = "Alerting"
+    exec_err_state = "Error"
+    annotations = {
+      "summary" : "Lychee down",
+      "description" : "Lychee docker service is down"
+    }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
+    is_paused = false
+    data {
+      ref_id     = "A"
+      query_type = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      datasource_uid = grafana_data_source.prometheus.uid
+      model = file("${path.module}/alerts_files/lychee_status_A.json")
+    }
+
+    data {
+      ref_id         = "B"
+      datasource_uid = "-100"
+      query_type     = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      model = file("${path.module}/alerts_files/docker_service_status_B.json")
+    }
+  }
+
+  rule {
+    name           = "Pingvin Status"
+    for            = "5m"
+    condition      = "B"
+    no_data_state  = "Alerting"
+    exec_err_state = "Error"
+    annotations = {
+      "summary" : "Pingvin down",
+      "description" : "Pingvin docker service is down"
+    }
+
+    notification_settings {
+      contact_point = grafana_contact_point.telegram.name
+    }
+
+    is_paused = false
+    data {
+      ref_id     = "A"
+      query_type = ""
+      relative_time_range {
+        from = 600
+        to   = 0
+      }
+      datasource_uid = grafana_data_source.prometheus.uid
+      model = file("${path.module}/alerts_files/pingvin_status_A.json")
     }
 
     data {
@@ -235,7 +313,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/high_memory_usage_A.json")
+      model = file("${path.module}/alerts_files/high_memory_usage_A.json")
     }
 
     data {
@@ -275,7 +353,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/high_cpu_usage_A.json")
+      model = file("${path.module}/alerts_files/high_cpu_usage_A.json")
     }
 
     data {
@@ -315,7 +393,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/high_cpu_usage_A.json")
+      model = file("${path.module}/alerts_files/high_cpu_usage_A.json")
     }
 
     data {
@@ -355,7 +433,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/high_media_disk_usage.json")
+      model = file("${path.module}/alerts_files/high_media_disk_usage.json")
     }
 
     data {
@@ -395,7 +473,7 @@ resource "grafana_rule_group" "system_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/disk_read_latency_A.json")
+      model = file("${path.module}/alerts_files/disk_read_latency_A.json")
     }
 
     data {
@@ -444,7 +522,7 @@ resource "grafana_rule_group" "network_alerts" {
         to   = 0
       }
       datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/network_status_A.json")
+      model = file("${path.module}/alerts_files/network_status_A.json")
     }
 
     data {
