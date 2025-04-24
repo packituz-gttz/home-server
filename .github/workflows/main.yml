@@ -31,7 +31,27 @@ jobs:
   deploy-monitoring:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
-      playbook_params: '--tags monitoring-setup'
+      playbook_params: '--tags monitoring-group'
+    secrets:
+      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+
+
+  deploy-gaming:
+    uses: ./.github/workflows/reusable-playbook-workflow.yaml
+    with:
+      playbook_params: '--tags gaming-group'
+    secrets:
+      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+
+
+  downloaders-gaming:
+    uses: ./.github/workflows/reusable-playbook-workflow.yaml
+    with:
+      playbook_params: '--tags downloaders-group'
     secrets:
       ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
