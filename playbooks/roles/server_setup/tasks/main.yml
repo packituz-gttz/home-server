@@ -84,4 +84,9 @@
   tags: [ 'lychee-setup', 'media-group' ]
   become: true
 
+- name: Install LocalAI
+  ansible.builtin.import_tasks: localai-setup.yml
+  tags: [ 'localai-setup' ]
+  become: true
+
 ...
