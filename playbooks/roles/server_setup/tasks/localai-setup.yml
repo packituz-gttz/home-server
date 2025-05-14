@@ -8,7 +8,7 @@
 - name: Pull and run LocalAI Docker image
   community.docker.docker_container:
     name: localai
-    image: "localai/localai:v2.28.0"
+    image: "localai/localai:v2.29.0"
     state: started
     restart_policy: "unless-stopped"
     recreate: true
