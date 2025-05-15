@@ -156,16 +156,6 @@
       ]
     },
     {
-      "name": "Ghost",
-      "url": "http://192.168.100.45:2368/",
-      "description": "Ghost Blogging Platform",
-      "newtab": true,
-      "icon": "ghost.png",
-      "tags": [
-        "local"
-      ]
-    },
-    {
       "name": "JDownloader2",
       "url": "https://192.168.100.45:5800/",
       "description": "Download Management Tool",
@@ -188,7 +178,17 @@
       "url": "http://192.168.100.45:8001/",
       "description": "Photo & Video Management Tool",
       "newtab": true,
-      "icon": "lychee.jpg",
+      "icon": "lychee.png",
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "Ai Assistant",
+      "url": "http://192.168.100.45:7860/",
+      "description": "Ai Server Assistant",
+      "newtab": true,
+      "icon": "ai.png",
       "tags": [
         "local"
       ]

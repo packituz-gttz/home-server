@@ -1,0 +1,22 @@
+---
+- name: Pull and run Home AI Agent
+  community.docker.docker_container:
+    name: home-ai-agent
+    image: "ghcr.io/packituz-gttz/home-server-ai-agent:v1.0.2"
+    state: started
+    restart_policy: "unless-stopped"
+    recreate: true
+    network_mode: host
+    env:
+      OPENAI_API_KEY: "{{ homeai_agent_openai_key }}"
+      JELLYFIN_USER: "{{ homeai_jellyfin_user }}"
+      JELLYFIN_PASSWORD: "{{ homeai_jellyfin_password }}"
+      GRAFANA_TOKEN: "{{ homeai_grafana_token }}"
+
+- name: Open prometheus port on firewall
+  ansible.posix.firewalld:
+    port: 7860/tcp
+    permanent: true
+    state: enabled
+    immediate: true
+...
