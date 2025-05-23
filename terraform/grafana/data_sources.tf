@@ -14,7 +14,7 @@ resource "grafana_data_source" "prometheus" {
 resource "grafana_data_source" "loki" {
   name = "Loki"
   type = "loki"
-  url = var.loki_data_source_url
+  url  = var.loki_data_source_url
 
   uid = var.loki_data_source_uid
 }
