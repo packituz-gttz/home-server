@@ -28,12 +28,9 @@ repos:
       - id: gitleaks
 
   - repo: https://github.com/gitguardian/ggshield
-    rev: v1.31.0
+    rev: v1.39.0
     hooks:
-      - id: ggshield-iac
-        name: ggshield-iac (pre-commit)
+      - id: ggshield
         entry: ggshield
-        args: ['iac', 'scan', 'pre-commit' ]
         language: system
-        pass_filenames: false
-        stages: [ commit ]
+        stages: [ pre-commit ]
