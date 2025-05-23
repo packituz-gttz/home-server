@@ -91,7 +91,7 @@
 
 - name: Install Home AI Agent
   ansible.builtin.import_tasks: ai-setup.yml
-  tags: [ 'ai-setup' ]
+  tags: [ 'ai-setup', 'utils-group' ]
   become: true
 
 ...
