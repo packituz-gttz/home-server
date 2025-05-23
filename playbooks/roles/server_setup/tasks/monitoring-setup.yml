@@ -256,18 +256,15 @@
     mode: '0755'
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
-  loop:
-      - /mnt/media/Grafana
-      - /mnt/media/Grafana/img
 
 - name: Obtain id for super user
   block:
-  - name: Get user id
-    ansible.builtin.getent:
-      database: passwd
-      key: '{{ superuser_name }}'
-      split: ':'
-    register: getent_output
+    - name: Get user id
+      ansible.builtin.getent:
+        database: passwd
+        key: '{{ superuser_name }}'
+        split: ':'
+      register: getent_output
 
 - name: Print getent output
   ansible.builtin.debug:
@@ -296,5 +293,62 @@
     group: '{{ superuser_name }}'
   loop: "{{ dashboards_images }}"
 
+
+## Setup Loki
+
+- name: Create Loki directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Loki
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Copy Loki configuration file
+  ansible.builtin.copy:
+    src: files/loki/loki-config.yaml
+    dest: /mnt/media-nvm/Loki/loki-config.yaml
+
+- name: Pull and run Loki
+  community.docker.docker_container:
+    name: loki
+    image: "grafana/loki:3.5.1"
+    restart_policy: "unless-stopped"
+    ports:
+      - 3100:3100
+    recreate: true
+    volumes:
+      - "/mnt/media-nvm/Loki/loki-config.yaml:/etc/loki/loki-config.yaml"
+      - "/mnt/media-nvm/Loki/data:/data/loki"
+    command: -config.file=/etc/loki/loki-config.yaml
+
+## Setup Promtail
+
+- name: Create Promtail directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+  loop:
+    - /mnt/media-nvm/Promtail
+    - /mnt/media-nvm/Promtail/config
+
+- name: Copy Promtail configuration file
+  ansible.builtin.copy:
+    src: files/promtail/promtail-config.yaml
+    dest: /mnt/media-nvm/Promtail/config/promtail-config.yaml
+
+- name: Pull and run Promtail
+  community.docker.docker_container:
+    name: promtail
+    image: grafana/promtail:3.5.1
+    recreate: true
+    restart_policy: "unless-stopped"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /mnt/media-nvm/Promtail/config/promtail-config.yaml:/etc/promtail/promtail-config.yaml
+    command: -config.file=/etc/promtail/promtail-config.yaml
 
 ...
