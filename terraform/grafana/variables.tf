@@ -24,6 +24,17 @@ variable "host_url" {
   description = "Grafana Host URL"
 }
 
+variable "loki_data_source_url" {
+  type        = string
+  description = "Loki data source URL"
+  default     = "http://localhost:3100"
+}
+
+variable "loki_data_source_uid" {
+  type        = string
+  description = "Loki data source UID"
+}
+
 variable "prometheus_data_source_url" {
   type        = string
   description = "Prometheus data source URL"
