@@ -2,7 +2,7 @@
 - name: Pull and run Home AI Agent
   community.docker.docker_container:
     name: home-ai-agent
-    image: "ghcr.io/packituz-gttz/home-server-ai-agent:v1.0.6"
+    image: "ghcr.io/packituz-gttz/home-server-ai-agent:v1.0.10"
     state: started
     restart_policy: "unless-stopped"
     recreate: true
