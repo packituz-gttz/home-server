@@ -10,7 +10,7 @@
 - name: Pull and run Lychee Docker image
   community.docker.docker_container:
     name: lychee
-    image: "lycheeorg/lychee:v6.6.3"
+    image: "lycheeorg/lychee:v6.6.5"
     state: started
     recreate: true
     restart_policy: "unless-stopped"
