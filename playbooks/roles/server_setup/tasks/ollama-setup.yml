@@ -1,0 +1,49 @@
+---
+- name: Create Ollama media directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Ollama
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Pull and run Ollama Docker image
+  community.docker.docker_container:
+    name: ollama
+    image: "ollama/ollama:0.8.0-rc0-rocm"
+    state: started
+    recreate: true
+    memory: "8G"
+    cpus: "4"
+    restart_policy: "unless-stopped"
+    ports:
+      - 11434:11434
+    devices:
+      - /dev/kfd:/dev/kfd
+      - /dev/dri:/dev/dri
+    volumes:
+      - /mnt/media-nvm/Ollama:/root/.ollama
+
+- name: Pull models
+  community.docker.docker_container_exec:
+    container: ollama
+    command: "ollama run {{ item }}"
+  loop:
+    - llama3.2
+
+- name: Pull and run OpenwebUI
+  community.docker.docker_container:
+    name: openwebui
+    image: "ghcr.io/open-webui/open-webui:0.6.11"
+    state: started
+    recreate: true
+    restart_policy: "unless-stopped"
+    ports:
+      - 3002:8080
+    etc_hosts:
+      host.docker.internal: host-gateway
+    volumes:
+      - /mnt/media-nvm/OpenWebUI:/app/backend/data
+
+
+...

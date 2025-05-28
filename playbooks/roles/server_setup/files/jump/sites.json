@@ -192,6 +192,16 @@
       "tags": [
         "local"
       ]
+    },
+    {
+      "name": "Ai Chat",
+      "url": "http://192.168.100.45:3002/",
+      "description": "Ai Chat",
+      "newtab": true,
+      "icon": "ollama.png",
+      "tags": [
+        "local"
+      ]
     }
   ]
 }
