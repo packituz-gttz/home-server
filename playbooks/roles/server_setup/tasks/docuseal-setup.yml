@@ -1,0 +1,24 @@
+---
+- name: Create DocuSeal media directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Docuseal
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Pull and run DocuSeal Docker image
+  community.docker.docker_container:
+    name: docuseal
+    image: "docuseal/docuseal:2.0.2"
+    state: started
+    recreate: true
+    restart_policy: "unless-stopped"
+    env:
+      SESSION_REMEMBER_DAYS: "7"
+      HOST: "http://192.168.100.45:3003"
+    ports:
+      - 3003:3000
+    volumes:
+      - /mnt/media-nvm/Docuseal:/data
+...
