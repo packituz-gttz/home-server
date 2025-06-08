@@ -202,6 +202,16 @@
       "tags": [
         "local"
       ]
+    },
+    {
+      "name": "DocuSeal",
+      "url": "http://192.168.100.45:3003/",
+      "description": "Document Signing Platform",
+      "newtab": true,
+      "icon": "docuseal.png",
+      "tags": [
+        "local"
+      ]
     }
   ]
 }
