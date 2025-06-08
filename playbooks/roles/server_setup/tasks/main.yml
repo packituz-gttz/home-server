@@ -1,8 +1,27 @@
 ---
+# Base group
+
 - name: Configure OS
   ansible.builtin.import_tasks: os-setup.yml
-  tags: [ 'os-setup' ]
+  tags: [ 'os-setup', 'base-group' ]
   become: true
+
+- name: Install Cloudflare
+  ansible.builtin.import_tasks: cloudflare-setup.yml
+  tags: [ 'cloudflare-setup', 'base-group' ]
+  become: true
+
+- name: Install Drone GC
+  ansible.builtin.import_tasks: dronegc-setup.yml
+  tags: [ 'dronegc-setup', 'base-group' ]
+  become: true
+
+- name: Install Jump Dashboard
+  ansible.builtin.import_tasks: jump-setup.yml
+  tags: [ 'jump-setup', 'base-group' ]
+  become: true
+
+# Media group
 
 - name: Install Jellyfin
   ansible.builtin.import_tasks: jellyfin-setup.yml
@@ -19,19 +38,16 @@
   tags: [ 'navidrome-setup', 'media-group' ]
   become: true
 
+- name: Install Lychee
+  ansible.builtin.import_tasks: lychee-setup.yml
+  tags: [ 'lychee-setup', 'media-group' ]
+  become: true
+
+# Monitoring group
+
 - name: Install ntfy Server
   ansible.builtin.import_tasks: ntfy-setup.yml
-  tags: [ 'ntfy-setup' ]
-  become: true
-
-- name: Install Cloudflare
-  ansible.builtin.import_tasks: cloudflare-setup.yml
-  tags: [ 'cloudflare-setup' ]
-  become: true
-
-- name: Install Jump Dashboard
-  ansible.builtin.import_tasks: jump-setup.yml
-  tags: [ 'jump-setup', 'utils-group' ]
+  tags: [ 'ntfy-setup', 'monitoring-group' ]
   become: true
 
 - name: Install monit Monitoring
@@ -44,6 +60,8 @@
   tags: [ 'monitoring-setup', 'monitoring-group' ]
   become: true
 
+# Utils group
+
 - name: Install Pingvin
   ansible.builtin.import_tasks: pingvin-setup.yml
   tags: [ 'pingvin-setup', 'utils-group' ]
@@ -54,19 +72,23 @@
   tags: [ 'joplin-setup', 'utils-group' ]
   become: true
 
+- name: Install DocuSeal
+  ansible.builtin.import_tasks: docuseal-setup.yml
+  tags: [ 'docuseal-setup', 'utils-group' ]
+  become: true
+
+# Gaming group
+
 - name: Install Romm
   ansible.builtin.import_tasks: romm-setup.yml
   tags: [ 'romm-setup', 'gaming-group' ]
   become: true
 
+# Downloaders group
+
 - name: Install Transmission
   ansible.builtin.import_tasks: transmission-setup.yml
   tags: [ 'transmission-setup', 'downloaders-group' ]
-  become: true
-
-- name: Install Ghost Blog
-  ansible.builtin.import_tasks: ghost-setup.yml
-  tags: [ 'ghost-setup' ]
   become: true
 
 - name: Install JDownloader2
@@ -74,24 +96,16 @@
   tags: [ 'jdownloader2-setup', 'downloaders-group' ]
   become: true
 
-- name: Install Drone GC
-  ansible.builtin.import_tasks: dronegc-setup.yml
-  tags: [ 'dronegc-setup', 'utils-group' ]
-  become: true
-
-- name: Install Lychee
-  ansible.builtin.import_tasks: lychee-setup.yml
-  tags: [ 'lychee-setup', 'media-group' ]
-  become: true
+# Ai group
 
 - name: Install Ollama
   ansible.builtin.import_tasks: ollama-setup.yml
-  tags: [ 'ollama-setup' ]
+  tags: [ 'ollama-setup', 'ai-group' ]
   become: true
 
 - name: Install Home AI Agent
   ansible.builtin.import_tasks: ai-setup.yml
-  tags: [ 'ai-setup', 'utils-group' ]
+  tags: [ 'ai-setup', 'ai-group' ]
   become: true
 
 ...
