@@ -137,7 +137,7 @@
     },
     {
       "name": "Romm",
-      "url": "http://192.168.100.45:80/",
+      "url": "http://192.168.100.45:8888/",
       "description": "Game Rom Management",
       "newtab": true,
       "icon": "romm.png",
