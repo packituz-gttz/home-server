@@ -1,0 +1,57 @@
+:3003 {
+    route {
+      sablier http://sablier:10000 {
+        group docuseal
+        session_duration 10m
+        dynamic {
+            display_name DocuSeal
+            theme ghost
+        }
+      }
+      reverse_proxy docuseal:3000
+    }
+}
+
+:8001 {
+    route {
+      sablier http://sablier:10000 {
+        group lychee
+        session_duration 10m
+        dynamic {
+            display_name Lychee
+            theme ghost
+        }
+      }
+      reverse_proxy lychee:80
+    }
+}
+
+:8888 {
+    route {
+      sablier http://sablier:10000 {
+        group romm
+        session_duration 10m
+        dynamic {
+            display_name Romm
+            theme ghost
+        }
+      }
+      reverse_proxy romm:8080
+    }
+}
+
+:3002 {
+    route {
+      sablier http://sablier:10000 {
+        group ollama
+        session_duration 10m
+        dynamic {
+            display_name Ollama
+            theme ghost
+        }
+      }
+      reverse_proxy openwebui:8080
+    }
+}
+
+

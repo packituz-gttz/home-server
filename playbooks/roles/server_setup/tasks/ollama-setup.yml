@@ -16,11 +16,14 @@
     memory: "8G"
     cpus: "4"
     restart_policy: "unless-stopped"
-    ports:
-      - 11434:11434
+    labels:
+      sablier.enable: "true"
+      sablier.group: "ollama"
     devices:
       - /dev/kfd:/dev/kfd
       - /dev/dri:/dev/dri
+    networks:
+      - name: sleepers
     volumes:
       - /mnt/media-nvm/Ollama:/root/.ollama
 
@@ -38,10 +41,13 @@
     state: started
     recreate: true
     restart_policy: "unless-stopped"
-    ports:
-      - 3002:8080
+    labels:
+      sablier.enable: "true"
+      sablier.group: "ollama"
     etc_hosts:
       host.docker.internal: host-gateway
+    networks:
+      - name: sleepers
     volumes:
       - /mnt/media-nvm/OpenWebUI:/app/backend/data
 

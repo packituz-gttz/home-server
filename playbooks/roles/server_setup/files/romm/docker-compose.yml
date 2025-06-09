@@ -12,9 +12,12 @@ services:
       - /mnt/media-nvm/Romm/logs:/romm/logs
     depends_on:
       - romm-db
-    ports:
-      - "80:8080"
+    labels:
+      sablier.enable: true
+      sablier.group: "romm"
     restart: "unless-stopped"
+    networks:
+      - sleepers
     env_file:
       - /mnt/media-nvm/Romm/app.env
 
@@ -22,7 +25,16 @@ services:
     image: mariadb:lts-jammy
     container_name: romm-db
     restart: "unless-stopped"
+    labels:
+      sablier.enable: true
+      sablier.group: "romm"
+    networks:
+      - sleepers
     env_file:
       - /mnt/media-nvm/Romm/db.env
     volumes:
       - /mnt/media-nvm/Romm/db:/var/lib/mysql
+
+networks:
+  sleepers:
+    external: true

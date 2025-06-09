@@ -1,14 +1,47 @@
 ---
-- name: Pull and run Jump dashboard Docker image
+- name: Setup docker network for sleeper services
+  community.docker.docker_network:
+    name: sleepers
+
+- name: Create Caddy directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Caddy
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Setup Caddy file
+  ansible.builtin.copy:
+    src: 'caddy/Caddyfile'
+    dest: '/mnt/media-nvm/Caddy/Caddyfile'
+
+- name: Pull and run Caddy Docker image
+  community.docker.docker_container:
+    name: caddy
+    image: "caddy:2.10.0-with-sablier"
+    state: started
+    restart_policy: "unless-stopped"
+    recreate: true
+    ports:
+      - "3003:3003"
+      - "8001:8001"
+      - "8888:8888"
+      - "3002:3002"
+    volumes:
+      - '/mnt/media-nvm/Caddy/Caddyfile:/etc/caddy/Caddyfile:ro'
+    networks:
+      - name: sleepers
+
+- name: Pull and run Sablier Docker image
   community.docker.docker_container:
     name: sablier
     image: "sablierapp/sablier:1.9.0"
     state: started
     restart_policy: "unless-stopped"
     recreate: true
-    command:
-      - start
-      - --provider.name=docker
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
+    networks:
+      - name: sleepers
 ...

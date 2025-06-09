@@ -16,6 +16,11 @@
   tags: [ 'dronegc-setup', 'base-group' ]
   become: true
 
+- name: Install Sablier
+  ansible.builtin.import_tasks: sablier-setup.yml
+  tags: [ 'sablier-setup' ]
+  become: true
+
 - name: Install Jump Dashboard
   ansible.builtin.import_tasks: jump-setup.yml
   tags: [ 'jump-setup', 'base-group' ]

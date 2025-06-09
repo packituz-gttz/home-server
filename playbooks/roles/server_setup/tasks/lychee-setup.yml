@@ -14,10 +14,13 @@
     state: started
     recreate: true
     restart_policy: "unless-stopped"
+    labels:
+      sablier.enable: "true"
+      sablier.group: "lychee"
     env:
       APP_URL: "http://192.168.100.45:8001"
-    ports:
-      - 8001:80
+    networks:
+      - name: sleepers
     volumes:
       - /mnt/media-nvm/Lychee/conf:/conf
       - /mnt/media-nvm/Lychee/uploads:/uploads
