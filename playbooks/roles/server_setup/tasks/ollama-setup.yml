@@ -7,10 +7,25 @@
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
+- name: Copy Ollama Dockerfile
+  ansible.builtin.copy:
+    src: 'ollama/Dockerfile'
+    dest: /mnt/media-nvm/Ollama
+    mode: preserve
+
+- name: Build Ollama image with models
+  community.docker.docker_image:
+    name: "ollama/ollama-packituz"
+    tag: "0.9.0-rc0-rocm"
+    build:
+      path: /mnt/media-nvm/Ollama
+    source: build
+    force_source: true
+
 - name: Pull and run Ollama Docker image
   community.docker.docker_container:
     name: ollama
-    image: "ollama/ollama:0.9.0-rc0-rocm"
+    image: "ollama/ollama-packituz:0.9.0-rc0-rocm"
     state: started
     recreate: true
     memory: "8G"
@@ -44,8 +59,8 @@
     labels:
       sablier.enable: "true"
       sablier.group: "ollama"
-    etc_hosts:
-      host.docker.internal: host-gateway
+    env:
+      OLLAMA_BASE_URL: http://ollama:11434
     networks:
       - name: sleepers
     volumes:
