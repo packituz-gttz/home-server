@@ -7,11 +7,14 @@
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
-- name: Copy Ollama Dockerfile
+- name: Copy Ollama Dockerfile and entrypoint
   ansible.builtin.copy:
-    src: 'ollama/Dockerfile'
+    src: '{{ item }}'
     dest: /mnt/media-nvm/Ollama
     mode: preserve
+  loop:
+    - 'ollama/Dockerfile'
+    - 'ollama/entrypoint.sh'
 
 - name: Build Ollama image with models
   community.docker.docker_image:
@@ -41,13 +44,6 @@
       - name: sleepers
     volumes:
       - /mnt/media-nvm/Ollama:/root/.ollama
-
-- name: Pull models
-  community.docker.docker_container_exec:
-    container: ollama
-    command: "ollama run {{ item }}"
-  loop:
-    - llama3.2
 
 - name: Pull and run OpenwebUI
   community.docker.docker_container:
