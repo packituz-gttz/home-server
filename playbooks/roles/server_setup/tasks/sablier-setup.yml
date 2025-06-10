@@ -24,7 +24,7 @@
     build:
       path: /mnt/media-nvm/Caddy
     source: build
-    fource_source: true
+    force_source: true
 
 - name: Setup Caddy file
   ansible.builtin.copy:
