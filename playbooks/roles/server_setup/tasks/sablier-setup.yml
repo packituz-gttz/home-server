@@ -11,6 +11,21 @@
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
+- name: Copy Caddy Dockerfile
+  ansible.builtin.copy:
+    src: 'caddy/Dockerfile'
+    dest: /mnt/media-nvm/Caddy
+    mode: preserve
+
+- name: Build Caddy image with sablier plugin
+  community.docker.docker_image:
+    name: "caddy-packituz"
+    tag: "2.10.0-with-sablier"
+    build:
+      path: /mnt/media-nvm/Caddy
+    source: build
+    fource_source: true
+
 - name: Setup Caddy file
   ansible.builtin.copy:
     src: 'caddy/Caddyfile'
@@ -19,7 +34,7 @@
 - name: Pull and run Caddy Docker image
   community.docker.docker_container:
     name: caddy
-    image: "caddy:2.10.0-with-sablier"
+    image: "caddy-packituz:2.10.0-with-sablier"
     state: started
     restart_policy: "unless-stopped"
     recreate: true
