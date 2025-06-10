@@ -14,7 +14,6 @@
     mode: preserve
   loop:
     - 'ollama/Dockerfile'
-    - 'ollama/entrypoint.sh'
 
 - name: Build Ollama image with models
   community.docker.docker_image:
