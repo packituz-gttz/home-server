@@ -70,6 +70,7 @@ jobs:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags sablier-group'
+    if: ${{ always() }}
     needs: [deploy-media, deploy-utils, deploy-monitoring, deploy-gaming, deploy-downloaders, deploy-ai]
     secrets:
       ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
