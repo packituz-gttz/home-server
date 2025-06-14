@@ -1,8 +1,4 @@
 ---
-- name: Setup docker network for sleeper services
-  community.docker.docker_network:
-    name: sleepers
-
 - name: Create Caddy directories
   ansible.builtin.file:
     path: /mnt/media-nvm/Caddy
