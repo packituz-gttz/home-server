@@ -202,45 +202,6 @@ resource "grafana_rule_group" "docker_alerts" {
   }
 
   rule {
-    name           = "Lychee Status"
-    for            = "5m"
-    condition      = "B"
-    no_data_state  = "Alerting"
-    exec_err_state = "Error"
-    annotations = {
-      "summary" : "Lychee down",
-      "description" : "Lychee docker service is down"
-    }
-
-    notification_settings {
-      contact_point = grafana_contact_point.telegram.name
-    }
-
-    is_paused = false
-    data {
-      ref_id     = "A"
-      query_type = ""
-      relative_time_range {
-        from = 600
-        to   = 0
-      }
-      datasource_uid = grafana_data_source.prometheus.uid
-      model          = file("${path.module}/alerts_files/lychee_status_A.json")
-    }
-
-    data {
-      ref_id         = "B"
-      datasource_uid = "-100"
-      query_type     = ""
-      relative_time_range {
-        from = 600
-        to   = 0
-      }
-      model = file("${path.module}/alerts_files/docker_service_status_B.json")
-    }
-  }
-
-  rule {
     name           = "Pingvin Status"
     for            = "5m"
     condition      = "B"
