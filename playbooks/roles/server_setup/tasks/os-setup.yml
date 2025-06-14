@@ -56,6 +56,10 @@
     groups: docker
     append: yes
 
+- name: Setup docker network for sleeper services
+  community.docker.docker_network:
+    name: sleepers
+
 - name: Upgrade pip
   ansible.builtin.pip:
     name: pip
