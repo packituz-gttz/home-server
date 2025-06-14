@@ -69,7 +69,7 @@ jobs:
   deploy-sablier:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
-      playbook_params: '--tags sablier-group'
+      playbook_params: '--tags sablier-setup'
     if: ${{ always() }}
     needs: [deploy-media, deploy-utils, deploy-monitoring, deploy-gaming, deploy-downloaders, deploy-ai]
     secrets:
