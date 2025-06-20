@@ -61,5 +61,30 @@
     volumes:
       - /mnt/media-nvm/OpenWebUI:/app/backend/data
 
+- name: Load Ollama Model Loaders
+  community.docker.docker_container:
+    name: ollama-model-loader
+    image: "alpine/curl:8.14.1"
+    state: started
+    recreate: true
+    command: sleep infinity
+    restart_policy: "unless-stopped"
+    labels:
+      sablier.enable: "true"
+      sablier.group: "ollama"
+    networks:
+      - name: sleepers
+
+- name: Pull model into Ollama
+  community.docker.docker_container_exec:
+    container: ollama-model-loader
+    command: >
+      curl --location 'http://ollama:11434/api/pull' --data '{"name": "llama3.2", "stream": true}'
+
+- name: Load model into Ollama
+  community.docker.docker_container_exec:
+    container: ollama-model-loader
+    command: >
+      curl --fail --location 'http://ollama:11434/api/generate' --data '{"model": "llama3.2"}' --header 'Content-Type: application/json'
 
 ...
