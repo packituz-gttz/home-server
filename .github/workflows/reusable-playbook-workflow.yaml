@@ -24,10 +24,15 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13.5'
+          python-version: '3.12'
 
-      - name: Install requirements.txt
-        run: pip install -r requirements/requirements.txt
+      - name: Install uv (ultra-fast Python package manager)
+        run: |
+          pip install pipx
+          pipx install uv
+
+      - name: Install requirements.txt with uv
+        run: uv pip install -r requirements/requirements.txt
 
       - name: Install ansible requirements.yml
         run: ansible-galaxy install -r playbooks/requirements.yml

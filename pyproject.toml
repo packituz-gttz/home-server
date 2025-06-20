@@ -1,0 +1,12 @@
+[project]
+name = "home-server"
+version = "0.1.0"
+description = "Home Server setup with tools like jellyfin, kavita, navidrome, etc."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ansible==11.7.0",
+    "molecule==25.5.0",
+    "molecule-plugins[vagrant]==23.7.0",
+    "python-vagrant==1.0.0",
+]
