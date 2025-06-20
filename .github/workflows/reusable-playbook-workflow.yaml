@@ -32,7 +32,7 @@ jobs:
           pipx install uv
 
       - name: Sync Python environment with uv.lock
-        run: uv pip sync
+        run: uv sync
 
       - name: Install ansible requirements.yml
         run: ansible-galaxy install -r playbooks/requirements.yml
