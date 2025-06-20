@@ -34,8 +34,8 @@ jobs:
       - name: Install requirements.txt with uv
         run: uv pip install -r requirements/requirements.txt
 
-      - name: Install ansible requirements.yml
-        run: ansible-galaxy install -r playbooks/requirements.yml
+      - name: Sync Python environment with uv.lock
+        run: uv pip sync
 
       - name: Create vault pass file
         run: echo ${{ secrets.ANSIBLE_VAULT_PASSWORD }} > .vault_pass.txt
