@@ -10,7 +10,7 @@
 - name: Run JDownloader2 container
   community.docker.docker_container:
     name: jdownloader2
-    image: jlesage/jdownloader-2:v25.02.1
+    image: jlesage/jdownloader-2:v25.06.1
     state: started
     recreate: true
     restart_policy: "unless-stopped"
