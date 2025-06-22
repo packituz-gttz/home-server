@@ -39,6 +39,16 @@ jobs:
       SSH_KEY: ${{ secrets.SSH_KEY }}
 
 
+  deploy-monit:
+    uses: ./.github/workflows/reusable-playbook-workflow.yaml
+    with:
+      playbook_params: '--tags monit-group'
+    secrets:
+      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+
+
   deploy-gaming:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:

@@ -1,9 +1,22 @@
 ---
+- name: Check if Prometheus is already installed and version matches
+  ansible.builtin.command: /usr/local/bin/prometheus --version
+  register: prometheus_version_check
+  failed_when: false
+  changed_when: false
+
+- name: Set Prometheus install required fact
+  ansible.builtin.set_fact:
+    prometheus_install_required: >-
+      {{ prometheus_version_check.rc != 0
+         or (prometheus_version | regex_replace('^v', '') not in prometheus_version_check.stdout) }}
+
 - name: Download prometheus
   ansible.builtin.unarchive:
     src: 'https://github.com/prometheus/prometheus/releases/download/{{ prometheus_version }}/{{ prometheus_package_name }}.tar.gz'
     dest: /tmp/
     remote_src: true
+  when: prometheus_install_required
 
 - name: Add prometheus user
   ansible.builtin.user:
@@ -227,7 +240,7 @@
 
 # Setup PixAI exporter
 
-- name: Download Grafana dashboard images
+- name: Download PixAI exporter
   ansible.builtin.get_url:
     url: https://github.com/packituz-gttz/pixai-exporter/releases/download/v0.1.2-alpha/pixai_exporter
     dest: /usr/local/bin/
