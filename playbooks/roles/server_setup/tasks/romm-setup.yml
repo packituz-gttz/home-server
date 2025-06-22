@@ -21,7 +21,7 @@
       ROMM_AUTH_USERNAME={{ romm_auth_username }}
       ROMM_AUTH_PASSWORD={{ romm_auth_password }}
 
-- name: Create db.env fiel
+- name: Create db.env field
   ansible.builtin.copy:
     dest: /mnt/media-nvm/Romm/db.env
     content: |
