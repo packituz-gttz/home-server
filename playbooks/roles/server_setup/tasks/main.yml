@@ -47,12 +47,12 @@
 
 - name: Install ntfy Server
   ansible.builtin.import_tasks: ntfy-setup.yml
-  tags: [ 'ntfy-setup', 'monitoring-group' ]
+  tags: [ 'ntfy-setup', 'monit-group' ]
   become: true
 
 - name: Install monit Monitoring
   ansible.builtin.import_tasks: monit-setup.yml
-  tags: [ 'monit-setup', 'monitoring-group' ]
+  tags: [ 'monit-setup', 'monit-group' ]
   become: true
 
 - name: Install Prometheus/Grafana Monitoring
