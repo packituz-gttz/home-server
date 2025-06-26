@@ -17,7 +17,7 @@ services:
     volumes:
       - /mnt/media/Ghost/content:/var/lib/ghost/content
   db:
-    image: mysql:8
+    image: mysql:9
     security_opt:
       - seccomp:unconfined
     restart: always
