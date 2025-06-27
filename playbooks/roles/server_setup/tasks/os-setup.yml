@@ -119,4 +119,10 @@
     gw4: 192.168.100.1
     state: present
     autoconnect: true
+
+- name: Install mergerfs
+  ansible.builtin.dnf:
+    name: 'https://github.com/trapexit/mergerfs/releases/download/2.37.1/mergerfs-2.37.1-1.el9.x86_64.rpm'
+    state: present
+
 ...
