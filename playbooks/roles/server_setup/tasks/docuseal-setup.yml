@@ -14,6 +14,8 @@
     state: started
     recreate: true
     restart_policy: "unless-stopped"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://0.0.0.0:3000/"]
     labels:
       sablier.enable: "true"
       sablier.group: "docuseal"
