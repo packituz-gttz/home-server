@@ -3,6 +3,8 @@ services:
   romm:
     image: rommapp/romm:3.10.2
     container_name: romm
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://0.0.0.0:8080/"]
     volumes:
       - /mnt/media-nvm/Romm/resources:/romm/resources
       - /mnt/media-nvm/Romm/redis-data:/redis-data
