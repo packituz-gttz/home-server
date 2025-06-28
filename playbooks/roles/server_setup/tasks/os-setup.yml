@@ -125,4 +125,10 @@
     name: 'https://github.com/trapexit/mergerfs/releases/download/2.37.1/mergerfs-2.37.1-1.el9.x86_64.rpm'
     state: present
 
+- name: Install p7zip
+  ansible.builtin.dnf:
+    name: 'p7zip*'
+    state: present
+
+
 ...
