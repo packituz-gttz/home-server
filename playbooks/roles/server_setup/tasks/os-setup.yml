@@ -120,6 +120,8 @@
     state: present
     autoconnect: true
 
+# Mergerfs installation and configuration
+
 - name: Install mergerfs
   ansible.builtin.dnf:
     name: 'https://github.com/trapexit/mergerfs/releases/download/2.37.1/mergerfs-2.37.1-1.el9.x86_64.rpm'
@@ -130,5 +132,29 @@
     name: 'p7zip*'
     state: present
 
+- name: Create mergerfs directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+    mode: '0755'
+  loop:
+    - /mnt/media
+    - /mnt/media-nvm
+    - /mnt/disk1
+    - /mnt/disk2
+    - /mnt/disk3
+
+- name: Ensure mergerfs entries are present in /etc/fstab
+  ansible.builtin.blockinfile:
+    path: /etc/fstab
+    marker: "# {mark} ANSIBLE MANAGED BLOCK: Mergerfs"
+    block: |
+      # Mergerfs
+      UUID=9ec81642-5ce5-4bb6-9aa7-bf93f4542ec1 /mnt/disk1 ext4 defaults,errors=remount-ro 0 1
+      UUID=cc00ef08-1bf0-4b69-9efd-e7b4463c6430 /mnt/disk2 ext4 defaults,errors=remount-ro 0 1
+      UUID=8e3b5071-fecd-47bb-8445-0d0d50393f9a /mnt/disk3 ext4 defaults,errors=remount-ro 0 1
+      /mnt/disk1:/mnt/disk2:/mnt/disk3 /mnt/media fuse.mergerfs cache.files=partial,dropcacheonclose=true,category.create=mfs 0 0
 
 ...
