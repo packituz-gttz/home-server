@@ -2,7 +2,7 @@
 - name: Pull and run Navidrome
   community.docker.docker_container:
     name: navidrome
-    image: "deluan/navidrome:0.56.1"
+    image: "deluan/navidrome:0.57.0"
     state: started
     recreate: true
     restart_policy: "unless-stopped"
