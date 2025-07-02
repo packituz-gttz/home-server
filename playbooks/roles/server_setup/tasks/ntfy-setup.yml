@@ -7,6 +7,7 @@
     group: root
 
 - name: Copy ntfy Configurations
+  become: true
   ansible.posix.synchronize:
     src: ntfy/server.yml
     dest: /etc/ntfy/server.yml
