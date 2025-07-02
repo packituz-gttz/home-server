@@ -9,6 +9,7 @@
   register: prometheus_async
 
 - name: Add prometheus user
+  become: true
   ansible.builtin.user:
     name: '{{ prometheus_user }}'
     shell: /bin/false
@@ -16,6 +17,7 @@
     create_home: false
 
 - name: Create prometheus directories
+  become: true
   ansible.builtin.file:
     path: "{{ item }}"
     state: directory
@@ -40,6 +42,7 @@
     remote_src: true
 
 - name: Copy prometheus and promtool executables
+  become: true
   ansible.builtin.copy:
     src: '{{ item }}'
     dest: /usr/local/bin/
@@ -52,6 +55,7 @@
     - "/tmp/{{ prometheus_package_name }}/promtool"
 
 - name: Copy prometheus console
+  become: true
   ansible.builtin.copy:
     src: '{{ item }}'
     dest: /etc/prometheus/
@@ -64,6 +68,7 @@
     - "/tmp/{{ prometheus_package_name }}/console_libraries"
 
 - name: Copy Prometheus main and web configuration file
+  become: true
   ansible.builtin.copy:
     src: files/prometheus/prometheus.yml
     dest: /etc/prometheus/
@@ -72,11 +77,13 @@
 
 
 - name: Copy Prometheus service file
+  become: true
   ansible.builtin.copy:
     src: files/prometheus/prometheus.service
     dest: /etc/systemd/system/
 
 - name: Reload systemctl daemon
+  become: true
   ansible.builtin.systemd:
     daemon_reload: true
     name: prometheus
@@ -84,6 +91,7 @@
     enabled: true
 
 - name: Open prometheus port on firewall
+  become: true
   ansible.posix.firewalld:
     port: 9090/tcp
     permanent: true
@@ -102,6 +110,7 @@
   register: node_exporter_async
 
 - name: Add node_exporter user
+  become: true
   ansible.builtin.user:
     name: '{{ node_exporter_user }}'
     shell: /bin/false
@@ -109,6 +118,7 @@
     create_home: false
 
 - name: Copy Node Exporter service file
+  become: true
   ansible.builtin.copy:
     src: files/node_exporter/node_exporter.service
     dest: /etc/systemd/system/
@@ -122,6 +132,7 @@
   delay: 5
 
 - name: Copy node exporter executable
+  become: true
   ansible.builtin.copy:
     src: /tmp/node_exporter-1.8.2.linux-amd64/node_exporter
     dest: /usr/local/bin/
@@ -131,6 +142,7 @@
     mode: preserve
 
 - name: Reload systemctl daemon
+  become: true
   ansible.builtin.systemd:
     daemon_reload: true
     name: node_exporter
@@ -158,39 +170,45 @@
 # Setup prometheus_folder_size_exporter
 
 - name: Install cargo
+  become: true
   ansible.builtin.dnf:
     name: cargo
     state: present
 
 - name: Install prometheus_folder_size_exporter
+  become: true
   community.general.cargo:
     name: prometheus_folder_size_exporter
     state: present
     path: /usr/local/
 
 - name: Create directory for prometheus_folder_size_exporter configurations
+  become: true
   ansible.builtin.file:
     path: /opt/prometheus_folder_size_exporter
     state: directory
     mode: '0755'
 
 - name: Set permissions for prometheus_folder_size_exporter executable
+  become: true
   ansible.builtin.file:
     path: /usr/local/bin/prometheus_folder_size_exporter
     group: '{{ node_exporter_user }}'
     owner: '{{ node_exporter_user }}'
 
 - name: Set SELinux context for prometheus_folder_size_exporter binary
+  become: true
   ansible.builtin.sefcontext:
     target: /usr/local/bin/prometheus_folder_size_exporter
     setype: bin_t
     state: present
 
 - name: Apply new SELinux file context to filesystem
+  become: true
   ansible.builtin.command: restorecon -irv /usr/local/bin/prometheus_folder_size_exporter
 
-
 - name: Copy prometheus_folder_size_exporter configurations
+  become: true
   ansible.builtin.copy:
     src: "{{ item.source }}"
     dest: "{{ item.destination }}"
@@ -199,6 +217,7 @@
     - { source: 'prometheus_folder_size_exporter/prometheus_folder_size_exporter.json', destination: '/opt/prometheus_folder_size_exporter/' }
 
 - name: Reload systemctl daemon
+  become: true
   ansible.builtin.systemd:
     daemon_reload: true
     name: prometheus_folder_size_exporter
@@ -217,6 +236,7 @@
   register: blackbox_exporter_async
 
 - name: Add blackbox_exporter user
+  become: true
   ansible.builtin.user:
     name: '{{ blackbox_exporter_user }}'
     shell: /bin/false
@@ -224,6 +244,7 @@
     create_home: false
 
 - name: Create blackbox directories
+  become: true
   ansible.builtin.file:
     path: /etc/blackbox
     state: directory
@@ -231,11 +252,13 @@
     group: '{{ blackbox_exporter_user }}'
 
 - name: Copy Blackbox Exporter service file
+  become: true
   ansible.builtin.copy:
     src: files/blackbox_exporter/blackbox_exporter.service
     dest: /etc/systemd/system/
 
 - name: Copy Blackbox configuration file
+  become: true
   ansible.builtin.copy:
     src: files/blackbox_exporter/blackbox.yml
     dest: /etc/blackbox/
@@ -249,6 +272,7 @@
   delay: 5
 
 - name: Copy Blackbox exporter executable
+  become: true
   ansible.builtin.copy:
     src: /tmp/blackbox_exporter-0.25.0.linux-amd64/blackbox_exporter
     dest: /usr/local/bin/
@@ -258,6 +282,7 @@
     mode: preserve
 
 - name: Reload systemctl daemon
+  become: true
   ansible.builtin.systemd:
     daemon_reload: true
     name: blackbox_exporter
@@ -267,6 +292,7 @@
 # Setup PixAI exporter
 
 - name: Download PixAI exporter
+  become: true
   ansible.builtin.get_url:
     url: https://github.com/packituz-gttz/pixai-exporter/releases/download/v0.1.2-alpha/pixai_exporter
     dest: /usr/local/bin/
@@ -275,11 +301,13 @@
     mode: '0775'
 
 - name: Copy PixAI Exporter service file
+  become: true
   ansible.builtin.template:
     src: pixai_exporter/pixai_exporter.service
     dest: /etc/systemd/system/pixai_exporter.service
 
 - name: Reload systemctl daemon
+  become: true
   ansible.builtin.systemd:
     daemon_reload: true
     name: pixai_exporter
@@ -296,14 +324,13 @@
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
-- name: Obtain id for super user
-  block:
-    - name: Get user id
-      ansible.builtin.getent:
-        database: passwd
-        key: '{{ superuser_name }}'
-        split: ':'
-      register: getent_output
+- name: Get user id
+  become: true
+  ansible.builtin.getent:
+    database: passwd
+    key: '{{ superuser_name }}'
+    split: ':'
+  register: getent_output
 
 - name: Print getent output
   ansible.builtin.debug:
@@ -344,7 +371,7 @@
     group: '{{ superuser_name }}'
 
 - name: Copy Loki configuration file
-  ansible.builtin.copy:
+  ansible.posix.synchronize:
     src: files/loki/loki-config.yaml
     dest: /mnt/media-nvm/Loki/loki-config.yaml
 
@@ -375,7 +402,7 @@
     - /mnt/media-nvm/Promtail/config
 
 - name: Copy Promtail configuration file
-  ansible.builtin.copy:
+  ansible.posix.synchronize:
     src: files/promtail/promtail-config.yaml
     dest: /mnt/media-nvm/Promtail/config/promtail-config.yaml
 
