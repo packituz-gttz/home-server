@@ -91,7 +91,7 @@ jobs:
     with:
       playbook_params: '--tags sablier-setup'
     if: ${{ always() }}
-    needs: [deploy-media, deploy-utils, deploy-gaming, deploy-downloaders, deploy-ai]
+    needs: [deploy-jump, deploy-media, deploy-utils, deploy-gaming, deploy-downloaders, deploy-ai]
     secrets:
       ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
