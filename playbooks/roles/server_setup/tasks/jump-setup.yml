@@ -3,6 +3,8 @@
   ansible.builtin.file:
     path: '{{ item }}'
     state: directory
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
     mode: '0755'
   loop: '{{ jump_media_dirs }}'
 

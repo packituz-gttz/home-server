@@ -8,7 +8,7 @@
     group: '{{ superuser_name }}'
 
 - name: Copy Caddy Dockerfile
-  ansible.builtin.copy:
+  ansible.posix.synchronize:
     src: 'caddy/Dockerfile'
     dest: /mnt/media-nvm/Caddy
     mode: preserve
@@ -23,7 +23,7 @@
     force_source: true
 
 - name: Setup Caddy file
-  ansible.builtin.copy:
+  ansible.posix.synchronize:
     src: 'caddy/Caddyfile'
     dest: '/mnt/media-nvm/Caddy/Caddyfile'
 

@@ -8,8 +8,7 @@
     group: '{{ superuser_name }}'
 
 - name: Upload Kavita cron script
-  become: false
-  ansible.builtin.copy:
+  ansible.posix.synchronize:
     src: kavita/new_file_uploaded.sh
     dest: /mnt/media-nvm/Kavita/
 

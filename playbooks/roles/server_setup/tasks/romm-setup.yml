@@ -31,8 +31,7 @@
       MYSQL_PASSWORD={{ romm_db_password }}
 
 - name: Copy Docker-compose file
-  become: false
-  ansible.builtin.copy:
+  ansible.posix.synchronize:
     src: files/romm/docker-compose.yml
     dest: /mnt/media-nvm/Romm
 
