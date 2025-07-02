@@ -1,6 +1,5 @@
 ---
 - name: Create Jump directories
-  become: false
   ansible.builtin.file:
     path: '{{ item }}'
     state: directory
@@ -8,8 +7,7 @@
   loop: '{{ jump_media_dirs }}'
 
 - name: Copy icons and configurations
-  become: false
-  ansible.builtin.copy:
+  ansible.posix.synchronize:
     src: "{{ item.source }}"
     dest: "{{ item.destination }}"
   loop:
