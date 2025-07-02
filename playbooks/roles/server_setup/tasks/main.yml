@@ -41,7 +41,6 @@
 - name: Install ntfy Server
   ansible.builtin.import_tasks: ntfy-setup.yml
   tags: [ 'ntfy-setup', 'monit-group' ]
-  become: true
 
 - name: Install monit Monitoring
   ansible.builtin.import_tasks: monit-setup.yml

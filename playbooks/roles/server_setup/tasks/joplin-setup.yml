@@ -30,8 +30,7 @@
       MAILER_ENABLED=0
 
 - name: Copy Docker-compose file
-  become: false
-  ansible.builtin.copy:
+  ansible.posix.synchronize:
     src: files/joplin/docker-compose.yml
     dest: /media/Joplin
 
