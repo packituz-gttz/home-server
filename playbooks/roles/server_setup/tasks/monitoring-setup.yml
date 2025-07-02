@@ -1,22 +1,12 @@
 ---
-- name: Check if Prometheus is already installed and version matches
-  ansible.builtin.command: /usr/local/bin/prometheus --version
-  register: prometheus_version_check
-  failed_when: false
-  changed_when: false
-
-- name: Set Prometheus install required fact
-  ansible.builtin.set_fact:
-    prometheus_install_required: >-
-      {{ prometheus_version_check.rc != 0
-         or (prometheus_version | regex_replace('^v', '') not in prometheus_version_check.stdout) }}
-
-- name: Download prometheus
-  ansible.builtin.unarchive:
-    src: 'https://github.com/prometheus/prometheus/releases/download/{{ prometheus_version }}/{{ prometheus_package_name }}.tar.gz'
-    dest: /tmp/
-    remote_src: true
-  when: prometheus_install_required
+- name: Download prometheus archive (async)
+  ansible.builtin.get_url:
+    url: "https://github.com/prometheus/prometheus/releases/download/{{ prometheus_version }}/{{ prometheus_package_name }}.tar.gz"
+    dest: "/tmp/{{ prometheus_package_name }}.tar.gz"
+    mode: '0644'
+  async: 300
+  poll: 0
+  register: prometheus_async
 
 - name: Add prometheus user
   ansible.builtin.user:
@@ -34,6 +24,20 @@
   loop:
     - /etc/prometheus
     - /var/lib/prometheus
+
+- name: Wait for Prometheus download to complete
+  ansible.builtin.async_status:
+    jid: "{{ prometheus_async.ansible_job_id }}"
+  register: prometheus_async_status
+  until: prometheus_async_status.finished
+  retries: 100
+  delay: 5
+
+- name: Unarchive prometheus
+  ansible.builtin.unarchive:
+    src: "/tmp/{{ prometheus_package_name }}.tar.gz"
+    dest: /tmp/
+    remote_src: true
 
 - name: Copy prometheus and promtool executables
   ansible.builtin.copy:
@@ -88,6 +92,15 @@
 
 #    Setup Node Exporter
 
+- name: Download node exporter archive (async)
+  ansible.builtin.get_url:
+    url: "https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz"
+    dest: "/tmp/node_exporter-1.8.2.linux-amd64.tar.gz"
+    mode: '0644'
+  async: 300
+  poll: 0
+  register: node_exporter_async
+
 - name: Add node_exporter user
   ansible.builtin.user:
     name: '{{ node_exporter_user }}'
@@ -95,11 +108,18 @@
     state: present
     create_home: false
 
-- name: Download node exporter
-  ansible.builtin.unarchive:
-    src: 'https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz'
-    dest: /tmp/
-    remote_src: true
+- name: Copy Node Exporter service file
+  ansible.builtin.copy:
+    src: files/node_exporter/node_exporter.service
+    dest: /etc/systemd/system/
+
+- name: Wait for Node Exporter archive download to complete
+  ansible.builtin.async_status:
+    jid: "{{ node_exporter_async.ansible_job_id }}"
+  register: node_exporter_async_status
+  until: node_exporter_async_status.finished
+  retries: 100
+  delay: 5
 
 - name: Copy node exporter executable
   ansible.builtin.copy:
@@ -109,11 +129,6 @@
     owner: '{{ node_exporter_user }}'
     remote_src: true
     mode: preserve
-
-- name: Copy Node Exporter service file
-  ansible.builtin.copy:
-    src: files/node_exporter/node_exporter.service
-    dest: /etc/systemd/system/
 
 - name: Reload systemctl daemon
   ansible.builtin.systemd:
@@ -192,6 +207,15 @@
 
 ## Setup Blackbox exporter
 
+- name: Download Blackbox exporter archive (async)
+  ansible.builtin.get_url:
+    url: "https://github.com/prometheus/blackbox_exporter/releases/download/v0.25.0/blackbox_exporter-0.25.0.linux-amd64.tar.gz"
+    dest: "/tmp/blackbox_exporter-0.25.0.linux-amd64.tar.gz"
+    mode: '0644'
+  async: 300
+  poll: 0
+  register: blackbox_exporter_async
+
 - name: Add blackbox_exporter user
   ansible.builtin.user:
     name: '{{ blackbox_exporter_user }}'
@@ -206,21 +230,6 @@
     owner: '{{ blackbox_exporter_user }}'
     group: '{{ blackbox_exporter_user }}'
 
-- name: Download Blackbox exporter
-  ansible.builtin.unarchive:
-    src: 'https://github.com/prometheus/blackbox_exporter/releases/download/v0.25.0/blackbox_exporter-0.25.0.linux-amd64.tar.gz'
-    dest: /tmp/
-    remote_src: true
-
-- name: Copy Blackbox exporter executable
-  ansible.builtin.copy:
-    src: /tmp/blackbox_exporter-0.25.0.linux-amd64/blackbox_exporter
-    dest: /usr/local/bin/
-    group: '{{ blackbox_exporter_user }}'
-    owner: '{{ blackbox_exporter_user }}'
-    remote_src: true
-    mode: preserve
-
 - name: Copy Blackbox Exporter service file
   ansible.builtin.copy:
     src: files/blackbox_exporter/blackbox_exporter.service
@@ -230,6 +239,23 @@
   ansible.builtin.copy:
     src: files/blackbox_exporter/blackbox.yml
     dest: /etc/blackbox/
+
+- name: Wait for Blackbox Exporter archive download to complete
+  ansible.builtin.async_status:
+    jid: "{{ blackbox_exporter_async.ansible_job_id }}"
+  register: blackbox_exporter_async_status
+  until: blackbox_exporter_async_status.finished
+  retries: 100
+  delay: 5
+
+- name: Copy Blackbox exporter executable
+  ansible.builtin.copy:
+    src: /tmp/blackbox_exporter-0.25.0.linux-amd64/blackbox_exporter
+    dest: /usr/local/bin/
+    group: '{{ blackbox_exporter_user }}'
+    owner: '{{ blackbox_exporter_user }}'
+    remote_src: true
+    mode: preserve
 
 - name: Reload systemctl daemon
   ansible.builtin.systemd:
