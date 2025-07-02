@@ -8,7 +8,7 @@
 
 - name: Copy ntfy Configurations
   become: true
-  ansible.posix.synchronize:
+  ansible.builtin.copy:
     src: ntfy/server.yml
     dest: /etc/ntfy/server.yml
 
