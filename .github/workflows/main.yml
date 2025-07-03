@@ -37,17 +37,6 @@ jobs:
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
       SSH_KEY: ${{ secrets.SSH_KEY }}
 
-
-  deploy-monitoring:
-    uses: ./.github/workflows/reusable-playbook-workflow.yaml
-    with:
-      playbook_params: '--tags monitoring-group'
-    secrets:
-      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
-      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
-      SSH_KEY: ${{ secrets.SSH_KEY }}
-
-
   deploy-monit:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
@@ -91,7 +80,53 @@ jobs:
     with:
       playbook_params: '--tags sablier-setup'
     if: ${{ always() }}
-    needs: [deploy-jump, deploy-media, deploy-utils, deploy-gaming, deploy-downloaders, deploy-ai]
+    needs: [ deploy-jump, deploy-media, deploy-utils, deploy-gaming, deploy-downloaders, deploy-ai ]
+    secrets:
+      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+
+  deploy-cadvisor:
+    uses: ./.github/workflows/reusable-playbook-workflow.yaml
+    with:
+      playbook_params: '--tags cadvisor-setup'
+    secrets:
+      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+
+  deploy-blackbox:
+    uses: ./.github/workflows/reusable-playbook-workflow.yaml
+    with:
+      playbook_params: '--tags blackbox-setup'
+    secrets:
+      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+
+  deploy-node:
+    uses: ./.github/workflows/reusable-playbook-workflow.yaml
+    with:
+      playbook_params: '--tags node-setup'
+    secrets:
+      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+
+  deploy-pixai:
+    uses: ./.github/workflows/reusable-playbook-workflow.yaml
+    with:
+      playbook_params: '--tags pixai-setup'
+    secrets:
+      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+
+  deploy-monitoring:
+    uses: ./.github/workflows/reusable-playbook-workflow.yaml
+    with:
+      playbook_params: '--tags prometheus-setup'
+    needs: [ deploy-cadvisor, deploy-blackbox, deploy-node, deploy-pixai ]
     secrets:
       ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}

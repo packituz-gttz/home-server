@@ -47,10 +47,25 @@
   tags: [ 'monit-setup', 'monit-group' ]
   become: true
 
-- name: Install Prometheus/Grafana Monitoring
-  ansible.builtin.import_tasks: monitoring-setup.yml
-  tags: [ 'monitoring-setup', 'monitoring-group' ]
-#  become: true
+- name: Install cAdvisor
+  ansible.builtin.import_tasks: cadvisor-setup.yml
+  tags: [ 'cadvisor-setup', 'monitoring-group' ]
+
+- name: Install Blackbox Exporter for Prometheus
+  ansible.builtin.import_tasks: blackbox-exporter-setup.yml
+  tags: [ 'blackbox-setup', 'monitoring-group' ]
+
+- name: Install Node Exporter for Prometheus
+  ansible.builtin.import_tasks: node-exporter-setup.yml
+  tags: [ 'node-setup', 'monitoring-group' ]
+
+- name: Install PixAI Exporter for Prometheus
+  ansible.builtin.import_tasks: pixai-exporter-setup.yml
+  tags: [ 'pixai-setup', 'monitoring-group' ]
+
+- name: Install Prometheus Monitoring
+  ansible.builtin.import_tasks: prometheus-setup.yml
+  tags: [ 'prometheus-setup', 'monitoring-group' ]
 
 # Utils group
 
