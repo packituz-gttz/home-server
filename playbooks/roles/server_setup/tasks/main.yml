@@ -51,6 +51,10 @@
   ansible.builtin.import_tasks: cadvisor-setup.yml
   tags: [ 'cadvisor-setup', 'monitoring-group' ]
 
+- name: Install Foldersize Exporter for Prometheus
+  ansible.builtin.import_tasks: foldersize-exporter-setup.yml
+  tags: [ 'foldersize-setup', 'monitoring-group' ]
+
 - name: Install Blackbox Exporter for Prometheus
   ansible.builtin.import_tasks: blackbox-exporter-setup.yml
   tags: [ 'blackbox-setup', 'monitoring-group' ]
