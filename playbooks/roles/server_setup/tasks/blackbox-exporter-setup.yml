@@ -1,0 +1,62 @@
+- name: Download Blackbox exporter archive (async)
+  ansible.builtin.get_url:
+    url: "https://github.com/prometheus/blackbox_exporter/releases/download/v0.25.0/blackbox_exporter-0.25.0.linux-amd64.tar.gz"
+    dest: "/tmp/blackbox_exporter-0.25.0.linux-amd64.tar.gz"
+    mode: '0644'
+  async: 300
+  poll: 0
+  register: blackbox_exporter_async
+
+- name: Add blackbox_exporter user
+  become: true
+  ansible.builtin.user:
+    name: '{{ blackbox_exporter_user }}'
+    shell: /bin/false
+    state: present
+    create_home: false
+
+- name: Create blackbox directories
+  become: true
+  ansible.builtin.file:
+    path: /etc/blackbox
+    state: directory
+    owner: '{{ blackbox_exporter_user }}'
+    group: '{{ blackbox_exporter_user }}'
+
+- name: Copy Blackbox Exporter service file
+  become: true
+  ansible.builtin.copy:
+    src: files/blackbox_exporter/blackbox_exporter.service
+    dest: /etc/systemd/system/
+
+- name: Copy Blackbox configuration file
+  become: true
+  ansible.builtin.copy:
+    src: files/blackbox_exporter/blackbox.yml
+    dest: /etc/blackbox/
+
+- name: Wait for Blackbox Exporter archive download to complete
+  ansible.builtin.async_status:
+    jid: "{{ blackbox_exporter_async.ansible_job_id }}"
+  register: blackbox_exporter_async_status
+  until: blackbox_exporter_async_status.finished
+  retries: 100
+  delay: 5
+
+- name: Copy Blackbox exporter executable
+  become: true
+  ansible.builtin.copy:
+    src: /tmp/blackbox_exporter-0.25.0.linux-amd64/blackbox_exporter
+    dest: /usr/local/bin/
+    group: '{{ blackbox_exporter_user }}'
+    owner: '{{ blackbox_exporter_user }}'
+    remote_src: true
+    mode: preserve
+
+- name: Reload systemctl daemon
+  become: true
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: blackbox_exporter
+    state: restarted
+    enabled: true
