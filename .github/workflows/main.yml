@@ -95,6 +95,15 @@ jobs:
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
       SSH_KEY: ${{ secrets.SSH_KEY }}
 
+  deploy-foldersize:
+    uses: ./.github/workflows/reusable-playbook-workflow.yaml
+    with:
+      playbook_params: '--tags foldersize-setup'
+    secrets:
+      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+
   deploy-blackbox:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
@@ -126,7 +135,7 @@ jobs:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags prometheus-setup'
-    needs: [ deploy-cadvisor, deploy-blackbox, deploy-node, deploy-pixai ]
+    needs: [ deploy-cadvisor, deploy-foldersize, deploy-blackbox, deploy-node, deploy-pixai ]
     secrets:
       ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
