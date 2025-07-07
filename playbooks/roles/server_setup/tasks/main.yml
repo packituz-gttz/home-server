@@ -106,12 +106,10 @@
 - name: Install Ollama
   ansible.builtin.import_tasks: ollama-setup.yml
   tags: [ 'ollama-setup', 'ai-group' ]
-  become: true
 
 - name: Install Home AI Agent
   ansible.builtin.import_tasks: ai-setup.yml
   tags: [ 'ai-setup', 'ai-group' ]
-  become: true
 
 # Sablier
 

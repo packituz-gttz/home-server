@@ -8,12 +8,9 @@
     group: '{{ superuser_name }}'
 
 - name: Copy Ollama Dockerfile and entrypoint
-  ansible.builtin.copy:
-    src: '{{ item }}'
+  ansible.posix.synchronize:
+    src: ollama/Dockerfile
     dest: /mnt/media-nvm/Ollama
-    mode: preserve
-  loop:
-    - 'ollama/Dockerfile'
 
 - name: Build Ollama image with models
   community.docker.docker_image:
