@@ -36,6 +36,10 @@
   ansible.builtin.import_tasks: lychee-setup.yml
   tags: [ 'lychee-setup', 'media-group' ]
 
+- name: Install ErsatzTv
+  ansible.builtin.import_tasks: ersatztv-setup.yml
+  tags: [ 'ersatztv-setup', 'media-group' ]
+
 # Monitoring group
 
 - name: Install ntfy Server
