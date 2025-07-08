@@ -85,6 +85,11 @@
   ansible.builtin.import_tasks: docuseal-setup.yml
   tags: [ 'docuseal-setup', 'utils-group' ]
 
+- name: Install LubeLogger
+  ansible.builtin.import_tasks: lubelogger-setup.yml
+  tags: [ 'lubelogger-setup', 'utils-group' ]
+
+
 # Gaming group
 
 - name: Install Romm
