@@ -1,0 +1,23 @@
+version: "3.4"
+services:
+  lubelogger:
+    image: ghcr.io/hargata/lubelogger:v1.4.8
+    container_name: lubelogger
+#    healthcheck:
+#      test: [ "CMD", "wget", "-qO-", "http://0.0.0.0:8080/" ]
+    restart: unless-stopped
+    labels:
+      sablier.enable: true
+      sablier.group: "lubelogger"
+    networks:
+      - sleepers
+    volumes:
+      - /mnt/media-nvm/LubeLogger/data:/App/data
+      - /mnt/media-nvm/LubeLogger/keys:/root/.aspnet/DataProtection-Keys
+    environment:
+#      - LC_ALL=Spanish_Mexico.1252
+      - LANG=en_US
+
+networks:
+  sleepers:
+    external: true
