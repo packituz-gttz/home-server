@@ -93,6 +93,10 @@
   ansible.builtin.import_tasks: lubelogger-setup.yml
   tags: [ 'lubelogger-setup', 'utils-group' ]
 
+- name: Install Actual
+  ansible.builtin.import_tasks: actual-setup.yml
+  tags: [ 'actual-setup', 'utils-group' ]
+
 
 # Gaming group
 
