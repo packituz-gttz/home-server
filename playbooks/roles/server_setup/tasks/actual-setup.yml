@@ -1,0 +1,41 @@
+---
+- name: Create Actual directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Actual/data
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/actual/docker-compose.yml
+    dest: /mnt/media-nvm/Actual/
+
+- name: Generate private key (no passphrase, RSA 2048)
+  community.crypto.openssl_privatekey:
+    path: /mnt/media-nvm/Actual/data/selfhost.key
+    size: 2048
+    type: RSA
+    mode: '0600'
+
+- name: Generate certificate signing request (CSR)
+  community.crypto.openssl_csr:
+    path: /mnt/media-nvm/Actual/data/selfhost.csr
+    privatekey_path: /mnt/media-nvm/Actual/data/selfhost.key
+    common_name: "192.168.100.45"
+
+- name: Generate self-signed certificate (valid 365 days)
+  community.crypto.x509_certificate:
+    path: /mnt/media-nvm/Actual/data/selfhost.crt
+    csr_path: /mnt/media-nvm/Actual/data/selfhost.csr
+    privatekey_path: /mnt/media-nvm/Actual/data/selfhost.key
+    provider: selfsigned
+    selfsigned_not_after: "+365d"
+    mode: '0644'
+
+- name: Run Actual
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Actual/
+
+...
