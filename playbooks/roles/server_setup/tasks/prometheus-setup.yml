@@ -162,7 +162,7 @@
 - name: Pull and run Loki
   community.docker.docker_container:
     name: loki
-    image: "grafana/loki:3.5.1"
+    image: "grafana/loki:3.5.2"
     restart_policy: "unless-stopped"
     ports:
       - 3100:3100
