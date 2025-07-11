@@ -222,6 +222,16 @@
       "tags": [
         "local"
       ]
+    },
+    {
+      "name": "Actual",
+      "url": "https://192.168.100.45:5006/",
+      "description": "Budget",
+      "newtab": true,
+      "icon": "actual.png",
+      "tags": [
+        "local"
+      ]
     }
   ]
 }
