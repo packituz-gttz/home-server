@@ -1,4 +1,4 @@
-FROM ollama/ollama:0.9.6-rc0-rocm
+FROM ollama/ollama:0.9.7-rc0-rocm
 ENV MODELS="llama3.2"
 ENV OLLAMA_KEEP_ALIVE=-1
 ENV OLLAMA_MAX_LOADED_MODELS=2
