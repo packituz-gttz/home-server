@@ -97,6 +97,10 @@
   ansible.builtin.import_tasks: actual-setup.yml
   tags: [ 'actual-setup', 'utils-group' ]
 
+- name: Install PaperlessNGX
+  ansible.builtin.import_tasks: paperlessngx-setup.yml
+  tags: [ 'paperlessngx-setup', 'utils-group' ]
+
 
 # Gaming group
 

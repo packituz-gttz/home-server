@@ -68,3 +68,18 @@
     }
 }
 
+:8887 {
+    route {
+      sablier http://sablier:10000 {
+
+        group paperlessngx
+        session_duration 10m
+        dynamic {
+            display_name PaperlessNGX
+            theme ghost
+        }
+      }
+      reverse_proxy paperlessngx-webserver:8000
+    }
+}
+
