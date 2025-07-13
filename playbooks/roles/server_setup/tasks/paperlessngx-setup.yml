@@ -1,0 +1,25 @@
+---
+- name: Create PaperlessNGX media directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/PaperlessNGX
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Create docker-compose.env file
+  ansible.builtin.copy:
+    dest: /mnt/media-nvm/PaperlessNGX/docker-compose.env
+    content: |
+      PAPERLESS_SECRET_KEY={{ paperlessngx_secret_key }}
+
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/paperless-ngx/docker-compose.yml
+    dest: /mnt/media-nvm/PaperlessNGX
+
+- name: Run PaperlessNGX
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/PaperlessNGX
+
+...
