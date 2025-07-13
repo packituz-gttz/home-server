@@ -238,7 +238,7 @@
       "url": "https://192.168.100.45:8887/",
       "description": "Document Manager",
       "newtab": true,
-      "icon": "actual.png",
+      "icon": "paperlessngx.webp",
       "tags": [
         "local"
       ]
