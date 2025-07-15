@@ -83,3 +83,18 @@
     }
 }
 
+:8886 {
+    route {
+      sablier http://sablier:10000 {
+
+        group omnitools
+        session_duration 10m
+        dynamic {
+            display_name Omni-Tools
+            theme ghost
+        }
+      }
+      reverse_proxy omnitools:80
+    }
+}
+

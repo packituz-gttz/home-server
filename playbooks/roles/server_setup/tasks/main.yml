@@ -101,6 +101,9 @@
   ansible.builtin.import_tasks: paperlessngx-setup.yml
   tags: [ 'paperlessngx-setup', 'utils-group' ]
 
+- name: Install OmniTools
+  ansible.builtin.import_tasks: omnitools-setup.yml
+  tags: [ 'omnitools-setup', 'utils-setup' ]
 
 # Gaming group
 
