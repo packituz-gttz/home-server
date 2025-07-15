@@ -1,0 +1,32 @@
+---
+- name: Create Stirling PDF directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/StirlingPDF/
+    state: directory
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+    mode: '0755'
+
+- name: Pull and run Stirling PDF Docker image
+  community.docker.docker_container:
+    name: stirlingpdf
+    image: "stirlingtools/stirling-pdf:1.0.2"
+    state: started
+    recreate: true
+    restart_policy: "unless-stopped"
+    labels:
+      sablier.enable: "true"
+      sablier.group: "stirlingpdf"
+    networks:
+      - name: sleepers
+    volumes:
+      - /mnt/media-nvm/StirlingPDF/trainingData:/usr/share/tessdata
+      - /mnt/media-nvm/StirlingPDF/extraConfigs:/configs
+      - /mnt/media-nvm/StirlingPDF/customFiles:/customFiles/
+      - /mnt/media-nvm/StirlingPDF/logs:/logs/
+      - /mnt/media-nvm/StirlingPDF/pipeline:/pipeline/
+    env:
+      LANGS: 'en_GB'
+      DISABLE_ADDITIONAL_FEATURES: 'true'
+
+...

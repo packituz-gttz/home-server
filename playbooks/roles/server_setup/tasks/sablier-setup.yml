@@ -41,6 +41,7 @@
       - "8889:8889"
       - "8887:8887"
       - "8886:8886"
+      - "8885:8885"
     volumes:
       - '/mnt/media-nvm/Caddy/Caddyfile:/etc/caddy/Caddyfile:ro'
     networks:

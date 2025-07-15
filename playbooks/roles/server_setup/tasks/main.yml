@@ -105,6 +105,10 @@
   ansible.builtin.import_tasks: omnitools-setup.yml
   tags: [ 'omnitools-setup', 'utils-setup' ]
 
+- name: Install StirlingPDF
+  ansible.builtin.import_tasks: stirlingpdf-setup.yml
+  tags: [ 'stirlingpdf-setup', 'utils-setup' ]
+
 # Gaming group
 
 - name: Install Romm
