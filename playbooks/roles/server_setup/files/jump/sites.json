@@ -242,6 +242,16 @@
       "tags": [
         "local"
       ]
+    },
+    {
+      "name": "Omni-Tools",
+      "url": "http://192.168.100.45:8886/",
+      "description": "Tools for everyday tasks",
+      "newtab": true,
+      "icon": "omnitools.png",
+      "tags": [
+        "local"
+      ]
     }
   ]
 }

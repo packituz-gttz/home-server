@@ -1,0 +1,14 @@
+---
+- name: Pull and run Omni-Tools Docker image
+  community.docker.docker_container:
+    name: omnitools
+    image: "iib0011/omni-tools:0.5.0"
+    state: started
+    recreate: true
+    restart_policy: "unless-stopped"
+    labels:
+      sablier.enable: "true"
+      sablier.group: "omnitools"
+    networks:
+      - name: sleepers
+...
