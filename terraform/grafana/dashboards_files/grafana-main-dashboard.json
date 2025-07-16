@@ -174,13 +174,13 @@
             "uid": "hCsE-CCSk"
           },
           "editorMode": "code",
-          "expr": "count(time() - max(container_last_seen{name=~\".+\"}) by (name) <= 60)",
+          "expr": "count(time() - max(container_last_seen{name=~\"^[^_]+$\"}) by (name) <= 60)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Running Containers",
+      "title": "Running Containers (Service Related)",
       "type": "stat"
     },
     {
@@ -904,7 +904,7 @@
             "uid": "hCsE-CCSk"
           },
           "editorMode": "code",
-          "expr": "time() - max(container_last_seen{name=~\".+\"}) by (name)",
+          "expr": "time() - max(container_last_seen{name=~\"^[^_]+$\"}) by (name)",
           "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
@@ -1029,7 +1029,7 @@
             "uid": "hCsE-CCSk"
           },
           "editorMode": "code",
-          "expr": "topk(1, container_memory_working_set_bytes{name=~\".+\"}) by (name)",
+          "expr": "topk(1, container_memory_working_set_bytes{name=~\"^[^_]+$\"}) by (name)",
           "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
@@ -1217,8 +1217,8 @@
         "showHeader": true,
         "sortBy": [
           {
-            "desc": false,
-            "displayName": "Service"
+            "desc": true,
+            "displayName": "CPU Usage"
           }
         ]
       },
@@ -1230,7 +1230,7 @@
             "uid": "hCsE-CCSk"
           },
           "editorMode": "code",
-          "expr": "rate(container_cpu_usage_seconds_total{name=~\".+\"}[$__rate_interval])",
+          "expr": "rate(container_cpu_usage_seconds_total{name=~\"^[^_]+$\"}[$__rate_interval])",
           "legendFormat": "{{name}}",
           "range": true,
           "refId": "A"
@@ -1811,5 +1811,5 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 17
+  "version": 18
 }
