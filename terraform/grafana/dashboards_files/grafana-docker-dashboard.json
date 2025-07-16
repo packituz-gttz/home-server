@@ -26,12 +26,11 @@
   "graphTooltip": 0,
   "id": 3,
   "links": [],
-  "liveNow": false,
   "panels": [
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -49,7 +48,8 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/93787f31231f.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.6.3",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -80,8 +80,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -113,7 +112,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.6.3",
       "repeat": "docker_service",
       "repeatDirection": "v",
       "targets": [
@@ -191,8 +190,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -223,7 +221,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.6.3",
       "repeat": "docker_service",
       "repeatDirection": "v",
       "targets": [
@@ -269,8 +267,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -330,9 +327,9 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -350,14 +347,15 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a26430ae1b14.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.6.3",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -375,14 +373,15 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/ccafeabff9c2.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.6.3",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
       },
       "gridPos": {
         "h": 17,
@@ -400,7 +399,8 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a0dda8c703c7.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.6.3",
+      "title": "",
       "transparent": true,
       "type": "text"
     },
@@ -429,8 +429,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               },
               {
                 "color": "purple",
@@ -450,7 +449,7 @@
         "h": 12,
         "w": 8,
         "x": 5,
-        "y": 24
+        "y": 93
       },
       "id": 6,
       "options": {
@@ -467,7 +466,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "11.2.0",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -602,7 +601,7 @@
         "h": 12,
         "w": 6,
         "x": 13,
-        "y": 24
+        "y": 93
       },
       "id": 14,
       "options": {
@@ -624,11 +623,12 @@
           "values": false
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "9.2.10",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -650,77 +650,97 @@
       "type": "piechart"
     }
   ],
+  "preload": false,
   "refresh": "5s",
-  "schemaVersion": 39,
+  "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": true,
           "text": [
-            "All"
+            "actual",
+            "caddy",
+            "cadvisor",
+            "docuseal",
+            "dronegc",
+            "ersatztv",
+            "grafana",
+            "home-ai-agent",
+            "jdownloader2",
+            "jellyfin",
+            "joplin-app-1",
+            "joplin-db-1",
+            "jump",
+            "kavita",
+            "loki",
+            "lubelogger",
+            "lychee",
+            "navidrome",
+            "ollama",
+            "ollama-model-loader",
+            "omnitools",
+            "openwebui",
+            "paperlessngx-broker",
+            "paperlessngx-webserver",
+            "pingvin",
+            "promtail",
+            "romm",
+            "romm-db",
+            "sablier",
+            "stirlingpdf",
+            "transmission"
           ],
           "value": [
-            "$__all"
+            "actual",
+            "caddy",
+            "cadvisor",
+            "docuseal",
+            "dronegc",
+            "ersatztv",
+            "grafana",
+            "home-ai-agent",
+            "jdownloader2",
+            "jellyfin",
+            "joplin-app-1",
+            "joplin-db-1",
+            "jump",
+            "kavita",
+            "loki",
+            "lubelogger",
+            "lychee",
+            "navidrome",
+            "ollama",
+            "ollama-model-loader",
+            "omnitools",
+            "openwebui",
+            "paperlessngx-broker",
+            "paperlessngx-webserver",
+            "pingvin",
+            "promtail",
+            "romm",
+            "romm-db",
+            "sablier",
+            "stirlingpdf",
+            "transmission"
           ]
         },
-        "hide": 0,
+        "definition": "label_values(container_last_seen{name=~\"^[^_]+$\"},name)",
+        "hide": 1,
         "includeAll": true,
         "label": "Docker Service",
         "multi": true,
         "name": "docker_service",
-        "options": [
-          {
-            "selected": true,
-            "text": "All",
-            "value": "$__all"
-          },
-          {
-            "selected": false,
-            "text": "navidrome",
-            "value": "navidrome"
-          },
-          {
-            "selected": false,
-            "text": "jellyfin",
-            "value": "jellyfin"
-          },
-          {
-            "selected": false,
-            "text": "frigate",
-            "value": "frigate"
-          },
-          {
-            "selected": false,
-            "text": "pingvin",
-            "value": "pingvin"
-          },
-          {
-            "selected": false,
-            "text": "kavita",
-            "value": "kavita"
-          },
-          {
-            "selected": false,
-            "text": "cloudflare_tunnels",
-            "value": "cloudflare_tunnels"
-          },
-          {
-            "selected": false,
-            "text": "romm",
-            "value": "romm"
-          },
-          {
-            "selected": false,
-            "text": "ntfy_server",
-            "value": "ntfy_server"
-          }
-        ],
-        "query": "navidrome,jellyfin,frigate, pingvin,kavita,cloudflare_tunnels,romm,ntfy_server",
-        "queryValue": "",
-        "skipUrlSync": false,
-        "type": "custom"
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(container_last_seen{name=~\"^[^_]+$\"},name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
       }
     ]
   },
@@ -732,6 +752,5 @@
   "timezone": "",
   "title": "Server Docker Detail",
   "uid": "cuUieq3Iz",
-  "version": 2,
-  "weekStart": ""
+  "version": 7
 }
