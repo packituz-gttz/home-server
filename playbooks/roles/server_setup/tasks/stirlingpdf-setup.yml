@@ -10,6 +10,8 @@
 - name: Pull and run Stirling PDF Docker image
   community.docker.docker_container:
     name: stirlingpdf
+    healthcheck:
+      test: [ "CMD", "wget", "-qO-", "http://0.0.0.0:8080/" ]
     image: "stirlingtools/stirling-pdf:1.0.2"
     state: started
     recreate: true
