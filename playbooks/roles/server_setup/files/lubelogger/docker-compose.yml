@@ -3,8 +3,8 @@ services:
   lubelogger:
     image: ghcr.io/hargata/lubelogger:v1.4.9
     container_name: lubelogger
-#    healthcheck:
-#      test: [ "CMD", "wget", "-qO-", "http://0.0.0.0:8080/" ]
+    healthcheck:
+      test: [ "CMD", "sleep", "10" ]
     restart: unless-stopped
     labels:
       sablier.enable: true
