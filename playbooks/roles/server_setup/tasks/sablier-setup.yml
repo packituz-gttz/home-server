@@ -15,7 +15,7 @@
 - name: Build Caddy image with sablier plugin
   community.docker.docker_image:
     name: "caddy-packituz"
-    tag: "2.10.0-with-sablier"
+    tag: "latest-with-sablier"
     build:
       path: /mnt/media-nvm/Caddy
     source: build
@@ -29,7 +29,7 @@
 - name: Pull and run Caddy Docker image
   community.docker.docker_container:
     name: caddy
-    image: "caddy-packituz:2.10.0-with-sablier"
+    image: "caddy-packituz:latest-with-sablier"
     state: started
     restart_policy: "unless-stopped"
     recreate: true
