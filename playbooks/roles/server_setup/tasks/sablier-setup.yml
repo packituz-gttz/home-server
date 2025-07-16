@@ -11,6 +11,7 @@
   ansible.posix.synchronize:
     src: 'caddy/Dockerfile'
     dest: /mnt/media-nvm/Caddy
+  register: caddy_dockerfile_sync
 
 - name: Build Caddy image with sablier plugin
   community.docker.docker_image:
@@ -20,6 +21,7 @@
       path: /mnt/media-nvm/Caddy
     source: build
     force_source: true
+  when: caddy_dockerfile_sync is changed
 
 - name: Setup Caddy file
   ansible.posix.synchronize:
