@@ -48,7 +48,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/f783fe297734.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -70,8 +70,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
@@ -103,7 +102,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -136,8 +135,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           }
@@ -168,7 +166,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -201,8 +199,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               },
               {
                 "color": "purple",
@@ -242,7 +239,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -280,7 +277,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a2107458b395.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -301,8 +298,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -340,7 +336,7 @@
         "sizing": "auto",
         "valueMode": "color"
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -375,8 +371,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               },
               {
                 "color": "purple",
@@ -416,7 +411,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -459,8 +454,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               },
               {
                 "color": "purple",
@@ -497,7 +491,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -576,8 +570,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               },
               {
                 "color": "purple",
@@ -616,7 +609,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -646,6 +639,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisPlacement": "auto",
             "fillOpacity": 63,
             "hideFrom": {
               "legend": false,
@@ -677,8 +671,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               }
             ]
           }
@@ -703,11 +696,12 @@
         "rowHeight": 0.3,
         "showValue": "never",
         "tooltip": {
+          "hideZeros": false,
           "mode": "none",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -748,7 +742,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a0b11eb87009.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -774,7 +768,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/c4209b65b0b7.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -850,8 +844,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
@@ -903,7 +896,7 @@
           }
         ]
       },
-      "pluginVersion": "11.3.2",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -938,463 +931,6 @@
             "renameByName": {
               "Field": "Service",
               "Last": "Status"
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "from": 0,
-                "result": {
-                  "color": "red",
-                  "index": 0
-                },
-                "to": 10000
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 10001,
-                "result": {
-                  "color": "purple",
-                  "index": 1
-                },
-                "to": 20000
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "Tokens"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 7,
-        "x": 12,
-        "y": 19
-      },
-      "id": 158,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.3.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "pixai_available_tokens_total",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "{{__name__}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "PixAI Available Credit Tokens",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "Expiration days for tokens",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "from": 0,
-                "result": {
-                  "color": "red",
-                  "index": 0
-                },
-                "to": 3
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 4,
-                "result": {
-                  "color": "purple",
-                  "index": 1
-                },
-                "to": 15
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue"
-              }
-            ]
-          },
-          "unit": "d"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 7,
-        "x": 12,
-        "y": 26
-      },
-      "id": 161,
-      "options": {
-        "displayMode": "basic",
-        "maxVizHeight": 41,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
-      },
-      "pluginVersion": "11.2.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "pixai_token_days_until_expiration",
-          "instant": false,
-          "legendFormat": "{{token}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "PixAI API Tokens Expiration",
-      "type": "bargauge"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "from": 0,
-                "result": {
-                  "color": "red",
-                  "index": 0
-                },
-                "to": 2
-              },
-              "type": "range"
-            },
-            {
-              "options": {
-                "from": 3,
-                "result": {
-                  "color": "purple",
-                  "index": 1
-                },
-                "to": 10
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue"
-              }
-            ]
-          },
-          "unit": "day"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 7,
-        "x": 12,
-        "y": 32
-      },
-      "id": 162,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "11.2.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "pixai_days_until_subscription_expiration",
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Subscription Days Left",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 17,
-        "w": 5,
-        "x": 0,
-        "y": 34
-      },
-      "id": 150,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/bf803f918de0.png\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.2.2",
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 17,
-        "w": 5,
-        "x": 19,
-        "y": 34
-      },
-      "id": 151,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/b1b658cb5d28.png\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.2.2",
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "color-text"
-            },
-            "filterable": false,
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue"
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Service"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "mode": "fixed"
-                }
-              },
-              {
-                "id": "mappings",
-                "value": []
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 19,
-        "w": 7,
-        "x": 5,
-        "y": 38
-      },
-      "id": 146,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": false,
-            "displayName": "Service"
-          }
-        ]
-      },
-      "pluginVersion": "11.2.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "rate(container_cpu_usage_seconds_total{name=~\".+\"}[$__rate_interval])",
-          "legendFormat": "{{name}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Container Services CPU Usage",
-      "transformations": [
-        {
-          "id": "reduce",
-          "options": {
-            "labelsToFields": false,
-            "reducers": [
-              "last"
-            ]
-          }
-        },
-        {
-          "id": "groupBy",
-          "options": {
-            "fields": {
-              "Field": {
-                "aggregations": [],
-                "operation": "groupby"
-              },
-              "Last": {
-                "aggregations": [
-                  "last"
-                ],
-                "operation": "aggregate"
-              }
-            }
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Field": false
-            },
-            "indexByName": {},
-            "renameByName": {
-              "Field": "Service",
-              "Last": "Status",
-              "Last (last)": "CPU Usage"
             }
           }
         }
@@ -1467,7 +1003,7 @@
         "h": 19,
         "w": 7,
         "x": 12,
-        "y": 38
+        "y": 19
       },
       "id": 147,
       "options": {
@@ -1485,7 +1021,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -1568,6 +1104,329 @@
         "h": 17,
         "w": 5,
         "x": 0,
+        "y": 34
+      },
+      "id": 150,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/bf803f918de0.png\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.6.3",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 5,
+        "x": 19,
+        "y": 34
+      },
+      "id": 151,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/b1b658cb5d28.png\"  style=\"width: auto; height: 100%;\">\n</div>",
+        "mode": "html"
+      },
+      "pluginVersion": "11.6.3",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue"
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Service"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "mappings",
+                "value": []
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 19,
+        "w": 7,
+        "x": 5,
+        "y": 38
+      },
+      "id": 146,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "Service"
+          }
+        ]
+      },
+      "pluginVersion": "11.6.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "rate(container_cpu_usage_seconds_total{name=~\".+\"}[$__rate_interval])",
+          "legendFormat": "{{name}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Container Services CPU Usage",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "labelsToFields": false,
+            "reducers": [
+              "last"
+            ]
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Field": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Last": {
+                "aggregations": [
+                  "last"
+                ],
+                "operation": "aggregate"
+              }
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Field": false
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Field": "Service",
+              "Last": "Status",
+              "Last (last)": "CPU Usage"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "default": true,
+        "type": "prometheus",
+        "uid": "hCsE-CCSk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlPu"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 50,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 7,
+        "x": 12,
+        "y": 38
+      },
+      "id": 149,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.6.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "hCsE-CCSk"
+          },
+          "editorMode": "code",
+          "expr": "rate(node_disk_write_time_seconds_total{device=~\"sda|sdb\"}[5m]) / rate(node_disk_writes_completed_total{device=~\"sda|sdb\"}[5m]) * 100",
+          "instant": false,
+          "legendFormat": "{{device}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Disk Write Latency",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 7,
+        "x": 12,
+        "y": 44
+      },
+      "id": 157,
+      "options": {
+        "alertInstanceLabelFilter": "",
+        "alertName": "",
+        "dashboardAlerts": false,
+        "datasource": "-- Grafana --",
+        "folder": {
+          "title": "Network Alerts",
+          "uid": "bdyrwslxjln9cc"
+        },
+        "groupBy": [],
+        "groupMode": "default",
+        "maxItems": 20,
+        "showInactiveAlerts": false,
+        "sortOrder": 1,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": true,
+          "normal": true,
+          "pending": true
+        },
+        "viewMode": "list"
+      },
+      "pluginVersion": "11.6.3",
+      "title": "Network Alerts",
+      "type": "alertlist"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 17,
+        "w": 5,
+        "x": 0,
         "y": 51
       },
       "id": 153,
@@ -1580,7 +1439,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/8e977e4b7d16.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.6.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1606,7 +1465,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/6fc93bdbf2b5.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.6.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1711,10 +1570,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "11.6.3",
       "targets": [
         {
           "datasource": {
@@ -1730,102 +1591,6 @@
         }
       ],
       "title": "Disk Read Latency",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "default": true,
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "continuous-BlPu"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 50,
-            "gradientMode": "scheme",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 7,
-        "x": 12,
-        "y": 57
-      },
-      "id": 149,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "rate(node_disk_write_time_seconds_total{device=~\"sda|sdb\"}[5m]) / rate(node_disk_writes_completed_total{device=~\"sda|sdb\"}[5m]) * 100",
-          "instant": false,
-          "legendFormat": "{{device}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Disk Write Latency",
       "type": "timeseries"
     },
     {
@@ -1852,6 +1617,7 @@
         "groupBy": [],
         "groupMode": "default",
         "maxItems": 20,
+        "showInactiveAlerts": false,
         "sortOrder": 1,
         "stateFilter": {
           "error": true,
@@ -1862,44 +1628,8 @@
         },
         "viewMode": "list"
       },
+      "pluginVersion": "11.6.3",
       "title": "System Alerts",
-      "type": "alertlist"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 13,
-        "w": 7,
-        "x": 12,
-        "y": 63
-      },
-      "id": 157,
-      "options": {
-        "alertInstanceLabelFilter": "",
-        "alertName": "",
-        "dashboardAlerts": false,
-        "datasource": "-- Grafana --",
-        "folder": {
-          "title": "Network Alerts",
-          "uid": "bdyrwslxjln9cc"
-        },
-        "groupBy": [],
-        "groupMode": "default",
-        "maxItems": 20,
-        "sortOrder": 1,
-        "stateFilter": {
-          "error": true,
-          "firing": true,
-          "noData": true,
-          "normal": true,
-          "pending": true
-        },
-        "viewMode": "list"
-      },
-      "title": "Network Alerts",
       "type": "alertlist"
     },
     {
@@ -1923,7 +1653,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/93787f31231f.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.6.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1949,7 +1679,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/ccafeabff9c2.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.6.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -1975,7 +1705,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/7067054e4abb.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.6.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -2001,7 +1731,7 @@
         "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/1efa523996fc.png\"  style=\"width: auto; height: 100%;\">\n</div>",
         "mode": "html"
       },
-      "pluginVersion": "11.2.2",
+      "pluginVersion": "11.6.3",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -2009,7 +1739,7 @@
   ],
   "preload": false,
   "refresh": "5s",
-  "schemaVersion": 40,
+  "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": [
@@ -2081,6 +1811,5 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 16,
-  "weekStart": ""
+  "version": 17
 }

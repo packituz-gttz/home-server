@@ -27,10 +27,6 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9974']
 
-  - job_name: 'pixai'
-    static_configs:
-      - targets: ['localhost:9865']
-
   - job_name: 'blackbox'
     metrics_path: /probe
     params:
