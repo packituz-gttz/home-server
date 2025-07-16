@@ -67,10 +67,6 @@
   ansible.builtin.import_tasks: node-exporter-setup.yml
   tags: [ 'node-setup', 'monitoring-group' ]
 
-- name: Install PixAI Exporter for Prometheus
-  ansible.builtin.import_tasks: pixai-exporter-setup.yml
-  tags: [ 'pixai-setup', 'monitoring-group' ]
-
 - name: Install Prometheus Monitoring
   ansible.builtin.import_tasks: prometheus-setup.yml
   tags: [ 'prometheus-setup', 'monitoring-group' ]
