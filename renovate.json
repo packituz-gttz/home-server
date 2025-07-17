@@ -6,6 +6,6 @@
     ":automergeMinor",
     ":prHourlyLimitNone"
   ],
-  "automergeSchedule": "after 6am and before 8am",
+  "automergeSchedule": "after 7am and before 10am",
   "timezone": "America/Mexico_City"
 }
