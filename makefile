@@ -33,6 +33,9 @@ staging:  ## Runs ansible-playbook against local vagrant machine. Example make s
 tags:  ## Lists available ansible tags for deploying only certain components to server
 > @grep -oP '(?<=tags: ).*' ./playbooks/roles/server_setup/tasks/main.yml | tr -d "'" | tr -d ' ' | tr -d '[' | tr -d ']' | tr , ' ' | cut -f1 -d' ' | sort
 
+group_tags:  ## Lists available ansible group tags for deploying only certain components to server
+> @grep -oP '(?<=tags: ).*' ./playbooks/roles/server_setup/tasks/main.yml | tr -d "'" | tr -d ' ' | tr -d '[' | tr -d ']' | tr , ' ' | cut -f2 -d' ' | sort | uniq
+
 view_prod_secrets:  ## Show Ansible production secrets
 > @ansible-vault view playbooks/roles/server_setup/vars/secrets.yml --vault-password-file .vault_pass.txt
 
