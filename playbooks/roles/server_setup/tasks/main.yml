@@ -99,11 +99,11 @@
 
 - name: Install OmniTools
   ansible.builtin.import_tasks: omnitools-setup.yml
-  tags: [ 'omnitools-setup', 'utils-setup' ]
+  tags: [ 'omnitools-setup', 'utils-group' ]
 
 - name: Install StirlingPDF
   ansible.builtin.import_tasks: stirlingpdf-setup.yml
-  tags: [ 'stirlingpdf-setup', 'utils-setup' ]
+  tags: [ 'stirlingpdf-setup', 'utils-group' ]
 
 # Gaming group
 
@@ -135,6 +135,6 @@
 
 - name: Install Sablier
   ansible.builtin.import_tasks: sablier-setup.yml
-  tags: [ 'sablier-setup' ]
+  tags: [ 'sablier-setup', 'sablier-group' ]
 
 ...
