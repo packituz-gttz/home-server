@@ -19,10 +19,10 @@ jobs:
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
       SSH_KEY: ${{ secrets.SSH_KEY }}
 
-  deploy-jump:
+  deploy-base:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
-      playbook_params: '--tags jump-setup'
+      playbook_params: '--tags jump-setup,dronegc-setup'
     secrets:
       ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
@@ -80,7 +80,7 @@ jobs:
     with:
       playbook_params: '--tags sablier-setup'
     if: ${{ always() }}
-    needs: [ deploy-jump, deploy-media, deploy-utils, deploy-gaming, deploy-downloaders, deploy-ai ]
+    needs: [ deploy-base, deploy-media, deploy-utils, deploy-gaming, deploy-downloaders, deploy-ai ]
     secrets:
       ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
