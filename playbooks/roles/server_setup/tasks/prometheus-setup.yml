@@ -135,9 +135,15 @@
       - 3000:3000
 
 - name: Copy Grafana dashboard images zipfile
-  ansible.builtin.unarchive:
+  ansible.posix.synchronize:
     src: files/grafana/grafana-images.zip
     dest: /mnt/media/Grafana/img/
+
+- name: Extract Grafana dashboard images from zipfile
+  ansible.builtin.unarchive:
+    src: /mnt/media/Grafana/img/grafana-images.zip
+    dest: /mnt/media/Grafana/img/
+    remote_src: true
     extra_opts:
       - "-P"
       - "{{ grafana_dashboard_images_password }}"
