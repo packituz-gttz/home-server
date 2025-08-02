@@ -52,7 +52,7 @@
 - name: Pull and run Sablier Docker image
   community.docker.docker_container:
     name: sablier
-    image: "sablierapp/sablier:1.10.0"
+    image: "sablierapp/sablier:1.10.1"
     state: started
     restart_policy: "unless-stopped"
     recreate: true
