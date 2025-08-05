@@ -1,6 +1,6 @@
 services:
   actual_server:
-    image: actualbudget/actual-server:25.7.1-alpine
+    image: actualbudget/actual-server:25.8.0-alpine
     container_name: actual
     ports:
       - "5006:5006"
