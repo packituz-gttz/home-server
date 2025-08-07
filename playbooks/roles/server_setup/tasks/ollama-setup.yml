@@ -10,7 +10,7 @@
 - name: Pull and run Ollama Docker image
   community.docker.docker_container:
     name: ollama
-    image: "ollama/ollama:0.11.3-rc0-rocm"
+    image: "ollama/ollama:0.11.4-rc0-rocm"
     state: started
     recreate: true
     memory: "8G"
