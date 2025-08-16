@@ -5,7 +5,7 @@ description = "Home Server setup with tools like jellyfin, kavita, navidrome, et
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "ansible==11.8.0",
+    "ansible==11.9.0",
     "molecule==25.7.0",
     "molecule-plugins[vagrant]==23.7.0",
     "python-vagrant==1.0.0",
