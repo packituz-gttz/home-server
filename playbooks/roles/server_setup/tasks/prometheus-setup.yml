@@ -195,7 +195,7 @@
 - name: Pull and run Promtail
   community.docker.docker_container:
     name: promtail
-    image: grafana/promtail:3.5.3
+    image: grafana/promtail:3.5.4
     recreate: true
     restart_policy: "unless-stopped"
     volumes:
