@@ -18,7 +18,7 @@
 - name: Copy Node Exporter service file
   become: true
   ansible.builtin.copy:
-    src: files/node_exporter/node_exporter.service
+    src: prometheus/exporters/node/node_exporter.service
     dest: /etc/systemd/system/
 
 - name: Wait for Node Exporter archive download to complete
