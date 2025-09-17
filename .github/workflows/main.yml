@@ -9,6 +9,10 @@ on:
       - pyproject.toml
       - .github/**
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   deploy-media:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
