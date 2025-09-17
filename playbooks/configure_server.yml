@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  gather_facts: false
   vars:
     secrets_file: ./roles/server_setup/vars/secrets.yml
   vars_files:
