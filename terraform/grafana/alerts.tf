@@ -445,7 +445,7 @@ resource "grafana_rule_group" "system_alerts" {
         from = 600
         to   = 0
       }
-      model = file("${path.module}/alerts_files/system_alerts_B.json")
+      model = file("${path.module}/alerts_files/system_alerts_media_disk_usage_B.json")
     }
 
   }
