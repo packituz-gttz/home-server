@@ -68,6 +68,10 @@
     }
 }
 
+papers.packituz.dev {
+    reverse_proxy paperlessngx-webserver:8000
+}
+
 :8887 {
     route {
       sablier http://sablier:10000 {

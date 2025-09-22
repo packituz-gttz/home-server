@@ -33,7 +33,7 @@ services:
       - USERMAP_UID=1000
       - USERMAP_GID=1000
       - PAPERLESS_OCR_LANGUAGE=spa
-      - PAPERLESS_URL=http://192.168.100.45:8887
+      - PAPERLESS_URL=https://papers.packituz.dev
 
 
 networks:
