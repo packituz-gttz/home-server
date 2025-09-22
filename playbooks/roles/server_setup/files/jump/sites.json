@@ -40,7 +40,8 @@
         "home",
         "entertainment"
       ]
-    },{
+    },
+    {
       "name": "Grafana",
       "url": "https://grafana.packituz.dev/",
       "description": "Grafana Monitoring Dashboards",
@@ -50,7 +51,8 @@
         "home",
         "work"
       ]
-    },{
+    },
+    {
       "name": "Joplin",
       "url": "https://notes.packituz.dev/",
       "description": "Notes service",
@@ -64,6 +66,26 @@
         "request_method": "GET"
       },
       "icon": "joplin.jpeg",
+      "tags": [
+        "home"
+      ]
+    },
+    {
+      "name": "Papers",
+      "url": "https://papers.packituz.dev/",
+      "description": "Document Manager",
+      "newtab": true,
+      "icon": "paperlessngx.webp",
+      "tags": [
+        "home"
+      ]
+    },
+    {
+      "name": "Cars",
+      "url": "https://cars.packituz.dev/",
+      "description": "Vehicle Maintenance",
+      "newtab": true,
+      "icon": "lubelogger.png",
       "tags": [
         "home"
       ]
@@ -105,7 +127,8 @@
       "tags": [
         "local"
       ]
-    },{
+    },
+    {
       "name": "Grafana",
       "url": "http://192.168.100.45:3000/",
       "description": "Grafana Monitoring Dashboards",
