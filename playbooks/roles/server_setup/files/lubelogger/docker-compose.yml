@@ -4,7 +4,7 @@ services:
     image: ghcr.io/hargata/lubelogger:v1.5.2
     container_name: lubelogger
     healthcheck:
-      test: [ "CMD", "sleep", "10" ]
+      test: [ "CMD", "sleep", "1" ]
     restart: unless-stopped
     labels:
       sablier.enable: true
