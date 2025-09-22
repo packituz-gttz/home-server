@@ -9,11 +9,6 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
     }
 
     ingress_rule {
-      hostname = module.records.records_info["depas"].hostname
-      service  = "http://${var.server_local_ip}:5001"
-    }
-
-    ingress_rule {
       hostname = module.records.records_info["home"].hostname
       service  = "http://${var.server_local_ip}:8123"
     }
