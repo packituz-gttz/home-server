@@ -23,6 +23,11 @@ variable "cloudflare_notification_email" {
   description = "Email that will receive notifications"
 }
 
+variable "domain" {
+  type        = string
+  description = "Domain name"
+}
+
 variable "server_local_ip" {
   type        = string
   description = "Server ip on local network"

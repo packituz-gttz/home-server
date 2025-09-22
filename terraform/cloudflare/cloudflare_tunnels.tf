@@ -1,66 +1,57 @@
 resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
   tunnel_id  = cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.id
   account_id = var.cloudflare_account_id
-  config {
+  config = {
 
-    ingress_rule {
-      hostname = module.records.records_info["comics"].hostname
-      service  = "http://${var.server_local_ip}:5000"
-    }
-
-    ingress_rule {
-      hostname = module.records.records_info["home"].hostname
-      service  = "http://${var.server_local_ip}:8123"
-    }
-
-    ingress_rule {
-      hostname = module.records.records_info["jelly"].hostname
-      service  = "http://${var.server_local_ip}:8096"
-    }
-
-    ingress_rule {
-      hostname = module.records.records_info["music"].hostname
-      service  = "http://${var.server_local_ip}:4533"
-    }
-
-    ingress_rule {
-      hostname = module.records.records_info["notes"].hostname
-      service  = "http://${var.server_local_ip}:22300"
-    }
-
-    ingress_rule {
-      hostname = module.records.records_info["ntfy"].hostname
-      service  = "http://${var.server_local_ip}:8008"
-    }
-
-    ingress_rule {
-      hostname = module.records.records_info["ssh"].hostname
-      service  = "ssh://${var.server_local_ip}:22"
-    }
-
-    ingress_rule {
-      hostname = module.records.records_info["papers"].hostname
-      service  = "http://${var.server_local_ip}:8887"
-    }
-
-    ingress_rule {
-      hostname = module.records.records_info["cars"].hostname
-      service  = "http://${var.server_local_ip}:8889"
-    }
-
-    ingress_rule {
-      hostname = module.records.records_info["grafana"].hostname
-      service  = "http://${var.server_local_ip}:3000"
-    }
-
-    ingress_rule {
-      hostname = module.records.records_info["share"].hostname
-      service  = "http://${var.server_local_ip}:3001"
-    }
-
-    ingress_rule {
-      service = "http_status:404"
-    }
+    ingress_rule = [
+      {
+        hostname = "comics.${var.domain}"
+        service  = "http://${var.server_local_ip}:5000"
+      },
+      {
+        hostname = "home.${var.domain}"
+        service  = "http://${var.server_local_ip}:8123"
+      },
+      {
+        hostname = "jelly.${var.domain}"
+        service  = "http://${var.server_local_ip}:8096"
+      },
+      {
+        hostname = "music.${var.domain}"
+        service  = "http://${var.server_local_ip}:4533"
+      },
+      {
+        hostname = "notes.${var.domain}"
+        service  = "http://${var.server_local_ip}:22300"
+      },
+      {
+        hostname = "ntfy.${var.domain}"
+        service  = "http://${var.server_local_ip}:8008"
+      },
+      {
+        hostname = "ssh.${var.domain}"
+        service  = "ssh://${var.server_local_ip}:22"
+      },
+      {
+        hostname = "papers.${var.domain}"
+        service  = "http://${var.server_local_ip}:8887"
+      },
+      {
+        hostname = "cars.${var.domain}"
+        service  = "http://${var.server_local_ip}:8889"
+      },
+      {
+        hostname = "grafana.${var.domain}"
+        service  = "http://${var.server_local_ip}:3000"
+      },
+      {
+        hostname = "share.${var.domain}"
+        service  = "http://${var.server_local_ip}:3001"
+      },
+      {
+        service = "http_status:404"
+      }
+    ]
   }
 }
 
@@ -70,11 +61,15 @@ resource "cloudflare_notification_policy" "tunnel_notification" {
   enabled     = true
   name        = "${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.name} Tunnel Alert"
   description = "Alert for ${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.name} tunnel health"
-  email_integration {
-    id = var.cloudflare_notification_email
+  mechanisms = {
+    email_integration = [
+      {
+        id = var.cloudflare_notification_email
+      }
+    ]
   }
 
-  filters {
+  filters = {
     tunnel_id  = [cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.id]
     new_status = ["TUNNEL_STATUS_TYPE_DOWN", "TUNNEL_STATUS_TYPE_HEALTHY"]
   }
