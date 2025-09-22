@@ -1,6 +1,5 @@
 module "records" {
-  source       = "../modules/cloudflare/records"
-  tunnel_cname = cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.cname
+  source = "../modules/cloudflare/records"
   records = [
     {
       name = "cars"
@@ -41,38 +40,38 @@ module "records" {
 
 resource "cloudflare_zero_trust_access_application" "papers_app" {
   zone_id          = var.cloudflare_zone_id
-  name             = "Access application for ${module.records.records_info["papers"].hostname}"
-  domain           = module.records.records_info["papers"].hostname
+  name             = "Access application for papers"
+  domain           = "papers.packituz.dev"
   session_duration = "60m"
   type             = "self_hosted"
 }
 
 resource "cloudflare_zero_trust_access_policy" "papers_policy" {
-  decision       = "allow"
-  name           = "Policy for accessing ${module.records.records_info["papers"].hostname}"
-  zone_id        = var.cloudflare_zone_id
-  application_id = cloudflare_zero_trust_access_application.papers_app.id
-  precedence     = 1
-  include {
-    email = var.cloudflare_admin_emails
-  }
+  decision   = "allow"
+  name       = "Policy for accessing papers"
+  account_id = var.cloudflare_account_id
+  include = [
+    {
+      email_addresses = var.cloudflare_admin_emails
+    }
+  ]
 }
 
 resource "cloudflare_zero_trust_access_application" "cars_app" {
   zone_id          = var.cloudflare_zone_id
-  name             = "Access application for ${module.records.records_info["cars"].hostname}"
-  domain           = module.records.records_info["cars"].hostname
+  name             = "Access application for cars"
+  domain           = "cars.packituz.dev"
   session_duration = "60m"
   type             = "self_hosted"
 }
 
 resource "cloudflare_zero_trust_access_policy" "cars_policy" {
-  decision       = "allow"
-  name           = "Policy for accessing ${module.records.records_info["cars"].hostname}"
-  zone_id        = var.cloudflare_zone_id
-  application_id = cloudflare_zero_trust_access_application.cars_app.id
-  precedence     = 1
-  include {
-    email = var.cloudflare_admin_emails
-  }
+  decision = "allow"
+  name     = "Policy for accessing cars"
+  include = [
+    {
+      email_addresses = var.cloudflare_admin_emails
+    }
+  ]
+  account_id = var.cloudflare_account_id
 }

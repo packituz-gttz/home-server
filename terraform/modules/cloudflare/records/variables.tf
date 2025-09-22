@@ -4,12 +4,6 @@ variable "zone_id" {
 }
 
 
-variable "tunnel_cname" {
-  type        = string
-  description = "Tunnel name"
-}
-
-
 variable "records" {
   type = list(object({
     name    = string
