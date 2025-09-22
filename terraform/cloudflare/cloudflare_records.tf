@@ -3,6 +3,9 @@ module "records" {
   tunnel_cname = cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.cname
   records = [
     {
+      name = "cars"
+    },
+    {
       name = "comics"
     },
     {
