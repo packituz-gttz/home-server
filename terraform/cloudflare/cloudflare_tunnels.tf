@@ -44,6 +44,11 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
     }
 
     ingress_rule {
+      hostname = module.records.records_info["cars"].hostname
+      service  = "http://${var.server_local_ip}:8889"
+    }
+
+    ingress_rule {
       hostname = module.records.records_info["grafana"].hostname
       service  = "http://${var.server_local_ip}:3000"
     }

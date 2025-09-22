@@ -54,3 +54,22 @@ resource "cloudflare_zero_trust_access_policy" "papers_policy" {
     email = var.cloudflare_admin_emails
   }
 }
+
+resource "cloudflare_zero_trust_access_application" "cars_app" {
+  zone_id          = var.cloudflare_zone_id
+  name             = "Access application for ${module.records.records_info["cars"].hostname}"
+  domain           = module.records.records_info["cars"].hostname
+  session_duration = "60m"
+  type             = "self_hosted"
+}
+
+resource "cloudflare_zero_trust_access_policy" "cars_policy" {
+  decision       = "allow"
+  name           = "Policy for accessing ${module.records.records_info["cars"].hostname}"
+  zone_id        = var.cloudflare_zone_id
+  application_id = cloudflare_zero_trust_access_application.cars_app.id
+  precedence     = 1
+  include {
+    email = var.cloudflare_admin_emails
+  }
+}
