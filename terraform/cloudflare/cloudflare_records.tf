@@ -29,6 +29,9 @@ module "records" {
       name = "papers"
     },
     {
+      name = "photos"
+    },
+    {
       name = "ssh"
     },
     {

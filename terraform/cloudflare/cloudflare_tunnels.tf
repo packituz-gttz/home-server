@@ -49,6 +49,10 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
         service  = "http://${var.server_local_ip}:3001"
       },
       {
+        hostname = "photos.${var.domain}"
+        service  = "http://${var.server_local_ip}:8001"
+      },
+      {
         service = "http_status:404"
       }
     ]
@@ -62,9 +66,11 @@ resource "cloudflare_notification_policy" "tunnel_notification" {
   name        = "${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.name} Tunnel Alert"
   description = "Alert for ${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.name} tunnel health"
   mechanisms = {
-    email = [{
-      id = var.cloudflare_notification_email
-    }]
+    email = [
+      {
+        id = var.cloudflare_notification_email
+      }
+    ]
   }
 
   filters = {
