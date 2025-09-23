@@ -36,6 +36,7 @@ module "records" {
     }
   ]
   zone_id = var.cloudflare_zone_id
+  content = "${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.id}.cfargotunnel.com"
 }
 
 resource "cloudflare_zero_trust_access_application" "papers_app" {
