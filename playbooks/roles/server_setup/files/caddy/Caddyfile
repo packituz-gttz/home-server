@@ -54,10 +54,6 @@
     }
 }
 
-cars.packituz.dev {
-    reverse_proxy lubelogger:8080
-}
-
 :8889 {
     route {
       sablier http://sablier:10000 {
@@ -70,10 +66,6 @@ cars.packituz.dev {
       }
       reverse_proxy lubelogger:8080
     }
-}
-
-papers.packituz.dev {
-    reverse_proxy paperlessngx-webserver:8000
 }
 
 :8887 {
