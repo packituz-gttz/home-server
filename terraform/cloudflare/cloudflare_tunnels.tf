@@ -1,9 +1,9 @@
 resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
   tunnel_id  = cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.id
   account_id = var.cloudflare_account_id
-  config = {
 
-    ingress_rule = [
+  config = {
+    ingress = [
       {
         hostname = "comics.${var.domain}"
         service  = "http://${var.server_local_ip}:5000"
@@ -62,11 +62,9 @@ resource "cloudflare_notification_policy" "tunnel_notification" {
   name        = "${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.name} Tunnel Alert"
   description = "Alert for ${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.name} tunnel health"
   mechanisms = {
-    email_integration = [
-      {
-        id = var.cloudflare_notification_email
-      }
-    ]
+    email = [{
+      id = var.cloudflare_notification_email
+    }]
   }
 
   filters = {
