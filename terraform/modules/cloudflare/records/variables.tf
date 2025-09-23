@@ -3,6 +3,10 @@ variable "zone_id" {
   description = "Zone ID"
 }
 
+variable "content" {
+  type        = string
+  description = "Cloudflare tunnel CNAME"
+}
 
 variable "records" {
   type = list(object({
