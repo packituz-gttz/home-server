@@ -13,9 +13,9 @@ variable "cloudflare_zone_id" {
   description = "Cloudflare Zone Id"
 }
 
-variable "cloudflare_admin_emails" {
-  type        = list(string)
-  description = "Emails allowed on Cloudflare Access Policies"
+variable "admin_dg_email" {
+  type        = string
+  description = "DG Email allowed on Cloudflare Access Policies"
 }
 
 variable "cloudflare_notification_email" {

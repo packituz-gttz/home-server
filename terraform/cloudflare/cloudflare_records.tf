@@ -40,12 +40,19 @@ module "records" {
 }
 
 resource "cloudflare_zero_trust_access_policy" "papers_policy" {
+  account_id = var.cloudflare_account_id
   decision   = "allow"
   name       = "Policy for accessing papers"
-  account_id = var.cloudflare_account_id
   include = [
     {
-      email_addresses = var.cloudflare_admin_emails
+      email = {
+        email = var.admin_dg_email
+      }
+    },
+    {
+      email = {
+        email = var.cloudflare_notification_email
+      }
     }
   ]
 }
@@ -72,7 +79,14 @@ resource "cloudflare_zero_trust_access_policy" "cars_policy" {
   name     = "Policy for accessing cars"
   include = [
     {
-      email_addresses = var.cloudflare_admin_emails
+      email = {
+        email = var.admin_dg_email
+      }
+    },
+    {
+      email = {
+        email = var.cloudflare_notification_email
+      }
     }
   ]
   account_id = var.cloudflare_account_id
