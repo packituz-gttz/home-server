@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/0.10.3/.schema/devbox.schema.json",
   "packages": [
-    "terraform@1.12.2",
+    "terraform@1.13.3",
     "tflint@0.58.1",
     "pre-commit@4.2.0",
     "terraform-docs@0.20.0",
