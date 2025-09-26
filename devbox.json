@@ -6,7 +6,7 @@
     "pre-commit@4.2.0",
     "terraform-docs@0.20.0",
     "ggshield@1.40.0",
-    "commitizen@4.8.3"
+    "commitizen@4.9.1"
   ],
   "shell": {
     "init_hook": "pipenv shell",
