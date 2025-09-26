@@ -3,7 +3,7 @@
   "packages": [
     "terraform@1.12.2",
     "tflint@0.58.1",
-    "pre-commit@4.2.0",
+    "pre-commit@4.3.0",
     "terraform-docs@0.20.0",
     "ggshield@1.40.0",
     "commitizen@4.8.3"
