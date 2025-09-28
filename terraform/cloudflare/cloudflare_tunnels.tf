@@ -53,6 +53,10 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
         service  = "http://${var.server_local_ip}:8001"
       },
       {
+        hostname = "docs.${var.domain}"
+        service  = "http://${var.server_local_ip}:3003"
+      },
+      {
         service = "http_status:404"
       }
     ]
