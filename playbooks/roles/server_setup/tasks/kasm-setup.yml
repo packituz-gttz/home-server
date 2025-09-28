@@ -1,0 +1,19 @@
+---
+- name: Create Kasm media directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Kasm
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Copy Docker-Compose file
+  ansible.posix.synchronize:
+    src: files/kasm/docker-compose.yml
+    dest: /mnt/media-nvm/Kasm
+
+- name: Run Kasm
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Kasm
+
+...
