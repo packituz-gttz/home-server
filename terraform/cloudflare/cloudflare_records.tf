@@ -8,6 +8,9 @@ module "records" {
       name = "comics"
     },
     {
+      name = "docs"
+    },
+    {
       name = "grafana"
     },
     {
