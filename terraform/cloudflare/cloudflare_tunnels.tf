@@ -59,6 +59,9 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
       {
         hostname = "apps.${var.domain}"
         service  = "https://${var.server_local_ip}"
+        origin_request = {
+          no_tls_verify = true
+        }
       },
       {
         service = "http_status:404"
