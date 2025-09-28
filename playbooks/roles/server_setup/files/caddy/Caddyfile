@@ -97,6 +97,7 @@
       reverse_proxy omnitools:80
     }
 }
+
 :8885 {
     route {
       sablier http://sablier:10000 {
@@ -111,4 +112,17 @@
       reverse_proxy stirlingpdf:8080
     }
 }
+:3004 {
+    route {
+      sablier http://sablier:10000 {
 
+        group dumbterm
+        session_duration 10m
+        dynamic {
+            display_name DumbTerm
+            theme ghost
+        }
+      }
+      reverse_proxy dumbterm:3000
+    }
+}
