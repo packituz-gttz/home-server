@@ -8,8 +8,8 @@ services:
     environment:
       - KASM_PORT=443
     volumes:
-      - /path/to/kasm/data:/opt
-      - /path/to/kasm/profiles:/profiles
+      - /mnt/media-nvm/Kasm/data:/opt
+      - /mnt/media-nvm/Kasm/profiles:/profiles
       - /dev/input:/dev/input
       - /run/udev/data:/run/udev/data
     ports:
