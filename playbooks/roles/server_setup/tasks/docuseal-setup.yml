@@ -21,7 +21,7 @@
       sablier.group: "docuseal"
     env:
       SESSION_REMEMBER_DAYS: "7"
-      HOST: "http://192.168.100.45:3003"
+      HOST: "https://docs.packituz.dev"
     networks:
       - name: sleepers
     volumes:
