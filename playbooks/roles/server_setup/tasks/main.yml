@@ -105,6 +105,10 @@
   ansible.builtin.import_tasks: stirlingpdf-setup.yml
   tags: [ 'stirlingpdf-setup', 'utils-group' ]
 
+- name: Install DumbTerm
+  ansible.builtin.import_tasks: dumbterm-setup.yml
+  tags: [ 'dumbterm-setup', 'utils-group' ]
+
 # Gaming group
 
 - name: Install Romm

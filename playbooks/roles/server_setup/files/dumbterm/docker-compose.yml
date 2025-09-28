@@ -1,0 +1,14 @@
+services:
+  dumbterm:
+    image: dumbwareio/dumbterm:latest
+    container_name: dumbterm
+    restart: "unless-stopped"
+    labels:
+      sablier.enable: true
+      sablier.group: "dumbterm"
+    env_file:
+      - /mnt/media-nvm/Dumbterm/app.env
+    volumes:
+      - /mnt/media-nvm/Dumbterm/config:/root/.config
+      - /mnt/media-nvm/Dumbterm/data:/root/data
+
