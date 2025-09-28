@@ -57,10 +57,6 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
         service  = "http://${var.server_local_ip}:3003"
       },
       {
-        hostname = "term.${var.domain}"
-        service  = "http://${var.server_local_ip}:3004"
-      },
-      {
         service = "http_status:404"
       }
     ]
