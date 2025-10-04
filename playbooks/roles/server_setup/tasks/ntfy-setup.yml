@@ -15,7 +15,7 @@
 - name: Pull and run ntfy server
   community.docker.docker_container:
     name: ntfy_server
-    image: "binwiederhier/ntfy:latest"
+    image: "binwiederhier/ntfy:v2.14.0"
     state: started
     restart_policy: "unless-stopped"
     volumes:
