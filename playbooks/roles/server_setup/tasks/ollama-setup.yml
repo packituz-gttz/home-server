@@ -30,7 +30,7 @@
 - name: Pull and run OpenwebUI
   community.docker.docker_container:
     name: openwebui
-    image: "ghcr.io/open-webui/open-webui:0.6.32"
+    image: "ghcr.io/open-webui/open-webui:0.6.33"
     state: started
     recreate: true
     restart_policy: "unless-stopped"
