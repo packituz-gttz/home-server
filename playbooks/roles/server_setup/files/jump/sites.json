@@ -217,16 +217,6 @@
       ]
     },
     {
-      "name": "Lychee",
-      "url": "http://192.168.100.45:8001/",
-      "description": "Photo & Video Management Tool",
-      "newtab": true,
-      "icon": "lychee.png",
-      "tags": [
-        "local"
-      ]
-    },
-    {
       "name": "Ai Assistant",
       "url": "http://192.168.100.45:7860/",
       "description": "Ai Server Assistant",
@@ -247,16 +237,6 @@
       ]
     },
     {
-      "name": "DocuSeal",
-      "url": "http://192.168.100.45:3003/",
-      "description": "Document Signing Platform",
-      "newtab": true,
-      "icon": "docuseal.png",
-      "tags": [
-        "local"
-      ]
-    },
-    {
       "name": "LubeLogger",
       "url": "http://192.168.100.45:8889/",
       "description": "Vehicle Maintenance",
@@ -272,16 +252,6 @@
       "description": "Budget",
       "newtab": true,
       "icon": "actual.png",
-      "tags": [
-        "local"
-      ]
-    },
-    {
-      "name": "Paperless-NGX",
-      "url": "http://192.168.100.45:8887/",
-      "description": "Document Manager",
-      "newtab": true,
-      "icon": "paperlessngx.webp",
       "tags": [
         "local"
       ]
