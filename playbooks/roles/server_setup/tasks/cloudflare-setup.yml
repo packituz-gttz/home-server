@@ -2,7 +2,7 @@
 - name: Pull and run Cloudflare Docker image
   community.docker.docker_container:
     name: cloudflare_tunnels
-    image: cloudflare/cloudflared:2025.9.1
+    image: cloudflare/cloudflared:2025.10.0
     state: started
     cpus: 1.5
     memory: "100M"
