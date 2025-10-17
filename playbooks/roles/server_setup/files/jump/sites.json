@@ -111,6 +111,16 @@
       ]
     },
     {
+      "name": "Apps",
+      "url": "https://apps.packituz.dev",
+      "description": "KASM apps",
+      "newtab": true,
+      "icon": "kasm.png",
+      "tags": [
+        "home"
+      ]
+    },
+    {
       "name": "TV",
       "url": "http://192.168.100.45:8096",
       "description": "Movies, Series & Learning.",
