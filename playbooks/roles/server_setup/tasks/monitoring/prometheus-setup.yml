@@ -1,94 +1,36 @@
 ---
-- name: Download prometheus archive (async)
-  ansible.builtin.get_url:
-    url: "https://github.com/prometheus/prometheus/releases/download/{{ prometheus_version }}/{{ prometheus_package_name }}.tar.gz"
-    dest: "/tmp/{{ prometheus_package_name }}.tar.gz"
-    mode: '0644'
-  async: 300
-  poll: 0
-  register: prometheus_async
-
-- name: Add prometheus user
-  become: true
-  ansible.builtin.user:
-    name: '{{ prometheus_user }}'
-    shell: /bin/false
-    state: present
-    create_home: false
-
-- name: Create prometheus directories
+- name: Create Prometheus directories
   become: true
   ansible.builtin.file:
-    path: "{{ item }}"
+    path: '{{ item }}'
     state: directory
-    owner: '{{ prometheus_user }}'
-    group: '{{ prometheus_user }}'
+    mode: '0755'
+    owner: '65534'
+    group: '65534'
   loop:
-    - /etc/prometheus
-    - /var/lib/prometheus
-
-- name: Wait for Prometheus download to complete
-  ansible.builtin.async_status:
-    jid: "{{ prometheus_async.ansible_job_id }}"
-  register: prometheus_async_status
-  until: prometheus_async_status.finished
-  retries: 100
-  delay: 5
-
-- name: Unarchive prometheus
-  ansible.builtin.unarchive:
-    src: "/tmp/{{ prometheus_package_name }}.tar.gz"
-    dest: /tmp/
-    remote_src: true
-
-- name: Copy prometheus and promtool executables
-  become: true
-  ansible.builtin.copy:
-    src: '{{ item }}'
-    dest: /usr/local/bin/
-    group: '{{ prometheus_user }}'
-    owner: '{{ prometheus_user }}'
-    remote_src: true
-    mode: preserve
-  loop:
-    - "/tmp/{{ prometheus_package_name }}/prometheus"
-    - "/tmp/{{ prometheus_package_name }}/promtool"
-
-- name: Copy prometheus console
-  become: true
-  ansible.builtin.copy:
-    src: '{{ item }}'
-    dest: /etc/prometheus/
-    remote_src: true
-    group: '{{ prometheus_user }}'
-    owner: '{{ prometheus_user }}'
-    mode: preserve
-  loop:
-    - "/tmp/{{ prometheus_package_name }}/consoles"
-    - "/tmp/{{ prometheus_package_name }}/console_libraries"
+    - /mnt/media-nvm/Prometheus/
+    - /mnt/media-nvm/Prometheus/data
 
 - name: Copy Prometheus main and web configuration file
   become: true
   ansible.builtin.copy:
     src: files/monitoring/prometheus/prometheus.yml
-    dest: /etc/prometheus/
-    group: '{{ prometheus_user }}'
-    owner: '{{ prometheus_user }}'
+    dest: /mnt/media-nvm/Prometheus/
+    group: '65534'
+    owner: '65534'
 
-
-- name: Copy Prometheus service file
-  become: true
-  ansible.builtin.copy:
-    src: files/monitoring/prometheus/prometheus.service
-    dest: /etc/systemd/system/
-
-- name: Reload systemctl daemon
-  become: true
-  ansible.builtin.systemd:
-    daemon_reload: true
+- name: Pull and run Prometheus
+  become: false
+  community.docker.docker_container:
     name: prometheus
-    state: restarted
-    enabled: true
+    image: prom/prometheus:v2.54.0
+    recreate: true
+    network_mode: host
+    restart_policy: "unless-stopped"
+    volumes:
+      - /mnt/media-nvm/Prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /mnt/media-nvm/Prometheus/data:/prometheus
+    command: --config.file /etc/prometheus/prometheus.yml --storage.tsdb.path /prometheus/
 
 - name: Open prometheus port on firewall
   become: true
@@ -99,14 +41,6 @@
     immediate: true
 
 ## Setup Grafana
-
-- name: Create Grafana directories
-  ansible.builtin.file:
-    path: /mnt/media/Grafana/img
-    state: directory
-    mode: '0755'
-    owner: '{{ superuser_name }}'
-    group: '{{ superuser_name }}'
 
 - name: Get user id
   become: true
