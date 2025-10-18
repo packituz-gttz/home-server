@@ -33,7 +33,6 @@ jobs:
       SSH_KEY: ${{ secrets.SSH_KEY }}
 
   deploy-utils:
-    if: contains(join(github.event.commits.*.modified, ','), '/utils/') || contains(join(github.event.commits.*.modified, ','), 'tasks/main.yml')
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags utils-group'
@@ -43,7 +42,6 @@ jobs:
       SSH_KEY: ${{ secrets.SSH_KEY }}
 
   deploy-monit:
-    if: contains(join(github.event.commits.*.modified, ','), '/monit/') || contains(join(github.event.commits.*.modified, ','), 'tasks/main.yml')
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags monit-group'
@@ -54,7 +52,6 @@ jobs:
 
 
   deploy-gaming:
-    if: contains(join(github.event.commits.*.modified, ','), '/gaming/') || contains(join(github.event.commits.*.modified, ','), 'tasks/main.yml')
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags gaming-group'
@@ -65,7 +62,6 @@ jobs:
 
 
   deploy-downloaders:
-    if: contains(join(github.event.commits.*.modified, ','), '/downloaders/') || contains(join(github.event.commits.*.modified, ','), 'tasks/main.yml')
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags downloaders-group'
@@ -75,7 +71,6 @@ jobs:
       SSH_KEY: ${{ secrets.SSH_KEY }}
 
   deploy-ai:
-    if: contains(join(github.event.commits.*.modified, ','), '/ai/') || contains(join(github.event.commits.*.modified, ','), 'tasks/main.yml')
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags ai-group'
