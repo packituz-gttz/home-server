@@ -130,7 +130,6 @@
     recreate: true
     volumes:
       - /mnt/media/Grafana:/var/lib/grafana
-#      - /mnt/media/Grafana/img:/usr/share/grafana/public/img/
     ports:
       - 3000:3000
 
