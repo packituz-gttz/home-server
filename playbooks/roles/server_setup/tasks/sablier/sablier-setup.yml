@@ -9,7 +9,7 @@
 
 - name: Copy Caddy Dockerfile
   ansible.posix.synchronize:
-    src: 'caddy/Dockerfile'
+    src: 'sablier/caddy/Dockerfile'
     dest: /mnt/media-nvm/Caddy
 
 - name: Build Caddy image with sablier plugin
@@ -23,7 +23,7 @@
 
 - name: Setup Caddy file
   ansible.posix.synchronize:
-    src: 'caddy/Caddyfile'
+    src: 'sablier/caddy/Caddyfile'
     dest: '/mnt/media-nvm/Caddy/Caddyfile'
 
 - name: Pull and run Caddy Docker image
