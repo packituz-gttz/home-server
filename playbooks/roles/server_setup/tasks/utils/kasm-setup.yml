@@ -9,7 +9,7 @@
 
 - name: Copy Docker-Compose file
   ansible.posix.synchronize:
-    src: files/kasm/docker-compose.yml
+    src: files/utils/kasm/docker-compose.yml
     dest: /mnt/media-nvm/Kasm
 
 - name: Run Kasm

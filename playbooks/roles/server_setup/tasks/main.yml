@@ -2,143 +2,143 @@
 # Base group
 
 - name: Configure OS
-  ansible.builtin.import_tasks: os-setup.yml
+  ansible.builtin.import_tasks: base/os-setup.yml
   tags: [ 'os-setup', 'base-group' ]
   become: true
 
 - name: Install Cloudflare
-  ansible.builtin.import_tasks: cloudflare-setup.yml
+  ansible.builtin.import_tasks: base/cloudflare-setup.yml
   tags: [ 'cloudflare-setup', 'base-group' ]
 
 - name: Install Drone GC
-  ansible.builtin.import_tasks: dronegc-setup.yml
+  ansible.builtin.import_tasks: base/dronegc-setup.yml
   tags: [ 'dronegc-setup', 'base-group' ]
 
 - name: Install Jump Dashboard
-  ansible.builtin.import_tasks: jump-setup.yml
+  ansible.builtin.import_tasks: base/jump-setup.yml
   tags: [ 'jump-setup', 'base-group' ]
 
 # Media group
 
 - name: Install Jellyfin
-  ansible.builtin.import_tasks: jellyfin-setup.yml
+  ansible.builtin.import_tasks: media/jellyfin-setup.yml
   tags: [ 'jellyfin-setup', 'media-group' ]
 
 - name: Install Kavita
-  ansible.builtin.import_tasks: kavita-setup.yml
+  ansible.builtin.import_tasks: media/kavita-setup.yml
   tags: [ 'kavita-setup', 'media-group' ]
 
 - name: Install Navidrome
-  ansible.builtin.import_tasks: navidrome-setup.yml
+  ansible.builtin.import_tasks: media/navidrome-setup.yml
   tags: [ 'navidrome-setup', 'media-group' ]
 
 - name: Install Lychee
-  ansible.builtin.import_tasks: lychee-setup.yml
+  ansible.builtin.import_tasks: media/lychee-setup.yml
   tags: [ 'lychee-setup', 'media-group' ]
 
 - name: Install ErsatzTv
-  ansible.builtin.import_tasks: ersatztv-setup.yml
+  ansible.builtin.import_tasks: media/ersatztv-setup.yml
   tags: [ 'ersatztv-setup', 'media-group' ]
 
 # Monitoring group
 
 - name: Install ntfy Server
-  ansible.builtin.import_tasks: ntfy-setup.yml
+  ansible.builtin.import_tasks: monit/ntfy-setup.yml
   tags: [ 'ntfy-setup', 'monit-group' ]
 
 - name: Install monit Monitoring
-  ansible.builtin.import_tasks: monit-setup.yml
+  ansible.builtin.import_tasks: monit/monit-setup.yml
   tags: [ 'monit-setup', 'monit-group' ]
   become: true
 
 - name: Install cAdvisor
-  ansible.builtin.import_tasks: cadvisor-setup.yml
+  ansible.builtin.import_tasks: monitoring/cadvisor-setup.yml
   tags: [ 'cadvisor-setup', 'monitoring-group' ]
 
 - name: Install Foldersize Exporter for Prometheus
-  ansible.builtin.import_tasks: foldersize-exporter-setup.yml
+  ansible.builtin.import_tasks: monitoring/foldersize-exporter-setup.yml
   tags: [ 'foldersize-setup', 'monitoring-group' ]
 
 - name: Install Blackbox Exporter for Prometheus
-  ansible.builtin.import_tasks: blackbox-exporter-setup.yml
+  ansible.builtin.import_tasks: monitoring/blackbox-exporter-setup.yml
   tags: [ 'blackbox-setup', 'monitoring-group' ]
 
 - name: Install Node Exporter for Prometheus
-  ansible.builtin.import_tasks: node-exporter-setup.yml
+  ansible.builtin.import_tasks: monitoring/node-exporter-setup.yml
   tags: [ 'node-setup', 'monitoring-group' ]
 
 - name: Install Prometheus Monitoring
-  ansible.builtin.import_tasks: prometheus-setup.yml
+  ansible.builtin.import_tasks: monitoring/prometheus-setup.yml
   tags: [ 'prometheus-setup', 'monitoring-group' ]
 
 # Utils group
 
 - name: Install Pingvin
-  ansible.builtin.import_tasks: pingvin-setup.yml
+  ansible.builtin.import_tasks: utils/pingvin-setup.yml
   tags: [ 'pingvin-setup', 'utils-group' ]
 
 - name: Install Joplin
-  ansible.builtin.import_tasks: joplin-setup.yml
+  ansible.builtin.import_tasks: utils/joplin-setup.yml
   tags: [ 'joplin-setup', 'utils-group' ]
 
 - name: Install DocuSeal
-  ansible.builtin.import_tasks: docuseal-setup.yml
+  ansible.builtin.import_tasks: utils/docuseal-setup.yml
   tags: [ 'docuseal-setup', 'utils-group' ]
 
 - name: Install LubeLogger
-  ansible.builtin.import_tasks: lubelogger-setup.yml
+  ansible.builtin.import_tasks: utils/lubelogger-setup.yml
   tags: [ 'lubelogger-setup', 'utils-group' ]
 
 - name: Install Actual
-  ansible.builtin.import_tasks: actual-setup.yml
+  ansible.builtin.import_tasks: utils/actual-setup.yml
   tags: [ 'actual-setup', 'utils-group' ]
 
 - name: Install PaperlessNGX
-  ansible.builtin.import_tasks: paperlessngx-setup.yml
+  ansible.builtin.import_tasks: utils/paperlessngx-setup.yml
   tags: [ 'paperlessngx-setup', 'utils-group' ]
 
 - name: Install OmniTools
-  ansible.builtin.import_tasks: omnitools-setup.yml
+  ansible.builtin.import_tasks: utils/omnitools-setup.yml
   tags: [ 'omnitools-setup', 'utils-group' ]
 
 - name: Install StirlingPDF
-  ansible.builtin.import_tasks: stirlingpdf-setup.yml
+  ansible.builtin.import_tasks: utils/stirlingpdf-setup.yml
   tags: [ 'stirlingpdf-setup', 'utils-group' ]
 
 - name: Install Kasm
-  ansible.builtin.import_tasks: kasm-setup.yml
+  ansible.builtin.import_tasks: utils/kasm-setup.yml
   tags: [ 'kasm-setup', 'utils-group' ]
 
 # Gaming group
 
 - name: Install Romm
-  ansible.builtin.import_tasks: romm-setup.yml
+  ansible.builtin.import_tasks: gaming/romm-setup.yml
   tags: [ 'romm-setup', 'gaming-group' ]
 
 # Downloaders group
 
 - name: Install Transmission
-  ansible.builtin.import_tasks: transmission-setup.yml
+  ansible.builtin.import_tasks: downloaders/transmission-setup.yml
   tags: [ 'transmission-setup', 'downloaders-group' ]
 
 - name: Install JDownloader2
-  ansible.builtin.import_tasks: jdownloader2-setup.yml
+  ansible.builtin.import_tasks: downloaders/jdownloader2-setup.yml
   tags: [ 'jdownloader2-setup', 'downloaders-group' ]
 
 # Ai group
 
 - name: Install Ollama
-  ansible.builtin.import_tasks: ollama-setup.yml
+  ansible.builtin.import_tasks: ai/ollama-setup.yml
   tags: [ 'ollama-setup', 'ai-group' ]
 
 - name: Install Home AI Agent
-  ansible.builtin.import_tasks: ai-setup.yml
+  ansible.builtin.import_tasks: ai/ai-setup.yml
   tags: [ 'ai-setup', 'ai-group' ]
 
 # Sablier
 
 - name: Install Sablier
-  ansible.builtin.import_tasks: sablier-setup.yml
+  ansible.builtin.import_tasks: sablier/sablier-setup.yml
   tags: [ 'sablier-setup', 'sablier-group' ]
 
 ...

@@ -9,7 +9,7 @@
 - name: Copy ntfy Configurations
   become: true
   ansible.builtin.copy:
-    src: ntfy/server.yml
+    src: monit/ntfy/server.yml
     dest: /etc/ntfy/server.yml
 
 - name: Pull and run ntfy server

@@ -15,7 +15,7 @@
 
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
-    src: files/paperless-ngx/docker-compose.yml
+    src: files/utils/paperless-ngx/docker-compose.yml
     dest: /mnt/media-nvm/PaperlessNGX
 
 - name: Run PaperlessNGX

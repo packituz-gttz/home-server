@@ -9,7 +9,7 @@
 
 - name: Upload Kavita cron script
   ansible.posix.synchronize:
-    src: kavita/new_file_uploaded.sh
+    src: media/kavita/new_file_uploaded.sh
     dest: /mnt/media-nvm/Kavita/
 
 - name: Create cronjob that every 5 minutes creates dirs for newly added pdf books
