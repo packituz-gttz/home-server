@@ -15,7 +15,6 @@ concurrency:
 
 jobs:
   deploy-media:
-    if: contains(join(github.event.commits.*.modified, ','), '/media/') || contains(join(github.event.commits.*.modified, ','), 'tasks/main.yml')
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags media-group'
@@ -25,7 +24,6 @@ jobs:
       SSH_KEY: ${{ secrets.SSH_KEY }}
 
   deploy-base:
-    if: contains(join(github.event.commits.*.modified, ','), '/base/') || contains(join(github.event.commits.*.modified, ','), 'tasks/main.yml')
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags jump-setup,dronegc-setup'

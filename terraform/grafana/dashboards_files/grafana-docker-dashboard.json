@@ -28,32 +28,6 @@
   "links": [],
   "panels": [
     {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 17,
-        "w": 5,
-        "x": 0,
-        "y": 0
-      },
-      "id": 118,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/93787f31231f.png\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.6.3",
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
       "datasource": {
         "type": "prometheus",
         "uid": "hCsE-CCSk"
@@ -90,6 +64,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -116,7 +91,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               }
             ]
           },
@@ -144,7 +120,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.3",
+      "pluginVersion": "12.2.0",
       "repeat": "docker_service",
       "repeatDirection": "v",
       "targets": [
@@ -223,7 +199,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               }
             ]
           }
@@ -254,7 +231,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.3",
+      "pluginVersion": "12.2.0",
       "repeat": "docker_service",
       "repeatDirection": "v",
       "targets": [
@@ -307,6 +284,7 @@
               "type": "linear"
             },
             "showPoints": "auto",
+            "showValues": false,
             "spanNulls": false,
             "stacking": {
               "group": "A",
@@ -333,7 +311,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": 0
               }
             ]
           },
@@ -361,7 +340,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.3",
+      "pluginVersion": "12.2.0",
       "repeat": "docker_service",
       "repeatDirection": "v",
       "targets": [
@@ -390,84 +369,6 @@
       "type": "timeseries"
     },
     {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 17,
-        "w": 5,
-        "x": 19,
-        "y": 0
-      },
-      "id": 117,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a26430ae1b14.png\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.6.3",
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 17,
-        "w": 5,
-        "x": 0,
-        "y": 17
-      },
-      "id": 140,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/ccafeabff9c2.png\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.6.3",
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 17,
-        "w": 5,
-        "x": 19,
-        "y": 17
-      },
-      "id": 141,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "<div style=\"text-align: center;\">\n  <img src=\"/public/img/a0dda8c703c7.png\"  style=\"width: auto; height: 100%;\">\n</div>",
-        "mode": "html"
-      },
-      "pluginVersion": "11.6.3",
-      "title": "",
-      "transparent": true,
-      "type": "text"
-    },
-    {
       "datasource": {
         "type": "prometheus",
         "uid": "hCsE-CCSk"
@@ -485,6 +386,9 @@
               "type": "gauge"
             },
             "filterable": false,
+            "footer": {
+              "reducers": []
+            },
             "inspect": false
           },
           "mappings": [],
@@ -492,7 +396,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": 0
               },
               {
                 "color": "purple",
@@ -517,19 +422,11 @@
       "id": 6,
       "options": {
         "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
         "frameIndex": 0,
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "11.6.3",
+      "pluginVersion": "12.2.0",
       "targets": [
         {
           "datasource": {
@@ -685,13 +582,14 @@
           "fields": "",
           "values": false
         },
+        "sort": "desc",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.3",
+      "pluginVersion": "12.2.0",
       "targets": [
         {
           "datasource": {
@@ -715,7 +613,7 @@
   ],
   "preload": false,
   "refresh": "5s",
-  "schemaVersion": 41,
+  "schemaVersion": 42,
   "tags": [],
   "templating": {
     "list": [
@@ -815,5 +713,5 @@
   "timezone": "",
   "title": "Server Docker Detail",
   "uid": "cuUieq3Iz",
-  "version": 12
+  "version": 13
 }
