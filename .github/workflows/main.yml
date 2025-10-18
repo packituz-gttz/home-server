@@ -98,7 +98,7 @@ jobs:
       SSH_KEY: ${{ secrets.SSH_KEY }}
 
   deploy-cadvisor:
-    if: contains(join(github.event.commits.*.modified, ','), '/monitoring/') || contains(join(github.event.commits.*.modified, ','), 'tasks/main.yml')
+    if: contains(join(github.event.commits.*.modified, ','), 'monitoring/') || contains(join(github.event.commits.*.modified, ','), 'tasks/main.yml')
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags cadvisor-setup'
@@ -147,3 +147,12 @@ jobs:
       ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
       SSH_KEY: ${{ secrets.SSH_KEY }}
+
+  print-modified-files:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    steps:
+      - name: Print modified files
+        run: |
+          echo "Modified files in all commits:"
+          echo "${{ toJson(github.event.commits.*.modified) }}"
