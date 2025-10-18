@@ -13,10 +13,10 @@
     src: "{{ item.source }}"
     dest: "{{ item.destination }}"
   loop:
-    - { source: 'jump/icon.png', destination: '/mnt/media/Jump/favicon/' }
-    - { source: 'jump/sites.json', destination: '/mnt/media/Jump/sites/' }
-    - { source: 'jump/favicon/', destination: '/mnt/media/Jump/sites/icons/' }
-    - { source: 'jump/backgrounds', destination: '/mnt/media/Jump/' }
+    - { source: 'base/jump/icon.png', destination: '/mnt/media/Jump/favicon/' }
+    - { source: 'base/jump/sites.json', destination: '/mnt/media/Jump/sites/' }
+    - { source: 'base/jump/favicon/', destination: '/mnt/media/Jump/sites/icons/' }
+    - { source: 'base/jump/backgrounds', destination: '/mnt/media/Jump/' }
 
 - name: Pull and run Jump dashboard Docker image
   community.docker.docker_container:

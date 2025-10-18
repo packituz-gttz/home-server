@@ -26,13 +26,13 @@
 - name: Copy Blackbox Exporter service file
   become: true
   ansible.builtin.copy:
-    src: prometheus/exporters/blackbox/blackbox_exporter.service
+    src: monitoring/prometheus/exporters/blackbox/blackbox_exporter.service
     dest: /etc/systemd/system/
 
 - name: Copy Blackbox configuration file
   become: true
   ansible.builtin.copy:
-    src: prometheus/exporters/blackbox/blackbox.yml
+    src: monitoring/prometheus/exporters/blackbox/blackbox.yml
     dest: /etc/blackbox/
 
 - name: Wait for Blackbox Exporter archive download to complete

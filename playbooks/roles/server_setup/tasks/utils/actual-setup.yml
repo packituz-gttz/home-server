@@ -9,7 +9,7 @@
 
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
-    src: files/actual/docker-compose.yml
+    src: files/utils/actual/docker-compose.yml
     dest: /mnt/media-nvm/Actual/
 
 - name: Generate private key (no passphrase, RSA 2048)

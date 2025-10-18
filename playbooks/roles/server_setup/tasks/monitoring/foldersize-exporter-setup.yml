@@ -43,8 +43,8 @@
     src: "{{ item.source }}"
     dest: "{{ item.destination }}"
   loop:
-    - { source: 'prometheus/exporters/folder_size/prometheus_folder_size_exporter.service', destination: '/etc/systemd/system/' }
-    - { source: 'prometheus/exporters/folder_size/prometheus_folder_size_exporter.json', destination: '/opt/prometheus_folder_size_exporter/' }
+    - { source: 'monitoring/prometheus/exporters/folder_size/prometheus_folder_size_exporter.service', destination: '/etc/systemd/system/' }
+    - { source: 'monitoring/prometheus/exporters/folder_size/prometheus_folder_size_exporter.json', destination: '/opt/prometheus_folder_size_exporter/' }
 
 - name: Reload systemctl daemon
   become: true

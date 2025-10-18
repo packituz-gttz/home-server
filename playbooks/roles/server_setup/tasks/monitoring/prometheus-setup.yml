@@ -70,7 +70,7 @@
 - name: Copy Prometheus main and web configuration file
   become: true
   ansible.builtin.copy:
-    src: files/prometheus/prometheus.yml
+    src: files/monitoring/prometheus/prometheus.yml
     dest: /etc/prometheus/
     group: '{{ prometheus_user }}'
     owner: '{{ prometheus_user }}'
@@ -79,7 +79,7 @@
 - name: Copy Prometheus service file
   become: true
   ansible.builtin.copy:
-    src: files/prometheus/prometheus.service
+    src: files/monitoring/prometheus/prometheus.service
     dest: /etc/systemd/system/
 
 - name: Reload systemctl daemon
@@ -136,7 +136,7 @@
 
 - name: Copy Grafana dashboard images zipfile
   ansible.posix.synchronize:
-    src: prometheus/stack/grafana/grafana-images.zip
+    src: monitoring/prometheus/stack/grafana/grafana-images.zip
     dest: /mnt/media/Grafana/img/
 
 - name: Extract Grafana dashboard images from zipfile
@@ -161,7 +161,7 @@
 
 - name: Copy Loki configuration file
   ansible.posix.synchronize:
-    src: prometheus/stack/loki/loki-config.yaml
+    src: monitoring/prometheus/stack/loki/loki-config.yaml
     dest: /mnt/media-nvm/Loki/loki-config.yaml
 
 - name: Pull and run Loki
@@ -189,7 +189,7 @@
 
 - name: Copy Promtail configuration file
   ansible.posix.synchronize:
-    src: prometheus/stack/promtail/promtail-config.yaml
+    src: monitoring/prometheus/stack/promtail/promtail-config.yaml
     dest: /mnt/media-nvm/Promtail/config/promtail-config.yaml
 
 - name: Pull and run Promtail

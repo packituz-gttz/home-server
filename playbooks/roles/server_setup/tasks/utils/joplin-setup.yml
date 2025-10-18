@@ -31,7 +31,7 @@
 
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
-    src: files/joplin/docker-compose.yml
+    src: files/utils/joplin/docker-compose.yml
     dest: /media/Joplin
 
 - name: Run Joplin
