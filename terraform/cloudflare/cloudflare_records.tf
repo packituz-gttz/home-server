@@ -215,3 +215,29 @@ resource "cloudflare_zero_trust_access_application" "apps_app" {
   ]
 
 }
+
+resource "cloudflare_zero_trust_access_policy" "all_policy" {
+  decision = "bypass"
+  name     = "Policy for allowing ACME Challenge Bypass on all apps"
+  include = [
+    {
+      everyone = {}
+    }
+  ]
+  account_id = var.cloudflare_account_id
+}
+
+resource "cloudflare_zero_trust_access_application" "all_app" {
+  zone_id          = var.cloudflare_zone_id
+  type             = "self_hosted"
+  name             = "Access application for apps"
+  domain           = "*.packituz.dev/.well-known/acme-challenge/*"
+  session_duration = "24h"
+  policies = [
+    {
+      id         = cloudflare_zero_trust_access_policy.apps_policy.id
+      precedence = 1
+    }
+  ]
+
+}
