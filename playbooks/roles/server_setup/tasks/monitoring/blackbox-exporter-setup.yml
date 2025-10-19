@@ -1,4 +1,4 @@
-- name: Create Promtail directories
+- name: Create Blackbox directories
   ansible.builtin.file:
     path: /mnt/media-nvm/Blackbox/
     state: directory
