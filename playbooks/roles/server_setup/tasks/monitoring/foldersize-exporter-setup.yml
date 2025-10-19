@@ -1,44 +1,37 @@
 ---
 - name: Install cargo
-  become: true
   ansible.builtin.dnf:
     name: cargo
     state: present
 
 - name: Install prometheus_folder_size_exporter
-  become: true
   community.general.cargo:
     name: prometheus_folder_size_exporter
     state: present
     path: /usr/local/
 
 - name: Create directory for prometheus_folder_size_exporter configurations
-  become: true
   ansible.builtin.file:
     path: /opt/prometheus_folder_size_exporter
     state: directory
     mode: '0755'
 
 - name: Set permissions for prometheus_folder_size_exporter executable
-  become: true
   ansible.builtin.file:
     path: /usr/local/bin/prometheus_folder_size_exporter
     group: '{{ node_exporter_user }}'
     owner: '{{ node_exporter_user }}'
 
 - name: Set SELinux context for prometheus_folder_size_exporter binary
-  become: true
   ansible.builtin.sefcontext:
     target: /usr/local/bin/prometheus_folder_size_exporter
     setype: bin_t
     state: present
 
 - name: Apply new SELinux file context to filesystem
-  become: true
   ansible.builtin.command: restorecon -irv /usr/local/bin/prometheus_folder_size_exporter
 
 - name: Copy prometheus_folder_size_exporter configurations
-  become: true
   ansible.builtin.copy:
     src: "{{ item.source }}"
     dest: "{{ item.destination }}"
@@ -47,7 +40,6 @@
     - { source: 'monitoring/prometheus/exporters/folder_size/prometheus_folder_size_exporter.json', destination: '/opt/prometheus_folder_size_exporter/' }
 
 - name: Reload systemctl daemon
-  become: true
   ansible.builtin.systemd:
     daemon_reload: true
     name: prometheus_folder_size_exporter
