@@ -38,7 +38,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
       },
       {
         hostname = "cars.${var.domain}"
-        service  = "http://${var.server_local_ip}:8889"
+        service  = "http://${var.server_local_ip}:80"
       },
       {
         hostname = "grafana.${var.domain}"
