@@ -231,7 +231,7 @@ resource "cloudflare_zero_trust_access_application" "all_app" {
   zone_id          = var.cloudflare_zone_id
   type             = "self_hosted"
   name             = "Access application for apps"
-  domain           = "*.packituz.dev/.well-known/acme-challenge/*"
+  domain           = "cars.packituz.dev/.well-known/acme-challenge/*"
   session_duration = "24h"
   policies = [
     {
