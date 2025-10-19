@@ -82,40 +82,6 @@ resource "cloudflare_zero_trust_access_application" "papers_app" {
 
 }
 
-
-resource "cloudflare_zero_trust_access_policy" "cars_policy" {
-  decision = "allow"
-  name     = "Policy for accessing cars"
-  include = [
-    {
-      email = {
-        email = var.admin_dg_email
-      }
-    },
-    {
-      email = {
-        email = var.cloudflare_notification_email
-      }
-    }
-  ]
-  account_id = var.cloudflare_account_id
-}
-
-resource "cloudflare_zero_trust_access_application" "cars_app" {
-  zone_id          = var.cloudflare_zone_id
-  type             = "self_hosted"
-  name             = "Access application for cars"
-  domain           = "cars.packituz.dev"
-  session_duration = "24h"
-  policies = [
-    {
-      id         = cloudflare_zero_trust_access_policy.cars_policy.id
-      precedence = 1
-    }
-  ]
-
-}
-
 resource "cloudflare_zero_trust_access_policy" "photos_policy" {
   decision = "allow"
   name     = "Policy for accessing photos"
@@ -216,9 +182,45 @@ resource "cloudflare_zero_trust_access_application" "apps_app" {
 
 }
 
+
+resource "cloudflare_zero_trust_access_policy" "cars_policy" {
+  decision = "allow"
+  name     = "Policy for accessing cars"
+  include = [
+    {
+      email = {
+        email = var.admin_dg_email
+      }
+    },
+    {
+      email = {
+        email = var.cloudflare_notification_email
+      }
+    }
+  ]
+  account_id = var.cloudflare_account_id
+}
+
+resource "cloudflare_zero_trust_access_application" "cars_app" {
+  zone_id          = var.cloudflare_zone_id
+  type             = "self_hosted"
+  name             = "Access application for cars"
+  domain           = "cars.packituz.dev"
+  session_duration = "24h"
+  policies = [
+    {
+      id         = cloudflare_zero_trust_access_policy.cars_policy.id
+      precedence = 1
+    }
+  ]
+
+}
+
+
+
 resource "cloudflare_zero_trust_access_policy" "all_policy" {
   decision = "bypass"
-  name     = "Policy for allowing ACME Challenge Bypass on all apps"
+  name     = "Policy for allowing ACME Challenge Bypass on cars"
   include = [
     {
       everyone = {}
@@ -230,12 +232,12 @@ resource "cloudflare_zero_trust_access_policy" "all_policy" {
 resource "cloudflare_zero_trust_access_application" "all_app" {
   zone_id          = var.cloudflare_zone_id
   type             = "self_hosted"
-  name             = "Access application for apps"
+  name             = "Access application for cars"
   domain           = "cars.packituz.dev/.well-known/acme-challenge/*"
   session_duration = "24h"
   policies = [
     {
-      id         = cloudflare_zero_trust_access_policy.cars_policy.id
+      id         = cloudflare_zero_trust_access_policy.all_policy.id
       precedence = 1
     }
   ]
