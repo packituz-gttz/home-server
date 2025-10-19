@@ -1,4 +1,4 @@
-:3003 {
+http://docs.packituz.dev  {
     route {
       sablier http://sablier:10000 {
         group docuseal
@@ -16,7 +16,7 @@
     }
 }
 
-:8001 {
+http://photos.packituz.dev {
     route {
       sablier http://sablier:10000 {
         group lychee
@@ -27,6 +27,50 @@
         }
       }
       reverse_proxy lychee:80
+    }
+}
+
+http://papers.packituz.dev  {
+    route {
+      sablier http://sablier:10000 {
+
+        group paperlessngx
+        session_duration 10m
+        dynamic {
+            display_name PaperlessNGX
+            theme ghost
+        }
+      }
+      reverse_proxy paperlessngx-webserver:8000
+    }
+}
+
+http://cars.packituz.dev  {
+    route {
+      sablier http://sablier:10000 {
+        group lubelogger
+        session_duration 10m
+        dynamic {
+            display_name LubeLogger
+            theme ghost
+        }
+      }
+      reverse_proxy lubelogger:8080
+    }
+}
+
+:8886 {
+    route {
+      sablier http://sablier:10000 {
+
+        group omnitools
+        session_duration 10m
+        dynamic {
+            display_name Omni-Tools
+            theme ghost
+        }
+      }
+      reverse_proxy omnitools:80
     }
 }
 
@@ -55,50 +99,6 @@
         }
       }
       reverse_proxy openwebui:8080
-    }
-}
-
-:8889 {
-    route {
-      sablier http://sablier:10000 {
-        group lubelogger
-        session_duration 10m
-        dynamic {
-            display_name LubeLogger
-            theme ghost
-        }
-      }
-      reverse_proxy lubelogger:8080
-    }
-}
-
-:8887 {
-    route {
-      sablier http://sablier:10000 {
-
-        group paperlessngx
-        session_duration 10m
-        dynamic {
-            display_name PaperlessNGX
-            theme ghost
-        }
-      }
-      reverse_proxy paperlessngx-webserver:8000
-    }
-}
-
-:8886 {
-    route {
-      sablier http://sablier:10000 {
-
-        group omnitools
-        session_duration 10m
-        dynamic {
-            display_name Omni-Tools
-            theme ghost
-        }
-      }
-      reverse_proxy omnitools:80
     }
 }
 
