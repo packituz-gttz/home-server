@@ -70,7 +70,7 @@ resource "cloudflare_zero_trust_access_application" "papers_app" {
   zone_id          = var.cloudflare_zone_id
   name             = "Access application for papers"
   domain           = "papers.packituz.dev"
-  session_duration = "60m"
+  session_duration = "24h"
   type             = "self_hosted"
 
   policies = [
