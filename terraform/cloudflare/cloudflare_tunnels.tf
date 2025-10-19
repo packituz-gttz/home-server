@@ -34,7 +34,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
       },
       {
         hostname = "papers.${var.domain}"
-        service  = "http://${var.server_local_ip}:8887"
+        service  = "http://${var.server_local_ip}:80"
       },
       {
         hostname = "cars.${var.domain}"
@@ -50,11 +50,11 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
       },
       {
         hostname = "photos.${var.domain}"
-        service  = "http://${var.server_local_ip}:8001"
+        service  = "http://${var.server_local_ip}:80"
       },
       {
         hostname = "docs.${var.domain}"
-        service  = "http://${var.server_local_ip}:3003"
+        service  = "http://${var.server_local_ip}:80"
       },
       {
         hostname = "apps.${var.domain}"
