@@ -106,7 +106,7 @@ resource "cloudflare_zero_trust_access_application" "cars_app" {
   type             = "self_hosted"
   name             = "Access application for cars"
   domain           = "cars.packituz.dev"
-  session_duration = "60m"
+  session_duration = "24h"
   policies = [
     {
       id         = cloudflare_zero_trust_access_policy.cars_policy.id
@@ -139,7 +139,7 @@ resource "cloudflare_zero_trust_access_application" "photos_app" {
   type             = "self_hosted"
   name             = "Access application for photos"
   domain           = "photos.packituz.dev"
-  session_duration = "60m"
+  session_duration = "24h"
   policies = [
     {
       id         = cloudflare_zero_trust_access_policy.photos_policy.id
@@ -173,7 +173,7 @@ resource "cloudflare_zero_trust_access_application" "docs_app" {
   type             = "self_hosted"
   name             = "Access application for docs"
   domain           = "docs.packituz.dev"
-  session_duration = "60m"
+  session_duration = "24h"
   policies = [
     {
       id         = cloudflare_zero_trust_access_policy.docs_policy.id
@@ -206,7 +206,7 @@ resource "cloudflare_zero_trust_access_application" "apps_app" {
   type             = "self_hosted"
   name             = "Access application for apps"
   domain           = "apps.packituz.dev"
-  session_duration = "60m"
+  session_duration = "24h"
   policies = [
     {
       id         = cloudflare_zero_trust_access_policy.apps_policy.id
