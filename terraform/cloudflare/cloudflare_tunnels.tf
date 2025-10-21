@@ -6,59 +6,59 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
     ingress = [
       {
         hostname = "comics.${var.domain}"
-        service  = "http://${var.server_local_ip}:5000"
+        service  = "http://localhost:5000"
       },
       {
         hostname = "home.${var.domain}"
-        service  = "http://${var.server_local_ip}:8123"
+        service  = "http://localhost:8123"
       },
       {
         hostname = "jelly.${var.domain}"
-        service  = "http://${var.server_local_ip}:8096"
+        service  = "http://localhost:8096"
       },
       {
         hostname = "music.${var.domain}"
-        service  = "http://${var.server_local_ip}:4533"
+        service  = "http://localhost:4533"
       },
       {
         hostname = "notes.${var.domain}"
-        service  = "http://${var.server_local_ip}:22300"
+        service  = "http://localhost:22300"
       },
       {
         hostname = "ntfy.${var.domain}"
-        service  = "http://${var.server_local_ip}:8008"
+        service  = "http://localhost:8008"
       },
       {
         hostname = "ssh.${var.domain}"
-        service  = "ssh://${var.server_local_ip}:22"
+        service  = "ssh://localhost:22"
       },
       {
         hostname = "papers.${var.domain}"
-        service  = "http://${var.server_local_ip}:80"
+        service  = "http://localhost:80"
       },
       {
         hostname = "cars.${var.domain}"
-        service  = "http://${var.server_local_ip}:80"
+        service  = "http://localhost:80"
       },
       {
         hostname = "grafana.${var.domain}"
-        service  = "http://${var.server_local_ip}:3000"
+        service  = "http://localhost:3000"
       },
       {
         hostname = "share.${var.domain}"
-        service  = "http://${var.server_local_ip}:3001"
+        service  = "http://localhost:3001"
       },
       {
         hostname = "photos.${var.domain}"
-        service  = "http://${var.server_local_ip}:80"
+        service  = "http://localhost:80"
       },
       {
         hostname = "docs.${var.domain}"
-        service  = "http://${var.server_local_ip}:80"
+        service  = "http://localhost:80"
       },
       {
         hostname = "apps.${var.domain}"
-        service  = "https://${var.server_local_ip}"
+        service  = "https://localhost"
         origin_request = {
           no_tls_verify = true
         }
