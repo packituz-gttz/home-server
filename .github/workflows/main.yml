@@ -121,7 +121,7 @@ jobs:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
       playbook_params: '--tags prometheus-setup'
-    needs: [ deploy-cadvisor, deploy-foldersize, deploy-blackbox, deploy-node ]
+    needs: [ deploy-cadvisor, deploy-blackbox, deploy-node ]
     secrets:
       ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
