@@ -1488,66 +1488,7 @@
   "schemaVersion": 42,
   "tags": [],
   "templating": {
-    "list": [
-      {
-        "current": {
-          "text": [
-            "$__all"
-          ],
-          "value": [
-            "$__all"
-          ]
-        },
-        "includeAll": true,
-        "label": "Docker Service",
-        "multi": true,
-        "name": "docker_service",
-        "options": [
-          {
-            "selected": false,
-            "text": "navidrome",
-            "value": "navidrome"
-          },
-          {
-            "selected": false,
-            "text": "jellyfin",
-            "value": "jellyfin"
-          },
-          {
-            "selected": false,
-            "text": "frigate",
-            "value": "frigate"
-          },
-          {
-            "selected": false,
-            "text": "pingvin",
-            "value": "pingvin"
-          },
-          {
-            "selected": false,
-            "text": "kavita",
-            "value": "kavita"
-          },
-          {
-            "selected": false,
-            "text": "cloudflare_tunnels",
-            "value": "cloudflare_tunnels"
-          },
-          {
-            "selected": false,
-            "text": "romm",
-            "value": "romm"
-          },
-          {
-            "selected": false,
-            "text": "ntfy_server",
-            "value": "ntfy_server"
-          }
-        ],
-        "query": "navidrome,jellyfin,frigate, pingvin,kavita,cloudflare_tunnels,romm,ntfy_server",
-        "type": "custom"
-      }
-    ]
+    "list": []
   },
   "time": {
     "from": "now-6h",
@@ -1557,5 +1498,5 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 31
+  "version": 32
 }
