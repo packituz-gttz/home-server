@@ -23,10 +23,6 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:8080']
 
-  - job_name: 'folder_size'
-    static_configs:
-      - targets: ['localhost:9974']
-
   - job_name: 'blackbox'
     metrics_path: /probe
     params:

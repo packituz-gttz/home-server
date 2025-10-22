@@ -367,248 +367,6 @@
         }
       ],
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "description": "Used FS space",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "center",
-            "cellOptions": {
-              "mode": "gradient",
-              "type": "gauge"
-            },
-            "filterable": false,
-            "footer": {
-              "reducers": []
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": 0
-              },
-              {
-                "color": "purple",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 8,
-        "x": 5,
-        "y": 93
-      },
-      "id": 6,
-      "options": {
-        "cellHeight": "sm",
-        "frameIndex": 0,
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "12.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "100 - (node_filesystem_avail_bytes{mountpoint=\"/\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/\"}",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "expr": "100 - (node_filesystem_avail_bytes{mountpoint=\"/mnt/media\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/mnt/media\"}",
-          "hide": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "Root FS Space",
-      "transformations": [
-        {
-          "id": "limit",
-          "options": {
-            "limitField": 2
-          }
-        },
-        {
-          "id": "joinByLabels",
-          "options": {
-            "value": "device"
-          }
-        },
-        {
-          "id": "groupBy",
-          "options": {
-            "fields": {
-              "/dev/mapper/almalinux-home": {
-                "aggregations": [
-                  "first"
-                ],
-                "operation": "aggregate"
-              },
-              "1:2": {
-                "aggregations": [
-                  "first"
-                ],
-                "operation": "aggregate"
-              },
-              "instance": {
-                "aggregations": []
-              },
-              "job": {
-                "aggregations": []
-              },
-              "mountpoint": {
-                "aggregations": [],
-                "operation": "groupby"
-              }
-            }
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "1:2 (first)": false,
-              "1:2 (last)": false,
-              "mountpoint": true
-            },
-            "indexByName": {},
-            "renameByName": {
-              "/dev/mapper/almalinux-home (first)": "/",
-              "/dev/mapper/almalinux-home (last)": "d",
-              "1:2 (first)": "/mnt/media",
-              "1:2 (last)": "d",
-              "mountpoint": ""
-            }
-          }
-        },
-        {
-          "id": "reduce",
-          "options": {
-            "reducers": [
-              "firstNotNull"
-            ]
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "indexByName": {},
-            "renameByName": {
-              "Field": "Mount Point",
-              "First *": "Use %"
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "hCsE-CCSk"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            }
-          },
-          "mappings": [],
-          "unit": "decgbytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 6,
-        "x": 13,
-        "y": 93
-      },
-      "id": 14,
-      "options": {
-        "displayLabels": [
-          "percent"
-        ],
-        "legend": {
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": false,
-          "values": []
-        },
-        "pieType": "donut",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "sort": "desc",
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "hCsE-CCSk"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "folder_size_bytes / 1000000000 ",
-          "format": "time_series",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "{{path}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Media Directory Sizes",
-      "type": "piechart"
     }
   ],
   "preload": false,
@@ -623,7 +381,6 @@
             "actual",
             "caddy",
             "cadvisor",
-            "docuseal",
             "dronegc",
             "ersatztv",
             "grafana",
@@ -635,28 +392,16 @@
             "jump",
             "kavita",
             "loki",
-            "lubelogger",
-            "lychee",
             "navidrome",
-            "ollama",
-            "ollama-model-loader",
-            "omnitools",
-            "openwebui",
-            "paperlessngx-broker",
-            "paperlessngx-webserver",
             "pingvin",
             "promtail",
-            "romm",
-            "romm-db",
             "sablier",
-            "stirlingpdf",
             "transmission"
           ],
           "value": [
             "actual",
             "caddy",
             "cadvisor",
-            "docuseal",
             "dronegc",
             "ersatztv",
             "grafana",
@@ -668,21 +413,10 @@
             "jump",
             "kavita",
             "loki",
-            "lubelogger",
-            "lychee",
             "navidrome",
-            "ollama",
-            "ollama-model-loader",
-            "omnitools",
-            "openwebui",
-            "paperlessngx-broker",
-            "paperlessngx-webserver",
             "pingvin",
             "promtail",
-            "romm",
-            "romm-db",
             "sablier",
-            "stirlingpdf",
             "transmission"
           ]
         },
@@ -713,5 +447,5 @@
   "timezone": "",
   "title": "Server Docker Detail",
   "uid": "cuUieq3Iz",
-  "version": 13
+  "version": 14
 }
