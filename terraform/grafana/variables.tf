@@ -27,7 +27,7 @@ variable "host_url" {
 variable "loki_data_source_url" {
   type        = string
   description = "Loki data source URL"
-  default     = "http://localhost:3100"
+  default     = "http://loki:3100"
 }
 
 variable "loki_data_source_uid" {
@@ -38,7 +38,7 @@ variable "loki_data_source_uid" {
 variable "prometheus_data_source_url" {
   type        = string
   description = "Prometheus data source URL"
-  default     = "http://localhost:9090"
+  default     = "http://prometheus:9090"
 }
 
 variable "prometheus_data_source_uid" {
