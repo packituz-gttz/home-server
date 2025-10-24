@@ -1,4 +1,21 @@
 ---
+#Setup Blackbox Exporter
+
+- name: Create Blackbox directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Blackbox/
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Copy Blackbox configuration file
+  ansible.posix.synchronize:
+    src: monitoring/prometheus/exporters/blackbox/blackbox.yml
+    dest: /mnt/media-nvm/Blackbox/
+
+# Setup Prometheus
+
 - name: Create Prometheus directories
   become: true
   ansible.builtin.file:
@@ -19,19 +36,6 @@
     group: '65534'
     owner: '65534'
 
-- name: Pull and run Prometheus
-  become: false
-  community.docker.docker_container:
-    name: prometheus
-    image: prom/prometheus:v2.54.0
-    recreate: true
-    network_mode: host
-    restart_policy: "unless-stopped"
-    volumes:
-      - /mnt/media-nvm/Prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - /mnt/media-nvm/Prometheus/data:/prometheus
-    command: --config.file /etc/prometheus/prometheus.yml --storage.tsdb.path /prometheus/
-
 - name: Open prometheus port on firewall
   become: true
   ansible.posix.firewalld:
@@ -39,34 +43,6 @@
     permanent: true
     state: enabled
     immediate: true
-
-## Setup Grafana
-
-- name: Get user id
-  become: true
-  ansible.builtin.getent:
-    database: passwd
-    key: '{{ superuser_name }}'
-    split: ':'
-  register: getent_output
-
-- name: Print getent output
-  ansible.builtin.debug:
-    msg: "{{ getent_output.ansible_facts.getent_passwd[superuser_name][1] }}"
-
-- name: Pull and run Grafana
-  community.docker.docker_container:
-    name: grafana
-    image: "grafana/grafana:12.2.0"
-    state: started
-    restart_policy: "unless-stopped"
-    user: "{{ getent_output.ansible_facts.getent_passwd[superuser_name][1] }}"
-    recreate: true
-    volumes:
-      - /mnt/media/Grafana:/var/lib/grafana
-    ports:
-      - 3000:3000
-
 
 ## Setup Loki
 
@@ -83,19 +59,6 @@
     src: monitoring/prometheus/stack/loki/loki-config.yaml
     dest: /mnt/media-nvm/Loki/loki-config.yaml
 
-- name: Pull and run Loki
-  community.docker.docker_container:
-    name: loki
-    image: "grafana/loki:3.5.7"
-    restart_policy: "unless-stopped"
-    ports:
-      - 3100:3100
-    recreate: true
-    volumes:
-      - "/mnt/media-nvm/Loki/loki-config.yaml:/etc/loki/loki-config.yaml"
-      - "/mnt/media-nvm/Loki/data:/data/loki"
-    command: -config.file=/etc/loki/loki-config.yaml
-
 ## Setup Promtail
 
 - name: Create Promtail directories
@@ -111,15 +74,23 @@
     src: monitoring/prometheus/stack/promtail/promtail-config.yaml
     dest: /mnt/media-nvm/Promtail/config/promtail-config.yaml
 
-- name: Pull and run Promtail
-  community.docker.docker_container:
-    name: promtail
-    image: grafana/promtail:3.5.7
-    recreate: true
-    restart_policy: "unless-stopped"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /mnt/media-nvm/Promtail/config/promtail-config.yaml:/etc/promtail/promtail-config.yaml
-    command: -config.file=/etc/promtail/promtail-config.yaml
+# Docker Compose with all services
+
+- name: Create Monitoring directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Monitoring
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/monitoring/prometheus/docker-compose.yml
+    dest: /mnt/media-nvm/Monitoring/
+
+- name: Run Prometheus Stack
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Monitoring
 
 ...

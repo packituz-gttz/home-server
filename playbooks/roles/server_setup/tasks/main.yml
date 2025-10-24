@@ -51,18 +51,6 @@
   tags: [ 'monit-setup', 'monit-group' ]
   become: true
 
-- name: Install cAdvisor
-  ansible.builtin.import_tasks: monitoring/cadvisor-setup.yml
-  tags: [ 'cadvisor-setup', 'monitoring-group' ]
-
-- name: Install Blackbox Exporter for Prometheus
-  ansible.builtin.import_tasks: monitoring/blackbox-exporter-setup.yml
-  tags: [ 'blackbox-setup', 'monitoring-group' ]
-
-- name: Install Node Exporter for Prometheus
-  ansible.builtin.import_tasks: monitoring/node-exporter-setup.yml
-  tags: [ 'node-setup', 'monitoring-group' ]
-
 - name: Install Prometheus Monitoring
   ansible.builtin.import_tasks: monitoring/prometheus-setup.yml
   tags: [ 'prometheus-setup', 'monitoring-group' ]
