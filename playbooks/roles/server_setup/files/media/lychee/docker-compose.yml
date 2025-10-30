@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  lychee:
+    image: "lycheeorg/lychee:v6.9.2"
+    container_name: "lychee"
+    restart: unless-stopped
+    labels:
+      sablier.enable: "true"
+      sablier.group: "lychee"
+    environment:
+      APP_URL: "https://photos.packituz.dev"
+    networks:
+      - sleepers
+    volumes:
+      - /mnt/media-nvm/Lychee/conf:/conf
+      - /mnt/media-nvm/Lychee/uploads:/uploads
+      - /mnt/media-nvm/Lychee/sym:/sym
+
+networks:
+  sleepers:
+    external: true

@@ -7,21 +7,11 @@
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
-- name: Pull and run Lychee Docker image
-  community.docker.docker_container:
-    name: lychee
-    image: "lycheeorg/lychee:v6.9.2"
-    state: started
-    recreate: true
-    restart_policy: "unless-stopped"
-    labels:
-      sablier.enable: "true"
-      sablier.group: "lychee"
-    env:
-      APP_URL: "https://photos.packituz.dev"
-    networks:
-      - name: sleepers
-    volumes:
-      - /mnt/media-nvm/Lychee/conf:/conf
-      - /mnt/media-nvm/Lychee/uploads:/uploads
-      - /mnt/media-nvm/Lychee/sym:/sym
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/media/lychee/docker-compose.yml
+    dest: /mnt/media-nvm/Lychee
+
+- name: Run Lychee
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Lychee
