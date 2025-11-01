@@ -7,22 +7,22 @@
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
-- name: Run JDownloader2 container
-  community.docker.docker_container:
-    name: jdownloader2
-    image: jlesage/jdownloader-2:v25.07.2
-    state: started
-    recreate: true
-    restart_policy: "unless-stopped"
-    published_ports:
-      - "5800:5800"
-    env:
-      WEB_AUTHENTICATION: "1"
-      SECURE_CONNECTION: "1"
-      WEB_AUTHENTICATION_USERNAME: '{{ jdownloader2_username }}'
-      WEB_AUTHENTICATION_PASSWORD: '{{ jdownloader2_password }}'
-    volumes:
-      - /mnt/media/JDownloader2/config:/config
-      - /mnt/media/JDownloader2/output:/output
+- name: Create app.env file
+  ansible.builtin.copy:
+    dest: /mnt/media/JDownloader2/app.env
+    content: |
+      WEB_AUTHENTICATION='1'
+      SECURE_CONNECTION='1'
+      WEB_AUTHENTICATION_USERNAME={{ jdownloader2_username }}
+      WEB_AUTHENTICATION_PASSWORD={{ jdownloader2_password }}
+
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/downloaders/jdownloader2/docker-compose.yml
+    dest: /mnt/media/JDownloader2
+
+- name: Run JDownloader2
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media/JDownloader2
 
 ...

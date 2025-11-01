@@ -1,0 +1,12 @@
+services:
+  jdownloader2:
+    image: jlesage/jdownloader-2:v25.07.2
+    container_name: jdownloader2
+    restart: unless-stopped
+    ports:
+      - "5800:5800"
+    env_file:
+      - ./app.env
+    volumes:
+      - /mnt/media/JDownloader2/config:/config
+      - /mnt/media/JDownloader2/output:/output
