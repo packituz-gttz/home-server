@@ -1,15 +1,19 @@
 ---
-- name: Pull and run Pingvin-share
-  community.docker.docker_container:
-    name: pingvin
-    image: "stonith404/pingvin-share:v1.13.0"
-    state: started
-    restart_policy: "unless-stopped"
-    recreate: true
-    ports:
-      - 3001:3000
-    volumes:
-      - /mnt/media/Pingvin/data:/opt/app/backend/data
-      - /mnt/media/Pingvin/data/images:/opt/app/frontend/public/img
+- name: Create DocuSeal media directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Docuseal/data
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/utils/docuseal/docker-compose.yml
+    dest: /mnt/media-nvm/Docuseal
+
+- name: Run DocuSeal
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Docuseal
 
 ...

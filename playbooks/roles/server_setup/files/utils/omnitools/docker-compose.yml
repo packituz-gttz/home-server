@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  omnitools:
+    image: "iib0011/omni-tools:0.6.0"
+    container_name: omnitools
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "wget", "-qO-", "http://0.0.0.0:80/" ]
+    labels:
+      sablier.enable: "true"
+      sablier.group: "omnitools"
+    networks:
+      - sleepers
+
+networks:
+  sleepers:
+    external: true

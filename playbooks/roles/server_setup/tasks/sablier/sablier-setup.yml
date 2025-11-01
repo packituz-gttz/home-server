@@ -1,7 +1,7 @@
 ---
 - name: Create Caddy directories
   ansible.builtin.file:
-    path: /mnt/media-nvm/Caddy
+    path: /mnt/media-nvm/Sablier/Caddy
     state: directory
     mode: '0755'
     owner: '{{ superuser_name }}'
@@ -10,50 +10,28 @@
 - name: Copy Caddy Dockerfile
   ansible.posix.synchronize:
     src: 'sablier/caddy/Dockerfile'
-    dest: /mnt/media-nvm/Caddy
+    dest: /mnt/media-nvm/Sablier/Caddy
 
 - name: Build Caddy image with sablier plugin
   community.docker.docker_image:
     name: "caddy-packituz"
     tag: "latest-with-sablier"
     build:
-      path: /mnt/media-nvm/Caddy
+      path: /mnt/media-nvm/Sablier/Caddy
     source: build
     force_source: true
 
 - name: Setup Caddy file
   ansible.posix.synchronize:
     src: 'sablier/caddy/Caddyfile'
-    dest: '/mnt/media-nvm/Caddy/Caddyfile'
+    dest: '/mnt/media-nvm/Sablier/Caddy/Caddyfile'
 
-- name: Pull and run Caddy Docker image
-  community.docker.docker_container:
-    name: caddy
-    image: "caddy-packituz:latest-with-sablier"
-    state: started
-    restart_policy: "unless-stopped"
-    recreate: true
-    ports:
-      - "80:80"
-      - "8888:8888"
-      - "8889:8889"
-      - "3002:3002"
-      - "8886:8886"
-      - "8885:8885"
-    volumes:
-      - '/mnt/media-nvm/Caddy/Caddyfile:/etc/caddy/Caddyfile:ro'
-    networks:
-      - name: sleepers
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/sablier/docker-compose.yml
+    dest: /mnt/media-nvm/Sablier
 
-- name: Pull and run Sablier Docker image
-  community.docker.docker_container:
-    name: sablier
-    image: "sablierapp/sablier:1.10.1"
-    state: started
-    restart_policy: "unless-stopped"
-    recreate: true
-    volumes:
-      - '/var/run/docker.sock:/var/run/docker.sock'
-    networks:
-      - name: sleepers
+- name: Run Sablier and Caddy
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Sablier
 ...

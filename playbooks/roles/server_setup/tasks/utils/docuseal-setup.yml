@@ -1,29 +1,19 @@
 ---
 - name: Create DocuSeal media directories
   ansible.builtin.file:
-    path: /mnt/media-nvm/Docuseal
+    path: /mnt/media-nvm/Docuseal/data
     state: directory
     mode: '0755'
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
-- name: Pull and run DocuSeal Docker image
-  community.docker.docker_container:
-    name: docuseal
-    image: "docuseal/docuseal:2.1.8"
-    state: started
-    recreate: true
-    restart_policy: "unless-stopped"
-    healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://0.0.0.0:3000/"]
-    labels:
-      sablier.enable: "true"
-      sablier.group: "docuseal"
-    env:
-      SESSION_REMEMBER_DAYS: "7"
-      HOST: "https://docs.packituz.dev"
-    networks:
-      - name: sleepers
-    volumes:
-      - /mnt/media-nvm/Docuseal:/data
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/utils/docuseal/docker-compose.yml
+    dest: /mnt/media-nvm/Docuseal
+
+- name: Run DocuSeal
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Docuseal
+
 ...

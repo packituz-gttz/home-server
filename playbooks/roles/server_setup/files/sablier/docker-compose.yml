@@ -1,0 +1,29 @@
+services:
+  caddy:
+    image: "caddy-packituz:latest-with-sablier"
+    container_name: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "8888:8888"
+      - "8889:8889"
+      - "3002:3002"
+      - "8886:8886"
+      - "8885:8885"
+    volumes:
+      - /mnt/media-nvm/Sablier/Caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+    networks:
+      - sleepers
+
+  sablier:
+    image: "sablierapp/sablier:1.10.1"
+    container_name: sablier
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - sleepers
+
+networks:
+  sleepers:
+    external: true

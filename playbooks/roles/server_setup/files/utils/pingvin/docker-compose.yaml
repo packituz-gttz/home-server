@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  pingvin:
+    image: "stonith404/pingvin-share:v1.13.0"
+    container_name: pingvin
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    volumes:
+      - /mnt/media/Pingvin/data:/opt/app/backend/data
+      - /mnt/media/Pingvin/data/images:/opt/app/frontend/public/img

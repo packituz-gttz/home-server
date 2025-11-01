@@ -1,0 +1,25 @@
+services:
+  stirlingpdf:
+    image: "stirlingtools/stirling-pdf:1.4.0"
+    container_name: stirlingpdf
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "wget", "-qO-", "http://0.0.0.0:8080/" ]
+    labels:
+      sablier.enable: "true"
+      sablier.group: "stirlingpdf"
+    environment:
+      LANGS: 'en_GB'
+      DISABLE_ADDITIONAL_FEATURES: 'true'
+    networks:
+      - sleepers
+    volumes:
+      - /mnt/media-nvm/StirlingPDF/trainingData:/usr/share/tessdata
+      - /mnt/media-nvm/StirlingPDF/extraConfigs:/configs
+      - /mnt/media-nvm/StirlingPDF/customFiles:/customFiles/
+      - /mnt/media-nvm/StirlingPDF/logs:/logs/
+      - /mnt/media-nvm/StirlingPDF/pipeline:/pipeline/
+
+networks:
+  sleepers:
+    external: true
