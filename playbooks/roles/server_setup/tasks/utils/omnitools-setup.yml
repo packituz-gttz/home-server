@@ -1,16 +1,18 @@
 ---
-- name: Pull and run Omni-Tools Docker image
-  community.docker.docker_container:
-    name: omnitools
-    image: "iib0011/omni-tools:0.6.0"
-    state: started
-    recreate: true
-    restart_policy: "unless-stopped"
-    healthcheck:
-      test: [ "CMD", "wget", "-qO-", "http://0.0.0.0:80/" ]
-    labels:
-      sablier.enable: "true"
-      sablier.group: "omnitools"
-    networks:
-      - name: sleepers
+- name: Create Omnitools media directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Omnitools
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/utils/omnitools/docker-compose.yml
+    dest: /mnt/media-nvm/Omnitools
+
+- name: Run Omnitools
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Omnitools
 ...

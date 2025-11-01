@@ -1,0 +1,21 @@
+services:
+  docuseal:
+    image: "docuseal/docuseal:2.1.8"
+    container_name: docuseal
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://0.0.0.0:3000/"]
+    labels:
+      sablier.enable: "true"
+      sablier.group: "docuseal"
+    environment:
+      SESSION_REMEMBER_DAYS: "7"
+      HOST: "https://docs.packituz.dev"
+    networks:
+      - sleepers
+    volumes:
+      - /mnt/media-nvm/Docuseal/data:/data
+
+networks:
+  sleepers:
+    external: true

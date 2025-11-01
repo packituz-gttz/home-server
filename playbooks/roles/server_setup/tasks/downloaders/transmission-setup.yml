@@ -1,24 +1,29 @@
 ---
-- name: Pull and run Transmission
-  community.docker.docker_container:
-    name: transmission
-    image: "lscr.io/linuxserver/transmission:4.0.5-r1-ls234"
-    state: started
-    restart_policy: "unless-stopped"
-    recreate: true
-    env:
-      PGUID: "1000"
-      PGID: "1000"
-      TZ: "Etc/UTC"
-      USER: '{{ transmission_user }}'
-      PASS: '{{ transmission_password }}'
-    ports:
-      - 9091:9091
-      - 51413:51413
-      - 51413:51413/udp
-    volumes:
-      - /mnt/media/Transmission/config:/config
-      - /mnt/media/Transmission/downloads:/downloads
-      - /mnt/media/Transmission/watch:/watch
+- name: Create Transmission directories
+  ansible.builtin.file:
+    path: /mnt/media/Transmission
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Create app.env file
+  ansible.builtin.copy:
+    dest: /mnt/media/Transmission/app.env
+    content: |
+      PGUID='1000'
+      PGID='1000'
+      TZ='Etc/UTC'
+      USER={{ transmission_user }}
+      PASS={{ transmission_password }}
+
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/downloaders/transmission/docker-compose.yml
+    dest: /mnt/media/Transmission
+
+- name: Run Transmission
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media/Transmission
 
 ...
