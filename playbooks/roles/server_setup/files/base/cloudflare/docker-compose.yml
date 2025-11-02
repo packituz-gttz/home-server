@@ -1,6 +1,6 @@
 services:
   cloudflare_tunnels:
-    image: cloudflare/cloudflared:2025.10.0
+    image: cloudflare/cloudflared:2025.10.1
     container_name: cloudflare_tunnels
     restart: unless-stopped
     network_mode: host
