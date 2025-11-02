@@ -1,0 +1,14 @@
+services:
+  cloudflare_tunnels:
+    image: cloudflare/cloudflared:2025.10.0
+    container_name: cloudflare_tunnels
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - /mnt/media-nvm/Cloudflare/.env
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TOKEN}
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 100M
