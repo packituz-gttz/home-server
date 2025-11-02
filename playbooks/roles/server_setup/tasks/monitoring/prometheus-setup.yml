@@ -16,33 +16,33 @@
 
 # Setup Prometheus
 
-- name: Create Prometheus directories
+- name: Prometheus setup block as root user
   become: true
-  ansible.builtin.file:
-    path: '{{ item }}'
-    state: directory
-    mode: '0755'
-    owner: '65534'
-    group: '65534'
-  loop:
-    - /mnt/media-nvm/Prometheus/
-    - /mnt/media-nvm/Prometheus/data
+  block:
+    - name: Create Prometheus directories
+      ansible.builtin.file:
+        path: '{{ item }}'
+        state: directory
+        mode: '0755'
+        owner: '65534'
+        group: '65534'
+      loop:
+        - /mnt/media-nvm/Prometheus/
+        - /mnt/media-nvm/Prometheus/data
 
-- name: Copy Prometheus main and web configuration file
-  become: true
-  ansible.builtin.copy:
-    src: files/monitoring/prometheus/prometheus.yml
-    dest: /mnt/media-nvm/Prometheus/
-    group: '65534'
-    owner: '65534'
+    - name: Copy Prometheus main and web configuration file
+      ansible.builtin.copy:
+        src: files/monitoring/prometheus/prometheus.yml
+        dest: /mnt/media-nvm/Prometheus/
+        group: '65534'
+        owner: '65534'
 
-- name: Open prometheus port on firewall
-  become: true
-  ansible.posix.firewalld:
-    port: 9090/tcp
-    permanent: true
-    state: enabled
-    immediate: true
+    - name: Open prometheus port on firewall
+      ansible.posix.firewalld:
+        port: 9090/tcp
+        permanent: true
+        state: enabled
+        immediate: true
 
 ## Setup Loki
 
