@@ -1,15 +1,25 @@
 ---
-- name: Pull and run Cloudflare Docker image
-  community.docker.docker_container:
-    name: cloudflare_tunnels
-    image: cloudflare/cloudflared:2025.10.0
-    state: started
-    cpus: 1.5
-    memory: "100M"
-    recreate: true
-    restart_policy: "unless-stopped"
-    network_mode: host
-    command: "tunnel --no-autoupdate run --token {{ cloudflare_token }}"
+- name: Create Cloudflare directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Cloudflare
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
 
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/base/cloudflare/docker-compose.yml
+    dest: /mnt/media-nvm/Cloudflare
 
+- name: Create .env file
+  ansible.builtin.copy:
+    dest: /mnt/media-nvm/Cloudflare/.env
+    content: |
+      CLOUDFLARE_TOKEN={{ cloudflare_token }}
+
+- name: Run Cloudflare
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Cloudflare
+    recreate: always
 ...
