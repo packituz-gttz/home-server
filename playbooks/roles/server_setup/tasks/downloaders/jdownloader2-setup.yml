@@ -24,5 +24,6 @@
 - name: Run JDownloader2
   community.docker.docker_compose_v2:
     project_src: /mnt/media/JDownloader2
+    recreate: always
 
 ...

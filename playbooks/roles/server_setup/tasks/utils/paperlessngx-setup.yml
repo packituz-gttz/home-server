@@ -21,5 +21,6 @@
 - name: Run PaperlessNGX
   community.docker.docker_compose_v2:
     project_src: /mnt/media-nvm/PaperlessNGX
+    recreate: always
 
 ...

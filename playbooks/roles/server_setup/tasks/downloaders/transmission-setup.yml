@@ -25,5 +25,6 @@
 - name: Run Transmission
   community.docker.docker_compose_v2:
     project_src: /mnt/media/Transmission
+    recreate: always
 
 ...
