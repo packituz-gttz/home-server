@@ -18,19 +18,13 @@
     - { source: 'base/jump/favicon/', destination: '/mnt/media/Jump/sites/icons/' }
     - { source: 'base/jump/backgrounds', destination: '/mnt/media/Jump/' }
 
-- name: Pull and run Jump dashboard Docker image
-  community.docker.docker_container:
-    name: jump
-    image: "daledavies/jump:v1.4.1"
-    state: started
-    restart_policy: "unless-stopped"
-    recreate: true
-    volumes:
-      - /mnt/media/Jump/backgrounds:/backgrounds
-      - /mnt/media/Jump/favicon:/favicon
-      - /mnt/media/Jump/sites:/sites
-    env:
-      SITENAME: '{{ jump_site_name }}'
-    ports:
-      - 8123:8080
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/base/jump/docker-compose.yml
+    dest: /mnt/media/Jump
+
+- name: Run Jump
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media/Jump
+    recreate: always
 ...

@@ -1,14 +1,18 @@
 ---
-- name: Pull and run Navidrome
-  community.docker.docker_container:
-    name: navidrome
-    image: "deluan/navidrome:0.58.0"
-    state: started
-    recreate: true
-    restart_policy: "unless-stopped"
-    ports:
-      - 4533:4533
-    volumes:
-      - /mnt/media-nvm/Navidrome/music:/music
-      - /mnt/media-nvm/Navidrome/data:/data
+- name: Create Navidrome directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Navidrome
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/media/navidrome/docker-compose.yml
+    dest: /mnt/media-nvm/Navidrome
+
+- name: Run Navidrome
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Navidrome
 ...

@@ -1,0 +1,13 @@
+services:
+  jump:
+    image: daledavies/jump:v1.4.1
+    container_name: jump
+    restart: unless-stopped
+    environment:
+      SITENAME: ""
+    ports:
+      - "8123:8080"
+    volumes:
+      - /mnt/media/Jump/backgrounds:/backgrounds
+      - /mnt/media/Jump/favicon:/favicon
+      - /mnt/media/Jump/sites:/sites
