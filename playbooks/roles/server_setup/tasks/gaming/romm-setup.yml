@@ -38,5 +38,6 @@
 - name: Run Romm
   community.docker.docker_compose_v2:
     project_src: /mnt/media-nvm/Romm
+    recreate: always
 
 ...

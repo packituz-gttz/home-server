@@ -37,5 +37,6 @@
 - name: Run Actual
   community.docker.docker_compose_v2:
     project_src: /mnt/media-nvm/Actual/
+    recreate: always
 
 ...
