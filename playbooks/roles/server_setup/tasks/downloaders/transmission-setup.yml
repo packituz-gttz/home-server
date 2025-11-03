@@ -7,9 +7,9 @@
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
-- name: Create app.env file
+- name: Create .env file
   ansible.builtin.copy:
-    dest: /mnt/media/Transmission/app.env
+    dest: /mnt/media/Transmission/.env
     content: |
       PGUID='1000'
       PGID='1000'

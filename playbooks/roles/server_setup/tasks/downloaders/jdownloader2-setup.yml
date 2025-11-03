@@ -7,9 +7,9 @@
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
-- name: Create app.env file
+- name: Create .env file
   ansible.builtin.copy:
-    dest: /mnt/media/JDownloader2/app.env
+    dest: /mnt/media/JDownloader2/.env
     content: |
       WEB_AUTHENTICATION='1'
       SECURE_CONNECTION='1'

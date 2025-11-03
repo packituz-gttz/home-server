@@ -25,15 +25,8 @@ services:
       - /mnt/media-nvm/PaperlessNGX/media:/usr/src/paperless/media
       - /mnt/media-nvm/PaperlessNGX/export:/usr/src/paperless/export
       - /mnt/media-nvm/PaperlessNGX/consume:/usr/src/paperless/consume
-    env_file: docker-compose.env
     networks:
       - sleepers
-    environment:
-      - PAPERLESS_REDIS=redis://paperlessngx-broker:6379
-      - USERMAP_UID=1000
-      - USERMAP_GID=1000
-      - PAPERLESS_OCR_LANGUAGE=spa
-      - PAPERLESS_URL=https://papers.packituz.dev
 
 
 networks:

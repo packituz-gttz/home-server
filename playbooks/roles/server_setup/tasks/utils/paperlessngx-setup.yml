@@ -7,11 +7,16 @@
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
-- name: Create docker-compose.env file
+- name: Create .env file
   ansible.builtin.copy:
-    dest: /mnt/media-nvm/PaperlessNGX/docker-compose.env
+    dest: /mnt/media-nvm/PaperlessNGX/.env
     content: |
       PAPERLESS_SECRET_KEY={{ paperlessngx_secret_key }}
+      PAPERLESS_REDIS=redis://paperlessngx-broker:6379
+      USERMAP_UID=1000
+      USERMAP_GID=1000
+      PAPERLESS_OCR_LANGUAGE=spa
+      PAPERLESS_URL=https://papers.packituz.dev
 
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
