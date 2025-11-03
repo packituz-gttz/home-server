@@ -1,0 +1,10 @@
+services:
+  kavita:
+    image: jvmilazz0/kavita:0.8.7
+    container_name: kavita
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - /mnt/media-nvm/Kavita/config:/kavita/config
+      - /mnt/media-nvm/Kavita/manga:/manga
