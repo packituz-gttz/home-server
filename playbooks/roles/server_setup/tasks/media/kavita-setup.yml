@@ -19,17 +19,12 @@
     minute: "*/5"
     job: "/bin/bash /mnt/media-nvm/Kavita/new_file_uploaded.sh"
 
-- name: Pull and run Kavita Docker image
-  community.docker.docker_container:
-    name: kavita
-    image: "jvmilazz0/kavita:0.8.7"
-    state: started
-    recreate: true
-    restart_policy: "unless-stopped"
-    ports:
-      - 5000:5000
-    volumes:
-      - /mnt/media-nvm/Kavita/config:/kavita/config
-      - /mnt/media-nvm/Kavita/manga:/manga
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/media/kavita/docker-compose.yml
+    dest: /mnt/media-nvm/Kavita
 
+- name: Run Kavita
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Kavita
 ...
