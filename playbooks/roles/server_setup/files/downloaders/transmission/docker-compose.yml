@@ -3,8 +3,6 @@ services:
     image: "lscr.io/linuxserver/transmission:4.0.5-r1-ls234"
     container_name: transmission
     restart: unless-stopped
-    env_file:
-      - /mnt/media/Transmission/app.env
     ports:
       - "9091:9091"
       - "51413:51413"
