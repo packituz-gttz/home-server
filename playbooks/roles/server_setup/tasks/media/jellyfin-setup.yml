@@ -4,66 +4,43 @@
     path: '{{ item }}'
     state: directory
     mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
   loop: '{{ jellyfin_media_dirs }}'
 
-- name: Config Jellyfin on Production
-  block:
-  - name: Get render group
-    ansible.builtin.getent:
-      database: group
-      key: "{{ item }}"
-      split: ':'
-    register: getent_output
-    loop:
-      - render
-      - video
+- name: Get render group
+  ansible.builtin.getent:
+    database: group
+    key: "{{ item }}"
+    split: ':'
+  register: getent_output
+  loop:
+    - render
+    - video
 
-  - ansible.builtin.debug:
-      msg: "{{ getent_output.results[0].ansible_facts.getent_group.render[1] }}"
+- ansible.builtin.debug:
+    msg: "{{ getent_output.results[0].ansible_facts.getent_group.render[1] }}"
 
-  - ansible.builtin.debug:
-      msg: "{{ getent_output.results[1].ansible_facts.getent_group.video[1] }}"
+- ansible.builtin.debug:
+    msg: "{{ getent_output.results[1].ansible_facts.getent_group.video[1] }}"
 
-  - name: Pull and run Jellyfin Docker image
-    community.docker.docker_container:
-      name: jellyfin
-      image: "jellyfin/jellyfin:10.10.7"
-      state: started
-      restart_policy: "unless-stopped"
-      network_mode: host
-      recreate: true
-      user: 0:0
-      memory: "8G"
-      volumes:
-        - /srv/jellyfin/config:/config
-        - /srv/jellyfin/cache:/cache
-        - /mnt/media/Jellyfin:/media
-      groups:
-        - "{{ getent_output.results[0].ansible_facts.getent_group.render[1] }}"
-        - "{{ getent_output.results[1].ansible_facts.getent_group.video[1] }}"
-      devices:
-        - /dev/dri/renderD128:/dev/dri/renderD128
-        - /dev/kfd:/dev/kfd
-      env:
-        ROC_ENABLE_PRE_VEGA: "1"
+- name: Create .env file for Jellyfin
+  ansible.builtin.copy:
+    dest: /mnt/media/Jellyfin/.env
+    content: |
+      RENDER_GID={{ getent_output.results[0].ansible_facts.getent_group.render[1] }}
+      VIDEO_GID={{ getent_output.results[1].ansible_facts.getent_group.video[1] }}
+    owner: "{{ superuser_name }}"
+    group: "{{ superuser_name }}"
 
-  when: inventory_hostname != "default"
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/media/jellyfin/docker-compose.yml
+    dest: /mnt/media/Jellyfin/
 
-- name: Config Jellyfin on Staging
-  block:
-  - name: Pull and run Jellyfin Docker image
-    community.docker.docker_container:
-      name: jellyfin
-      image: "jellyfin/jellyfin:10.10.7"
-      state: started
-      restart_policy: "unless-stopped"
-      network_mode: host
-      recreate: true
-      volumes:
-        - /srv/jellyfin/config:/config
-        - /srv/jellyfin/cache:/cache
-        - /mnt/media/Jellyfin:/media
-  when: inventory_hostname == "default"
+- name: Run Jellyfin
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media/Jellyfin
 
 - name: Open jellyfin port on firewall
   become: true

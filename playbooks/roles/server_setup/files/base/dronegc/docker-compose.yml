@@ -1,0 +1,11 @@
+services:
+  dronegc:
+    image: drone/gc:1.0.0
+    container_name: dronegc
+    restart: unless-stopped
+    environment:
+      GC_DEBUG: "true"
+      GC_CACHE: 1gb
+      GC_INTERVAL: 5m
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

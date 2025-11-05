@@ -1,0 +1,20 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:10.10.7
+    container_name: jellyfin
+    restart: unless-stopped
+    network_mode: host
+    user: "0:0"
+    mem_limit: 8g
+    environment:
+      ROC_ENABLE_PRE_VEGA: "1"
+    volumes:
+      - /srv/jellyfin/config:/config
+      - /srv/jellyfin/cache:/cache
+      - /mnt/media/Jellyfin:/media
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/kfd:/dev/kfd
+    group_add:
+      - ${RENDER_GID}
+      - ${VIDEO_GID}
