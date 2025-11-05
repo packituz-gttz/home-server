@@ -7,15 +7,12 @@
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
-- name: Pull and run ErsatzTV
-  community.docker.docker_container:
-    name: ersatztv
-    image: "ghcr.io/ersatztv/ersatztv:fb2466d32dda70a1347307bfecc31b8d4cf892c4"
-    state: started
-    recreate: true
-    ports:
-      - 8409:8409
-    volumes:
-      - /mnt/media/ErsatzTv/config:/root/.local/share/ersatztv
-    restart_policy: unless-stopped
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/media/ersatztv/docker-compose.yml
+    dest: /mnt/media/ErsatzTv
+
+- name: Run ErsatzTv
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media/ErsatzTv
 ...

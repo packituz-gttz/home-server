@@ -1,0 +1,9 @@
+services:
+  ersatztv:
+    image: ghcr.io/ersatztv/ersatztv:fb2466d32dda70a1347307bfecc31b8d4cf892c4
+    container_name: ersatztv
+    restart: unless-stopped
+    ports:
+      - "8409:8409"
+    volumes:
+      - /mnt/media/ErsatzTv/config:/root/.local/share/ersatztv
