@@ -3,10 +3,8 @@
   "packages": [
     "terraform@1.13.3",
     "tflint@0.58.1",
-    "pre-commit@4.3.0",
     "terraform-docs@0.20.0",
-    "ggshield@1.40.0",
-    "commitizen@4.9.1"
+    "ggshield@1.40.0"
   ],
   "shell": {
     "init_hook": "pipenv shell",
