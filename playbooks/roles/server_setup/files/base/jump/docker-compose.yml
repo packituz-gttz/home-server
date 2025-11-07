@@ -4,7 +4,7 @@ services:
     container_name: jump
     restart: unless-stopped
     environment:
-      SITENAME: ""
+      SITENAME: "packituz"
     ports:
       - "8123:8080"
     volumes:

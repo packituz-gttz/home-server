@@ -4,8 +4,8 @@ services:
     container_name: cloudflare_tunnels
     restart: unless-stopped
     network_mode: host
-    env_file:
-      - /mnt/media-nvm/Cloudflare/.env
+    environment:
+      - CLOUDFLARE_TOKEN
     command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TOKEN}
     deploy:
       resources:
