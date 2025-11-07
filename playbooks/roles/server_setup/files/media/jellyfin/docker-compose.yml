@@ -7,7 +7,9 @@ services:
     user: "0:0"
     mem_limit: 8g
     environment:
-      ROC_ENABLE_PRE_VEGA: "1"
+      - ROC_ENABLE_PRE_VEGA
+      - RENDER_GID
+      - VIDEO_GID
     volumes:
       - /srv/jellyfin/config:/config
       - /srv/jellyfin/cache:/cache

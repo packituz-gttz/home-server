@@ -18,6 +18,13 @@ services:
     labels:
       sablier.enable: true
       sablier.group: "paperlessngx"
+    environment:
+      - PAPERLESS_SECRET_KEY
+      - PAPERLESS_REDIS
+      - USERMAP_UID
+      - USERMAP_GID
+      - PAPERLESS_OCR_LANGUAGE
+      - PAPERLESS_URL
     depends_on:
       - paperlessngx-broker
     volumes:

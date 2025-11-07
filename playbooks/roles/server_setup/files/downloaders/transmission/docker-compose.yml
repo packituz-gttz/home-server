@@ -3,6 +3,12 @@ services:
     image: "lscr.io/linuxserver/transmission:4.0.5-r1-ls234"
     container_name: transmission
     restart: unless-stopped
+    environment:
+      - PGUID
+      - PGID
+      - TZ
+      - USER
+      - PASS
     ports:
       - "9091:9091"
       - "51413:51413"

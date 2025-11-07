@@ -5,6 +5,11 @@ services:
     restart: unless-stopped
     ports:
       - "5800:5800"
+    environment:
+      - WEB_AUTHENTICATION
+      - SECURE_CONNECTION
+      - WEB_AUTHENTICATION_USERNAME
+      - WEB_AUTHENTICATION_PASSWORD
     volumes:
       - /mnt/media/JDownloader2/config:/config
       - /mnt/media/JDownloader2/output:/output
