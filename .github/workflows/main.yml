@@ -70,15 +70,6 @@ jobs:
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
       SSH_KEY: ${{ secrets.SSH_KEY }}
 
-  deploy-ai:
-    uses: ./.github/workflows/reusable-playbook-workflow.yaml
-    with:
-      playbook_params: '--tags ai-group'
-    secrets:
-      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
-      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
-      SSH_KEY: ${{ secrets.SSH_KEY }}
-
   deploy-sablier:
     if: ${{ always() }}
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
