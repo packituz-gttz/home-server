@@ -120,7 +120,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "repeat": "docker_service",
       "repeatDirection": "v",
       "targets": [
@@ -231,7 +231,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "repeat": "docker_service",
       "repeatDirection": "v",
       "targets": [
@@ -340,7 +340,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.2.0",
+      "pluginVersion": "12.2.1",
       "repeat": "docker_service",
       "repeatDirection": "v",
       "targets": [
@@ -384,7 +384,6 @@
             "dronegc",
             "ersatztv",
             "grafana",
-            "home-ai-agent",
             "jdownloader2",
             "jellyfin",
             "joplin-app-1",
@@ -396,7 +395,21 @@
             "pingvin",
             "promtail",
             "sablier",
-            "transmission"
+            "transmission",
+            "blackbox-exporter",
+            "lubelogger",
+            "node-exporter",
+            "ollama",
+            "ollama-model-loader",
+            "omnitools",
+            "openwebui",
+            "paperlessngx-broker",
+            "prometheus",
+            "paperlessngx-webserver",
+            "stirlingpdf",
+            "romm-db",
+            "romm",
+            "kasm"
           ],
           "value": [
             "actual",
@@ -405,7 +418,6 @@
             "dronegc",
             "ersatztv",
             "grafana",
-            "home-ai-agent",
             "jdownloader2",
             "jellyfin",
             "joplin-app-1",
@@ -417,12 +429,26 @@
             "pingvin",
             "promtail",
             "sablier",
-            "transmission"
+            "transmission",
+            "blackbox-exporter",
+            "lubelogger",
+            "node-exporter",
+            "ollama",
+            "ollama-model-loader",
+            "omnitools",
+            "openwebui",
+            "paperlessngx-broker",
+            "prometheus",
+            "paperlessngx-webserver",
+            "stirlingpdf",
+            "romm-db",
+            "romm",
+            "kasm"
           ]
         },
         "definition": "label_values(container_last_seen{name=~\"^[^_]+$\"},name)",
         "hide": 1,
-        "includeAll": true,
+        "includeAll": false,
         "label": "Docker Service",
         "multi": true,
         "name": "docker_service",
@@ -447,5 +473,5 @@
   "timezone": "",
   "title": "Server Docker Detail",
   "uid": "cuUieq3Iz",
-  "version": 14
+  "version": 15
 }
