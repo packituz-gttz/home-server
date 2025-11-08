@@ -15,7 +15,7 @@ scrape_configs:
       refresh_interval: 45s
       filters:
         - name: name
-          values: ["home-ai-agent", "jump", "dronegc", "jellyfin", "cloudflare_tunnels"]
+          values: ["jump", "dronegc", "jellyfin", "cloudflare_tunnels"]
   relabel_configs:
     - source_labels: ["__meta_docker_container_name"]
       regex: "/(.*)"

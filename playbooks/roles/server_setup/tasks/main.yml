@@ -109,16 +109,6 @@
   ansible.builtin.import_tasks: downloaders/jdownloader2-setup.yml
   tags: [ 'jdownloader2-setup', 'downloaders-group' ]
 
-# Ai group
-
-- name: Install Ollama
-  ansible.builtin.import_tasks: ai/ollama-setup.yml
-  tags: [ 'ollama-setup', 'ai-group' ]
-
-- name: Install Home AI Agent
-  ansible.builtin.import_tasks: ai/ai-setup.yml
-  tags: [ 'ai-setup', 'ai-group' ]
-
 # Sablier
 
 - name: Install Sablier
