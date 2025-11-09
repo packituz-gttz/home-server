@@ -227,16 +227,6 @@
       ]
     },
     {
-      "name": "Ai Assistant",
-      "url": "http://192.168.100.45:7860/",
-      "description": "Ai Server Assistant",
-      "newtab": true,
-      "icon": "ai.png",
-      "tags": [
-        "local"
-      ]
-    },
-    {
       "name": "Ai Chat",
       "url": "http://192.168.100.45:3002/",
       "description": "Ai Chat",
