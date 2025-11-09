@@ -1,7 +1,7 @@
 version: "3.4"
 services:
   lubelogger:
-    image: ghcr.io/hargata/lubelogger:v1.5.3
+    image: ghcr.io/hargata/lubelogger:v1.5.4
     container_name: lubelogger
     healthcheck:
       test: [ "CMD", "sleep", "1" ]
