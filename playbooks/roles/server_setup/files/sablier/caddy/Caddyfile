@@ -88,20 +88,6 @@ http://cars.packituz.dev  {
     }
 }
 
-:3002 {
-    route {
-      sablier http://sablier:10000 {
-        group ollama
-        session_duration 10m
-        dynamic {
-            display_name Ollama
-            theme ghost
-        }
-      }
-      reverse_proxy openwebui:8080
-    }
-}
-
 :8885 {
     route {
       sablier http://sablier:10000 {
