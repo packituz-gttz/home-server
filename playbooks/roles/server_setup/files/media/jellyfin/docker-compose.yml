@@ -11,9 +11,9 @@ services:
       - RENDER_GID
       - VIDEO_GID
     volumes:
-      - /srv/jellyfin/config:/config
-      - /srv/jellyfin/cache:/cache
-      - /mnt/media/Jellyfin:/media
+      - /mnt/media/Jellyfin/config:/config
+      - /mnt/media/Jellyfin/cache:/cache
+      - /mnt/media/Jellyfin/media:/media
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
       - /dev/kfd:/dev/kfd

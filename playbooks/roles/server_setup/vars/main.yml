@@ -10,9 +10,9 @@ docker_packages:
   - docker-compose-plugin
 
 jellyfin_media_dirs:
-  - /mnt/media/Jellyfin/Movies
-  - /mnt/media/Jellyfin/Shows
-  - /mnt/media/Jellyfin/Concerts
+  - /mnt/media/Jellyfin/media/Movies
+  - /mnt/media/Jellyfin/media/Shows
+  - /mnt/media/Jellyfin/media/Concerts
 
 jump_media_dirs:
   - /mnt/media/Jump/backgrounds
