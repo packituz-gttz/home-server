@@ -19,7 +19,6 @@
     build:
       path: /mnt/media-nvm/Sablier/Caddy
     source: build
-    force_source: true
 
 - name: Setup Caddy file
   ansible.posix.synchronize:
