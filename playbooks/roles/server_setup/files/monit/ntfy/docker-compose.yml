@@ -1,0 +1,11 @@
+services:
+  ntfy_server:
+    image: binwiederhier/ntfy:v2.14.0
+    container_name: ntfy
+    restart: unless-stopped
+    command: serve
+    ports:
+      - "8008:80"
+    volumes:
+      - /mnt/media-nvm/Ntfy/etc:/etc/ntfy
+      - /mnt/media-nvm/Ntfy/var:/var/lib/ntfy
