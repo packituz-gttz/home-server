@@ -1,29 +1,27 @@
 ---
 - name: Create ntfy directory
   ansible.builtin.file:
-    path: /etc/ntfy
+    path: /mnt/media-nvm/Ntfy/etc
     state: directory
-    owner: root
-    group: root
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
 
 - name: Copy ntfy Configurations
   become: true
   ansible.builtin.copy:
     src: monit/ntfy/server.yml
-    dest: /etc/ntfy/server.yml
+    dest: /mnt/media-nvm/Ntfy/etc/server.yml
 
-- name: Pull and run ntfy server
-  community.docker.docker_container:
-    name: ntfy_server
-    image: "binwiederhier/ntfy:v2.14.0"
-    state: started
-    restart_policy: "unless-stopped"
-    volumes:
-      - /etc/ntfy:/etc/ntfy
-      - /var/lib/ntfy:/var/lib/ntfy
-    command: serve
-    ports:
-      - 8008:80
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/monit/ntfy/docker-compose.yml
+    dest: /mnt/media-nvm/Ntfy
+
+- name: Run Ntfy
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Ntfy
+    recreate: always
 
 - name: Add ntfy admin user and password vars
   ansible.builtin.lineinfile:
@@ -35,7 +33,7 @@
 
 - name: Create ntfy admin user
   ansible.builtin.expect:
-    command: 'docker exec -it ntfy_server ntfy user add --role=admin {{ ntfy_admin }}'
+    command: 'docker exec -it ntfy ntfy user add --role=admin {{ ntfy_admin }}'
     responses:
       (password*|confirm*): '{{ ntfy_password }}'
   register: admin_creation_status
