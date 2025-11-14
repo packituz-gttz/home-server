@@ -19,6 +19,4 @@ jump_media_dirs:
   - /mnt/media/Jump/favicon
   - /mnt/media/Jump/sites/icons
 
-jump_site_name: "Packituz+"
-
 ...
