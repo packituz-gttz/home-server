@@ -1583,6 +1583,96 @@
       "type": "logs"
     },
     {
+      "datasource": {
+        "type": "loki",
+        "uid": "bemrrz6wjxlvkb"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 39
+      },
+      "id": 168,
+      "options": {
+        "dedupStrategy": "none",
+        "enableInfiniteScrolling": true,
+        "enableLogDetails": false,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": true,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bemrrz6wjxlvkb"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{service_name=\"sablier\"}",
+          "legendFormat": "",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Sablier Logs",
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "bemrrz6wjxlvkb"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 39
+      },
+      "id": 169,
+      "options": {
+        "dedupStrategy": "none",
+        "enableInfiniteScrolling": true,
+        "enableLogDetails": false,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": true,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "bemrrz6wjxlvkb"
+          },
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{service_name=\"caddy\"}",
+          "legendFormat": "",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Caddy Logs",
+      "type": "logs"
+    },
+    {
       "fieldConfig": {
         "defaults": {},
         "overrides": []
@@ -1591,7 +1681,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 39
+        "y": 47
       },
       "id": 157,
       "options": {
@@ -1631,7 +1721,7 @@
         "h": 14,
         "w": 12,
         "x": 0,
-        "y": 45
+        "y": 53
       },
       "id": 155,
       "options": {
@@ -1678,5 +1768,5 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 34
+  "version": 35
 }
