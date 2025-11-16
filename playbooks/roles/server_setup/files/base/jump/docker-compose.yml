@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     environment:
       SITENAME: "packituz"
+      CHECKSTATUS: "false"
     ports:
       - "8123:8080"
     volumes:
