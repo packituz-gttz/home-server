@@ -9,9 +9,7 @@ http://docs.packituz.dev  {
         }
       }
       reverse_proxy docuseal:3000 {
-        header_up X-Forwarded-For {remote_host}
         header_up X-Forwarded-Proto https
-        header_up X-Forwarded-Host {host}
       }
     }
 }
