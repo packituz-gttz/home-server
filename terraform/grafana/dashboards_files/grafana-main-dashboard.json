@@ -1426,7 +1426,7 @@
         "showCommonLabels": false,
         "showLabels": true,
         "showTime": true,
-        "sortOrder": "Descending",
+        "sortOrder": "Ascending",
         "wrapLogMessage": true
       },
       "pluginVersion": "12.2.1",
@@ -1436,7 +1436,7 @@
             "type": "loki",
             "uid": "bemrrz6wjxlvkb"
           },
-          "direction": "backward",
+          "direction": "forward",
           "editorMode": "code",
           "expr": "{service_name=\"cloudflare_tunnels\"}",
           "legendFormat": "",
@@ -1471,7 +1471,7 @@
         "showCommonLabels": false,
         "showLabels": true,
         "showTime": true,
-        "sortOrder": "Descending",
+        "sortOrder": "Ascending",
         "wrapLogMessage": true
       },
       "pluginVersion": "12.2.1",
@@ -1481,7 +1481,7 @@
             "type": "loki",
             "uid": "bemrrz6wjxlvkb"
           },
-          "direction": "backward",
+          "direction": "forward",
           "editorMode": "code",
           "expr": "{service_name=\"jellyfin\"} | pattern `[<time>] [<level>] [<thread>] <message>` | label_format detected_level=level",
           "legendFormat": "",
@@ -1606,7 +1606,7 @@
         "showCommonLabels": false,
         "showLabels": true,
         "showTime": true,
-        "sortOrder": "Descending",
+        "sortOrder": "Ascending",
         "wrapLogMessage": true
       },
       "pluginVersion": "12.2.1",
@@ -1616,7 +1616,7 @@
             "type": "loki",
             "uid": "bemrrz6wjxlvkb"
           },
-          "direction": "backward",
+          "direction": "forward",
           "editorMode": "code",
           "expr": "{service_name=\"sablier\"}",
           "legendFormat": "",
@@ -1651,7 +1651,7 @@
         "showCommonLabels": false,
         "showLabels": true,
         "showTime": true,
-        "sortOrder": "Descending",
+        "sortOrder": "Ascending",
         "wrapLogMessage": true
       },
       "pluginVersion": "12.2.1",
@@ -1661,7 +1661,7 @@
             "type": "loki",
             "uid": "bemrrz6wjxlvkb"
           },
-          "direction": "backward",
+          "direction": "forward",
           "editorMode": "code",
           "expr": "{service_name=\"caddy\"}",
           "legendFormat": "",
@@ -1768,5 +1768,5 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 35
+  "version": 36
 }
