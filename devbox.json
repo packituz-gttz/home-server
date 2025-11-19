@@ -4,7 +4,7 @@
     "terraform@1.13.5",
     "tflint@0.59.1",
     "terraform-docs@0.20.0",
-    "ggshield@1.44.1"
+    "ggshield@1.45.0"
   ],
   "shell": {
     "init_hook": "pipenv shell",
