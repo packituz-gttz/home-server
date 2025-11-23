@@ -12,7 +12,7 @@ services:
       - /mnt/media-nvm/PaperlessNGX/redisdata:/data
       
   paperlessngx-webserver:
-    image: ghcr.io/paperless-ngx/paperless-ngx:2.19
+    image: ghcr.io/paperless-ngx/paperless-ngx:2.20
     container_name: paperlessngx-webserver
     restart: unless-stopped
     labels:
