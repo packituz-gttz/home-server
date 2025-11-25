@@ -77,7 +77,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -142,7 +142,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -218,7 +218,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -330,7 +330,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -396,7 +396,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -468,7 +468,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -534,7 +534,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -638,7 +638,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -737,7 +737,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -862,7 +862,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -935,7 +935,7 @@
         "sizing": "auto",
         "valueMode": "color"
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1008,7 +1008,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1111,7 +1111,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1204,7 +1204,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1280,7 +1280,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1385,7 +1385,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1424,12 +1424,13 @@
         "enableLogDetails": false,
         "prettifyLogMessage": false,
         "showCommonLabels": false,
+        "showControls": false,
         "showLabels": true,
         "showTime": true,
         "sortOrder": "Ascending",
         "wrapLogMessage": true
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1469,12 +1470,13 @@
         "enableLogDetails": false,
         "prettifyLogMessage": false,
         "showCommonLabels": false,
+        "showControls": false,
         "showLabels": true,
         "showTime": true,
         "sortOrder": "Ascending",
         "wrapLogMessage": true
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1514,27 +1516,28 @@
         "enableLogDetails": false,
         "prettifyLogMessage": false,
         "showCommonLabels": false,
+        "showControls": false,
         "showLabels": true,
         "showTime": true,
-        "sortOrder": "Descending",
+        "sortOrder": "Ascending",
         "wrapLogMessage": true
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
             "type": "loki",
             "uid": "bemrrz6wjxlvkb"
           },
-          "direction": "backward",
+          "direction": "forward",
           "editorMode": "code",
-          "expr": "{service_name=\"dronegc\"}",
+          "expr": "{service_name=\"rael\"}",
           "legendFormat": "",
           "queryType": "range",
           "refId": "A"
         }
       ],
-      "title": "DroneGC Logs",
+      "title": "Rael Logs",
       "type": "logs"
     },
     {
@@ -1559,12 +1562,13 @@
         "enableLogDetails": false,
         "prettifyLogMessage": false,
         "showCommonLabels": false,
+        "showControls": false,
         "showLabels": true,
         "showTime": true,
         "sortOrder": "Descending",
         "wrapLogMessage": true
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1604,12 +1608,13 @@
         "enableLogDetails": false,
         "prettifyLogMessage": false,
         "showCommonLabels": false,
+        "showControls": false,
         "showLabels": true,
         "showTime": true,
         "sortOrder": "Ascending",
         "wrapLogMessage": true
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1649,12 +1654,13 @@
         "enableLogDetails": false,
         "prettifyLogMessage": false,
         "showCommonLabels": false,
+        "showControls": false,
         "showLabels": true,
         "showTime": true,
         "sortOrder": "Ascending",
         "wrapLogMessage": true
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "targets": [
         {
           "datasource": {
@@ -1708,7 +1714,7 @@
         },
         "viewMode": "list"
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "title": "Network Alerts",
       "type": "alertlist"
     },
@@ -1748,7 +1754,7 @@
         },
         "viewMode": "list"
       },
-      "pluginVersion": "12.2.1",
+      "pluginVersion": "12.3.0",
       "title": "System Alerts",
       "type": "alertlist"
     }
@@ -1768,5 +1774,5 @@
   "timezone": "",
   "title": "Server Monitoring",
   "uid": "96p7bjjSk",
-  "version": 36
+  "version": 37
 }
