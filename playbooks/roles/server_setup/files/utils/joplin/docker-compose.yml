@@ -3,6 +3,7 @@ version: '3'
 services:
   db:
     image: postgres:15
+    container_name: joplin-db
     volumes:
       - /media/Joplin/db:/var/lib/postgresql/data
     ports:
@@ -12,6 +13,7 @@ services:
       - /media/Joplin/db.env
   app:
     image: joplin/server:3.4.3
+    container_name: joplin-app
     depends_on:
       - db
     ports:
