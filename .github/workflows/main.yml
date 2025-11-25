@@ -26,7 +26,7 @@ jobs:
   deploy-base:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:
-      playbook_params: '--tags jump-setup,dronegc-setup'
+      playbook_params: '--tags jump-setup,rael-setup'
     secrets:
       ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}

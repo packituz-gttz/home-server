@@ -1,7 +1,7 @@
 ---
-- name: Create Dronegc directories
+- name: Create Rael directories
   ansible.builtin.file:
-    path: /mnt/media-nvm/Dronegc
+    path: /mnt/media-nvm/Rael
     state: directory
     mode: '0755'
     owner: '{{ superuser_name }}'
@@ -9,11 +9,11 @@
 
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
-    src: files/base/dronegc/docker-compose.yml
-    dest: /mnt/media-nvm/Dronegc
+    src: files/base/rael/docker-compose.yml
+    dest: /mnt/media-nvm/Rael
 
-- name: Run Dronegc
+- name: Run Rael
   community.docker.docker_compose_v2:
-    project_src: /mnt/media-nvm/Dronegc
+    project_src: /mnt/media-nvm/Rael
 
 ...
