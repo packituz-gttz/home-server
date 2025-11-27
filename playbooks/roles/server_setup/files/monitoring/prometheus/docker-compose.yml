@@ -21,7 +21,7 @@ services:
       - "3000:3000"
 
   loki:
-    image: grafana/loki:3.6.1
+    image: grafana/loki:3.6.2
     container_name: loki
     restart: "unless-stopped"
     volumes:
