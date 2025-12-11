@@ -1,10 +1,7 @@
 services:
   rael:
-    image: rael:1.0.0
+    image: ghcr.io/packituz-gttz/rael:v0.0.1
     container_name: rael
     restart: unless-stopped
-    environment:
-      RAEL_DRY_RUN: "false"
-      RAEL_SCHEDULE_IN_MINUTES: 300
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
