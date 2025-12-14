@@ -408,7 +408,8 @@
             "paperlessngx-webserver",
             "stirlingpdf",
             "romm-db",
-            "romm",
+            "romm-app",
+            "romm-valkey",
             "kasm"
           ],
           "value": [
@@ -442,7 +443,8 @@
             "paperlessngx-webserver",
             "stirlingpdf",
             "romm-db",
-            "romm",
+            "romm-app",
+            "romm-valkey",
             "kasm"
           ]
         },
