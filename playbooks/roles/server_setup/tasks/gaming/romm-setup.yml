@@ -20,6 +20,8 @@
       ROMM_AUTH_SECRET_KEY={{ romm_auth_secret_key }}
       ROMM_AUTH_USERNAME={{ romm_auth_username }}
       ROMM_AUTH_PASSWORD={{ romm_auth_password }}
+      REDIS_HOST=romm-valkey
+      REDIS_PORT=6379
 
 - name: Create db.env file
   ansible.builtin.copy:
