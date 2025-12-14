@@ -82,7 +82,7 @@ http://cars.packituz.dev  {
             theme ghost
         }
       }
-      reverse_proxy romm:8080
+      reverse_proxy romm-app:8080
     }
 }
 
