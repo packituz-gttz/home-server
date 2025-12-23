@@ -12,7 +12,7 @@ services:
     env_file:
       - /media/Joplin/db.env
   app:
-    image: joplin/server:3.5.1
+    image: joplin/server:3.5.2
     container_name: joplin-app
     depends_on:
       - db
