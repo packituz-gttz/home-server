@@ -1,7 +1,7 @@
 version: "3"
 services:
   romm-app:
-    image: rommapp/romm:4.4.1
+    image: rommapp/romm:4.5.0
     container_name: romm-app
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://0.0.0.0:8080/"]
