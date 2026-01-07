@@ -57,6 +57,20 @@ http://cars.packituz.dev  {
     }
 }
 
+http://games.packituz.dev {
+    route {
+      sablier http://sablier:10000 {
+        group romm
+        session_duration 10m
+        dynamic {
+            display_name Romm
+            theme ghost
+        }
+      }
+      reverse_proxy romm-app:8080
+    }
+}
+
 :8886 {
     route {
       sablier http://sablier:10000 {

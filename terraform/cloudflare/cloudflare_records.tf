@@ -17,6 +17,9 @@ module "records" {
       name = "grafana"
     },
     {
+      name = "games"
+    },
+    {
       name = "home"
     },
     {
