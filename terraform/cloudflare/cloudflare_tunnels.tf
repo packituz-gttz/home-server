@@ -45,6 +45,10 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
         service  = "http://localhost:3000"
       },
       {
+        hostname = "games.${var.domain}"
+        service  = "http://localhost:8888"
+      },
+      {
         hostname = "share.${var.domain}"
         service  = "http://localhost:3001"
       },

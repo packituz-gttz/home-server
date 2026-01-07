@@ -47,9 +47,6 @@ services:
       sablier.group: "romm"
     networks:
       - sleepers
-#    env_file: .env
-#    ports:
-#      - "${REDIS_PORT:-6379}:6379"
 
 networks:
   sleepers:
