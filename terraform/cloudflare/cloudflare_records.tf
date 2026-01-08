@@ -41,6 +41,9 @@ module "records" {
       name = "photos"
     },
     {
+      name = "seedbox"
+    },
+    {
       name = "ssh"
     },
     {
