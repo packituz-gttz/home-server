@@ -46,9 +46,12 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
       },
       {
         hostname = "games.${var.domain}"
-        service  = "http://localhost:8888"
+        service  = "http://localhost:80"
       },
       {
+        hostname = "seedbox.${var.domain}"
+        service  = "http://localhost:9091"
+        }, {
         hostname = "share.${var.domain}"
         service  = "http://localhost:3001"
       },

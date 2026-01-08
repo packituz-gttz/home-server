@@ -121,6 +121,26 @@
       ]
     },
     {
+      "name": "Romm",
+      "url": "https://games.packituz.dev/",
+      "description": "Game Rom Management",
+      "newtab": true,
+      "icon": "romm.png",
+      "tags": [
+        "home"
+      ]
+    },
+    {
+      "name": "Transmission",
+      "url": "https://seedbox.packituz.dev",
+      "description": "Torrent Client",
+      "newtab": true,
+      "icon": "transmission.png",
+      "tags": [
+        "home"
+      ]
+    },
+    {
       "name": "TV",
       "url": "http://192.168.100.45:8096",
       "description": "Movies, Series & Learning.",
