@@ -1,6 +1,6 @@
 services:
   stirlingpdf:
-    image: "stirlingtools/stirling-pdf:2.1.5"
+    image: "stirlingtools/stirling-pdf:2.2.0"
     container_name: stirlingpdf
     restart: unless-stopped
     healthcheck:
