@@ -1,6 +1,6 @@
 services:
   kavita:
-    image: jvmilazz0/kavita:0.8.8
+    image: jvmilazz0/kavita:0.8.9
     container_name: kavita
     user: "1000:1000"
     restart: unless-stopped
