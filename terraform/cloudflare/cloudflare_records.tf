@@ -5,6 +5,9 @@ module "records" {
       name = "apps"
     },
     {
+      name = "audiobooks"
+    },
+    {
       name = "cars"
     },
     {

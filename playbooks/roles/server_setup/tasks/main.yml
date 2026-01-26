@@ -36,6 +36,10 @@
   ansible.builtin.import_tasks: media/lychee-setup.yml
   tags: [ 'lychee-setup', 'media-group' ]
 
+- name: Install Audiobookshelf
+  ansible.builtin.import_tasks: media/audiobookshelf-setup.yml
+  tags: ['audiobookshelf-setup', 'media-group']
+
 # Monitoring group
 
 - name: Install ntfy Server

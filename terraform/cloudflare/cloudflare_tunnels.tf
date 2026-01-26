@@ -64,6 +64,10 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
         service  = "http://localhost:80"
       },
       {
+        hostname = "audiobooks.${var.domain}"
+        service  = "http://localhost:13378"
+      },
+      {
         hostname = "apps.${var.domain}"
         service  = "https://localhost"
         origin_request = {
