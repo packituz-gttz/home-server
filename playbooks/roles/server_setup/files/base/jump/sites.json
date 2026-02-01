@@ -42,6 +42,17 @@
       ]
     },
     {
+      "name": "AudioBooks",
+      "url": "https://audiobooks.packituz.dev",
+      "description": "Audiobooks",
+      "newtab": true,
+      "icon": "audiobookshelf.png",
+      "tags": [
+        "home",
+        "entertainment"
+      ]
+    },
+    {
       "name": "Grafana",
       "url": "https://grafana.packituz.dev/",
       "description": "Grafana Monitoring Dashboards",
@@ -174,6 +185,16 @@
       "description": "Books, Comics, Novels & More.",
       "newtab": true,
       "icon": "kavita.png",
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "Books",
+      "url": "http://192.168.100.45:13378",
+      "description": "Audiobooks",
+      "newtab": true,
+      "icon": "audiobookshelf.png",
       "tags": [
         "local"
       ]
