@@ -39,7 +39,7 @@ services:
       - /mnt/media-nvm/Romm/db:/var/lib/mysql
 
   romm-valkey:
-    image: valkey/valkey:8
+    image: valkey/valkey:9
     container_name: romm-valkey
     restart: unless-stopped
     labels:
