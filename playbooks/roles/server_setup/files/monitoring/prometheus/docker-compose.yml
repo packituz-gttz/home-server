@@ -11,7 +11,7 @@ services:
     command: --config.file /etc/prometheus/prometheus.yml --storage.tsdb.path /prometheus/
 
   grafana:
-    image: grafana/grafana:12.3.2
+    image: grafana/grafana:12.3.3
     container_name: grafana
     restart: "unless-stopped"
     volumes:
