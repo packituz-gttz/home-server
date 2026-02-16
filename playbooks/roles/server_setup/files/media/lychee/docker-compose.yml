@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   lychee:
-    image: "lycheeorg/lychee:v7.3.2"
+    image: "lycheeorg/lychee:v7.3.3"
     container_name: "lychee"
     restart: unless-stopped
     labels:
