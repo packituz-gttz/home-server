@@ -1,6 +1,6 @@
 services:
   docuseal:
-    image: "docuseal/docuseal:2.3.3"
+    image: "docuseal/docuseal:2.3.4"
     container_name: docuseal
     restart: unless-stopped
     healthcheck:
