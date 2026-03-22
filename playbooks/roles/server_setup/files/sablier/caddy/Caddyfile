@@ -24,7 +24,7 @@ http://photos.packituz.dev {
             theme ghost
         }
       }
-      reverse_proxy lychee:80
+      reverse_proxy lychee:8000
     }
 }
 
