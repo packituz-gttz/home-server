@@ -51,6 +51,6 @@
 - name: Enable monit service
   ansible.builtin.systemd:
     name: monit
-    state: started
-    enabled: true
+    state: stopped
+    enabled: false
 ...
