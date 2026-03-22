@@ -7,6 +7,12 @@
     owner: '{{ superuser_name }}'
     group: '{{ superuser_name }}'
 
+- name: Create .env file
+  ansible.builtin.copy:
+    dest: /mnt/media-nvm/Lychee/conf/.env
+    content: |
+      APP_KEY={{ lychee_app_key }}
+
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
     src: files/media/lychee/docker-compose.yml

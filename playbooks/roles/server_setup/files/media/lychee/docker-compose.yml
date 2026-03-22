@@ -9,12 +9,15 @@ services:
       sablier.group: "lychee"
     environment:
       APP_URL: "https://photos.packituz.dev"
+      DB_CONNECTION: sqlite
     networks:
       - sleepers
     volumes:
-      - /mnt/media-nvm/Lychee/conf:/conf
-      - /mnt/media-nvm/Lychee/uploads:/uploads
-      - /mnt/media-nvm/Lychee/sym:/sym
+#      - /mnt/media-nvm/Lychee/conf:/conf
+      - /mnt/media-nvm/Lychee/uploads:/app/public/uploads
+      - /mnt/media-nvm/Lychee/logs:/app/storage/logs
+      - /mnt/media-nvm/Lychee/tmp:/app/storage/tmp
+      - /mnt/media-nvm/Lychee/conf/.env:/app/.env
 
 networks:
   sleepers:
