@@ -1,0 +1,31 @@
+---
+- name: Create Immich media directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Immich/
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Create .env file
+  ansible.builtin.copy:
+    dest: /mnt/media-nvm/Immich/.env
+    content: |
+      UPLOAD_LOCATION=/mnt/media-nvm/Immich/library
+      DB_DATA_LOCATION=/mnt/media-nvm/Immich/postgres
+      IMMICH_VERSION=v2
+      DB_USERNAME={{ immich_username }}
+      DB_PASSWORD={{ immich_password }}
+      DB_DATABASE_NAME=immich
+
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/media/immich/docker-compose.yml
+    dest: /mnt/media-nvm/Immich
+
+- name: Run Immich
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Immich
+    recreate: always
+
+...
