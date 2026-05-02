@@ -14,20 +14,6 @@ http://docs.packituz.dev  {
     }
 }
 
-http://photos.packituz.dev {
-    route {
-      sablier http://sablier:10000 {
-        group lychee
-        session_duration 10m
-        dynamic {
-            display_name Lychee
-            theme ghost
-        }
-      }
-      reverse_proxy lychee:8000
-    }
-}
-
 http://papers.packituz.dev  {
     route {
       sablier http://sablier:10000 {
