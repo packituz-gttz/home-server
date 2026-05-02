@@ -32,10 +32,6 @@
   ansible.builtin.import_tasks: media/navidrome-setup.yml
   tags: [ 'navidrome-setup', 'media-group' ]
 
-- name: Install Lychee
-  ansible.builtin.import_tasks: media/lychee-setup.yml
-  tags: [ 'lychee-setup', 'media-group' ]
-
 - name: Install Audiobookshelf
   ansible.builtin.import_tasks: media/audiobookshelf-setup.yml
   tags: ['audiobookshelf-setup', 'media-group']
@@ -114,5 +110,11 @@
 - name: Install Sablier
   ansible.builtin.import_tasks: sablier/sablier-setup.yml
   tags: [ 'sablier-setup', 'sablier-group' ]
+
+# Experimental
+
+- name: Install Experimental Stuff 1
+  ansible.builtin.import_tasks: experiments/experiments-setup.yaml
+  tags: [ 'experiments-setup' ]
 
 ...
