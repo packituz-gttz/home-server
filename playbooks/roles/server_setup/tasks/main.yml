@@ -32,6 +32,10 @@
   ansible.builtin.import_tasks: media/navidrome-setup.yml
   tags: [ 'navidrome-setup', 'media-group' ]
 
+- name: Install Immich
+  ansible.builtin.import_tasks: media/immich-setup.yml
+  tags: [ 'immich-setup', 'media-group' ]
+
 - name: Install Audiobookshelf
   ansible.builtin.import_tasks: media/audiobookshelf-setup.yml
   tags: ['audiobookshelf-setup', 'media-group']
