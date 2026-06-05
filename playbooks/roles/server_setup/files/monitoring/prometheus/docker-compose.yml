@@ -54,7 +54,7 @@ services:
     cpus: 0.2
     command:
       - --docker_only=true
-      - --housekeeping_interval=60s
+      - --housekeeping_interval=180s
 
   node-exporter:
     image: quay.io/prometheus/node-exporter:v1.11.1
