@@ -63,7 +63,14 @@ services:
     pid: "host"
     volumes:
       - "/:/host:ro,rslave"
-    command: '--path.rootfs=/host'
+    command:
+      - '--path.rootfs=/host'
+      - '--collector.disable-defaults'
+      - '--collector.cpu'
+      - '--collector.meminfo'
+      - '--collector.filesystem'
+      - '--collector.diskstats'
+      - '--collector.hwmon'
 
   blackbox-exporter:
     image: quay.io/prometheus/blackbox-exporter:v0.28.0
