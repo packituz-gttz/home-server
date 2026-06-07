@@ -73,6 +73,7 @@ services:
       - '--collector.hwmon'
       - '--collector.time'
       - '--collector.loadavg'
+      - '--collector.boottime'
 
   blackbox-exporter:
     image: quay.io/prometheus/blackbox-exporter:v0.28.0
