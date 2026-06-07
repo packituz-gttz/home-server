@@ -71,6 +71,8 @@ services:
       - '--collector.filesystem'
       - '--collector.diskstats'
       - '--collector.hwmon'
+      - '--collector.time'
+      - '--collector.loadavg'
 
   blackbox-exporter:
     image: quay.io/prometheus/blackbox-exporter:v0.28.0
