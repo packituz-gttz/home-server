@@ -10,6 +10,7 @@ services:
       - SECURE_CONNECTION
       - WEB_AUTHENTICATION_USERNAME
       - WEB_AUTHENTICATION_PASSWORD
+      - JDOWNLOADER_HEADLESS=1
     volumes:
       - /mnt/media/JDownloader2/config:/config
       - /mnt/media/JDownloader2/output:/output
