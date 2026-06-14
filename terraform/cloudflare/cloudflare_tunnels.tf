@@ -81,22 +81,22 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
   }
 }
 
-resource "cloudflare_notification_policy" "tunnel_notification" {
-  account_id  = var.cloudflare_account_id
-  alert_type  = "tunnel_health_event"
-  enabled     = true
-  name        = "${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.name} Tunnel Alert"
-  description = "Alert for ${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.name} tunnel health"
-  mechanisms = {
-    email = [
-      {
-        id = var.cloudflare_notification_email
-      }
-    ]
-  }
-
-  filters = {
-    tunnel_id  = [cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.id]
-    new_status = ["TUNNEL_STATUS_TYPE_DOWN", "TUNNEL_STATUS_TYPE_HEALTHY"]
-  }
-}
+# resource "cloudflare_notification_policy" "tunnel_notification" {
+#   account_id  = var.cloudflare_account_id
+#   alert_type  = "tunnel_health_event"
+#   enabled     = true
+#   name        = "${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.name} Tunnel Alert"
+#   description = "Alert for ${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.name} tunnel health"
+#   mechanisms = {
+#     email = [
+#       {
+#         id = var.cloudflare_notification_email
+#       }
+#     ]
+#   }
+#
+#   filters = {
+#     tunnel_id  = [cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.id]
+#     new_status = ["TUNNEL_STATUS_TYPE_DOWN", "TUNNEL_STATUS_TYPE_HEALTHY"]
+#   }
+# }
