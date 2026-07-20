@@ -1,6 +1,6 @@
 services:
   jdownloader2:
-    image: jlesage/jdownloader-2:v26.03.1
+    image: jlesage/jdownloader-2:v26.07.2
     container_name: jdownloader2
     restart: unless-stopped
     ports:
