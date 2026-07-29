@@ -15,7 +15,7 @@ services:
       - sleepers
 
   sablier:
-    image: "sablierapp/sablier:1.14.0"
+    image: "sablierapp/sablier:1.16.1"
     container_name: sablier
     restart: unless-stopped
     volumes:
