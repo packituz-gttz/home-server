@@ -17,6 +17,8 @@
       DB_USERNAME={{ immich_username }}
       DB_PASSWORD={{ immich_password }}
       DB_DATABASE_NAME=immich
+      IMMICH_HOST=0.0.0.0
+      IMMICH_PORT=2283
 
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
