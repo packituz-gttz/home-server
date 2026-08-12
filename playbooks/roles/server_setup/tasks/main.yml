@@ -73,10 +73,6 @@
   ansible.builtin.import_tasks: utils/lubelogger-setup.yml
   tags: [ 'lubelogger-setup', 'utils-group' ]
 
-- name: Install Actual
-  ansible.builtin.import_tasks: utils/actual-setup.yml
-  tags: [ 'actual-setup', 'utils-group' ]
-
 - name: Install PaperlessNGX
   ansible.builtin.import_tasks: utils/paperlessngx-setup.yml
   tags: [ 'paperlessngx-setup', 'utils-group' ]
