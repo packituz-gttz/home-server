@@ -112,16 +112,6 @@
       ]
     },
     {
-      "name": "Apps",
-      "url": "https://apps.packituz.dev",
-      "description": "KASM apps",
-      "newtab": true,
-      "icon": "kasm.png",
-      "tags": [
-        "home"
-      ]
-    },
-    {
       "name": "Romm",
       "url": "https://games.packituz.dev/",
       "description": "Game Rom Management",
