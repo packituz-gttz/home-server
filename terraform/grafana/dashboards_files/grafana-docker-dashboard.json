@@ -407,8 +407,7 @@
             "stirlingpdf",
             "romm-db",
             "romm-app",
-            "romm-valkey",
-            "kasm"
+            "romm-valkey"
           ],
           "value": [
             "caddy",
@@ -440,8 +439,7 @@
             "stirlingpdf",
             "romm-db",
             "romm-app",
-            "romm-valkey",
-            "kasm"
+            "romm-valkey"
           ]
         },
         "definition": "label_values(container_last_seen{name=~\"^[^_]+$\"},name)",
