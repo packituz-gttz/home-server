@@ -7,8 +7,7 @@
       "newtab": true,
       "icon": "jellyfin.png",
       "tags": [
-        "home",
-        "entertainment"
+        "home"
       ]
     },
     {
@@ -26,8 +25,7 @@
         "request_method": "GET"
       },
       "tags": [
-        "home",
-        "entertainment"
+        "home"
       ]
     },
     {
@@ -37,8 +35,7 @@
       "newtab": true,
       "icon": "kavita.png",
       "tags": [
-        "home",
-        "entertainment"
+        "home"
       ]
     },
     {
@@ -48,8 +45,7 @@
       "newtab": true,
       "icon": "audiobookshelf.png",
       "tags": [
-        "home",
-        "entertainment"
+        "home"
       ]
     },
     {
@@ -114,7 +110,10 @@
       "url": "http://192.168.3.2:8096",
       "description": "Movies, Series & Learning.",
       "newtab": true,
-      "icon": "jellyfin.png"
+      "icon": "jellyfin.png",
+      "tags": [
+        "local"
+      ]
     },
     {
       "name": "Music",
@@ -122,6 +121,9 @@
       "description": "Music streaming.",
       "newtab": true,
       "icon": "navidrome.png",
+      "tags": [
+        "local"
+      ],
       "status": {
         "allowed_status_codes": [
           200,
@@ -136,49 +138,70 @@
       "url": "http://192.168.3.2:5000",
       "description": "Books, Comics, Novels & More.",
       "newtab": true,
-      "icon": "kavita.png"
+      "icon": "kavita.png",
+      "tags": [
+        "local"
+      ]
     },
     {
       "name": "Books",
       "url": "http://192.168.3.2:13378",
       "description": "Audiobooks",
       "newtab": true,
-      "icon": "audiobookshelf.png"
+      "icon": "audiobookshelf.png",
+      "tags": [
+        "local"
+      ]
     },
     {
       "name": "Grafana",
       "url": "http://192.168.3.2:3000/",
       "description": "Grafana Monitoring Dashboards",
       "newtab": true,
-      "icon": "grafana.png"
+      "icon": "grafana.png",
+      "tags": [
+        "local"
+      ]
     },
     {
       "name": "Monit",
       "url": "http://192.168.3.2:2812/",
       "description": "Monit, monitoring",
       "newtab": true,
-      "icon": "monit.png"
+      "icon": "monit.png",
+      "tags": [
+        "local"
+      ]
     },
     {
       "name": "Pingvin",
       "url": "http://192.168.3.2:3001/",
       "description": "File Sharing system",
       "newtab": true,
-      "icon": "pingvin.png"
+      "icon": "pingvin.png",
+      "tags": [
+        "local"
+      ]
     },
     {
       "name": "Romm",
       "url": "http://192.168.3.2:8888/",
       "description": "Game Rom Management",
       "newtab": true,
-      "icon": "romm.png"
+      "icon": "romm.png",
+      "tags": [
+        "local"
+      ]
     },
     {
       "name": "Transmission",
       "url": "http://192.168.3.2:9091/",
       "description": "Torrent Client",
       "newtab": true,
-      "icon": "transmission.png"
+      "icon": "transmission.png",
+      "tags": [
+        "local"
+      ]
     },
     {
       "name": "JDownloader2",
@@ -193,28 +216,40 @@
         ],
         "url": "https://192.168.3.2:5800/login",
         "request_method": "GET"
-      }
+      },
+      "tags": [
+        "local"
+      ]
     },
     {
       "name": "LubeLogger",
       "url": "http://192.168.3.2:8889/",
       "description": "Vehicle Maintenance",
       "newtab": true,
-      "icon": "lubelogger.png"
+      "icon": "lubelogger.png",
+      "tags": [
+        "local"
+      ]
     },
     {
       "name": "Omni-Tools",
       "url": "http://192.168.3.2:8886/",
       "description": "Tools for everyday tasks",
       "newtab": true,
-      "icon": "omnitools.png"
+      "icon": "omnitools.png",
+      "tags": [
+        "local"
+      ]
     },
     {
       "name": "Stirling PDF",
       "url": "http://192.168.3.2:8885/",
       "description": "One-stop-shop for all your PDF needs",
       "newtab": true,
-      "icon": "stirling.png"
+      "icon": "stirling.png",
+      "tags": [
+        "local"
+      ]
     }
   ]
 }
