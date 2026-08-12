@@ -57,11 +57,7 @@
       "url": "https://grafana.packituz.dev/",
       "description": "Grafana Monitoring Dashboards",
       "newtab": true,
-      "icon": "grafana.png",
-      "tags": [
-        "home",
-        "work"
-      ]
+      "icon": "grafana.png"
     },
     {
       "name": "Joplin",
@@ -76,70 +72,49 @@
         "url": "https://notes.packituz.dev/login",
         "request_method": "GET"
       },
-      "icon": "joplin.jpeg",
-      "tags": [
-        "home"
-      ]
+      "icon": "joplin.jpeg"
     },
     {
       "name": "Papers",
       "url": "https://papers.packituz.dev/",
       "description": "Document Manager",
       "newtab": true,
-      "icon": "paperlessngx.webp",
-      "tags": [
-        "home"
-      ]
+      "icon": "paperlessngx.webp"
     },
     {
       "name": "Cars",
       "url": "https://cars.packituz.dev/",
       "description": "Vehicle Maintenance",
       "newtab": true,
-      "icon": "lubelogger.png",
-      "tags": [
-        "home"
-      ]
+      "icon": "lubelogger.png"
     },
     {
       "name": "Documents",
       "url": "https://docs.packituz.dev/",
       "description": "Document Signing Platform",
       "newtab": true,
-      "icon": "docuseal.png",
-      "tags": [
-        "home"
-      ]
+      "icon": "docuseal.png"
     },
     {
       "name": "Romm",
       "url": "https://games.packituz.dev/",
       "description": "Game Rom Management",
       "newtab": true,
-      "icon": "romm.png",
-      "tags": [
-        "home"
-      ]
+      "icon": "romm.png"
     },
     {
       "name": "Transmission",
       "url": "https://seedbox.packituz.dev",
       "description": "Torrent Client",
       "newtab": true,
-      "icon": "transmission.png",
-      "tags": [
-        "home"
-      ]
+      "icon": "transmission.png"
     },
     {
       "name": "TV",
       "url": "http://192.168.3.2:8096",
       "description": "Movies, Series & Learning.",
       "newtab": true,
-      "icon": "jellyfin.png",
-      "tags": [
-        "local"
-      ]
+      "icon": "jellyfin.png"
     },
     {
       "name": "Music",
@@ -154,80 +129,56 @@
         ],
         "url": "http://192.168.3.2:4533/app/#/login",
         "request_method": "GET"
-      },
-      "tags": [
-        "local"
-      ]
+      }
     },
     {
       "name": "Books",
       "url": "http://192.168.3.2:5000",
       "description": "Books, Comics, Novels & More.",
       "newtab": true,
-      "icon": "kavita.png",
-      "tags": [
-        "local"
-      ]
+      "icon": "kavita.png"
     },
     {
       "name": "Books",
       "url": "http://192.168.3.2:13378",
       "description": "Audiobooks",
       "newtab": true,
-      "icon": "audiobookshelf.png",
-      "tags": [
-        "local"
-      ]
+      "icon": "audiobookshelf.png"
     },
     {
       "name": "Grafana",
       "url": "http://192.168.3.2:3000/",
       "description": "Grafana Monitoring Dashboards",
       "newtab": true,
-      "icon": "grafana.png",
-      "tags": [
-        "local"
-      ]
+      "icon": "grafana.png"
     },
     {
       "name": "Monit",
       "url": "http://192.168.3.2:2812/",
       "description": "Monit, monitoring",
       "newtab": true,
-      "icon": "monit.png",
-      "tags": [
-        "local"
-      ]
+      "icon": "monit.png"
     },
     {
       "name": "Pingvin",
       "url": "http://192.168.3.2:3001/",
       "description": "File Sharing system",
       "newtab": true,
-      "icon": "pingvin.png",
-      "tags": [
-        "local"
-      ]
+      "icon": "pingvin.png"
     },
     {
       "name": "Romm",
       "url": "http://192.168.3.2:8888/",
       "description": "Game Rom Management",
       "newtab": true,
-      "icon": "romm.png",
-      "tags": [
-        "local"
-      ]
+      "icon": "romm.png"
     },
     {
       "name": "Transmission",
       "url": "http://192.168.3.2:9091/",
       "description": "Torrent Client",
       "newtab": true,
-      "icon": "transmission.png",
-      "tags": [
-        "local"
-      ]
+      "icon": "transmission.png"
     },
     {
       "name": "JDownloader2",
@@ -242,40 +193,28 @@
         ],
         "url": "https://192.168.3.2:5800/login",
         "request_method": "GET"
-      },
-      "tags": [
-        "local"
-      ]
+      }
     },
     {
       "name": "LubeLogger",
       "url": "http://192.168.3.2:8889/",
       "description": "Vehicle Maintenance",
       "newtab": true,
-      "icon": "lubelogger.png",
-      "tags": [
-        "local"
-      ]
+      "icon": "lubelogger.png"
     },
     {
       "name": "Omni-Tools",
       "url": "http://192.168.3.2:8886/",
       "description": "Tools for everyday tasks",
       "newtab": true,
-      "icon": "omnitools.png",
-      "tags": [
-        "local"
-      ]
+      "icon": "omnitools.png"
     },
     {
       "name": "Stirling PDF",
       "url": "http://192.168.3.2:8885/",
       "description": "One-stop-shop for all your PDF needs",
       "newtab": true,
-      "icon": "stirling.png",
-      "tags": [
-        "local"
-      ]
+      "icon": "stirling.png"
     }
   ]
 }
