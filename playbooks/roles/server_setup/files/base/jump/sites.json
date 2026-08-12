@@ -268,16 +268,6 @@
       ]
     },
     {
-      "name": "Actual",
-      "url": "https://192.168.3.2:5006/",
-      "description": "Budget",
-      "newtab": true,
-      "icon": "actual.png",
-      "tags": [
-        "local"
-      ]
-    },
-    {
       "name": "Omni-Tools",
       "url": "http://192.168.3.2:8886/",
       "description": "Tools for everyday tasks",
