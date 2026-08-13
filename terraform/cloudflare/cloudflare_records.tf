@@ -2,9 +2,6 @@ module "records" {
   source = "../modules/cloudflare/records"
   records = [
     {
-      name = "apps"
-    },
-    {
       name = "audiobooks"
     },
     {
@@ -157,40 +154,6 @@ resource "cloudflare_zero_trust_access_application" "docs_app" {
   ]
 
 }
-
-resource "cloudflare_zero_trust_access_policy" "apps_policy" {
-  decision = "allow"
-  name     = "Policy for accessing apps"
-  include = [
-    {
-      email = {
-        email = var.admin_dg_email
-      }
-    },
-    {
-      email = {
-        email = var.cloudflare_notification_email
-      }
-    }
-  ]
-  account_id = var.cloudflare_account_id
-}
-
-resource "cloudflare_zero_trust_access_application" "apps_app" {
-  zone_id          = var.cloudflare_zone_id
-  type             = "self_hosted"
-  name             = "Access application for apps"
-  domain           = "apps.packituz.dev"
-  session_duration = "24h"
-  policies = [
-    {
-      id         = cloudflare_zero_trust_access_policy.apps_policy.id
-      precedence = 1
-    }
-  ]
-
-}
-
 
 resource "cloudflare_zero_trust_access_policy" "cars_policy" {
   decision = "allow"
