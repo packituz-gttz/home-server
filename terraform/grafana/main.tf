@@ -6,7 +6,7 @@ resource "grafana_organization" "main_org" {
 
 resource "grafana_organization_preferences" "main_org_prefs" {
   theme              = "dark"
-  home_dashboard_uid = grafana_apps_dashboard_dashboard_v2.main.metadata.uuid
+  home_dashboard_uid = grafana_apps_dashboard_dashboard_v2.main.metadata.uid
 }
 
 resource "grafana_user" "admin" {
