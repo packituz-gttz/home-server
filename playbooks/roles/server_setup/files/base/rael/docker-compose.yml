@@ -1,7 +1,0 @@
-services:
-  rael:
-    image: ghcr.io/packituz-gttz/rael:v0.0.2
-    container_name: rael
-    restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
