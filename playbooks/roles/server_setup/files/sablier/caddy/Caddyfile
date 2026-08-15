@@ -71,21 +71,6 @@ http://games.packituz.dev {
     }
 }
 
-:8885 {
-    route {
-      sablier http://sablier:10000 {
-
-        group stirlingpdf
-        session_duration 10m
-        dynamic {
-            display_name Stirling PDF
-            theme ghost
-        }
-      }
-      reverse_proxy stirlingpdf:8080
-    }
-}
-
 :8889 {
     route {
       sablier http://sablier:10000 {

@@ -73,10 +73,6 @@
   ansible.builtin.import_tasks: utils/paperlessngx-setup.yml
   tags: [ 'paperlessngx-setup', 'utils-group' ]
 
-- name: Install StirlingPDF
-  ansible.builtin.import_tasks: utils/stirlingpdf-setup.yml
-  tags: [ 'stirlingpdf-setup', 'utils-group' ]
-
 # Gaming group
 
 - name: Install Romm
