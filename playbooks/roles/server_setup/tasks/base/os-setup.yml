@@ -110,15 +110,16 @@
       - NetworkManager
     state: present
 
-- name: Setup static ip for Ethernet connection
-  community.general.nmcli:
-    conn_name: eno1
-    ifname: eno1
-    type: ethernet
-    ip4: 192.168.100.45/24
-    gw4: 192.168.100.1
-    state: present
-    autoconnect: true
+# Use this if you don't want to configure Static IP on router
+#- name: Setup static ip for Ethernet connection
+#  community.general.nmcli:
+#    conn_name: eno1
+#    ifname: eno1
+#    type: ethernet
+#    ip4: 192.168.3.2/24
+#    gw4: 192.168.3.1
+#    state: present
+#    autoconnect: true
 
 # Mergerfs installation and configuration
 

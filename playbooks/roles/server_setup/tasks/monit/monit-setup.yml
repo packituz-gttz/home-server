@@ -1,13 +1,14 @@
 ---
-- name: Install epel key
-  ansible.builtin.rpm_key:
-    key: 'https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-9'
+- name: Install EPEL repository release
+  ansible.builtin.dnf:
+    name: epel-release
     state: present
 
-- name: Install monit
+- name: Install Monit package
   ansible.builtin.dnf:
-    name: 'https://dl.fedoraproject.org/pub/epel/9/Everything/x86_64/Packages/m/monit-5.33.0-1.el9.x86_64.rpm'
+    name: monit
     state: present
+    update_cache: true
 
 - name: Delete previous monit rc files
   ansible.builtin.file:
