@@ -9,5 +9,11 @@ resource "grafana_apps_dashboard_dashboard_v2" "main" {
 }
 
 resource "grafana_dashboard" "docker" {
-  config_json = file("${path.module}/dashboards_files/grafana-docker-dashboard.json")
+  metadata {
+    uid = "docker-detail"
+  }
+  spec {
+    json = file("${path.module}/dashboards_files/grafana-docker-dashboard.json")
+  }
+
 }
