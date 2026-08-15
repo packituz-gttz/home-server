@@ -232,16 +232,6 @@
       ]
     },
     {
-      "name": "Omni-Tools",
-      "url": "http://192.168.3.2:8886/",
-      "description": "Tools for everyday tasks",
-      "newtab": true,
-      "icon": "omnitools.png",
-      "tags": [
-        "local"
-      ]
-    },
-    {
       "name": "Stirling PDF",
       "url": "http://192.168.3.2:8885/",
       "description": "One-stop-shop for all your PDF needs",
