@@ -1,4 +1,7 @@
 resource "grafana_apps_dashboard_dashboard_v2" "main" {
+  metadata {
+    uid = "main-dashboard"
+  }
   spec {
     json = file("${path.module}/dashboards_files/grafana-main-dashboard.json")
   }
