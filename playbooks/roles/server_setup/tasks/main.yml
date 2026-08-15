@@ -95,10 +95,4 @@
   ansible.builtin.import_tasks: sablier/sablier-setup.yml
   tags: [ 'sablier-setup', 'sablier-group' ]
 
-# Experimental
-
-- name: Install Experimental Stuff 1
-  ansible.builtin.import_tasks: experiments/experiments-setup.yaml
-  tags: [ 'experiments-setup' ]
-
 ...
