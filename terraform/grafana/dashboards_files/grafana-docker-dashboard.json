@@ -380,7 +380,6 @@
           "text": [
             "caddy",
             "cadvisor",
-            "rael",
             "grafana",
             "jdownloader2",
             "jellyfin",
@@ -412,7 +411,6 @@
           "value": [
             "caddy",
             "cadvisor",
-            "rael",
             "grafana",
             "jdownloader2",
             "jellyfin",

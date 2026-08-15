@@ -10,10 +10,6 @@
   ansible.builtin.import_tasks: base/cloudflare-setup.yml
   tags: [ 'cloudflare-setup', 'base-group' ]
 
-- name: Install Rael GC
-  ansible.builtin.import_tasks: base/rael-setup.yml
-  tags: [ 'rael-setup', 'base-group' ]
-
 - name: Install Jump Dashboard
   ansible.builtin.import_tasks: base/jump-setup.yml
   tags: [ 'jump-setup', 'base-group' ]
