@@ -8,7 +8,7 @@ resource "grafana_apps_dashboard_dashboard_v2" "main" {
 
 }
 
-resource "grafana_dashboard" "docker" {
+resource "grafana_apps_dashboard_dashboard_v2" "docker" {
   metadata {
     uid = "docker-detail"
   }
