@@ -230,16 +230,6 @@
       "tags": [
         "local"
       ]
-    },
-    {
-      "name": "Stirling PDF",
-      "url": "http://192.168.3.2:8885/",
-      "description": "One-stop-shop for all your PDF needs",
-      "newtab": true,
-      "icon": "stirling.png",
-      "tags": [
-        "local"
-      ]
     }
   ]
 }
