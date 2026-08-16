@@ -1,0 +1,30 @@
+---
+- name: Create Floci directories
+  ansible.builtin.file:
+    path: /mnt/media-nvm/Floci
+    state: directory
+    mode: '0755'
+    owner: '{{ superuser_name }}'
+    group: '{{ superuser_name }}'
+
+- name: Create ui.env file
+  ansible.builtin.copy:
+    dest: /mnt/media-nvm/Floci/ui.env
+    content: |
+      AWS_REGION=us-east-1
+      AWS_ACCESS_KEY_ID={{ floci_aws_access_key_id }}
+      AWS_SECRET_ACCESS_KEY={{ floci_aws_secret_access_key }}
+      API_TARGET=http://floci:4566
+      FLOCI_ENDPOINT=http://floci:4566
+
+- name: Copy Docker-compose file
+  ansible.posix.synchronize:
+    src: files/utils/floci/docker-compose.yml
+    dest: /mnt/media-nvm/Floci
+
+- name: Run Floci
+  community.docker.docker_compose_v2:
+    project_src: /mnt/media-nvm/Floci
+    recreate: always
+
+...

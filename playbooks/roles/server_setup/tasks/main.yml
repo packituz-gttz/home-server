@@ -73,6 +73,10 @@
   ansible.builtin.import_tasks: utils/paperlessngx-setup.yml
   tags: [ 'paperlessngx-setup', 'utils-group' ]
 
+- name: Install Floci AWS
+  ansible.builtin.import_tasks: utils/floci.yml
+  tags: [ 'floci-setup', 'utils-group' ]
+
 # Gaming group
 
 - name: Install Romm
