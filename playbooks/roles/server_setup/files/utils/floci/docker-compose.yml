@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  floci:
+    image: floci/floci:1.6.0
+    container_name: floci
+    ports:
+      - "4566:4566"
+    volumes:
+      - /mnt/media-nvm/Floci/data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - FLOCI_LOG_LEVEL=info
+      - FLOCI_STORAGE_MODE=hybrid
+      - FLOCI_STORAGE_PERSISTENT_PATH=/app/data
+    restart: unless-stopped
+
+  floci-ui:
+    image: floci/floci-ui:0.2.0
+    container_name: floci-ui
+    ports:
+      - "4500:4500"
+    env_file:
+      - /mnt/media-nvm/Floci/ui.env
+    depends_on:
+      - floci
+    restart: unless-stopped
