@@ -230,6 +230,26 @@
       "tags": [
         "local"
       ]
+    },
+    {
+      "name": "Immich",
+      "url": "http://192.168.3.2:2283",
+      "description": "Photo Media Management",
+      "newtab": true,
+      "icon": "immich.png",
+      "tags": [
+        "local"
+      ]
+    },
+    {
+      "name": "Floci UI",
+      "url": "http://192.168.3.2:4500",
+      "description": "AWS Local Emulator",
+      "newtab": true,
+      "icon": "floci.png",
+      "tags": [
+        "local"
+      ]
     }
   ]
 }
