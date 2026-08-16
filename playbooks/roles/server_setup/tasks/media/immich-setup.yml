@@ -13,7 +13,7 @@
     content: |
       UPLOAD_LOCATION=/mnt/media-nvm/Immich/library
       DB_DATA_LOCATION=/mnt/media-nvm/Immich/postgres
-      IMMICH_VERSION=v2
+      IMMICH_VERSION=v3
       DB_USERNAME={{ immich_username }}
       DB_PASSWORD={{ immich_password }}
       DB_DATABASE_NAME=immich
