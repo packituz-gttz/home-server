@@ -1,0 +1,19 @@
+services:
+  suwayomi:
+    image: ghcr.io/suwayomi/suwayomi-server:v2.3.2243-stable
+    container_name: suwayomi
+    user: 1000:1000
+    env_file:
+      - suwayomi.env
+    volumes:
+      - /mnt/media-nvm/Suwayomi/data:/home/suwayomi/.local/share/Tachidesk
+    ports:
+      - "4567:4567"
+    restart: unless-stopped
+
+  flaresolverr:
+    image: ghcr.io/thephaseless/byparr:3.0.3
+    container_name: flaresolverr
+    environment:
+      - TZ=Etc/UTC
+    restart: unless-stopped
