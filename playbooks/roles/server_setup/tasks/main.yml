@@ -93,6 +93,10 @@
   ansible.builtin.import_tasks: downloaders/jdownloader2-setup.yml
   tags: [ 'jdownloader2-setup', 'downloaders-group' ]
 
+- name: Install Suwayomi
+  ansible.builtin.import_tasks: downloaders/suwayomi-setup.yml
+  tags: [ 'suwayomi-setup', 'downloaders-group' ]
+
 # Sablier
 
 - name: Install Sablier
