@@ -1,0 +1,17 @@
+services:
+  olivetin:
+    image: ghcr.io/olivetin/olivetin:3000.19.0
+    container_name: olivetin
+    restart: unless-stopped
+    privileged: true
+    env_file:
+      - .env
+    ports:
+      - "1337:1337"
+    user: "0:0" # Run as root inside the container to use the socket
+    volumes:
+      - /mnt/media-nvm/OliveTin/config.yaml:/config/config.yaml:ro
+      - /run/systemd/private:/run/systemd/private
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Mount the host root to let nsenter look at the actual host filesystem
+      - /:/host:rw
