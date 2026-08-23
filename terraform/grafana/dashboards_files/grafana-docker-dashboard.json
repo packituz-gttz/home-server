@@ -547,7 +547,13 @@
             "paperlessngx-webserver",
             "romm-db",
             "romm-app",
-            "romm-valkey"
+            "romm-valkey",
+            "immich_server",
+            "immich_postgres",
+            "immich_redis",
+            "floci",
+            "floci-ui",
+            "olivetin"
           ],
           "value": [
             "caddy",
@@ -573,7 +579,13 @@
             "paperlessngx-webserver",
             "romm-db",
             "romm-app",
-            "romm-valkey"
+            "romm-valkey",
+            "immich_server",
+            "immich_postgres",
+            "immich_redis",
+            "floci",
+            "floci-ui",
+            "olivetin"
           ]
         },
         "definition": "label_values(container_last_seen{name=~\"^[^_]+$\"},name)",
