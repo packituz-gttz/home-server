@@ -1,0 +1,82 @@
+authRequireGuestsToLogin: true
+
+pageTitle: Home-Server
+
+accessControlLists:
+  - name: "admins"
+    permissions:
+      view: true
+      exec: true
+      logs: true
+    matchUsergroups:
+      - "admins"
+    addToEveryAction: true
+
+authLocalUsers:
+  enabled: true
+  users:
+    - username: "packituz"
+      usergroup: admins
+      password: ${{ olivetin_admin_password }}
+
+actions:
+  # Host Machine Controls
+  - title: "Reboot Host Machine"
+    icon: "🔄"
+    shell: "nsenter -t 1 --all --root=/host systemctl reboot"
+    timeout: 10
+
+  - title: "Shutdown Host Machine"
+    icon: "🛑"
+    shell: "nsenter -t 1 --all --root=/host systemctl poweroff"
+    timeout: 10
+
+  - title: "Restart container service"
+    icon: "🔄"
+    shell: "docker restart {{ container }}"
+    maxConcurrent: 1
+    arguments:
+      - name: container
+        description: Container service to restart
+        choices:
+          - title: Jellyfin (TV Server)
+            value: jellyfin
+          - title: Navidrome (Music)
+            value: navidrome
+          - title: Kavita (Books)
+            value: kavita
+          - title: Audiobooks (AudioBooks)
+            value: Audiobooks
+          - title: Grafana (Monitoring)
+            value: grafana
+          - title: Joplin (Notes)
+            value: joplin-app
+          - title: PaperlessNGX (Documents)
+            value: paperlessngx-webserver
+          - title: Lubelogger (Cars)
+            value: lubelogger
+          - title: Docuseal (Document Signing)
+            value: docuseal
+          - title: Romm (VideoGames)
+            value: romm-app
+          - title: Transmission (Seedbox)
+            value: transmission
+          - title: Immich (Photos)
+            value: immich_server
+          - title: Floci (AWS)
+            value: floci
+          - title: OliveTin (UI Administrator)
+            value: olivetin
+          - title: Jump (Home Dashboard)
+            value: jump
+
+  - title: Update System
+    shell: "nsenter -t 1 --all --root=/host env DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket dnf upgrade --refresh --setopt=diskspacecheck=0 -y"
+    timeout: 3600
+
+
+dashboards:
+  - title: Home-Server
+    contents:
+      - title: "Reboot Host Machine"
+      - title: "Shutdown Host Machine"
