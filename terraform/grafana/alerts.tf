@@ -455,7 +455,7 @@ resource "grafana_rule_group" "system_alerts" {
     for            = "5m"
     condition      = "B"
     no_data_state  = "NoData"
-    exec_err_state = "Error"
+    exec_err_state = "Normal"
     annotations = {
       "summary" : "Disk Read Latency Issue",
       "description" : "Disk Read Latency Issue"
