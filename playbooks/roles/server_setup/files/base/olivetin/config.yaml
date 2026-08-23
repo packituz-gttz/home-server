@@ -17,7 +17,7 @@ authLocalUsers:
   users:
     - username: "packituz"
       usergroup: admins
-      password: ${{ olivetin_admin_password }}
+      password: ${{ ADMIN_PASSWORD }}
 
 actions:
   # Host Machine Controls
@@ -73,10 +73,3 @@ actions:
   - title: Update System
     shell: "nsenter -t 1 --all --root=/host env DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket dnf upgrade --refresh --setopt=diskspacecheck=0 -y"
     timeout: 3600
-
-
-dashboards:
-  - title: Home-Server
-    contents:
-      - title: "Reboot Host Machine"
-      - title: "Shutdown Host Machine"

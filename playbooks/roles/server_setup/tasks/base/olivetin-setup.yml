@@ -18,7 +18,7 @@
   ansible.builtin.copy:
     dest: /mnt/media-nvm/OliveTin/.env
     content: |
-      ADMIN_PASSWORD={{ olivetin_admin_password }}
+      ADMIN_PASSWORD='{{ olivetin_admin_password }}'
 
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
