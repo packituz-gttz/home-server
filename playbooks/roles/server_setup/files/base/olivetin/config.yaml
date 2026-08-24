@@ -73,3 +73,14 @@ actions:
   - title: Update System
     shell: "nsenter -t 1 --all --root=/host env DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket dnf upgrade --refresh --setopt=diskspacecheck=0 -y"
     timeout: 3600
+
+dashboards:
+  - title: Home-Server
+    contents:
+      - title: "Reboot Host Machine"
+      - title: "Shutdown Host Machine"
+      - title: "Restart container service"
+      - title: Update System
+  - title: K3s Remote Server
+    contents:
+      - title: "SSS"
