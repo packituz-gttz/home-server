@@ -19,6 +19,7 @@
     dest: /mnt/media-nvm/OliveTin/.env
     content: |
       ADMIN_PASSWORD='{{ olivetin_admin_password }}'
+      OLIVETIN_K3S_TOKEN='{{ olivetin_k3s_token }}'
 
 - name: Copy Docker-compose file
   ansible.posix.synchronize:

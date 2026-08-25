@@ -74,6 +74,18 @@ actions:
     shell: "nsenter -t 1 --all --root=/host env DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket dnf upgrade --refresh --setopt=diskspacecheck=0 -y"
     timeout: 3600
 
+#  K3s Server Actions
+  - title: Shutdown Cluster
+    shell: |
+      TOKEN=${{ OLIVETIN_K3S_TOKEN }}
+      # Node 1
+      echo "Shutting down Node 1"
+      curl -sS -X POST -H "X-Authorization-Token: ${TOKEN}" http://192.168.3.5:9000/hooks/trigger-cluster-shutdown >/dev/null
+      # Master
+      echo "Shutting down Master Node"
+      curl -sS -X POST -H "X-Authorization-Token: ${TOKEN}" http://192.168.3.6:9000/hooks/trigger-cluster-shutdown >/dev/null
+    timeout: 60
+
 dashboards:
   - title: Home-Server
     contents:
@@ -83,4 +95,4 @@ dashboards:
       - title: Update System
   - title: K3s Remote Server
     contents:
-      - title: "SSS"
+      - title: "Shutdown Cluster"
