@@ -74,6 +74,10 @@ actions:
     shell: "nsenter -t 1 --all --root=/host env DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket dnf upgrade --refresh --setopt=diskspacecheck=0 -y"
     timeout: 3600
 
+  - title: Clean System Cache
+    shell: "dnf clean all"
+    timeout: 300
+
   - title: Clean Docker Images
     shell: "docker image prune --all -f"
     timeout: 300
@@ -97,6 +101,7 @@ dashboards:
       - title: "Shutdown Host Machine"
       - title: "Restart container service"
       - title: "Update System"
+      - title: "Clean System Cache"
       - title: "Clean Docker Images"
   - title: K3s Remote Server
     contents:
