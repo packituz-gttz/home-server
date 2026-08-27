@@ -68,6 +68,10 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tunnel_config" {
         service  = "http://localhost:13378"
       },
       {
+        hostname = "olivetin.${var.domain}"
+        service  = "http://localhost:1337"
+      },
+      {
         service = "http_status:404"
       }
     ]

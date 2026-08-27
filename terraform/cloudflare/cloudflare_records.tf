@@ -49,6 +49,9 @@ module "records" {
     {
       name = "share"
     },
+    {
+      name = "olivetin"
+    },
   ]
   zone_id = var.cloudflare_zone_id
   content = "${cloudflare_zero_trust_tunnel_cloudflared.packituz_dev_tunnel.id}.cfargotunnel.com"
