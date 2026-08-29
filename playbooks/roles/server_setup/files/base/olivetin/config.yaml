@@ -15,7 +15,7 @@ accessControlLists:
 authLocalUsers:
   enabled: true
   users:
-    - username: "packituz"
+    - username: ${{ ADMIN_USER }}
       usergroup: admins
       password: ${{ ADMIN_PASSWORD }}
 
@@ -88,6 +88,11 @@ actions:
     shell: "docker image prune --all -f"
     timeout: 300
 
+  # Install stuff for borgbackup
+  - title: Install borgbackup
+    shell: "microdnf install borgbackup -y"
+    timeout: 60
+
 #  K3s Server Actions
   - title: Shutdown Cluster
     shell: |
@@ -112,6 +117,7 @@ dashboards:
       - title: "Update System"
       - title: "Clean System Cache"
       - title: "Clean Docker Images"
+      - title: "Install borgbackup"
   - title: K3s Remote Server
     contents:
       - title: "Shutdown Cluster"
