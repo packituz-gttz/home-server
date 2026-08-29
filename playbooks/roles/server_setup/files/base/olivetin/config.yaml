@@ -24,11 +24,17 @@ actions:
   - title: "Reboot Host Machine"
     icon: "🔄"
     shell: "nsenter -t 1 --all --root=/host systemctl reboot"
+    arguments:
+      - type: confirmation
+        title: 'Reboot?'
     timeout: 10
 
   - title: "Shutdown Host Machine"
     icon: "🛑"
     shell: "nsenter -t 1 --all --root=/host systemctl poweroff"
+    arguments:
+      - type: confirmation
+        title: 'Reboot?'
     timeout: 10
 
   - title: "Restart container service"
@@ -92,6 +98,9 @@ actions:
       # Master
       echo "Shutting down Master Node"
       curl -sS -X POST -H "X-Authorization-Token: ${TOKEN}" http://192.168.3.6:9000/hooks/trigger-cluster-shutdown >/dev/null
+    arguments:
+      - type: confirmation
+        title: 'Shutdown K3s Cluster?'
     timeout: 60
 
 dashboards:
