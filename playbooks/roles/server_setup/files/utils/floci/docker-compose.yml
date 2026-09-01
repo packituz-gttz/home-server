@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
 
   floci-ui:
-    image: floci/floci-ui:0.3.0
+    image: floci/floci-ui:0.4.0
     container_name: floci-ui
     ports:
       - "4500:4500"
