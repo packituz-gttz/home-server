@@ -23,7 +23,7 @@ actions:
   # Host Machine Controls
   - title: "Reboot Host Machine"
     icon: "🔄"
-    shell: "nsenter -t 1 --all --root=/host systemctl reboot"
+    shell: "systemctl reboot"
     arguments:
       - type: confirmation
         title: 'Reboot?'
@@ -31,7 +31,7 @@ actions:
 
   - title: "Shutdown Host Machine"
     icon: "🛑"
-    shell: "nsenter -t 1 --all --root=/host systemctl poweroff"
+    shell: "systemctl poweroff"
     arguments:
       - type: confirmation
         title: 'Reboot?'
@@ -77,7 +77,7 @@ actions:
             value: jump
 
   - title: Update System
-    shell: "nsenter -t 1 --all --root=/host env DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket dnf upgrade --refresh --setopt=diskspacecheck=0 -y"
+    shell: "dnf upgrade --refresh -y"
     timeout: 3600
 
   - title: Clean System Cache
@@ -87,11 +87,6 @@ actions:
   - title: Clean Docker Images
     shell: "docker image prune --all -f"
     timeout: 300
-
-  # Install stuff for borgbackup
-  - title: Install borgbackup
-    shell: "microdnf install borgbackup -y"
-    timeout: 60
 
 #  K3s Server Actions
   - title: Shutdown Cluster

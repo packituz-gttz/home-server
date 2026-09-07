@@ -17,6 +17,7 @@
 - name: Install OliveTin Dashboard
   ansible.builtin.import_tasks: base/olivetin-setup.yml
   tags: [ 'olivetin-setup', 'base-group' ]
+  become: true
 
 # Media group
 

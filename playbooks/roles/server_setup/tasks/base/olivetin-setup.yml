@@ -1,34 +1,53 @@
 ---
-- name: Create OliveTin directories
-  ansible.builtin.file:
-    path: /mnt/media-nvm/OliveTin/config/
-    state: directory
-    owner: '{{ superuser_name }}'
-    group: '{{ superuser_name }}'
-    mode: '0755'
+- name: Install olivetin
+  ansible.builtin.dnf:
+    name: 'https://github.com/OliveTin/OliveTin/releases/download/3000.19.0/OliveTin_linux_amd64.rpm'
+    state: present
+    disable_gpg_check: true
 
 - name: Copy config
-  become: true
   ansible.builtin.copy:
     src: files/base/olivetin/config.yaml
-    dest: /mnt/media-nvm/OliveTin/
+    dest: /etc/OliveTin/
     mode: preserve
 
 - name: Create .env file
   ansible.builtin.copy:
-    dest: /mnt/media-nvm/OliveTin/.env
+    dest: /etc/olivetin.env
+    owner: root
+    group: root
+    mode: '0644'
     content: |
       ADMIN_PASSWORD='{{ olivetin_admin_password }}'
       ADMIN_USER='{{ olivetin_admin_user }}'
       OLIVETIN_K3S_TOKEN='{{ olivetin_k3s_token }}'
 
-- name: Copy Docker-compose file
-  ansible.posix.synchronize:
-    src: files/base/olivetin/docker-compose.yml
-    dest: /mnt/media-nvm/OliveTin
+- name: Create OliveTin Systemd Directory
+  ansible.builtin.file:
+    state: directory
+    path: '/etc/systemd/system/OliveTin.service.d/'
+      
+- name: Override Systemd OliveTin configuration
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/OliveTin.service.d/override.conf
+    owner: root
+    group: root
+    mode: '0644'
+    content: |
+      [Service]
+      EnvironmentFile=/etc/olivetin.env
 
-- name: Run OliveTin
-  community.docker.docker_compose_v2:
-    project_src: /mnt/media-nvm/OliveTin
-    recreate: always
+- name: Open oliveTin por on firewall
+  ansible.posix.firewalld:
+    port: 1337/tcp
+    permanent: true
+    state: enabled
+    immediate: true
+
+- name: Enabled oliveTin service
+  ansible.builtin.systemd:
+    name: OliveTin
+    state: restarted
+    enabled: true
+    daemon_reload: true
 ...
