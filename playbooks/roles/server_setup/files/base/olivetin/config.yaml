@@ -88,6 +88,38 @@ actions:
     shell: "docker image prune --all -f"
     timeout: 300
 
+  - title: Generate Backup on Immich
+    maxConcurrent: 1
+    icon: "📦"
+    shell: |
+      export BORG_PASSPHRASE="${{ OLIVETIN_BORGBASE_PASSPHRASE }}"
+      export BORG_RSH="ssh -o StrictHostKeyChecking=no -i /home/packituz/.ssh/borgbase"
+      REPO="ssh://${{ OLIVETIN_BORGBASE_IMMICH_REPO }}.repo.borgbase.com/./repo"
+      ARCHIVE="immich-$(date +%Y-%m-%d_%H-%M-%S)"
+
+      echo "Creating new archive: $ARCHIVE"
+
+      borg create --progress --stats --compression lz4 \
+        "$REPO::$ARCHIVE" \
+        /mnt/media-nvm/Immich/data/upload/
+    timeout: 7200
+
+  - title: Generate Backup on Kavita
+    maxConcurrent: 1
+    icon: "📦"
+    shell: |
+      export BORG_PASSPHRASE="${{ OLIVETIN_BORGBASE_PASSPHRASE }}"
+      export BORG_RSH="ssh -o StrictHostKeyChecking=no -i /home/packituz/.ssh/borgbase"
+      REPO="ssh://${{ OLIVETIN_BORGBASE_KAVITA_REPO }}.repo.borgbase.com/./repo"
+      ARCHIVE="immich-$(date +%Y-%m-%d_%H-%M-%S)"
+
+      echo "Creating new archive: $ARCHIVE"
+
+      borg create --progress --stats --compression lz4 \
+        "$REPO::$ARCHIVE" \
+        /mnt/media-nvm/Kavita/manga/
+    timeout: 7200
+      
 #  K3s Server Actions
   - title: Shutdown Cluster
     shell: |
@@ -113,6 +145,8 @@ dashboards:
       - title: "Clean System Cache"
       - title: "Clean Docker Images"
       - title: "Install borgbackup"
+      - title: "Generate Backup on Immich"
+      - title: "Generate Backup on Kavita"
   - title: K3s Remote Server
     contents:
       - title: "Shutdown Cluster"

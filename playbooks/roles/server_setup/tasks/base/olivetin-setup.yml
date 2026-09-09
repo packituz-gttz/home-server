@@ -21,6 +21,9 @@
       ADMIN_PASSWORD='{{ olivetin_admin_password }}'
       ADMIN_USER='{{ olivetin_admin_user }}'
       OLIVETIN_K3S_TOKEN='{{ olivetin_k3s_token }}'
+      OLIVETIN_BORGBASE_PASSPHRASE='{{ olivetin_borgbase_passphrase }}'
+      OLIVETIN_BORGBASE_IMMICH_REPO='{{ olivetin_borgbase_immich_repo }}'
+      OLIVETIN_BORGBASE_KAVITA_REPO='{{ olivetin_borgbase_kavita_repo }}'
 
 - name: Create OliveTin Systemd Directory
   ansible.builtin.file:
