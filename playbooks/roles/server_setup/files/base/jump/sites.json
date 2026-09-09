@@ -151,7 +151,7 @@
       ]
     },
     {
-      "name": "Books",
+      "name": "AudioBooks",
       "url": "http://192.168.3.2:13378",
       "description": "Audiobooks",
       "newtab": true,
