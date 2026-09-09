@@ -267,6 +267,16 @@
       "tags": [
         "local"
       ]
+    },
+    {
+      "name": "Suwayomi",
+      "url": "http://192.168.3.2:4567",
+      "description": "Manga Downloader",
+      "newtab": true,
+      "icon": "suwayomi.png",
+      "tags": [
+        "local"
+      ]
     }
   ]
 }
