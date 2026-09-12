@@ -138,15 +138,23 @@ actions:
 dashboards:
   - title: Home-Server
     contents:
-      - title: "Reboot Host Machine"
-      - title: "Shutdown Host Machine"
-      - title: "Restart container service"
-      - title: "Update System"
-      - title: "Clean System Cache"
-      - title: "Clean Docker Images"
-      - title: "Install borgbackup"
-      - title: "Generate Backup on Immich"
-      - title: "Generate Backup on Kavita"
+      - title: Operations
+        type: fieldset
+        contents:
+          - title: "Reboot Host Machine"
+          - title: "Shutdown Host Machine"
+          - title: "Restart container service"
+      - title: Maintenance
+        type: fieldset
+        contents:
+          - title: "Update System"
+          - title: "Clean System Cache"
+          - title: "Clean Docker Images"
+      - title: Backups
+        type: fieldset
+        contents:
+          - title: "Generate Backup on Immich"
+          - title: "Generate Backup on Kavita"
   - title: K3s Remote Server
     contents:
       - title: "Shutdown Cluster"
