@@ -1,6 +1,6 @@
 services:
   olivetin:
-    image: ghcr.io/olivetin/olivetin:3000.19.0
+    image: ghcr.io/olivetin/olivetin:3000.20.0
     container_name: olivetin
     restart: unless-stopped
     privileged: true
