@@ -81,6 +81,17 @@ jobs:
       SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
       SSH_KEY: ${{ secrets.SSH_KEY }}
 
+  deploy-cloudflare:
+    if: ${{ always() }}
+    uses: ./.github/workflows/reusable-playbook-workflow.yaml
+    with:
+      playbook_params: '--tags cloudflare-setup'
+    needs: [ deploy-sablier ]
+    secrets:
+      ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+      SERVER_SSH_ADDRESS: ${{ secrets.SERVER_SSH_ADDRESS }}
+      SSH_KEY: ${{ secrets.SSH_KEY }}
+
   deploy-monitoring:
     uses: ./.github/workflows/reusable-playbook-workflow.yaml
     with:

@@ -78,15 +78,22 @@ actions:
 
   - title: Update System
     shell: "dnf upgrade --refresh -y"
+    icon: <iconify-icon icon="icon-park:update-rotation"></iconify-icon>
     timeout: 3600
 
   - title: Clean System Cache
+    icon: <iconify-icon icon="streamline-plump-color:clean-broom-wipe"></iconify-icon>
     shell: "dnf clean all"
     timeout: 300
 
   - title: Clean Docker Images
     shell: "docker image prune --all -f"
     timeout: 300
+
+  - title: Apply Cloudflare Tunnel Update
+    shell: "docker compose -f /mnt/media-nvm/Cloudflare/docker-compose.yml up -d"
+    icon: <iconify-icon icon="devicon:cloudflare"></iconify-icon>
+    timeout: 60
 
   - title: Generate Backup on Immich
     maxConcurrent: 1
@@ -150,6 +157,7 @@ dashboards:
           - title: "Update System"
           - title: "Clean System Cache"
           - title: "Clean Docker Images"
+          - title: "Apply Cloudflare Tunnel Update"
       - title: Backups
         type: fieldset
         contents:
