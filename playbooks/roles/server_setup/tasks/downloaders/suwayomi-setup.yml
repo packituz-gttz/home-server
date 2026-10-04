@@ -1,7 +1,7 @@
 ---
 - name: Create Suwayomi media directories
   ansible.builtin.file:
-    path: /mnt/media-nvm/Suwayomi/data
+    path: /mnt/media-auxiliary/Suwayomi/data
     state: directory
     mode: '0755'
     owner: '{{ superuser_name }}'
@@ -9,7 +9,7 @@
 
 - name: Create suwayomi.env file
   ansible.builtin.copy:
-    dest: /mnt/media-nvm/Suwayomi/suwayomi.env
+    dest: /mnt/media-auxiliary/Suwayomi/suwayomi.env
     content: |
       TZ=Etc/UTC
       FLARESOLVERR_ENABLED=true
@@ -23,11 +23,11 @@
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
     src: files/downloaders/suwayomi/docker-compose.yml
-    dest: /mnt/media-nvm/Suwayomi
+    dest: /mnt/media-auxiliary/Suwayomi
 
 - name: Run Suwayomi
   community.docker.docker_compose_v2:
-    project_src: /mnt/media-nvm/Suwayomi
+    project_src: /mnt/media-auxiliary/Suwayomi
     recreate: always
 
 ...

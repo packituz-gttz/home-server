@@ -6,7 +6,7 @@ services:
     env_file:
       - suwayomi.env
     volumes:
-      - /mnt/media-nvm/Suwayomi/data:/home/suwayomi/.local/share/Tachidesk
+      - /mnt/media-auxiliary/Suwayomi/data:/home/suwayomi/.local/share/Tachidesk
     ports:
       - "4567:4567"
     restart: unless-stopped
