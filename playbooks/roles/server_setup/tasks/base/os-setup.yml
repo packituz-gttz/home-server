@@ -141,11 +141,14 @@
     group: '{{ ansible_user }}'
     mode: '0755'
   loop:
-    - /mnt/media
-    - /mnt/media-nvm
+    - /mnt/media # HDD Mergerfs Disk Main external disks for critical data
+    - /mnt/media-nvm # SSD NVME (host)
+    - /mnt/media-auxiliary # HDD Disks for non-critical data
     - /mnt/disk1
     - /mnt/disk2
     - /mnt/disk3
+    - /mnt/disk-auxiliary1
+    - /mnt/disk-auxiliary2
 
 - name: Ensure mergerfs entries are present in /etc/fstab
   ansible.builtin.blockinfile:

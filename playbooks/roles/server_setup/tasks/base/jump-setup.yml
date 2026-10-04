@@ -13,18 +13,18 @@
     src: "{{ item.source }}"
     dest: "{{ item.destination }}"
   loop:
-    - { source: 'base/jump/icon.png', destination: '/mnt/media/Jump/favicon/' }
-    - { source: 'base/jump/sites.json', destination: '/mnt/media/Jump/sites/' }
-    - { source: 'base/jump/favicon/', destination: '/mnt/media/Jump/sites/icons/' }
-    - { source: 'base/jump/backgrounds', destination: '/mnt/media/Jump/' }
+    - { source: 'base/jump/icon.png', destination: '/mnt/media-nvm/Jump/favicon/' }
+    - { source: 'base/jump/sites.json', destination: '/mnt/media-nvm/Jump/sites/' }
+    - { source: 'base/jump/favicon/', destination: '/mnt/media-nvm/Jump/sites/icons/' }
+    - { source: 'base/jump/backgrounds', destination: '/mnt/media-nvm/Jump/' }
 
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
     src: files/base/jump/docker-compose.yml
-    dest: /mnt/media/Jump
+    dest: /mnt/media-nvm/Jump
 
 - name: Run Jump
   community.docker.docker_compose_v2:
-    project_src: /mnt/media/Jump
+    project_src: /mnt/media-nvm/Jump
     recreate: always
 ...

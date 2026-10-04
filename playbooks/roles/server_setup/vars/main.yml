@@ -15,8 +15,8 @@ jellyfin_media_dirs:
   - /mnt/media/Jellyfin/media/Concerts
 
 jump_media_dirs:
-  - /mnt/media/Jump/backgrounds
-  - /mnt/media/Jump/favicon
-  - /mnt/media/Jump/sites/icons
+  - /mnt/media-nvm/Jump/backgrounds
+  - /mnt/media-nvm/Jump/favicon
+  - /mnt/media-nvm/Jump/sites/icons
 
 ...
