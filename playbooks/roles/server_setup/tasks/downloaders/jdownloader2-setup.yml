@@ -1,7 +1,7 @@
 ---
 - name: Create JDownloader2 media directories
   ansible.builtin.file:
-    path: /mnt/media/JDownloader2
+    path: /mnt/media-auxiliary/JDownloader2
     state: directory
     mode: '0755'
     owner: '{{ superuser_name }}'
@@ -9,7 +9,7 @@
 
 - name: Create .env file
   ansible.builtin.copy:
-    dest: /mnt/media/JDownloader2/.env
+    dest: /mnt/media-auxiliary/JDownloader2/.env
     content: |
       WEB_AUTHENTICATION='1'
       SECURE_CONNECTION='1'
@@ -19,11 +19,11 @@
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
     src: files/downloaders/jdownloader2/docker-compose.yml
-    dest: /mnt/media/JDownloader2
+    dest: /mnt/media-auxiliary/JDownloader2
 
 - name: Run JDownloader2
   community.docker.docker_compose_v2:
-    project_src: /mnt/media/JDownloader2
+    project_src: /mnt/media-auxiliary/JDownloader2
     recreate: always
 
 ...
