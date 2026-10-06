@@ -14,6 +14,6 @@ services:
       - "51413:51413"
       - "51413:51413/udp"
     volumes:
-      - /mnt/media/Transmission/config:/config
-      - /mnt/media/Transmission/downloads:/downloads
-      - /mnt/media/Transmission/watch:/watch
+      - /mnt/media-auxiliary/Transmission/config:/config
+      - /mnt/media-auxiliary/Transmission/downloads:/downloads
+      - /mnt/media-auxiliary/Transmission/watch:/watch

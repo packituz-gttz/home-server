@@ -1,7 +1,7 @@
 ---
 - name: Create Transmission directories
   ansible.builtin.file:
-    path: /mnt/media/Transmission
+    path: /mnt/media-auxiliary/Transmission
     state: directory
     mode: '0755'
     owner: '{{ superuser_name }}'
@@ -9,7 +9,7 @@
 
 - name: Create .env file
   ansible.builtin.copy:
-    dest: /mnt/media/Transmission/.env
+    dest: /mnt/media-auxiliary/Transmission/.env
     content: |
       PGUID='1000'
       PGID='1000'
@@ -20,11 +20,11 @@
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
     src: files/downloaders/transmission/docker-compose.yml
-    dest: /mnt/media/Transmission
+    dest: /mnt/media-auxiliary/Transmission
 
 - name: Run Transmission
   community.docker.docker_compose_v2:
-    project_src: /mnt/media/Transmission
+    project_src: /mnt/media-auxiliary/Transmission
     recreate: always
 
 ...
