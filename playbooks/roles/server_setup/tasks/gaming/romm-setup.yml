@@ -22,6 +22,7 @@
       ROMM_AUTH_PASSWORD={{ romm_auth_password }}
       REDIS_HOST=romm-valkey
       REDIS_PORT=6379
+      ROM_CONVERTO_ENABLED=true
 
 - name: Create db.env file
   ansible.builtin.copy:
