@@ -11,6 +11,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
-    "commitizen>=4.9.1",
-    "pre-commit>=4.3.0",
+    "commitizen>=4.19.2",
+    "pre-commit>=4.6.2",
 ]
