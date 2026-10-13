@@ -1,7 +1,7 @@
 ---
 - name: Create Navidrome directories
   ansible.builtin.file:
-    path: /mnt/media-nvm/Navidrome
+    path: /mnt/media-auxiliary/Navidrome
     state: directory
     mode: '0755'
     owner: '{{ superuser_name }}'
@@ -10,9 +10,9 @@
 - name: Copy Docker-compose file
   ansible.posix.synchronize:
     src: files/media/navidrome/docker-compose.yml
-    dest: /mnt/media-nvm/Navidrome
+    dest: /mnt/media-auxiliary/Navidrome
 
 - name: Run Navidrome
   community.docker.docker_compose_v2:
-    project_src: /mnt/media-nvm/Navidrome
+    project_src: /mnt/media-auxiliary/Navidrome
 ...

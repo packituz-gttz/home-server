@@ -6,5 +6,5 @@ services:
     ports:
       - "4533:4533"
     volumes:
-      - /mnt/media-nvm/Navidrome/music:/music
-      - /mnt/media-nvm/Navidrome/data:/data
+      - /mnt/media-auxiliary/Navidrome/music:/music
+      - /mnt/media-auxiliary/Navidrome/data:/data
