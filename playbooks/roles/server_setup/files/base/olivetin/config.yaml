@@ -69,8 +69,6 @@ actions:
             value: transmission
           - title: Immich (Photos)
             value: immich_server
-          - title: Floci (AWS)
-            value: floci
           - title: OliveTin (UI Administrator)
             value: olivetin
           - title: Jump (Home Dashboard)
