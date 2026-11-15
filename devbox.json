@@ -3,7 +3,7 @@
   "packages": [
     "terraform@1.17.1",
     "tflint@0.66.0",
-    "terraform-docs@0.24.0",
+    "terraform-docs@0.25.1",
     "ggshield@1.56.1"
   ],
   "shell": {
