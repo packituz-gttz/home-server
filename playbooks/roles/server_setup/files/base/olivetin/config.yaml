@@ -93,6 +93,10 @@ actions:
     icon: <iconify-icon icon="devicon:cloudflare"></iconify-icon>
     timeout: 60
 
+  - title: Get host IP Address
+    shell: "ip -4 addr show dev eno1 | awk '/inet / {print $2}' | cut -d/ -f1"
+    icon: <iconify-icon icon="arcticons:home-network"></iconify-icon>
+
   - title: Generate Backup on Immich
     maxConcurrent: 1
     icon: "📦"
@@ -156,6 +160,7 @@ dashboards:
           - title: "Clean System Cache"
           - title: "Clean Docker Images"
           - title: "Apply Cloudflare Tunnel Update"
+          - title: "Get host IP Address"
       - title: Backups
         type: fieldset
         contents:
