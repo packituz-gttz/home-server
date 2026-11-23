@@ -114,7 +114,7 @@
     },
     {
       "name": "TV",
-      "url": "http://homserver.local:8096",
+      "url": "http://homeserver.local:8096",
       "description": "Movies, Series & Learning.",
       "newtab": true,
       "icon": "jellyfin.png",
@@ -124,7 +124,7 @@
     },
     {
       "name": "Music",
-      "url": "http://homserver.local:4533",
+      "url": "http://homeserver.local:4533",
       "description": "Music streaming.",
       "newtab": true,
       "icon": "navidrome.png",
@@ -136,13 +136,13 @@
           200,
           302
         ],
-        "url": "http://homserver.local:4533/app/#/login",
+        "url": "http://homeserver.local:4533/app/#/login",
         "request_method": "GET"
       }
     },
     {
       "name": "Books",
-      "url": "http://homserver.local:5000",
+      "url": "http://homeserver.local:5000",
       "description": "Books, Comics, Novels & More.",
       "newtab": true,
       "icon": "kavita.png",
@@ -152,7 +152,7 @@
     },
     {
       "name": "AudioBooks",
-      "url": "http://homserver.local:13378",
+      "url": "http://homeserver.local:13378",
       "description": "Audiobooks",
       "newtab": true,
       "icon": "audiobookshelf.png",
@@ -162,7 +162,7 @@
     },
     {
       "name": "Grafana",
-      "url": "http://homserver.local:3000/",
+      "url": "http://homeserver.local:3000/",
       "description": "Grafana Monitoring Dashboards",
       "newtab": true,
       "icon": "grafana.png",
@@ -172,7 +172,7 @@
     },
     {
       "name": "Monit",
-      "url": "http://homserver.local:2812/",
+      "url": "http://homeserver.local:2812/",
       "description": "Monit, monitoring",
       "newtab": true,
       "icon": "monit.png",
@@ -182,7 +182,7 @@
     },
     {
       "name": "Pingvin",
-      "url": "http://homserver.local:3001/",
+      "url": "http://homeserver.local:3001/",
       "description": "File Sharing system",
       "newtab": true,
       "icon": "pingvin.png",
@@ -192,7 +192,7 @@
     },
     {
       "name": "Romm",
-      "url": "http://homserver.local:8888/",
+      "url": "http://homeserver.local:8888/",
       "description": "Game Rom Management",
       "newtab": true,
       "icon": "romm.png",
@@ -202,7 +202,7 @@
     },
     {
       "name": "Transmission",
-      "url": "http://homserver.local:9091/",
+      "url": "http://homeserver.local:9091/",
       "description": "Torrent Client",
       "newtab": true,
       "icon": "transmission.png",
@@ -230,7 +230,7 @@
     },
     {
       "name": "LubeLogger",
-      "url": "http://homserver.local:8889/",
+      "url": "http://homeserver.local:8889/",
       "description": "Vehicle Maintenance",
       "newtab": true,
       "icon": "lubelogger.png",
@@ -240,7 +240,7 @@
     },
     {
       "name": "Immich",
-      "url": "http://homserver.local:2283",
+      "url": "http://homeserver.local:2283",
       "description": "Photo Media Management",
       "newtab": true,
       "icon": "immich.png",
@@ -250,7 +250,7 @@
     },
     {
       "name": "OliveTin",
-      "url": "http://homserver.local:1337",
+      "url": "http://homeserver.local:1337",
       "description": "Server Actions",
       "newtab": true,
       "icon": "olivetin.webp",
@@ -260,7 +260,7 @@
     },
     {
       "name": "Suwayomi",
-      "url": "http://homserver.local:4567",
+      "url": "http://homeserver.local:4567",
       "description": "Manga Downloader",
       "newtab": true,
       "icon": "suwayomi.png",
