@@ -212,7 +212,7 @@
     },
     {
       "name": "JDownloader2",
-      "url": "https://192.168.3.2:5800/",
+      "url": "https://homeserver.local:5800/",
       "description": "Download Management Tool",
       "newtab": true,
       "icon": "jdownloader2.png",
@@ -221,7 +221,7 @@
           200,
           302
         ],
-        "url": "https://192.168.3.2:5800/login",
+        "url": "https://homeserver.local:5800/login",
         "request_method": "GET"
       },
       "tags": [
