@@ -8,7 +8,13 @@ services:
       CHECKSTATUS: "false"
     ports:
       - "8123:8080"
+    networks:
+      - sleepers
     volumes:
       - /mnt/media-nvm/Jump/backgrounds:/backgrounds
       - /mnt/media-nvm/Jump/favicon:/favicon
       - /mnt/media-nvm/Jump/sites:/sites
+
+networks:
+  sleepers:
+    external: true

@@ -84,3 +84,9 @@ http://games.packituz.dev {
       reverse_proxy lubelogger:8080
     }
 }
+
+:80 {
+    route {
+      reverse_proxy jump:8080
+    }
+}
