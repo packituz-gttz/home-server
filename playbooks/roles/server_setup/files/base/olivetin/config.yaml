@@ -11,6 +11,11 @@ accessControlLists:
     matchUsergroups:
       - "admins"
     addToEveryAction: true
+  - name: "cron"
+    matchUsernames:
+      - cron
+    permissions:
+      exec: true
 
 authLocalUsers:
   enabled: true
@@ -78,20 +83,36 @@ actions:
     shell: "dnf upgrade --refresh -y"
     icon: <iconify-icon icon="icon-park:update-rotation"></iconify-icon>
     timeout: 3600
+    execOnCron:
+      - "@weekly"
+    acls:
+      - "cron"
 
   - title: Clean System Cache
     icon: <iconify-icon icon="streamline-plump-color:clean-broom-wipe"></iconify-icon>
     shell: "dnf clean all"
     timeout: 300
+    execOnCron:
+      - "@weekly"
+    acls:
+      - "cron"
 
   - title: Clean Docker Images
     shell: "docker image prune --all -f"
     timeout: 300
+    execOnCron:
+      - "@weekly"
+    acls:
+      - "cron"
 
   - title: Apply Cloudflare Tunnel Update
     shell: "docker compose -f /mnt/media-nvm/Cloudflare/docker-compose.yml up -d"
     icon: <iconify-icon icon="devicon:cloudflare"></iconify-icon>
     timeout: 60
+    execOnCron:
+      - "@weekly"
+    acls:
+      - "cron"
 
   - title: Get host IP Address
     shell: "ip -4 addr show dev eno1 | awk '/inet / {print $2}' | cut -d/ -f1"
